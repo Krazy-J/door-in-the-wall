@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-[gd_scene load_steps=7 format=2]
-
-[ext_resource path="res://models/Room.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://rooms/SpriteTest.gd" type="Script" id=4]
-=======
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://models/Room.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/checker.tres" type="Texture" id=2]
 [ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=3]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
->>>>>>> 710742f794cee8b56831ef3f6a476c6262ca9f5e
+[ext_resource path="res://objects/SpriteTest.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_point_size = 121.0
@@ -22,47 +13,6 @@ uv1_scale = Vector3( 20, 20, 20 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 10, 2, 10 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "SpriteTest"
-length = 8.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7 ),
-"transitions": PoolRealArray( 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5 ),
-"update": 0,
-"values": [ Vector3( -8, -5, 0 ), Vector3( -8, -4, 0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, -0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, 0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, -0.5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 3, 4, 5 ),
-"transitions": PoolRealArray( 1, 1, 0, 2, 1, 0 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 180, 0, 0 ), Vector3( 360, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 90, 180, 0 ), Vector3( 360, 180, 360 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 3, 5.8, 6.5, 7.2 ),
-"transitions": PoolRealArray( 2, 0.5, 1, 2, 0.5, 1 ),
-"update": 0,
-"values": [ Vector3( 2, 4, 1 ), Vector3( 2, 12, 1 ), Vector3( 2, 4, 1 ), Vector3( 2, 4, 1 ), Vector3( 6, 12, 1 ), Vector3( 2, 4, 1 ) ]
-}
 
 [node name="Room1" type="Spatial"]
 
@@ -111,17 +61,4 @@ omni_range = 10.0
 [node name="Door" parent="Room" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
 
-<<<<<<< HEAD
-[node name="SpriteTest" type="Sprite3D" parent="Room"]
-transform = Transform( -5.64218, 1.97302e-06, -8.74228e-08, 9.8651e-07, 11.2844, -1.74846e-07, 4.93255e-07, -1.97302e-06, -1, -8, -4.78102, -0.109492 )
-texture = ExtResource( 3 )
-=======
-[node name="Sprite3D" type="Sprite3D" parent="Room"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 1, -8, -5, 0 )
-texture = ExtResource( 5 )
->>>>>>> 710742f794cee8b56831ef3f6a476c6262ca9f5e
-region_rect = Rect2( 0, 0, 64, 64 )
-script = ExtResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room/SpriteTest"]
-anims/SpriteTest = SubResource( 2 )
+[node name="SpriteTest" parent="Room" instance=ExtResource( 5 )]
