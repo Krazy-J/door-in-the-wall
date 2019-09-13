@@ -3,7 +3,6 @@
 [ext_resource path="res://rooms/Test.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 
-
 [node name="Spatial" type="Spatial"]
 
 [node name="Test" parent="." instance=ExtResource( 1 )]
