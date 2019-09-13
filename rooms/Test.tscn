@@ -23,13 +23,13 @@ material/0 = SubResource( 1 )
 
 [node name="Doors" type="Spatial" parent="Room"]
 
-[node name="1" parent="Room/Doors" instance=ExtResource( 3 )]
+[node name="0" parent="Room/Doors" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
 exitDoorID = 1
 
-[node name="2" parent="Room/Doors" instance=ExtResource( 3 )]
+[node name="1" parent="Room/Doors" instance=ExtResource( 3 )]
 editor/display_folded = true
-transform = Transform( 1.19249e-008, 0, -1, 0, 1, 0, 1, 0, 1.19249e-008, 0, -9, 8 )
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, -9, 8 )
 
 [node name="StaticBody" type="StaticBody" parent="Room"]
 physics_material_override = ExtResource( 4 )
