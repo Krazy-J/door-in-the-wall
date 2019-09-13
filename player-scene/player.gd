@@ -2,6 +2,9 @@ extends RigidBody
 
 
 export var speed = 100.0;
+export var mouse_sensitivity = 0.002; # radians/pixel
+
+onready var camera = $Camera
 
 func _ready():
 	pass # Replace with function body.
@@ -9,18 +12,26 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func get_input():
+    var input_dir = Vector3()
+    if Input.is_action_pressed("move_forward"):
+        input_dir += -camera.global_transform.basis.z
+    if Input.is_action_pressed("move_back"):
+        input_dir += camera.global_transform.basis.z
+    if Input.is_action_pressed("move_left"):
+        input_dir += -camera.global_transform.basis.x
+    if Input.is_action_pressed("move_right"):
+        input_dir += camera.global_transform.basis.x
+    input_dir = input_dir.normalized()
+    return input_dir
+	
+
+func _unhandled_input(event):
+    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+        rotate_y(-event.relative.x * mouse_sensitivity)
+        $Camera.rotate_x(-event.relative.y * mouse_sensitivity)
+        $Camera.rotation.x = clamp($Camera.rotation.x, -1.2, 1.2)
+
 func _physics_process(delta):
-	if Input.is_action_pressed("move_forward"):
-		linear_velocity = Vector3(linear_velocity.x, linear_velocity.y, -speed * delta)
-	elif Input.is_action_pressed("move_back"):
-		linear_velocity = Vector3(linear_velocity.x, linear_velocity.y, +speed * delta)
-	else:
-		linear_velocity = Vector3(linear_velocity.x, linear_velocity.y, 0)
-		
-	if Input.is_action_pressed("move_left"):
-		linear_velocity = Vector3(-speed * delta, linear_velocity.y, linear_velocity.z)
-	elif Input.is_action_pressed("move_right"):
-		linear_velocity = Vector3(speed * delta, linear_velocity.y, linear_velocity.z)
-	else:
-		linear_velocity = Vector3(0, linear_velocity.y, linear_velocity.z)
+	linear_velocity = get_input() * delta * speed
 
