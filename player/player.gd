@@ -28,7 +28,8 @@ func get_input():
 		input_dir += -camera.global_transform.basis.x
 	if Input.is_action_pressed("move_right"):
 		input_dir += camera.global_transform.basis.x
-		input_dir = input_dir.normalized()
+	input_dir = Vector3(input_dir.x, 0, input_dir.z)
+	input_dir = input_dir.normalized()
 	return input_dir
 
 
