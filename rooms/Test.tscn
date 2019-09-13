@@ -96,7 +96,7 @@ omni_range = 10.0
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 8, -9, 0 )
 
 [node name="SpriteTest" type="Sprite3D" parent="Room"]
-transform = Transform( 2, 0, 0, 0, 8.34372, -1.74846e-07, 0, 1.45886e-06, 1, -8, -4.77559, 0.112207 )
+transform = Transform( -5.64218, 1.97302e-06, -8.74228e-08, 9.8651e-07, 11.2844, -1.74846e-07, 4.93255e-07, -1.97302e-06, -1, -8, -4.78102, -0.109492 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 64, 64 )
 script = ExtResource( 4 )
