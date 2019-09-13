@@ -13,10 +13,10 @@ func _ready():
 #	pass
 
 func _input(event):
-    if event.is_action_pressed("mouse_0"):
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
-    if event.is_action_pressed("exit_mouse"):
-        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+	if event.is_action_pressed("mouse_0"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	if event.is_action_pressed("exit_mouse"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 
 func get_input():
 	var input_dir = Vector3()
