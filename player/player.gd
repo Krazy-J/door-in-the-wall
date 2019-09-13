@@ -1,16 +1,22 @@
 extends RigidBody
 
 
-export var speed = 100.0;
-export var mouse_sensitivity = 0.002; # radians/pixel
+var speed = 200.0;
+var mouse_sensitivity = 0.003; # radians/pixel
 
 onready var camera = $Pivot/Camera
 
 func _ready():
-	pass # Replace with function body.
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
 #func _process(delta):
 #	pass
+
+func _input(event):
+    if event.is_action_pressed("mouse_0"):
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+    if event.is_action_pressed("exit_mouse"):
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 
 func get_input():
 	var input_dir = Vector3()
