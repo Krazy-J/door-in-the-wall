@@ -3,7 +3,7 @@
 [ext_resource path="res://models/Room.obj" type="ArrayMesh" id=1]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 10, 2, 10 )
+extents = Vector3( 10, 9, 10 )
 
 [node name="Room1" type="Spatial"]
 
@@ -15,5 +15,34 @@ material/0 = null
 [node name="StaticBody" type="StaticBody" parent="Room"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 shape = SubResource( 1 )
+
+[node name="OmniLight-Y" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0 )
+light_color = Color( 0, 1, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+Y" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+light_color = Color( 0, 1, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight-X" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+X" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight-Z" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+light_color = Color( 0, 0, 1, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+Z" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+light_color = Color( 0, 0, 1, 1 )
+omni_range = 10.0
