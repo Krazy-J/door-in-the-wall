@@ -2,8 +2,8 @@
 
 [ext_resource path="res://models/Room.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/checker.tres" type="Texture" id=2]
-[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=3]
-[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=4]
 [ext_resource path="res://objects/SpriteTest.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -21,8 +21,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
 
+[node name="Doors" type="Spatial" parent="Room"]
+
+[node name="1" parent="Room/Doors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
+exitDoorID = 1
+
+[node name="2" parent="Room/Doors" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( 1.19249e-008, 0, -1, 0, 1, 0, 1, 0, 1.19249e-008, 0, -9, 8 )
+
 [node name="StaticBody" type="StaticBody" parent="Room"]
-physics_material_override = ExtResource( 3 )
+physics_material_override = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/StaticBody"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -11, 0 )
@@ -58,22 +68,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 light_color = Color( 0, 0, 1, 1 )
 omni_range = 10.0
 
-[node name="Door" parent="Room" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
-
-[node name="DoorEnter" parent="Room/Door/DoorFrame" index="1"]
-exitDoorPosition = Vector3( -16, 0, 0 )
-exitDoorRotation = 0.5
-
-[node name="Door2" parent="Room" instance=ExtResource( 4 )]
-transform = Transform( 1.19249e-008, 0, -1, 0, 1, 0, 1, 0, 1.19249e-008, 0, -9, 8 )
-
-[node name="DoorEnter" parent="Room/Door2/DoorFrame" index="1"]
-exitDoorPosition = Vector3( 0, 0, -16 )
-exitDoorRotation = -0.5
-
 [node name="SpriteTest" parent="Room" instance=ExtResource( 5 )]
-
-[editable path="Room/Door"]
-
-[editable path="Room/Door2"]
