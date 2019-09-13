@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://models/Room.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://textures/checker.tres" type="Texture" id=2]
+[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=3]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/SpriteTest.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_point_size = 121.0
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 24, 24, 24 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 10, 2, 10 )
+
+[node name="Room1" type="Spatial"]
+
+[node name="Room" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Room"]
+physics_material_override = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room/StaticBody"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -11, 0 )
+shape = SubResource( 2 )
+
+[node name="OmniLight-Y" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0 )
+light_color = Color( 0, 1, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+Y" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+light_color = Color( 0, 1, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight-X" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+X" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 10.0
+
+[node name="OmniLight-Z" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+light_color = Color( 0, 0, 1, 1 )
+omni_range = 10.0
+
+[node name="OmniLight+Z" type="OmniLight" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+light_color = Color( 0, 0, 1, 1 )
+omni_range = 10.0
+
+[node name="Door" parent="Room" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
+
+[node name="SpriteTest" parent="Room" instance=ExtResource( 5 )]

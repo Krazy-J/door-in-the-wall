@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/checker.jpg-c37aa8408e5193d9f600edee84fadb79.image"
+
+[deps]
+
+source_file="res://textures/checker.jpg"
+dest_files=[ "res://.import/checker.jpg-c37aa8408e5193d9f600edee84fadb79.image" ]
+
+[params]
+
