@@ -62,15 +62,14 @@ omni_range = 10.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
 
 [node name="DoorEnter" parent="Room/Door/DoorFrame" index="1"]
-exitDoorPosition = Vector3( -13.8, 0, 0 )
+exitDoorPosition = Vector3( -16, 0, 0 )
 exitDoorRotation = 0.5
 
 [node name="Door2" parent="Room" instance=ExtResource( 4 )]
 transform = Transform( 1.19249e-008, 0, -1, 0, 1, 0, 1, 0, 1.19249e-008, 0, -9, 8 )
 
 [node name="DoorEnter" parent="Room/Door2/DoorFrame" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 3, 7.10543e-015 )
-exitDoorPosition = Vector3( 0, 0, -13.8 )
+exitDoorPosition = Vector3( 0, 0, -16 )
 exitDoorRotation = -0.5
 
 [node name="SpriteTest" parent="Room" instance=ExtResource( 5 )]

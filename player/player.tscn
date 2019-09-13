@@ -4,10 +4,11 @@
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
-height = 2.0
+radius = 0.5
+height = 3.0
 
 [node name="Player" type="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52995, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 physics_material_override = ExtResource( 1 )
 axis_lock_angular_x = true
 axis_lock_angular_y = true

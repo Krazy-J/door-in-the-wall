@@ -3,13 +3,13 @@
 [ext_resource path="res://models/DoorFrame.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/DoorEnter.gd" type="Script" id=2]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.3, 3.5, 0.25 )
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.3, 0.25, 2 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0, 3.25, 1.5 )
 
 [node name="Door" type="Spatial"]
@@ -23,20 +23,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
 [node name="FrameSide" type="CollisionShape" parent="DoorFrame/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="FrameSide2" type="CollisionShape" parent="DoorFrame/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="FrameTop" type="CollisionShape" parent="DoorFrame/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="DoorEnter" type="Area" parent="DoorFrame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 3.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.25, 0 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DoorFrame/DoorEnter"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="DoorFrame/DoorEnter" to="DoorFrame/DoorEnter" method="_on_DoorEnter_body_entered"]
