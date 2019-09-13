@@ -1,7 +1,7 @@
 extends RigidBody
 
 
-var speed = 200.0;
+var speed = 300.0;
 var mouse_sensitivity = 0.003; # radians/pixel
 
 onready var camera = $Pivot/Camera
