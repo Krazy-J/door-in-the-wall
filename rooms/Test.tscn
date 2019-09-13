@@ -9,7 +9,7 @@
 [sub_resource type="SpatialMaterial" id=1]
 params_point_size = 121.0
 albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 20, 20, 20 )
+uv1_scale = Vector3( 24, 24, 24 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 10, 2, 10 )
@@ -25,7 +25,7 @@ material/0 = SubResource( 1 )
 physics_material_override = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 0 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -11, 0 )
 shape = SubResource( 2 )
 
 [node name="OmniLight-Y" type="OmniLight" parent="Room"]
@@ -61,4 +61,19 @@ omni_range = 10.0
 [node name="Door" parent="Room" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
 
+[node name="DoorEnter" parent="Room/Door/DoorFrame" index="1"]
+exitDoorPosition = Vector3( -16, 0, 0 )
+exitDoorRotation = 0.5
+
+[node name="Door2" parent="Room" instance=ExtResource( 4 )]
+transform = Transform( 1.19249e-008, 0, -1, 0, 1, 0, 1, 0, 1.19249e-008, 0, -9, 8 )
+
+[node name="DoorEnter" parent="Room/Door2/DoorFrame" index="1"]
+exitDoorPosition = Vector3( 0, 0, -16 )
+exitDoorRotation = -0.5
+
 [node name="SpriteTest" parent="Room" instance=ExtResource( 5 )]
+
+[editable path="Room/Door"]
+
+[editable path="Room/Door2"]
