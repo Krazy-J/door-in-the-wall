@@ -11,6 +11,7 @@ height = 3.0
 [node name="Player" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 physics_material_override = ExtResource( 1 )
+gravity_scale = 0.0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

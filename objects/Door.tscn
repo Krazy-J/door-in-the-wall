@@ -41,10 +41,9 @@ anchor_bottom = 1.0
 color = Color( 0.227451, 0.537255, 0.223529, 1 )
 
 [node name="Spatial" type="Spatial" parent="Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 3.5, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 3.5, 0 )
 
 [node name="Camera" type="Camera" parent="Viewport/Spatial"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 current = true
 
 [node name="DoorFrameBack" type="MeshInstance" parent="."]
