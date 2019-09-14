@@ -2,7 +2,7 @@
 
 [ext_resource path="res://objects/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/SpriteTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/AnimationTest.tscn" type="PackedScene" id=3]
 
 [node name="Room1" type="Spatial"]
 
