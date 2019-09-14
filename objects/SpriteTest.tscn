@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7 ),
 "transitions": PoolRealArray( 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5 ),
 "update": 0,
-"values": [ Vector3( -8, -5, 0 ), Vector3( -8, -4, 0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, -0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, 0.5 ), Vector3( -8, -5, 0 ), Vector3( -8, -4, -0.5 ) ]
+"values": [ Vector3( 0, 4, 0 ), Vector3( 0, 5, 0.5 ), Vector3( 0, 4, 0 ), Vector3( 0, 5, -0.5 ), Vector3( 0, 4, 0 ), Vector3( 0, 5, 0.5 ), Vector3( 0, 4, 0 ), Vector3( 0, 5, -0.5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -45,7 +45,7 @@ tracks/2/keys = {
 }
 
 [node name="SpriteTest" type="Sprite3D"]
-transform = Transform( -5.67438, 1.98428e-006, -8.74228e-008, 9.92141e-007, 11.3488, -1.74846e-007, 4.9607e-007, -1.98428e-006, -1, -8, -4.77825, -0.110875 )
+transform = Transform( 2, 0, 0, 0, 4.25707, -1.74846e-07, 0, 7.4433e-07, 1, 0, 4.4115, -0.205749 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 script = ExtResource( 2 )
