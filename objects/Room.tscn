@@ -17,9 +17,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="Surfaces" type="StaticBody" parent="."]
 physics_material_override = ExtResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="Floor" type="CollisionShape" parent="Surfaces"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -10, 0 )
+shape = SubResource( 2 )
+
+[node name="Ceiling" type="CollisionShape" parent="Surfaces"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 10, 0 )
 shape = SubResource( 2 )
