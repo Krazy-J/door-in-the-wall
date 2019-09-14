@@ -14,11 +14,22 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource( 2 )
 
+<<<<<<< HEAD
 [node name="Pivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0 )
+=======
+[node name="PivotY" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+>>>>>>> 77188a1c0013ea7919125a5b25721d6bcf517cb3
 
-[node name="Camera" type="ClippedCamera" parent="Pivot"]
+[node name="PivotX" type="Spatial" parent="PivotY"]
+
+[node name="Camera" type="ClippedCamera" parent="PivotY/PivotX"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 2, 0 )
+=======
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+>>>>>>> 77188a1c0013ea7919125a5b25721d6bcf517cb3
 shape = SubResource( 1 )
