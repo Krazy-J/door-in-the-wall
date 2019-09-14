@@ -67,4 +67,4 @@ light_color = Color( 0, 0, 1, 1 )
 omni_range = 10.0
 
 [node name="SpriteTest" parent="." instance=ExtResource( 3 )]
-transform = Transform( -5.67438, 1.98428e-06, -8.74228e-08, 9.92141e-07, 11.3488, -1.74846e-07, 4.9607e-07, -1.98428e-06, -1, -8, 4.22175, -0.110875 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 1, -8, 5, 0 )
