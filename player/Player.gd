@@ -1,7 +1,8 @@
 extends RigidBody
 
-
 export var speed = 400;
+export var jump_power = 50000;
+var jump = 0
 export var mouse_sensitivity = 0.003; # radians/pixel
 export var gravity = 10000;
 
@@ -27,9 +28,8 @@ func get_input():
 		input_dir -= camera_g_basis.x
 	if Input.is_action_pressed("move_right"):
 		input_dir += camera_g_basis.x
-	if Input.is_action_pressed("jump"):
-		input_dir += camera_g_basis.y
-	input_dir = Vector3(input_dir.x, 0, input_dir.z).normalized()
+	input_dir = (input_dir - input_dir * transform.basis.y).normalized()
+	
 	return input_dir
 
 func _unhandled_input(event):
@@ -42,4 +42,10 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	linear_velocity = get_input() * delta * speed
 	add_central_force(-transform.basis.y * delta * gravity)
+	if Input.is_action_just_pressed("jump"):
+		jump += jump_power
+	if jump > 0:
+		add_central_force(transform.basis.y * delta * jump)
+		jump -= 1000
+	
 
