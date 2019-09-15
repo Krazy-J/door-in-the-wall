@@ -1,25 +1,40 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://models/DoorFrame.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/DoorEnter.gd" type="Script" id=2]
 [ext_resource path="res://objects/DoorViewport.gd" type="Script" id=3]
 [ext_resource path="res://models/DoorFrameBack.obj" type="ArrayMesh" id=4]
 
-[sub_resource type="ViewportTexture" id=1]
+[sub_resource type="Shader" id=9]
+resource_local_to_scene = true
+code = "shader_type spatial;
+
+uniform sampler2D viewport;
+render_mode unshaded;
+
+void vertex() {
+}
+
+void fragment() {
+	vec3 color = vec3(texture(viewport, SCREEN_UV).x, texture(viewport, SCREEN_UV).y, texture(viewport, SCREEN_UV).z);
+    ALBEDO = color;
+}"
+
+[sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-params_specular_mode = 4
-albedo_texture = SubResource( 1 )
+shader = SubResource( 9 )
+shader_param/viewport = SubResource( 10 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.3, 3.5, 0.25 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 0.3, 0.25, 2 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=8]
 extents = Vector3( 0, 3.25, 1.5 )
 
 [node name="Door" type="MeshInstance"]
@@ -28,8 +43,10 @@ material/0 = null
 script = ExtResource( 2 )
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 473, 1024 )
+size = Vector2( 1024, 512 )
 handle_input_locally = false
+hdr = false
+keep_3d_linear = true
 render_target_update_mode = 3
 gui_disable_input = true
 script = ExtResource( 3 )
@@ -41,36 +58,34 @@ anchor_bottom = 1.0
 color = Color( 0.227451, 0.537255, 0.223529, 1 )
 
 [node name="Spatial" type="Spatial" parent="Viewport"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 3.5, 0 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.2, 3.5, 0 )
 
 [node name="Camera" type="Camera" parent="Viewport/Spatial"]
 current = true
 
 [node name="DoorFrameBack" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010685, 4.76837e-07, 0.0081768 )
-material_override = SubResource( 2 )
+material_override = SubResource( 5 )
 mesh = ExtResource( 4 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
 [node name="FrameSide" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="FrameSide2" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="FrameTop" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="DoorEnter" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.25, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DoorEnter"]
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 [connection signal="body_entered" from="DoorEnter" to="." method="_on_DoorEnter_body_entered"]
