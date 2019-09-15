@@ -1,16 +1,15 @@
 extends RigidBody
 
-
-var speed = 400.0;
-var mouse_sensitivity = 0.003; # radians/pixel
+export var speed = 400;
+export var jump_power = 50000;
+var jump = 0
+export var mouse_sensitivity = 0.003; # radians/pixel
+export var gravity = 10000;
 
 onready var camera = $PivotY/PivotX/Camera
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
-
-#func _process(delta):
-#	pass
 
 func _input(event):
 	if event.is_action_pressed("mouse_0"):
@@ -22,18 +21,16 @@ func get_input():
 	var input_dir = Vector3()
 	var camera_g_basis = camera.global_transform.basis;
 	if Input.is_action_pressed("move_forward"):
-		input_dir += -camera_g_basis.z
+		input_dir -= camera_g_basis.z
 	if Input.is_action_pressed("move_back"):
 		input_dir += camera_g_basis.z
 	if Input.is_action_pressed("move_left"):
-		input_dir += -camera_g_basis.x
+		input_dir -= camera_g_basis.x
 	if Input.is_action_pressed("move_right"):
 		input_dir += camera_g_basis.x
-	input_dir = Vector3(input_dir.x, 0, input_dir.z)
-	input_dir = input_dir.normalized()
-	# print(String(input_dir.x) + " " + String(input_dir.z))
+	input_dir = (input_dir - input_dir * transform.basis.y).normalized()
+	
 	return input_dir
-
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -44,4 +41,11 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	linear_velocity = get_input() * delta * speed
+	add_central_force(-transform.basis.y * delta * gravity)
+	if Input.is_action_just_pressed("jump"):
+		jump += jump_power
+	if jump > 0:
+		add_central_force(transform.basis.y * delta * jump)
+		jump -= 1000
+	
 
