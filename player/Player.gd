@@ -1,25 +1,25 @@
 extends RigidBody
 
-export var speed = 400;
-export var jump_power = 50000;
+export var speed = 400
+export var jump_power = 50000
 var jump = 0
-export var mouse_sensitivity = 0.003; # radians/pixel
-export var gravity = 10000;
+export var mouse_sensitivity = 0.003 # radians/pixel
+export var gravity = 10000
 
 onready var camera = $PivotY/PivotX/Camera
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
 	if event.is_action_pressed("mouse_0"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func get_input():
 	var input_dir = Vector3()
-	var camera_g_basis = camera.global_transform.basis;
+	var camera_g_basis = camera.global_transform.basis
 	if Input.is_action_pressed("move_forward"):
 		input_dir -= camera_g_basis.z
 	if Input.is_action_pressed("move_back"):
