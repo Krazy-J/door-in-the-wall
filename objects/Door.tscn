@@ -28,16 +28,16 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/viewport = SubResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.396078, 0.396078, 0.396078, 1 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 0.3, 3.5, 0.25 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.3, 0.25, 2 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 0, 3.25, 1.5 )
 
 [node name="Door" type="MeshInstance"]
@@ -46,7 +46,7 @@ material/0 = null
 script = ExtResource( 2 )
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 1024, 512 )
+size = Vector2( 128, 64 )
 handle_input_locally = false
 hdr = false
 keep_3d_linear = true
@@ -77,26 +77,26 @@ material/0 = null
 transform = Transform( 1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0.01, 0, 0 )
 layers = 512
 mesh = ExtResource( 4 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
 [node name="FrameSide" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="FrameSide2" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="FrameTop" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [node name="DoorEnter" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.25, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DoorEnter"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 [connection signal="body_entered" from="DoorEnter" to="." method="_on_DoorEnter_body_entered"]
