@@ -9,41 +9,51 @@
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
 [node name="Doors" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="0" parent="Doors" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+transform = Transform( -0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, -9, 0, 13 )
 exitDoorID = 1
 
 [node name="1" parent="Doors" instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 10 )
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -10, 0, 7 )
 
 [node name="2" parent="Doors" instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -15 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, -15 )
 exitDoorID = 3
 
 [node name="3" parent="Doors" instance=ExtResource( 2 )]
-transform = Transform( 4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 18, 15 )
+transform = Transform( 0.5, -4.37114e-008, 0.866025, -8.74228e-008, -1, 0, 0.866025, -7.57103e-008, -0.5, 0, 18, 14 )
 exitDoorID = 2
 
 [node name="4" parent="Doors" instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -15 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -9, 0, -15 )
 exitDoorID = 5
 
 [node name="5" parent="Doors" instance=ExtResource( 2 )]
-transform = Transform( 1.91069e-15, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -1, 3.82137e-15, 4.37114e-08, -15.5, 9, -15 )
+transform = Transform( 1.91069e-015, 1, -4.37114e-008, -4.37114e-008, -4.37114e-008, -1, -1, 3.82137e-015, 4.37114e-008, -15.5, 9, -15 )
 exitDoorID = 4
 
 [node name="6" parent="Doors" instance=ExtResource( 2 )]
-transform = Transform( 1.31134e-07, 1, -4.37114e-08, -1, 1.31134e-07, -2.98023e-08, -2.98023e-08, 4.37114e-08, 1, -15.5, 1, 11 )
+editor/display_folded = true
+transform = Transform( 8.74228e-008, 1, 4.37114e-008, -1.31134e-007, -4.37114e-008, 1, 1, -8.74228e-008, 1.31134e-007, -15.5, 12, 15 )
 exitDoorID = 7
 
 [node name="7" parent="Doors" instance=ExtResource( 2 )]
-editor/display_folded = true
-transform = Transform( 2.95319e-15, 5.56363e-08, -1, -4.37114e-08, -1, -5.56363e-08, -1, 4.37114e-08, -5.21253e-16, 0, 18, -15 )
+transform = Transform( -5.96046e-008, -1, 8.74228e-008, 0.707107, -1.03964e-007, -0.707107, 0.707107, 1.96704e-008, 0.707107, 15.5, 15, 13 )
 exitDoorID = 6
+
+[node name="8" parent="Doors" instance=ExtResource( 2 )]
+transform = Transform( -5.96046e-008, -1, 8.74228e-008, -1, 5.96046e-008, -5.96047e-008, 5.96046e-008, -8.74228e-008, -1, 15.5, 1, 8 )
+exitDoorID = 9
+
+[node name="9" parent="Doors" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 4.37114e-008, -3.82137e-015, -1, -8.74228e-008, -1, 0, -1, 8.74228e-008, -4.37114e-008, 8, 18, -15 )
+exitDoorID = 8
 
 [node name="OmniLight-Y" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
