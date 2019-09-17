@@ -35,4 +35,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
 
 [node name="GroundRay" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 0, -3, 0 )
+cast_to = Vector3( 0, -2.1, 0 )

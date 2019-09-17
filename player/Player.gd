@@ -1,10 +1,10 @@
 extends RigidBody
 
-export var speed = 400
-export var jump_power = 50000
-var jump = 0
+export var speed = 50
+export var jump_power = 2
+export var gravity = 1
 export var mouse_sensitivity = 0.003 # radians/pixel
-export var gravity = 10000
+var velocity = Vector3()
 
 onready var camera = $PivotY/PivotX/Camera
 
@@ -19,17 +19,17 @@ func _input(event):
 
 func get_input():
 	var input_dir = Vector3()
-	var camera_g_basis = camera.global_transform.basis
+	#var camera_g_basis = camera.global_transform.basis
 	if Input.is_action_pressed("move_forward"):
-		input_dir -= camera_g_basis.z
+		input_dir.z -= 1
 	if Input.is_action_pressed("move_back"):
-		input_dir += camera_g_basis.z
+		input_dir.z += 1
 	if Input.is_action_pressed("move_left"):
-		input_dir -= camera_g_basis.x
+		input_dir.x -= 1
 	if Input.is_action_pressed("move_right"):
-		input_dir += camera_g_basis.x
-	input_dir = (input_dir - input_dir * Vector3(abs(transform.basis.y.x), abs(transform.basis.y.y), abs(transform.basis.y.z))).normalized()
-	
+		input_dir.x += 1
+	#input_dir = (input_dir - input_dir * Vector3(abs(transform.basis.y.x), abs(transform.basis.y.y), abs(transform.basis.y.z))).normalized()
+	input_dir = input_dir.normalized()
 	return input_dir
 
 func _unhandled_input(event):
@@ -40,11 +40,11 @@ func _unhandled_input(event):
 		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func _physics_process(delta):
-	linear_velocity = get_input() * delta * speed
-	add_central_force(-transform.basis.y * delta * gravity)
+	velocity += get_input() * delta * speed
 	if Input.is_action_just_pressed("jump") and get_node("GroundRay").is_colliding():
-		jump = jump_power
-	if jump > 0:
-		add_central_force(transform.basis.y * delta * jump)
-		jump -= 1000
+		velocity.y += jump_power
+	if !(get_node("GroundRay").is_colliding()):
+		velocity.y -= gravity
+	velocity /= 1.1
+	linear_velocity = camera.global_transform.basis * velocity
 
