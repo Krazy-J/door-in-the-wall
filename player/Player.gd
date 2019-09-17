@@ -42,10 +42,9 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	linear_velocity = get_input() * delta * speed
 	add_central_force(-transform.basis.y * delta * gravity)
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and get_node("GroundRay").is_colliding():
 		jump = jump_power
 	if jump > 0:
 		add_central_force(transform.basis.y * delta * jump)
 		jump -= 1000
-	
 
