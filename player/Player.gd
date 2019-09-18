@@ -1,6 +1,6 @@
 extends RigidBody
 
-export var speed = 50
+export var speed = 100
 export var jump_power = 20
 export var gravity = 1
 export var mouse_sensitivity = 0.003 # radians/pixel
@@ -44,10 +44,9 @@ func _physics_process(delta):
 		velocity += get_input() * delta * speed
 		if velocity.y < 0:
 			velocity.y = 0
-		velocity /= 1.1
+		velocity /= 1.2
 	else:
-		velocity += get_input() * delta * speed / 10
+		velocity += get_input() * delta * speed / 20
 		velocity.y -= gravity
 		velocity /= 1.01
 	linear_velocity = global_transform.basis * velocity
-
