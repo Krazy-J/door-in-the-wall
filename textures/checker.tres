@@ -14,4 +14,4 @@ flags = 3
 lossy_quality = 0.0
 flags = 3
 image = SubResource( 1 )
-size = Vector2( 10, 10 )
+size = Vector2( 5, 5 )
