@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://objects/Room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/AnimationTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/rooms/Test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/DoorFrame.tscn" type="PackedScene" id=2]
 
 [node name="TestRoom" type="Spatial"]
 
@@ -84,6 +83,3 @@ omni_range = 10.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 8 )
 light_color = Color( 0, 0, 1, 1 )
 omni_range = 10.0
-
-[node name="SpriteTest" parent="." instance=ExtResource( 3 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 1, -8, 5, 0 )

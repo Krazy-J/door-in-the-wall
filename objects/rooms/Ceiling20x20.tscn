@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://models/plane20x20.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://textures/8-bit/CheckerTiles.png" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 5, 5, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 10, 0, 10 )
+
+[node name="Ceiling" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-008, 0, -8.74228e-008, -1, 0, 0, 0 )
+physics_material_override = ExtResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 2 )

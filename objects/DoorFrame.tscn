@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/DoorEnter.gd" type="Script" id=2]
+[ext_resource path="res://objects/DoorViewport.gd" type="Script" id=3]
+[ext_resource path="res://models/door_frame_back.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="Shader" id=1]
+resource_local_to_scene = true
+code = "shader_type spatial;
+
+uniform sampler2D viewport;
+render_mode unshaded;
+
+void vertex() {
+}
+
+void fragment() {
+	vec3 color = vec3(texture(viewport, SCREEN_UV).x, texture(viewport, SCREEN_UV).y, texture(viewport, SCREEN_UV).z);
+    ALBEDO = color;
+}"
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/viewport = SubResource( 2 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.3, 3.5, 0.25 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.3, 0.25, 2 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0, 3.25, 1.5 )
+
+[node name="DoorFrame" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = null
+script = ExtResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 128, 64 )
+handle_input_locally = false
+hdr = false
+keep_3d_linear = true
+render_target_update_mode = 3
+gui_disable_input = true
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.227451, 0.537255, 0.223529, 1 )
+
+[node name="Spatial" type="Spatial" parent="Viewport"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.2, 3.5, 0 )
+
+[node name="Camera" type="Camera" parent="Viewport/Spatial"]
+cull_mask = 524287
+current = true
+
+[node name="DoorFrameBack" type="MeshInstance" parent="."]
+layers = 524288
+material_override = SubResource( 3 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+
+[node name="FrameSide" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75 )
+shape = SubResource( 5 )
+
+[node name="FrameSide2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75 )
+shape = SubResource( 5 )
+
+[node name="FrameTop" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
+shape = SubResource( 6 )
+
+[node name="DoorEnter" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.25, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorEnter"]
+shape = SubResource( 7 )
+[connection signal="body_entered" from="DoorEnter" to="." method="_on_DoorEnter_body_entered"]
