@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/CheckerTiles.png-4656bb986bbb7cb4728c19e9ec96fa8d.s3tc.stex"
-path.etc2="res://.import/CheckerTiles.png-4656bb986bbb7cb4728c19e9ec96fa8d.etc2.stex"
+path.s3tc="res://.import/stone_tiles.jpg-79b1c49b947115d431c7425d5ee2ce18.s3tc.stex"
+path.etc2="res://.import/stone_tiles.jpg-79b1c49b947115d431c7425d5ee2ce18.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,18 +11,18 @@ metadata={
 
 [deps]
 
-source_file="res://textures/8-bit/CheckerTiles.png"
-dest_files=[ "res://.import/CheckerTiles.png-4656bb986bbb7cb4728c19e9ec96fa8d.s3tc.stex", "res://.import/CheckerTiles.png-4656bb986bbb7cb4728c19e9ec96fa8d.etc2.stex" ]
+source_file="res://textures/Normal/stone_tiles.jpg"
+dest_files=[ "res://.import/stone_tiles.jpg-79b1c49b947115d431c7425d5ee2ce18.s3tc.stex", "res://.import/stone_tiles.jpg-79b1c49b947115d431c7425d5ee2ce18.etc2.stex" ]
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=1.0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
+flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1
