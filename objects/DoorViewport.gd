@@ -1,6 +1,6 @@
 extends Viewport
 
-const mipmap_level = 1
+const mipmap_level = 0
 
 func _ready():
 	print(get_parent().exitDoorID)
