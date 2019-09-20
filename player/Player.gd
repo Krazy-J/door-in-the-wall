@@ -1,10 +1,11 @@
-extends RigidBody
+extends KinematicBody
 
 export var speed = 100
 export var jump_power = 20
-export var gravity = 1
+export var gravity = 80
 export var mouse_sensitivity = 0.003 # radians/pixel
-var velocity = Vector3()
+var motion = Vector3()
+var movement = Vector3()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -39,14 +40,14 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and get_node("GroundRay").is_colliding():
-		velocity.y += jump_power
+		motion.y += jump_power
 	else: if get_node("GroundRay").is_colliding():
-		velocity += get_input() * delta * speed
-		if velocity.y < 0:
-			velocity.y = 0
-		velocity /= 1.2
+		motion += get_input() * speed * delta
+		if motion.y < 0:
+			motion.y = 0
+		motion /= 1.2
 	else:
-		velocity += get_input() * delta * speed / 20
-		velocity.y -= gravity
-		velocity /= 1.01
-	linear_velocity = global_transform.basis * velocity
+		motion += get_input() * speed * delta / 20
+		motion.y -= gravity * delta
+		motion /= 1.01
+	movement = move_and_slide(global_transform.basis * motion, Vector3(0, -1, 0))
