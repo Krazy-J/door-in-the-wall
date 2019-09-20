@@ -22,6 +22,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
 [node name="Camera" type="ClippedCamera" parent="PivotY/PivotX"]
 current = true
 
+[node name="InteractRay" type="RayCast" parent="PivotY/PivotX"]
+cast_to = Vector3( 0, 0, -3 )
+
 [node name="DoorFrame" type="MeshInstance" parent="PivotY"]
 transform = Transform( -4.37114e-08, 0, 0.2, 0, 0.5, 0, -1, 0, -8.74228e-09, 0, -4.2, 0 )
 mesh = ExtResource( 2 )

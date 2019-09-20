@@ -1,7 +1,7 @@
 extends KinematicBody
 
 export var speed = 100
-export var jump_power = 20
+export var jump_power = 25
 export var gravity = 80
 export var mouse_sensitivity = 0.003 # radians/pixel
 var motion = Vector3()
