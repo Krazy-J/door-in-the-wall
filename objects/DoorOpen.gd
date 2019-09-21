@@ -5,16 +5,11 @@ var selected = false
 
 func toggle_door():
 	open = !open
+	var door = String(get_parent().exitDoorID % 2)
 	if open:
-		if get_parent().exitDoorID % 2:
-			return get_node("AnimationPlayer").play("DoorOpen0")
-		else:
-			return get_node("AnimationPlayer").play("DoorOpen1")
+		return get_node("AnimationPlayer").play("DoorOpen" + door)
 	else:
-		if get_parent().exitDoorID % 2:
-			return get_node("AnimationPlayer").play_backwards("DoorOpen0")
-		else:
-			return get_node("AnimationPlayer").play_backwards("DoorOpen1")
+		return get_node("AnimationPlayer").play_backwards("DoorOpen" + door)
 
 func _on_Door_area_entered(area):
 	if area.name == "InteractArea":
