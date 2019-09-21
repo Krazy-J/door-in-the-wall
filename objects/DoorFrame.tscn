@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/DoorEnter.gd" type="Script" id=2]
-[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/DoorViewport.gd" type="Script" id=4]
-[ext_resource path="res://models/door_frame_back.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://objects/DoorViewport.gd" type="Script" id=3]
+[ext_resource path="res://models/door_frame_back.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="Shader" id=1]
 resource_local_to_scene = true
@@ -46,8 +45,6 @@ mesh = ExtResource( 1 )
 material/0 = null
 script = ExtResource( 2 )
 
-[node name="Door" parent="." instance=ExtResource( 3 )]
-
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 128, 64 )
 handle_input_locally = false
@@ -55,7 +52,7 @@ hdr = false
 keep_3d_linear = true
 render_target_update_mode = 3
 gui_disable_input = true
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
 visible = false
@@ -64,7 +61,7 @@ anchor_bottom = 1.0
 color = Color( 0.227451, 0.537255, 0.223529, 1 )
 
 [node name="Spatial" type="Spatial" parent="Viewport"]
-transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.2, 3.5, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 3.5, 0 )
 
 [node name="Camera" type="Camera" parent="Viewport/Spatial"]
 cull_mask = 524287
@@ -73,26 +70,26 @@ current = true
 [node name="DoorViewport" type="MeshInstance" parent="."]
 layers = 524288
 material_override = SubResource( 3 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 4 )
 material/0 = null
 
 [node name="DoorBack" type="MeshInstance" parent="."]
 transform = Transform( 1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0.01, 0, 0 )
 layers = 512
-mesh = ExtResource( 5 )
+mesh = ExtResource( 4 )
 material/0 = SubResource( 4 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="FrameCollision" type="StaticBody" parent="."]
 
-[node name="FrameLeft" type="CollisionShape" parent="StaticBody"]
+[node name="FrameLeft" type="CollisionShape" parent="FrameCollision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1.75 )
 shape = SubResource( 5 )
 
-[node name="FrameRight" type="CollisionShape" parent="StaticBody"]
+[node name="FrameRight" type="CollisionShape" parent="FrameCollision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 1.75 )
 shape = SubResource( 5 )
 
-[node name="FrameTop" type="CollisionShape" parent="StaticBody"]
+[node name="FrameTop" type="CollisionShape" parent="FrameCollision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.75, 0 )
 shape = SubResource( 6 )
 
