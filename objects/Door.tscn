@@ -147,6 +147,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Door"]
 shape = SubResource( 7 )
 
+[node name="Collision" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Collision"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
+shape = SubResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DoorOpen0 = SubResource( 4 )
 anims/DoorOpen1 = SubResource( 6 )
