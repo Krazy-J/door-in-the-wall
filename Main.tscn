@@ -40,9 +40,9 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/saturation = 0.37
-shader_param/shading = 0.26
-shader_param/shimmering = 4.59
+shader_param/saturation = 0.54
+shader_param/shading = 0.11
+shader_param/shimmering = 5.787
 shader_param/shaded = ExtResource( 2 )
 
 [node name="Main" type="Spatial"]
@@ -60,6 +60,5 @@ stretch = true
 size = Vector2( 1024, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
-gui_disable_input = true
 
 [node name="Player" parent="ViewportContainer/PlayerViewport" instance=ExtResource( 3 )]
