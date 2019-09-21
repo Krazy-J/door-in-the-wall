@@ -8,7 +8,7 @@ func _ready():
 
 func place_camera(exitDoor):
 	size = (get_node("/root") as Viewport).size / pow(2, mipmap_level)
-	$Spatial.global_transform = (get_node("/root/Main/Player/PivotY/PivotX/Camera") as Spatial).global_transform
+	$Spatial.global_transform = (get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera") as Spatial).global_transform
 	$Spatial.transform = get_parent().transform.inverse() * $Spatial.transform
 	$Spatial.transform = $Spatial.transform.rotated(Vector3(0, 1, 0), PI)
 	$Spatial.transform = exitDoor.transform * $Spatial.transform

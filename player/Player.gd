@@ -14,6 +14,10 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		$PivotY.rotate_y(-event.relative.x * mouse_sensitivity)
+		$PivotY/PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
+		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func get_input():
 	var movement = Vector3()
@@ -33,13 +37,6 @@ func get_input():
 	if !is_on_floor():
 		movement /= 20
 	return movement
-
-func _unhandled_input(event):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		$PivotY.rotate_y(-event.relative.x * mouse_sensitivity)
-		# linear_velocity = linear_velocity.rotated(Vector3(0, 1, 0), -event.relative.x * mouse_sensitivity)
-		$PivotY/PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
-		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func _physics_process(delta):
 	motion += global_transform.basis * get_input() * speed * delta
