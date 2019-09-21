@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/door_simple.jpg-37a9078916e1b71142c978d43163db87.s3tc.stex"
-path.etc2="res://.import/door_simple.jpg-37a9078916e1b71142c978d43163db87.etc2.stex"
+path.s3tc="res://.import/stucco_wall.jpg-c9bba67b2fc0fc6910e37b2cf6bb4d54.s3tc.stex"
+path.etc2="res://.import/stucco_wall.jpg-c9bba67b2fc0fc6910e37b2cf6bb4d54.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Normal/door_simple.jpg"
-dest_files=[ "res://.import/door_simple.jpg-37a9078916e1b71142c978d43163db87.s3tc.stex", "res://.import/door_simple.jpg-37a9078916e1b71142c978d43163db87.etc2.stex" ]
+source_file="res://textures/Normal/stucco_wall.jpg"
+dest_files=[ "res://.import/stucco_wall.jpg-c9bba67b2fc0fc6910e37b2cf6bb4d54.s3tc.stex", "res://.import/stucco_wall.jpg-c9bba67b2fc0fc6910e37b2cf6bb4d54.etc2.stex" ]
 
 [params]
 
