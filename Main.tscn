@@ -1,49 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://rooms/TestRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://textures/Sketch/pencil_shaded.jpg" type="Texture" id=2]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform sampler2D shaded;
-uniform float saturation = 0.2f;
-uniform float shading = 0.6f;
-uniform float shimmering = 1f;
-
-void fragment() {
-	vec3 original_color = texture(TEXTURE, UV).xyz;
-	
-    /*vec3 borderlines = -8.0 * original_color;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(0.0, SCREEN_PIXEL_SIZE.y)).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(0.0, -SCREEN_PIXEL_SIZE.y)).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, 0.0)).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(-SCREEN_PIXEL_SIZE.x, 0.0)).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + SCREEN_PIXEL_SIZE.xy).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV - SCREEN_PIXEL_SIZE.xy).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(-SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y)).xyz;
-    borderlines += texture(TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, -SCREEN_PIXEL_SIZE.y)).xyz;*/
-	//borderlines = vec3(1,1,1) - borderlines;
-	
-	vec3 sketchcolor = original_color;
-	
-	float timesteps = ceil(TIME*shimmering)/shimmering*10.;
-	vec2 sketchUV = UV + vec2(0, timesteps);
-	
-	float alpha = (1.-texture(shaded, sketchUV - floor(sketchUV)).x);
-	alpha *= 1.-(original_color.x + original_color.y + original_color.z)/3.;
-	sketchcolor = sketchcolor * alpha;
-	
-	COLOR.xyz = sketchcolor * shading + (1.-alpha) * original_color * saturation + (1.-alpha) * (1.-saturation) * vec3(1,1,1);
-}"
+[ext_resource path="res://textures/Sketch/sketched_effect.shader" type="Shader" id=2]
+[ext_resource path="res://textures/Sketch/pencil_shaded.jpg" type="Texture" id=3]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/saturation = 0.54
-shader_param/shading = 0.11
-shader_param/shimmering = 5.787
-shader_param/shaded = ExtResource( 2 )
+shader = ExtResource( 2 )
+shader_param/saturation = 0.2
+shader_param/shading = 0.6
+shader_param/shimmering = 5.0
+shader_param/shaded = ExtResource( 3 )
 
 [node name="Main" type="Spatial"]
 
@@ -53,6 +20,8 @@ shader_param/shaded = ExtResource( 2 )
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.36035
+margin_right = 1.36035
 mouse_filter = 2
 stretch = true
 
@@ -61,4 +30,4 @@ size = Vector2( 1024, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Player" parent="ViewportContainer/PlayerViewport" instance=ExtResource( 3 )]
+[node name="Player" parent="ViewportContainer/PlayerViewport" instance=ExtResource( 4 )]
