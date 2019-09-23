@@ -1,29 +1,25 @@
-extends Area
+extends MeshInstance
 
 var open = false
 var selected = false
 
 func toggle_door():
+	open = !open
+	var door = String(get_parent().exitDoorID % 2)
 	if open:
-		if self.exitDoorID % 2:
-			get_node("AnimationPlayer").play_backwards("DoorOpen-")
-		else:
-			get_node("AnimationPlayer").play_backwards("DoorOpen+")
+		return get_node("AnimationPlayer").play("DoorOpen" + door)
 	else:
-		if self.exitDoorID % 2:
-			get_node("AnimationPlayer").play("DoorOpen-")
-		else:
-			get_node("AnimationPlayer").play("DoorOpen+")
+		return get_node("AnimationPlayer").play_backwards("DoorOpen" + door)
 
 func _on_Door_area_entered(area):
-	if area.name == "InteractRay":
+	if area.name == "InteractArea":
 		selected = true
 
 func _on_Door_area_exited(area):
-	if area.name == "InteractRay":
+	if area.name == "InteractArea":
 		selected = false
 
 func _process(delta):
 	if selected and Input.is_action_just_pressed("interact"):
-		get_parent().toggle_door()
-		get_parent().get_parent().get_child(get_parent().exitDoorID).toggle_door()
+		toggle_door()
+		get_parent().get_parent().get_child(get_parent().exitDoorID).get_child(5).toggle_door()

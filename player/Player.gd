@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var speed = 60
+export var speed = 80
 export var jump_power = 25
 export var gravity = 80
 export var mouse_sensitivity = 0.003 # radians/pixel
@@ -14,6 +14,10 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		$PivotY.rotate_y(-event.relative.x * mouse_sensitivity)
+		$PivotY/PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
+		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func get_input():
 	var movement = Vector3()
@@ -30,16 +34,9 @@ func get_input():
 	movement = Vector3(movement.x, 0, movement.z).normalized()
 	if Input.is_action_pressed("sprint"):
 		movement *= 2
-	if !get_node("GroundRay").is_colliding():
+	if !is_on_floor():
 		movement /= 20
 	return movement
-
-func _unhandled_input(event):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		$PivotY.rotate_y(-event.relative.x * mouse_sensitivity)
-		# linear_velocity = linear_velocity.rotated(Vector3(0, 1, 0), -event.relative.x * mouse_sensitivity)
-		$PivotY/PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
-		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func _physics_process(delta):
 	motion += global_transform.basis * get_input() * speed * delta
@@ -48,6 +45,6 @@ func _physics_process(delta):
 			motion += jump_power * transform.basis.y
 		motion /= 1.2
 	else:
-		motion -= gravity * delta * transform.basis.y
 		motion /= 1.01
+	motion -= gravity * delta * transform.basis.y
 	motion = move_and_slide(motion, transform.basis.y)
