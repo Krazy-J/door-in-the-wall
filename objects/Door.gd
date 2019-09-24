@@ -39,17 +39,17 @@ func toggle_door():
 		return $Door/AnimationPlayer.play_backwards("DoorToggle" + String(firstDoor))
 	print(String(firstDoor))
 
-func _on_Door_area_entered(area):
+func _on_Interact_area_entered(area):
 	if area.name == "InteractArea":
 		selected = true
 
-func _on_Door_area_exited(area):
+func _on_Interact_area_exited(area):
 	if area.name == "InteractArea":
 		selected = false
 
 func _process(delta):
 	firstDoor = !get_parent().get_node("./" + exitDoorName).firstDoor
-	if selected and Input.is_action_just_pressed("interact"):
+	if selected and Input.is_action_just_pressed("interact") and $Door:
 		toggle_door()
 		get_parent().get_node("./" + exitDoorName).toggle_door()
 	place_camera(get_parent().get_node("./" + exitDoorName))
