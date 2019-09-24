@@ -9,6 +9,10 @@ const mipmap_level = 0
 func _ready():
 	print(exitDoorName)
 	$Viewport/Spatial/Camera.make_current()
+	#var shaderMat = (($DoorViewport as GeometryInstance).material_override as ShaderMaterial) # Supposed to fix missing viewports. Welp, I tried.
+	#if shaderMat.get_shader_param("Viewport") == null:
+		#shaderMat.set_shader_param("Viewport", $Viewport.get_texture())
+		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func _on_DoorEnter_body_entered(body):
 	if body.name == "Player":
