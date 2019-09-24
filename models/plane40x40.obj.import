@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/plane40x40.obj-8ec1b7f9a052280b82e436c1f2681981.mesh"
+
+[deps]
+
+files=[ "res://.import/plane40x40.obj-8ec1b7f9a052280b82e436c1f2681981.mesh" ]
+
+source_file="res://models/plane40x40.obj"
+dest_files=[ "res://.import/plane40x40.obj-8ec1b7f9a052280b82e436c1f2681981.mesh", "res://.import/plane40x40.obj-8ec1b7f9a052280b82e436c1f2681981.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
