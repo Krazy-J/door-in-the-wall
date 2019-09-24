@@ -4,14 +4,14 @@ export var exitDoorName = String(0)
 var open = false
 var selected = false
 var firstDoor = false
-const mipmap_level = 0
+const mipmap_level = 1
 
 func _ready():
 	print(exitDoorName)
-	$Viewport/Spatial/Camera.make_current()
+	$DoorViewport/Viewport/Spatial/Camera.make_current()
 	#var shaderMat = (($DoorViewport as GeometryInstance).material_override as ShaderMaterial) # Supposed to fix missing viewports. Welp, I tried.
 	#if shaderMat.get_shader_param("Viewport") == null:
-		#shaderMat.set_shader_param("Viewport", $Viewport.get_texture())
+		#shaderMat.set_shader_param("Viewport", $DoorViewport/Viewport.get_texture())
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func _on_DoorEnter_body_entered(body):
@@ -25,11 +25,11 @@ func _on_DoorEnter_body_entered(body):
 		body.motion = exitDoor.global_transform.basis * body.motion
 
 func place_camera(exitDoor):
-	$Viewport.size = (get_node("/root") as Viewport).size / pow(2, mipmap_level)
-	$Viewport/Spatial.global_transform = (get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera") as Spatial).global_transform
-	$Viewport/Spatial.transform = self.transform.inverse() * $Viewport/Spatial.transform
-	$Viewport/Spatial.transform = $Viewport/Spatial.transform.rotated(Vector3(0, 1, 0), PI)
-	$Viewport/Spatial.transform = exitDoor.transform * $Viewport/Spatial.transform
+	$DoorViewport/Viewport.size = (get_node("/root") as Viewport).size / pow(2, mipmap_level)
+	$DoorViewport/Viewport/Spatial.global_transform = (get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera") as Spatial).global_transform
+	$DoorViewport/Viewport/Spatial.transform = self.transform.inverse() * $DoorViewport/Viewport/Spatial.transform
+	$DoorViewport/Viewport/Spatial.transform = $DoorViewport/Viewport/Spatial.transform.rotated(Vector3(0, 1, 0), PI)
+	$DoorViewport/Viewport/Spatial.transform = exitDoor.transform * $DoorViewport/Viewport/Spatial.transform
 
 func toggle_door():
 	open = !open
