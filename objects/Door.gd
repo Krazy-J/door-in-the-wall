@@ -8,6 +8,9 @@ var selected = false
 func _ready():
 	if !firstDoor and $Door:
 		$Door.rotation_degrees.y = 180
+	if open:
+		$Door/AnimationPlayer.play("DoorToggle" + String(firstDoor))
+		$Door/AnimationPlayer.seek(1)
 
 func toggle_door():
 	open = !open

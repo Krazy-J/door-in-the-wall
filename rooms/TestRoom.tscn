@@ -18,6 +18,7 @@
 editor/display_folded = true
 transform = Transform( -0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, -9, 0, 13 )
 exitDoorName = "White1"
+open = true
 
 [node name="Door" parent="White0" instance=ExtResource( 3 )]
 material/0 = ExtResource( 4 )
@@ -29,9 +30,9 @@ editor/display_folded = true
 transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -10, 0, 7 )
 exitDoorName = "White0"
 firstDoor = false
+open = true
 
 [node name="Door" parent="White1" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 material/0 = ExtResource( 4 )
 
 [node name="DoorConnector" parent="White1" instance=ExtResource( 5 )]
@@ -53,7 +54,6 @@ exitDoorName = "Blue0"
 firstDoor = false
 
 [node name="Door" parent="Blue1" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 material/0 = ExtResource( 6 )
 
 [node name="DoorConnector" parent="Blue1" instance=ExtResource( 5 )]
@@ -75,7 +75,6 @@ exitDoorName = "Orange0"
 firstDoor = false
 
 [node name="Door" parent="Orange1" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 material/0 = ExtResource( 7 )
 
 [node name="DoorConnector" parent="Orange1" instance=ExtResource( 5 )]
@@ -97,7 +96,6 @@ exitDoorName = "Yellow0"
 firstDoor = false
 
 [node name="Door" parent="Yellow1" instance=ExtResource( 3 )]
-transform = Transform( -1, 3.55271e-15, -8.9407e-08, 5.32907e-15, 1, -7.10543e-15, 8.9407e-08, -1.06581e-14, -1, 0, 0, 0 )
 material/0 = ExtResource( 8 )
 
 [node name="DoorConnector" parent="Yellow1" instance=ExtResource( 5 )]
@@ -120,7 +118,6 @@ exitDoorName = "Green0"
 firstDoor = false
 
 [node name="Door" parent="Green1" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 material/0 = ExtResource( 9 )
 
 [node name="DoorConnector" parent="Green1" instance=ExtResource( 5 )]
