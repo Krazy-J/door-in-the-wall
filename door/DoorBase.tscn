@@ -17,26 +17,24 @@ mesh = ExtResource( 1 )
 material/0 = null
 script = ExtResource( 2 )
 
-[node name="FrameCollision" type="StaticBody" parent="."]
-editor/display_folded = true
+[node name="Collision" type="StaticBody" parent="."]
 
-[node name="FrameLeft" type="CollisionShape" parent="FrameCollision"]
+[node name="FrameLeft" type="CollisionShape" parent="Collision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1.75 )
 shape = SubResource( 1 )
 
-[node name="FrameRight" type="CollisionShape" parent="FrameCollision"]
+[node name="FrameRight" type="CollisionShape" parent="Collision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 1.75 )
 shape = SubResource( 1 )
 
-[node name="FrameTop" type="CollisionShape" parent="FrameCollision"]
+[node name="FrameTop" type="CollisionShape" parent="Collision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.75, 0 )
 shape = SubResource( 2 )
 
 [node name="Interact" type="Area" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Interact"]
+[node name="Doorway" type="CollisionShape" parent="Interact"]
 shape = SubResource( 3 )
 [connection signal="area_entered" from="Interact" to="." method="_on_Interact_area_entered"]
 [connection signal="area_exited" from="Interact" to="." method="_on_Interact_area_exited"]

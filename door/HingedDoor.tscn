@@ -37,13 +37,12 @@ tracks/1/keys = {
 }
 
 [node name="Door" type="MeshInstance"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -1.5 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
 
 [node name="Collision" type="StaticBody" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Collision"]
+[node name="Door" type="CollisionShape" parent="Collision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 shape = SubResource( 2 )
 
