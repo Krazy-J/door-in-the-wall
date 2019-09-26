@@ -1,7 +1,7 @@
 extends Spatial
 
 const mipmap_level = 1
-const enteredDoor = 1
+var enteredDoor = false
 
 func _ready():
 	print(get_parent().exitDoorName)
@@ -11,13 +11,12 @@ func _ready():
 		#shaderMat.set_shader_param("Viewport", $DoorViewport/Viewport.get_texture())
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
-func _on_DoorEnter_area_entered(area):
-	if area.name == "EnterPoint":
-		var exitDoor = get_node("../../" + get_parent().exitDoorName)
-		area.transform = get_parent().transform.inverse() * area.transform
-		area.motion = get_parent().global_transform.basis.inverse() * area.motion
-		area.transform = exitDoor.transform * area.transform
-		area.motion = exitDoor.global_transform.basis * area.motion
+func teleport(body):
+	var exitDoor = get_node("../../" + get_parent().exitDoorName)
+	body.transform = get_parent().transform.inverse() * body.transform
+	body.motion = get_parent().global_transform.basis.inverse() * body.motion
+	body.transform = exitDoor.transform * body.transform
+	body.motion = exitDoor.global_transform.basis * body.motion
 
 func place_camera(exitDoor):
 	$Viewport.size = (get_node("/root") as Viewport).size / pow(2, mipmap_level)
@@ -27,20 +26,32 @@ func place_camera(exitDoor):
 
 func _process(delta):
 	place_camera(get_node("../../" + get_parent().exitDoorName))
-	pass
 
 
 func _on_EnterFront_body_entered(body):
-	pass # Replace with function body.
-
-
-func _on_EnterFront_body_exited(body):
-	pass # Replace with function body.
-
+	if body.name == "Player":
+		if $ViewportBack.visible:
+			$ViewportFront.visible = false
+		else:
+			enteredDoor = true
 
 func _on_EnterBack_body_entered(body):
-	pass # Replace with function body.
+	if body.name == "Player":
+		if $ViewportFront.visible:
+			$ViewportBack.visible = false
+		else:
+			enteredDoor = true
 
+func _on_EnterFront_body_exited(body):
+	if body.name == "Player":
+		if enteredDoor:
+			teleport(body)
+			enteredDoor = false
+		$ViewportFront.visible = true
 
 func _on_EnterBack_body_exited(body):
-	pass # Replace with function body.
+	if body.name == "Player":
+		if enteredDoor:
+			teleport(body)
+			enteredDoor = false
+		$ViewportBack.visible = true
