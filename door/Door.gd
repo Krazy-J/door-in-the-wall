@@ -5,7 +5,7 @@ export var open = false
 var selected = false
 
 func _ready():
-	if open:
+	if open and $Door:
 		$Door/AnimationPlayer.play("DoorToggle")
 		$Door/AnimationPlayer.seek(1)
 
