@@ -34,7 +34,6 @@ func _on_EnterFront_body_entered(body):
 			$ViewportFront.visible = false
 		else:
 			enteredDoor = true
-			exitDoor.get_node("Connection/ViewportFront").visible = false
 
 func _on_EnterBack_body_entered(body):
 	if body.name == "Player":
@@ -42,18 +41,19 @@ func _on_EnterBack_body_entered(body):
 			$ViewportBack.visible = false
 		else:
 			enteredDoor = true
-			exitDoor.get_node("Connection/ViewportBack").visible = false
 
 func _on_EnterFront_body_exited(body):
 	if body.name == "Player":
-		if enteredDoor:
+		if enteredDoor and !$ViewportFront.visible:
+			exitDoor.get_node("Connection/ViewportBack").visible = false
 			teleport(body)
-			enteredDoor = false
+		enteredDoor = false
 		$ViewportFront.visible = true
 
 func _on_EnterBack_body_exited(body):
 	if body.name == "Player":
-		if enteredDoor:
+		if enteredDoor and !$ViewportBack.visible:
+			exitDoor.get_node("Connection/ViewportFront").visible = false
 			teleport(body)
-			enteredDoor = false
+		enteredDoor = false
 		$ViewportBack.visible = true
