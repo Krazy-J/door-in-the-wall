@@ -2,10 +2,12 @@ extends Spatial
 
 const mipmap_level = 1
 var enteredDoor = false
+var justExited = false
+var passedThrough = false
+var enteringBody
 onready var exitDoor = get_node("../../" + get_parent().exitDoorName)
 
 func _ready():
-	print(get_parent().exitDoorName)
 	$Viewport/Spatial/Camera.make_current()
 	#var shaderMat = (($DoorViewport as GeometryInstance).material_override as ShaderMaterial) # Supposed to fix missing viewports. Welp, I tried.
 	#if shaderMat.get_shader_param("Viewport") == null:
@@ -26,7 +28,19 @@ func place_camera():
 
 func _process(delta):
 	place_camera()
-
+	if justExited:
+		if enteredDoor and passedThrough:
+			if !$ViewportFront.visible:
+				exitDoor.get_node("Connection/ViewportBack").visible = false
+			if !$ViewportBack.visible:
+				exitDoor.get_node("Connection/ViewportFront").visible = false
+			teleport(enteringBody)
+		if !enteredDoor or passedThrough:
+			$ViewportFront.visible = true
+			$ViewportBack.visible = true
+		enteredDoor = false
+		passedThrough = false
+		justExited = false
 
 func _on_EnterFront_body_entered(body):
 	if body.name == "Player":
@@ -44,16 +58,14 @@ func _on_EnterBack_body_entered(body):
 
 func _on_EnterFront_body_exited(body):
 	if body.name == "Player":
-		if enteredDoor and !$ViewportFront.visible:
-			exitDoor.get_node("Connection/ViewportBack").visible = false
-			teleport(body)
-		enteredDoor = false
-		$ViewportFront.visible = true
+		enteringBody = body
+		justExited = true
+		if !$ViewportFront.visible:
+			passedThrough = true
 
 func _on_EnterBack_body_exited(body):
 	if body.name == "Player":
-		if enteredDoor and !$ViewportBack.visible:
-			exitDoor.get_node("Connection/ViewportFront").visible = false
-			teleport(body)
-		enteredDoor = false
-		$ViewportBack.visible = true
+		enteringBody = body
+		justExited = true
+		if !$ViewportBack.visible:
+			passedThrough = true

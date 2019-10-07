@@ -27,7 +27,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="EnterFront" type="Area" parent="ViewportFront"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0 )
 
 [node name="Front" type="CollisionShape" parent="ViewportFront/EnterFront"]
 shape = SubResource( 4 )
@@ -39,7 +39,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="EnterBack" type="Area" parent="ViewportBack"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0 )
 
 [node name="Back" type="CollisionShape" parent="ViewportBack/EnterBack"]
 shape = SubResource( 4 )
