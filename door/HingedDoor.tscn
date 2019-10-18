@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://models/door.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/Normal/door_simple.png" type="Texture" id=2]
+[ext_resource path="res://sounds/door_open.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/door_close.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -45,6 +47,14 @@ material/0 = SubResource( 1 )
 [node name="Door" type="CollisionShape" parent="Collision"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 shape = SubResource( 2 )
+
+[node name="SoundOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="SoundClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DoorToggle = SubResource( 3 )

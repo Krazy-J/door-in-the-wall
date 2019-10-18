@@ -12,9 +12,11 @@ func _ready():
 func toggle_door():
 	open = !open
 	if open:
-		return $Door/AnimationPlayer.play("DoorToggle")
+		$Door/AnimationPlayer.play("DoorToggle")
+		$Door/SoundOpen.play()
 	else:
-		return $Door/AnimationPlayer.play_backwards("DoorToggle")
+		$Door/AnimationPlayer.play_backwards("DoorToggle")
+		$Door/SoundClose.play()
 
 func _on_Interact_area_entered(area):
 	if area.name == "InteractArea":
