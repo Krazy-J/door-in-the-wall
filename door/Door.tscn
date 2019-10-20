@@ -63,6 +63,7 @@ tracks/3/keys = {
 }
 
 [node name="Door" type="MeshInstance"]
+layers = 3
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
 
