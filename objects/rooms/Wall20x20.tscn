@@ -1,11 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://player/smooth_surface.tres" type="PhysicsMaterial" id=1]
 [ext_resource path="res://textures/Normal/red_brick_wall/red_brick_wall_12_diffuse.jpg" type="Texture" id=2]
 [ext_resource path="res://textures/Normal/red_brick_wall/red_brick_wall_12_height.jpg" type="Texture" id=3]
 [ext_resource path="res://textures/Normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=4]
 [ext_resource path="res://textures/Normal/red_brick_wall/red_brick_wall_12_normal.jpg" type="Texture" id=5]
 [ext_resource path="res://textures/Normal/red_brick_wall/red_brick_wall_12_glossiness.jpg" type="Texture" id=6]
+
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 20, 20 )

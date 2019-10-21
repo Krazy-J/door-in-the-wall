@@ -1,7 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://player/SmoothSurface.tres" type="PhysicsMaterial" id=1]
-[ext_resource path="res://textures/8-bit/CheckerTiles.png" type="Texture" id=2]
+[ext_resource path="res://player/smooth_surface.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=2]
+
+
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 20, 20 )

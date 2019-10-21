@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://doors/connector.gd" type="Script" id=1]
+[ext_resource path="res://materials/green_screen.shader" type="Shader" id=2]
+
+
+
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 6.5, 3 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/viewport = SubResource( 2 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 3.25, 0, 1.5 )
+
+[node name="Connection" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="ViewportFront" type="MeshInstance" parent="."]
+transform = Transform( -4.45856e-08, -1, 0, 1.02, -4.37114e-08, 0, 0, 0, 1.02, 0.3, 3.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="EnterFront" type="Area" parent="ViewportFront"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0 )
+
+[node name="Front" type="CollisionShape" parent="ViewportFront/EnterFront"]
+shape = SubResource( 4 )
+
+[node name="ViewportBack" type="MeshInstance" parent="."]
+transform = Transform( 4.45856e-08, 1, -8.91712e-08, 1.02, -4.37114e-08, 0, -3.8978e-15, -8.74228e-08, -1.02, -0.3, 3.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="EnterBack" type="Area" parent="ViewportBack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0 )
+
+[node name="Back" type="CollisionShape" parent="ViewportBack/EnterBack"]
+shape = SubResource( 4 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 128, 64 )
+handle_input_locally = false
+hdr = false
+keep_3d_linear = true
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.227451, 0.537255, 0.223529, 1 )
+
+[node name="Spatial" type="Spatial" parent="Viewport"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 3.25, 0 )
+
+[node name="Camera" type="Camera" parent="Viewport/Spatial"]
+cull_mask = 2
+current = true
+fov = 90.0
+[connection signal="body_entered" from="ViewportFront/EnterFront" to="." method="_on_EnterFront_body_entered"]
+[connection signal="body_exited" from="ViewportFront/EnterFront" to="." method="_on_EnterFront_body_exited"]
+[connection signal="body_entered" from="ViewportBack/EnterBack" to="." method="_on_EnterBack_body_entered"]
+[connection signal="body_exited" from="ViewportBack/EnterBack" to="." method="_on_EnterBack_body_exited"]
