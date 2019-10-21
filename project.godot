@@ -70,6 +70,30 @@ sprint={
  ]
 }
 
+[layer_names]
+
+3d_render/layer_1="Player"
+3d_render/layer_2="Door Viewport"
+3d_render/layer_3="<empty 3>"
+3d_render/layer_4="<empty 4>"
+3d_render/layer_5="<empty 5>"
+3d_render/layer_6="<empty 6>"
+3d_render/layer_7="<empty 7>"
+3d_render/layer_8="<empty 8>"
+3d_render/layer_9="<empty 9>"
+3d_render/layer_10="<empty 10>"
+3d_render/layer_11="<empty 11>"
+3d_render/layer_12="<empty 12>"
+3d_render/layer_13="<empty 13>"
+3d_render/layer_14="<empty 14>"
+3d_render/layer_15="<empty 15>"
+3d_render/layer_16="<empty 16>"
+3d_render/layer_17="<empty 17>"
+3d_render/layer_18="<empty 18>"
+3d_render/layer_19="<empty 19>"
+2d_render/layer_20="player"
+3d_render/layer_20="<empty 20>"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

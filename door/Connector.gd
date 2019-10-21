@@ -30,10 +30,8 @@ func _process(delta):
 	place_camera()
 	if justExited:
 		if enteredDoor and passedThrough:
-			if !$ViewportFront.visible:
-				exitDoor.get_node("Connection/ViewportBack").visible = false
-			if !$ViewportBack.visible:
-				exitDoor.get_node("Connection/ViewportFront").visible = false
+			if !$ViewportFront.visible: exitDoor.get_node("Connection/ViewportBack").visible = false
+			if !$ViewportBack.visible: exitDoor.get_node("Connection/ViewportFront").visible = false
 			teleport(enteringBody)
 		if !enteredDoor or passedThrough:
 			$ViewportFront.visible = true
@@ -44,28 +42,22 @@ func _process(delta):
 
 func _on_EnterFront_body_entered(body):
 	if body.name == "Player":
-		if $ViewportBack.visible:
-			$ViewportFront.visible = false
-		else:
-			enteredDoor = true
+		if $ViewportBack.visible: $ViewportFront.visible = false
+		else: enteredDoor = true
 
 func _on_EnterBack_body_entered(body):
 	if body.name == "Player":
-		if $ViewportFront.visible:
-			$ViewportBack.visible = false
-		else:
-			enteredDoor = true
+		if $ViewportFront.visible: $ViewportBack.visible = false
+		else: enteredDoor = true
 
 func _on_EnterFront_body_exited(body):
 	if body.name == "Player":
 		enteringBody = body
 		justExited = true
-		if !$ViewportFront.visible:
-			passedThrough = true
+		if !$ViewportFront.visible: passedThrough = true
 
 func _on_EnterBack_body_exited(body):
 	if body.name == "Player":
 		enteringBody = body
 		justExited = true
-		if !$ViewportBack.visible:
-			passedThrough = true
+		if !$ViewportBack.visible: passedThrough = true

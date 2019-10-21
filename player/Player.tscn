@@ -14,7 +14,7 @@ height = 6.0
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 0 )
 shape = SubResource( 1 )
 
@@ -23,17 +23,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
 
 [node name="PivotX" type="Spatial" parent="PivotY"]
 
-[node name="Camera" type="ClippedCamera" parent="PivotY/PivotX"]
+[node name="Camera" type="Camera" parent="PivotY/PivotX"]
+cull_mask = 1
 current = true
+fov = 90.0
 
 [node name="InteractArea" type="Area" parent="PivotY/PivotX"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8 )
 
-[node name="CollisionShape" type="CollisionShape" parent="PivotY/PivotX/InteractArea"]
+[node name="Collision" type="CollisionShape" parent="PivotY/PivotX/InteractArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 shape = SubResource( 2 )
 
 [node name="DoorFrame" type="MeshInstance" parent="PivotY"]
 transform = Transform( -4.37114e-08, 0, 0.2, 0, 0.5, 0, -1, 0, -8.74228e-09, 0, -4.2, 0 )
+layers = 2
 mesh = ExtResource( 2 )
 material/0 = null
