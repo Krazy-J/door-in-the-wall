@@ -1,8 +1,7 @@
 extends MeshInstance
 
-export var exitDoorName = String()
-export var open = false
-var selected = false
+export var open : bool
+var selected : bool
 
 func _ready():
 	if open and $Door:
@@ -29,4 +28,4 @@ func _on_Interact_area_exited(area):
 func _process(delta):
 	if selected and Input.is_action_just_pressed("interact") and $Door:
 		toggle_door()
-		if $Connection: get_parent().get_node("./" + exitDoorName).toggle_door()
+		if get_node_or_null("Connection"): $Connection.exitDoor.toggle_door()

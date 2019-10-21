@@ -1,11 +1,12 @@
 extends Spatial
 
+export var exitDoorPath : NodePath
 const mipmap_level = 1
-var enteredDoor = false
-var justExited = false
-var passedThrough = false
+var enteredDoor : bool
+var justExited : bool
+var passedThrough : bool
 var enteringBody
-onready var exitDoor = get_node("../../" + get_parent().exitDoorName)
+onready var exitDoor = get_node(exitDoorPath)
 
 func _ready():
 	$Viewport/Spatial/Camera.make_current()
