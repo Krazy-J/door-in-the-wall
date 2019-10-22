@@ -16,12 +16,10 @@
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
 [node name="Hinged" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( -0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, -9, 0, 13 )
 open = true
 
 [node name="Connection" parent="Hinged" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 exitDoorPath = NodePath("../../Hinged2")
 
 [node name="Door" parent="Hinged" instance=ExtResource( 4 )]
@@ -32,28 +30,14 @@ transform = Transform( 0.939692, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939692, -10
 open = true
 
 [node name="Connection" parent="Hinged2" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 exitDoorPath = NodePath("../../Hinged")
 
 [node name="Door" parent="Hinged2" instance=ExtResource( 4 )]
 
 [node name="Bit" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0, -15 )
 
-[node name="Connection" parent="Bit" instance=ExtResource( 3 )]
-exitDoorPath = NodePath("../../Bit2")
-
 [node name="Door" parent="Bit" instance=ExtResource( 5 )]
-
-[node name="Bit2" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
-transform = Transform( 8.74228e-008, 0, -1, 0, 1, 0, 1, 0, 8.74228e-008, 12, 0, -15 )
-
-[node name="Connection" parent="Bit2" instance=ExtResource( 3 )]
-exitDoorPath = NodePath("../../Bit")
-
-[node name="Door" parent="Bit2" instance=ExtResource( 5 )]
 
 [node name="Blue" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
@@ -67,10 +51,10 @@ material/0 = ExtResource( 7 )
 
 [node name="Blue2" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 0.5, -4.37114e-008, -0.866025, -8.74228e-008, -1, 0, -0.866025, 7.57103e-008, -0.5, 0, 18, 14 )
+transform = Transform( 0.5, -4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, -0.5, 0, 18, 14 )
 
 [node name="Connection" parent="Blue2" instance=ExtResource( 3 )]
-transform = Transform( 1, -7.10543e-015, 0, -7.10543e-015, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -7.10543e-15, 0, -7.10543e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
 exitDoorPath = NodePath("../../Blue")
 
 [node name="Door" parent="Blue2" instance=ExtResource( 6 )]
@@ -108,10 +92,10 @@ material/0 = ExtResource( 9 )
 
 [node name="Yellow2" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( -1.81059e-008, -1, -6.18172e-008, -0.707107, -3.09086e-008, 0.707107, -0.707107, 5.65142e-008, -0.707107, 15.5, 15, 13 )
+transform = Transform( -1.81059e-08, -1, -6.18172e-08, -0.707107, -3.09086e-08, 0.707107, -0.707107, 5.65142e-08, -0.707107, 15.5, 15, 13 )
 
 [node name="Connection" parent="Yellow2" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, -7.10543e-015, 0, 3.55271e-015, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -7.10543e-15, 0, 3.55271e-15, 1, 0, 0, 0 )
 exitDoorPath = NodePath("../../Yellow")
 
 [node name="Door" parent="Yellow2" instance=ExtResource( 6 )]
