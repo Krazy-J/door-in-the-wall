@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="A Door in the Wall"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Lobby.tscn"
 boot_splash/image="res://boot_splash.png"
 config/icon="res://icon.png"
 

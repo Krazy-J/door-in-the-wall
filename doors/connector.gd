@@ -23,7 +23,9 @@ func teleport(body):
 
 func place_camera():
 	$Viewport.size = get_node("/root").size / pow(2, mipmap_level)
-	$Viewport/Spatial.global_transform = get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera").global_transform
+	if get_node_or_null("/root/Player"):
+		$Viewport/Spatial.global_transform = get_node("/root/Player/PivotY/PivotX/Camera").global_transform
+	#$Viewport/Spatial.global_transform = get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera").global_transform
 	$Viewport/Spatial.transform = get_parent().transform.inverse() * $Viewport/Spatial.transform
 	$Viewport/Spatial.transform = exitDoor.transform * $Viewport/Spatial.transform
 
