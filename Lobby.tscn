@@ -1,18 +1,31 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://lobby.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Floor20x20.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/rooms/Ceiling20x20.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/rooms/Wall20x20.tscn" type="PackedScene" id=4]
-[ext_resource path="res://doors/DoorBase.tscn" type="PackedScene" id=5]
-[ext_resource path="res://doors/Connector.tscn" type="PackedScene" id=6]
-[ext_resource path="res://doors/SlidingDoor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://doors/LevelDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=5]
+[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://textures/Normal/door_simple.jpg" type="Texture" id=7]
+[ext_resource path="res://door/LevelDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://textures/8-bit/door.png" type="Texture" id=9]
+[ext_resource path="res://room/TestRoom.tscn" type="PackedScene" id=10]
 
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 6.5, 3 )
+[sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 7 )
 
 [sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 6.5, 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0, 0, 0, 1 )
 
 [node name="Lobby" type="Spatial"]
@@ -38,33 +51,34 @@ transform = Transform( -4.37114e-008, -1, 4.37114e-008, 0, -4.37114e-008, -1, 1,
 [node name="Basic" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8 )
+exit_door = NodePath("../Basic2")
 
-[node name="Connection" parent="Basic" instance=ExtResource( 6 )]
-exitDoorPath = NodePath("../../Basic2")
-
-[node name="Door" parent="Basic" instance=ExtResource( 7 )]
+[node name="Door" parent="Basic" instance=ExtResource( 6 )]
+material/0 = SubResource( 1 )
 
 [node name="Basic2" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, -8, 0, -8 )
+exit_door = NodePath("../Basic")
 
-[node name="Connection" parent="Basic2" instance=ExtResource( 6 )]
-exitDoorPath = NodePath("../../Basic")
+[node name="Door" parent="Basic2" instance=ExtResource( 6 )]
+material/0 = SubResource( 2 )
 
-[node name="Door" parent="Basic2" instance=ExtResource( 7 )]
-
-[node name="Door" parent="." instance=ExtResource( 5 )]
+[node name="TestRoom" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 8 )
 
-[node name="Black" type="MeshInstance" parent="Door"]
-transform = Transform( -4.45856e-008, -1, 0, 1.02, -4.37114e-008, 0, 0, 0, 1.02, 0.3, 3.5, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+[node name="Door" parent="TestRoom" instance=ExtResource( 8 )]
+material/0 = SubResource( 3 )
+room = ExtResource( 10 )
 
-[node name="Door" parent="Door" instance=ExtResource( 8 )]
+[node name="Black" type="MeshInstance" parent="TestRoom"]
+transform = Transform( -4.45856e-008, -1, 0, 1.02, -4.37114e-008, 0, 0, 0, 1.02, 0.3, 3.5, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="CeilingLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+layers = 3
 light_color = Color( 1, 1, 0.74902, 1 )
 omni_range = 15.0
