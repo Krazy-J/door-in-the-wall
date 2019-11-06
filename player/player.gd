@@ -12,7 +12,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
-	if event.is_action_pressed("mouse_0"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		$PivotY.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -20,7 +20,7 @@ func _input(event):
 		$PivotY/PivotX.rotation.x = clamp($PivotY/PivotX.rotation.x, -1.5, 1.5)
 
 func get_input():
-	var movement : Vector3
+	var movement = Vector3()
 	if Input.is_action_pressed("move_forward"): movement -= $PivotY.transform.basis.z
 	if Input.is_action_pressed("move_back"): movement += $PivotY.transform.basis.z
 	if Input.is_action_pressed("move_left"): movement -= $PivotY.transform.basis.x

@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://door/Door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/Normal/door_simple.jpg" type="Texture" id=2]
-[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=3]
-[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=4]
+[ext_resource path="res://door/hinged/hinge_math.gd" type="Script" id=3]
+[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=4]
+[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=5]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "DoorToggle"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees:y")
@@ -18,7 +19,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, 0, 0, 0.2, 0, -90, -0.2, 0, 0, 0 ),
+"points": PoolRealArray( 0, 0, 0, 0, 0, -90, 0, 0, 0, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
@@ -28,7 +29,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0, 0, 0, 0.2, 0, 1.675, -0.504, 0, 0, 0 ),
+"points": PoolRealArray( 0, 0, 0, 0, 0, 1.625, -0.391, 0, 0, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "bezier"
@@ -38,18 +39,19 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 0, 0, 0, 0.57, 0, 1.375, -0.2, 0, 0, 0 ),
+"points": PoolRealArray( 0, 0, 0, 0.462, 0, 1.375, 0, 0, 0, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 
-[node name="Door" index="0" instance=ExtResource( 1 )]
-material/0 = SubResource( 4 )
+[node name="Door" instance=ExtResource( 1 )]
+material/0 = SubResource( 1 )
+script = ExtResource( 3 )
 
 [node name="SoundOpen" parent="." index="1"]
-stream = ExtResource( 3 )
-
-[node name="SoundClose" parent="." index="2"]
 stream = ExtResource( 4 )
 
+[node name="SoundClose" parent="." index="2"]
+stream = ExtResource( 5 )
+
 [node name="AnimationPlayer" parent="." index="3"]
-anims/DoorToggle = SubResource( 3 )
+anims/DoorToggle = SubResource( 2 )

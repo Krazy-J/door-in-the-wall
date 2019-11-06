@@ -1,4 +1,5 @@
 extends Spatial
 
 func _ready():
-	$"/root".call_deferred("add_child", load("res://player/Player.tscn").instance())
+	if !$"/root".has_node("Player"):
+		$"/root".call_deferred("add_child", load("res://player/Player.tscn").instance())

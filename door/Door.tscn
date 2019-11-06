@@ -3,7 +3,7 @@
 [ext_resource path="res://models/door.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/Normal/door_simple.jpg" type="Texture" id=2]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
@@ -13,7 +13,7 @@ extents = Vector3( 0.125, 3.25, 1.5 )
 [node name="Door" type="MeshInstance"]
 layers = 3
 mesh = ExtResource( 1 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 1 )
 
 [node name="Collision" type="StaticBody" parent="."]
 
