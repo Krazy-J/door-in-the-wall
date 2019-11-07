@@ -57,13 +57,15 @@ exit_door = NodePath("../Basic2")
 material/0 = SubResource( 1 )
 
 [node name="Basic2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, -8, 0, -8 )
+editor/display_folded = true
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -8, 0, -8 )
 exit_door = NodePath("../Basic")
 
 [node name="Door" parent="Basic2" instance=ExtResource( 6 )]
 material/0 = SubResource( 2 )
 
 [node name="TestRoom" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 8 )
 
 [node name="Door" parent="TestRoom" instance=ExtResource( 8 )]
