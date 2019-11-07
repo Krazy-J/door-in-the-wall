@@ -7,10 +7,10 @@
 extents = Vector3( 0.3, 3.5, 0.25 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.3, 0.25, 2 )
+extents = Vector3( 2, 0.25, 0.3 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.3, 3.5, 2 )
+extents = Vector3( 2, 3.5, 0.3 )
 
 [node name="Door" type="MeshInstance"]
 layers = 3
@@ -21,11 +21,11 @@ script = ExtResource( 2 )
 [node name="Collision" type="StaticBody" parent="."]
 
 [node name="FrameLeft" type="CollisionShape" parent="Collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1.75 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 3.5, 0 )
 shape = SubResource( 1 )
 
 [node name="FrameRight" type="CollisionShape" parent="Collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 1.75 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 3.5, 0 )
 shape = SubResource( 1 )
 
 [node name="FrameTop" type="CollisionShape" parent="Collision"]

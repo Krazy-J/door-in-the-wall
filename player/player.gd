@@ -15,7 +15,7 @@ func _input(event):
 	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * mouse_sensitivity)
+		rotate(transform.basis.y.normalized(), -event.relative.x * mouse_sensitivity)
 		$PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
 		$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 

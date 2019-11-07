@@ -6,7 +6,7 @@ var selected
 
 func _ready():
 	if exit_door:
-		add_child(load("res://door/Connector.tscn").instance())
+		add_child(load("res://door/DoorConnector.tscn").instance())
 	if open and $Door:
 		$Door/AnimationPlayer.play("DoorToggle")
 		$Door/AnimationPlayer.seek(1)
