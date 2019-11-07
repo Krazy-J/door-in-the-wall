@@ -15,17 +15,17 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
-	body.transform = get_parent().transform.inverse() * body.transform
-	body.motion = get_parent().global_transform.basis.inverse() * body.motion
+	body.transform = get_parent().transform.affine_inverse() * body.transform
 	body.transform = exit_door.transform * body.transform
-	body.motion = exit_door.global_transform.basis * body.motion
+	if body.name == "Player":
+		body.motion = get_parent().global_transform.basis.inverse() * body.motion
+		body.motion = exit_door.global_transform.basis * body.motion
 
 func place_camera():
 	$Viewport.size = $"/root".size / pow(2, mipmap_level)
-	$Viewport/Spatial.global_transform = $"/root/Player/PivotY/PivotX/Camera".global_transform
-	#$Viewport/Spatial.global_transform = get_node("/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera").global_transform
-	$Viewport/Spatial.transform = get_parent().transform.inverse() * $Viewport/Spatial.transform
-	$Viewport/Spatial.transform = exit_door.transform * $Viewport/Spatial.transform
+	$Viewport/Spatial.global_transform = $"/root/Player/PivotX/Camera".global_transform
+	#$Viewport/Spatial.global_transform = $"/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera".global_transform
+	teleport($Viewport/Spatial)
 
 func _process(delta):
 	place_camera()

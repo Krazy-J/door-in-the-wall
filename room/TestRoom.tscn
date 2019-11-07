@@ -44,8 +44,16 @@ material/0 = SubResource( 2 )
 [node name="Bit" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0, -15 )
+exit_door = NodePath("../Bit2")
 
 [node name="Door" parent="Bit" instance=ExtResource( 5 )]
+
+[node name="Bit2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, 12, 0, -15 )
+exit_door = NodePath("../Bit")
+
+[node name="Door" parent="Bit2" instance=ExtResource( 5 )]
 
 [node name="Blue" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
@@ -57,7 +65,7 @@ material/0 = ExtResource( 7 )
 
 [node name="Blue2" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 0.5, -4.37114e-008, -0.866025, -8.74228e-008, -1, 0, -0.866025, 7.57103e-008, -0.5, 0, 18, 14 )
+transform = Transform( 0.5, -4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, -0.5, 0, 18, 14 )
 exit_door = NodePath("../Blue")
 
 [node name="Door" parent="Blue2" instance=ExtResource( 6 )]
@@ -89,7 +97,7 @@ material/0 = ExtResource( 9 )
 
 [node name="Yellow2" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( -1.81059e-008, -1, -6.18172e-008, -0.707107, -3.09086e-008, 0.707107, -0.707107, 5.65142e-008, -0.707107, 15.5, 15, 13 )
+transform = Transform( -1.81059e-08, -1, -6.18172e-08, -0.707107, -3.09086e-08, 0.707107, -0.707107, 5.65142e-08, -0.707107, 15.5, 15, 13 )
 exit_door = NodePath("../Yellow")
 
 [node name="Door" parent="Yellow2" instance=ExtResource( 6 )]
