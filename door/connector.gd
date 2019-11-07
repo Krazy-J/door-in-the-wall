@@ -15,7 +15,7 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
-	body.transform = get_parent().transform.inverse() * body.transform
+	body.transform = get_parent().transform.affine_inverse() * body.transform
 	body.transform = exit_door.transform * body.transform
 	if body.name == "Player":
 		body.motion = get_parent().global_transform.basis.inverse() * body.motion

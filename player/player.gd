@@ -21,11 +21,11 @@ func _input(event):
 
 func get_movement():
 	var movement = Vector3()
-	if Input.is_action_pressed("move_forward"): movement -= transform.basis.z
-	if Input.is_action_pressed("move_back"): movement += transform.basis.z
-	if Input.is_action_pressed("move_left"): movement -= transform.basis.x
-	if Input.is_action_pressed("move_right"): movement += transform.basis.x
-	#input_dir = (input_dir - input_dir * Vector3(abs(transform.basis.y.x), abs(transform.basis.y.y), abs(transform.basis.y.z))).normalized()
+	if Input.is_action_pressed("move_forward"): movement -= $PivotX.transform.basis.z
+	if Input.is_action_pressed("move_back"): movement += $PivotX.transform.basis.z
+	if Input.is_action_pressed("move_left"): movement -= $PivotX.transform.basis.x
+	if Input.is_action_pressed("move_right"): movement += $PivotX.transform.basis.x
+	movement.y = 0
 	movement = movement.normalized()
 	if Input.is_action_pressed("sprint"): movement *= 2
 	if !is_on_floor(): movement /= 20
