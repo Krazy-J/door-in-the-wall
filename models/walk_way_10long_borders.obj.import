@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/walk_way_10long_borders.obj-2ec93a30a2dd4cffb05884c3d1ea916a.mesh"
+
+[deps]
+
+files=[ "res://.import/walk_way_10long_borders.obj-2ec93a30a2dd4cffb05884c3d1ea916a.mesh" ]
+
+source_file="res://models/walk_way_10long_borders.obj"
+dest_files=[ "res://.import/walk_way_10long_borders.obj-2ec93a30a2dd4cffb05884c3d1ea916a.mesh", "res://.import/walk_way_10long_borders.obj-2ec93a30a2dd4cffb05884c3d1ea916a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
