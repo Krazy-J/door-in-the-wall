@@ -1,10 +1,7 @@
 extends Spatial
 
 const mipmap_level = 1
-var entered_door
-var just_exited
-var passed_through
-var entering_body
+var in_door
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
 func _ready():
@@ -27,38 +24,24 @@ func place_camera():
 	#$Viewport/Spatial.global_transform = $"/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera".global_transform
 	teleport($Viewport/Spatial)
 
+func _on_EnterFront_area_entered(area):
+	if area.name == "TeleportArea":
+		if $EnterBack.visible: $EnterFront.visible = false
+		else:
+			exit_door.get_node("Connection/EnterFront").visible = false
+			teleport(area.get_parent())
+
+func _on_EnterBack_area_entered(area):
+	if area.name == "TeleportArea":
+		if $EnterFront.visible: $EnterBack.visible = false
+		else:
+			exit_door.get_node("Connection/EnterBack").visible = false
+			teleport(area.get_parent())
+
+func _on_Middle_area_exited(area):
+	if area.name == "TeleportArea":
+		$EnterFront.visible = true
+		$EnterBack.visible = true
+
 func _process(delta):
 	place_camera()
-	if just_exited:
-		if entered_door and passed_through:
-			if !$EnterFront.visible: exit_door.get_node("Connection/EnterBack").visible = false
-			if !$EnterBack.visible: exit_door.get_node("Connection/EnterFront").visible = false
-			teleport(entering_body)
-		if !entered_door or passed_through:
-			$EnterFront.visible = true
-			$EnterBack.visible = true
-		entered_door = false
-		passed_through = false
-		just_exited = false
-
-func _on_EnterFront_body_entered(body):
-	if body.name == "Player":
-		if $EnterBack.visible: $EnterFront.visible = false
-		else: entered_door = true
-
-func _on_EnterBack_body_entered(body):
-	if body.name == "Player":
-		if $EnterFront.visible: $EnterBack.visible = false
-		else: entered_door = true
-
-func _on_EnterFront_body_exited(body):
-	if body.name == "Player":
-		entering_body = body
-		just_exited = true
-		if !$EnterFront.visible: passed_through = true
-
-func _on_EnterBack_body_exited(body):
-	if body.name == "Player":
-		entering_body = body
-		just_exited = true
-		if !$EnterBack.visible: passed_through = true
