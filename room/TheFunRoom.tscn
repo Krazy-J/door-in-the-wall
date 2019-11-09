@@ -1,40 +1,26 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://object/Table.tscn" type="PackedScene" id=1]
-[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=2]
-[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://door/8-bit/white.tres" type="Material" id=4]
-[ext_resource path="res://door/8-bit/red.tres" type="Material" id=5]
-[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=6]
-[ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=7]
-[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=8]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=9]
-[ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=10]
-[ext_resource path="res://textures/normal/door_simple.jpg" type="Texture" id=11]
-[ext_resource path="res://textures/8-bit/door.png" type="Texture" id=12]
-[ext_resource path="res://door/PickupDoor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://door/8-bit/red.tres" type="Material" id=3]
+[ext_resource path="res://object/Table.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=5]
+[ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=6]
+[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=7]
+[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=8]
+[ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://textures/normal/door_simple.jpg" type="Texture" id=10]
+[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=11]
+[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=12]
+[ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=13]
+[ext_resource path="res://door/8-bit/green.tres" type="Material" id=14]
+[ext_resource path="res://door/PickupDoor.tscn" type="PackedScene" id=15]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 10, 0, 10 )
 
-[sub_resource type="ArrayMesh" id=2]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
 [sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 6 )
+albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 16, 16, 1 )
 
 [sub_resource type="PlaneMesh" id=4]
@@ -42,7 +28,7 @@ material = SubResource( 3 )
 size = Vector2( 32, 32 )
 
 [sub_resource type="SpatialMaterial" id=5]
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 6 )
 uv1_scale = Vector3( 8, 8, 1 )
 
 [sub_resource type="PlaneMesh" id=6]
@@ -52,7 +38,7 @@ size = Vector2( 32, 32 )
 [sub_resource type="SpatialMaterial" id=7]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
-albedo_texture = ExtResource( 8 )
+albedo_texture = ExtResource( 7 )
 uv1_scale = Vector3( 32, 18, 1 )
 
 [sub_resource type="PlaneMesh" id=8]
@@ -61,7 +47,7 @@ size = Vector2( 32, 18 )
 
 [sub_resource type="SpatialMaterial" id=9]
 resource_local_to_scene = true
-albedo_texture = ExtResource( 11 )
+albedo_texture = ExtResource( 10 )
 
 [sub_resource type="PhysicsMaterial" id=10]
 friction = 0.1
@@ -84,410 +70,245 @@ albedo_color = Color( 1, 0.498039, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=16]
 resource_local_to_scene = true
-albedo_texture = ExtResource( 11 )
+albedo_texture = ExtResource( 10 )
 
 [sub_resource type="SpatialMaterial" id=17]
 resource_local_to_scene = true
-albedo_texture = ExtResource( 11 )
+albedo_texture = ExtResource( 10 )
 
-[sub_resource type="ArrayMesh" id=18]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=19]
-resource_local_to_scene = true
-albedo_color = Color( 0, 0.498039, 1, 1 )
-albedo_texture = ExtResource( 12 )
-
-[sub_resource type="ArrayMesh" id=20]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="ArrayMesh" id=21]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=22]
-resource_local_to_scene = true
-albedo_color = Color( 1, 0.5, 0, 1 )
-albedo_texture = ExtResource( 12 )
-
-[sub_resource type="ArrayMesh" id=23]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="ArrayMesh" id=24]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=25]
-resource_local_to_scene = true
-albedo_color = Color( 1, 0.87451, 0, 1 )
-albedo_texture = ExtResource( 12 )
-
-[sub_resource type="ArrayMesh" id=26]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="ArrayMesh" id=27]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=28]
-resource_local_to_scene = true
-albedo_color = Color( 0.247059, 1, 0.247059, 1 )
-albedo_texture = ExtResource( 12 )
-
-[sub_resource type="ArrayMesh" id=29]
-resource_local_to_scene = true
-surfaces/0 = {
-"aabb": AABB( -1.5, 0, -0.125, 3.00001, 6.50001, 0.25001 ),
-"array_data": PoolByteArray( 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 0, 127, 0, 126, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 127, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 129, 0, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 0, 129, 0, 126, 0, 0, 129, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 0, 129, 0, 127, 0, 0, 129, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 127, 0, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 190, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 192, 63, 0, 0, 0, 128, 0, 0, 0, 62, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 191, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 62, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 192, 63, 0, 0, 208, 64, 0, 0, 0, 190, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 17, 0, 18, 0, 18, 0, 17, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 97559,
-"index_count": 36,
-"material": ExtResource( 4 ),
-"name": "Default_OBJ",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="SpatialMaterial" id=30]
-resource_local_to_scene = true
-albedo_texture = ExtResource( 12 )
-
-[node name="TheFunRoom" type="Spatial"]
-
-[node name="TheBigRoom" type="StaticBody" parent="."]
+[node name="TheFunRoom" type="StaticBody"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -30, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="TheBigRoom"]
+[node name="Floor" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
-[node name="TheTable" parent="TheBigRoom" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0 )
-
-[node name="TheDoor" parent="TheBigRoom" instance=ExtResource( 2 )]
+[node name="TheDoor" parent="." instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 1 )
-exit_door = NodePath("../../NormalRoom/TheDoor")
-requires_door = true
+exit_door = NodePath("../TableTop/Room/TheDoor")
 
-[node name="Door" parent="TheBigRoom/TheDoor" instance=ExtResource( 3 )]
-mesh = SubResource( 2 )
-material/0 = ExtResource( 5 )
+[node name="Door" parent="TheDoor" instance=ExtResource( 2 )]
+material_override = ExtResource( 3 )
 
-[node name="NormalRoom" type="Spatial" parent="."]
+[node name="TheTable" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 
-[node name="Floor" type="CSGMesh" parent="NormalRoom"]
+[node name="TableTop" type="Spatial" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 3, 0 )
+
+[node name="Room" type="Spatial" parent="TableTop"]
+
+[node name="Floor" type="CSGMesh" parent="TableTop/Room"]
 layers = 3
 use_collision = true
 mesh = SubResource( 4 )
 
-[node name="Ceiling" type="CSGMesh" parent="NormalRoom"]
+[node name="Ceiling" type="CSGMesh" parent="TableTop/Room"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
 layers = 3
 use_collision = true
 invert_faces = true
 mesh = SubResource( 6 )
 
-[node name="Light" type="OmniLight" parent="NormalRoom/Ceiling"]
+[node name="Light" type="OmniLight" parent="TableTop/Room/Ceiling"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 layers = 3
 shadow_enabled = true
 omni_range = 20.0
 omni_shadow_mode = 0
 
-[node name="Front" type="CSGMesh" parent="NormalRoom"]
+[node name="FrontWall" type="CSGMesh" parent="TableTop/Room"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9, -16 )
 layers = 3
 use_collision = true
 mesh = SubResource( 8 )
 
-[node name="Blue" parent="NormalRoom/Front" instance=ExtResource( 9 )]
+[node name="Blue" parent="TableTop/Room/FrontWall" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5 )
 
-[node name="Orange" parent="NormalRoom/Front" instance=ExtResource( 9 )]
+[node name="Orange" parent="TableTop/Room/FrontWall" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5.5 )
 
-[node name="Orange2" parent="NormalRoom/Front" instance=ExtResource( 9 )]
+[node name="Orange2" parent="TableTop/Room/FrontWall" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.5, 0, 0 )
 
-[node name="Green2" parent="NormalRoom/Front" instance=ExtResource( 9 )]
+[node name="Green2" parent="TableTop/Room/FrontWall" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5.5 )
 
-[node name="Left" type="CSGMesh" parent="NormalRoom"]
+[node name="LeftWall" type="CSGMesh" parent="TableTop/Room"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 1.91069e-15, -16, 9, 0 )
 layers = 3
 use_collision = true
 mesh = SubResource( 8 )
 
-[node name="Back" type="CSGMesh" parent="NormalRoom"]
+[node name="BackWall" type="CSGMesh" parent="TableTop/Room"]
 editor/display_folded = true
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, 0, -1, 8.74228e-08, -1, 4.37114e-08, 0, 9, 16 )
 layers = 3
 use_collision = true
 mesh = SubResource( 8 )
 
-[node name="Yellow" parent="NormalRoom/Back" instance=ExtResource( 9 )]
+[node name="Yellow" parent="TableTop/Room/BackWall" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, -4.37114e-08, 1, -4.37114e-08, 1, 4.37114e-08, -1, 0, 0, 12.5, 9.53674e-07, -3 )
 
-[node name="Right" type="CSGMesh" parent="NormalRoom"]
+[node name="RightWall" type="CSGMesh" parent="TableTop/Room"]
 editor/display_folded = true
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 16, 9, 0 )
 layers = 3
 use_collision = true
 mesh = SubResource( 8 )
 
-[node name="ToTable" parent="NormalRoom/Right" instance=ExtResource( 9 )]
+[node name="ToTable" parent="TableTop/Room/RightWall" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5 )
 
-[node name="Table" parent="NormalRoom" instance=ExtResource( 1 )]
+[node name="Table" parent="TableTop/Room" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 
-[node name="TableSpace" type="Spatial" parent="NormalRoom"]
-editor/display_folded = true
+[node name="TableTop" type="Spatial" parent="TableTop/Room"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14, 3, 0 )
 
-[node name="TinyDoor" parent="NormalRoom/TableSpace" instance=ExtResource( 2 )]
+[node name="TinyDoor" parent="TableTop/Room/TableTop" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0 )
 exit_door = NodePath("../../ToTable")
 
-[node name="Door" parent="NormalRoom/TableSpace/TinyDoor" instance=ExtResource( 10 )]
-material/0 = SubResource( 9 )
+[node name="Door" parent="TableTop/Room/TableTop/TinyDoor" instance=ExtResource( 9 )]
+material_override = SubResource( 9 )
 
-[node name="GreenBlock" type="RigidBody" parent="NormalRoom/TableSpace"]
+[node name="GreenBlock" type="RigidBody" parent="TableTop/Room/TableTop"]
 editor/display_folded = true
 transform = Transform( 0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0, 1, 6 )
 physics_material_override = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="NormalRoom/TableSpace/GreenBlock"]
+[node name="CollisionShape" type="CollisionShape" parent="TableTop/Room/TableTop/GreenBlock"]
 shape = SubResource( 11 )
 
-[node name="CSGBox" type="CSGBox" parent="NormalRoom/TableSpace/GreenBlock"]
+[node name="CSGBox" type="CSGBox" parent="TableTop/Room/TableTop/GreenBlock"]
 layers = 3
 material = SubResource( 12 )
 
-[node name="RedBlock" type="RigidBody" parent="NormalRoom/TableSpace"]
+[node name="RedBlock" type="RigidBody" parent="TableTop/Room/TableTop"]
 editor/display_folded = true
 transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -2, 1, 4 )
 physics_material_override = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="NormalRoom/TableSpace/RedBlock"]
+[node name="CollisionShape" type="CollisionShape" parent="TableTop/Room/TableTop/RedBlock"]
 shape = SubResource( 11 )
 
-[node name="CSGBox" type="CSGBox" parent="NormalRoom/TableSpace/RedBlock"]
+[node name="CSGBox" type="CSGBox" parent="TableTop/Room/TableTop/RedBlock"]
 layers = 3
 material = SubResource( 13 )
 
-[node name="BlueBlock" type="RigidBody" parent="NormalRoom/TableSpace"]
+[node name="BlueBlock" type="RigidBody" parent="TableTop/Room/TableTop"]
 editor/display_folded = true
 transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 0.5, 1, 3.4 )
 physics_material_override = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="NormalRoom/TableSpace/BlueBlock"]
+[node name="CollisionShape" type="CollisionShape" parent="TableTop/Room/TableTop/BlueBlock"]
 shape = SubResource( 11 )
 
-[node name="CSGBox" type="CSGBox" parent="NormalRoom/TableSpace/BlueBlock"]
+[node name="CSGBox" type="CSGBox" parent="TableTop/Room/TableTop/BlueBlock"]
 layers = 3
 material = SubResource( 14 )
 
-[node name="OrangeBlock" type="RigidBody" parent="NormalRoom/TableSpace"]
+[node name="OrangeBlock" type="RigidBody" parent="TableTop/Room/TableTop"]
 editor/display_folded = true
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.700005, 3, 4.7 )
 physics_material_override = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="NormalRoom/TableSpace/OrangeBlock"]
+[node name="CollisionShape" type="CollisionShape" parent="TableTop/Room/TableTop/OrangeBlock"]
 shape = SubResource( 11 )
 
-[node name="CSGBox" type="CSGBox" parent="NormalRoom/TableSpace/OrangeBlock"]
+[node name="CSGBox" type="CSGBox" parent="TableTop/Room/TableTop/OrangeBlock"]
 layers = 3
 material = SubResource( 15 )
 
-[node name="Hinged" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Hinged" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( -8.40151e-08, -0.34202, -0.939692, -3.0579e-08, 0.939693, -0.34202, 0.999999, 0, -8.9407e-08, -13.32, 0.1, 7 )
-open = true
 
-[node name="Door" parent="NormalRoom/Hinged" instance=ExtResource( 10 )]
-material/0 = SubResource( 16 )
+[node name="Door" parent="TableTop/Room/Hinged" instance=ExtResource( 9 )]
+material_override = SubResource( 16 )
 
-[node name="ToTable" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="ToTable" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
-exit_door = NodePath("../TableSpace/TinyDoor")
+exit_door = NodePath("../TableTop/TinyDoor")
 
-[node name="Door" parent="NormalRoom/ToTable" instance=ExtResource( 10 )]
-material/0 = SubResource( 17 )
+[node name="Door" parent="TableTop/Room/ToTable" instance=ExtResource( 9 )]
+material_override = SubResource( 17 )
 
-[node name="Blue" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Blue" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 exit_door = NodePath("../Blue2")
 
-[node name="Door" parent="NormalRoom/Blue" instance=ExtResource( 3 )]
-mesh = SubResource( 18 )
-material/0 = SubResource( 19 )
+[node name="Door" parent="TableTop/Room/Blue" instance=ExtResource( 2 )]
+material_override = ExtResource( 11 )
 
-[node name="Blue2" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Blue2" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( -0.866025, 0, -0.5, 0, -1, 0, -0.5, 0, 0.866025, 0, 18, 14 )
 exit_door = NodePath("../Blue")
 
-[node name="Door" parent="NormalRoom/Blue2" instance=ExtResource( 3 )]
-mesh = SubResource( 20 )
-material/0 = SubResource( 19 )
+[node name="Door" parent="TableTop/Room/Blue2" instance=ExtResource( 2 )]
+material_override = ExtResource( 11 )
 
-[node name="Orange" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Orange" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16 )
 exit_door = NodePath("../Orange2")
 
-[node name="Door" parent="NormalRoom/Orange" instance=ExtResource( 3 )]
-mesh = SubResource( 21 )
-material/0 = SubResource( 22 )
+[node name="Door" parent="TableTop/Room/Orange" instance=ExtResource( 2 )]
+material_override = ExtResource( 12 )
 
-[node name="Orange2" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Orange2" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 9, -16 )
 exit_door = NodePath("../Orange")
 
-[node name="Door" parent="NormalRoom/Orange2" instance=ExtResource( 3 )]
-mesh = SubResource( 23 )
-material/0 = SubResource( 22 )
+[node name="Door" parent="TableTop/Room/Orange2" instance=ExtResource( 2 )]
+material_override = ExtResource( 12 )
 
-[node name="Yellow" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Yellow" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 4.37114e-08, 1, 0, 1, 0, 0, 0, 0, -1, -16, 12, 16 )
 exit_door = NodePath("../Yellow2")
 
-[node name="Door" parent="NormalRoom/Yellow" instance=ExtResource( 3 )]
-mesh = SubResource( 24 )
-material/0 = SubResource( 25 )
+[node name="Door" parent="TableTop/Room/Yellow" instance=ExtResource( 2 )]
+material_override = ExtResource( 13 )
 
-[node name="Yellow2" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Yellow2" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( -4.37114e-08, -1, 0, 0.707107, -3.09086e-08, 0.707107, -0.707107, 3.09086e-08, 0.707107, 16, 16, 14 )
 exit_door = NodePath("../Yellow")
 
-[node name="Door" parent="NormalRoom/Yellow2" instance=ExtResource( 3 )]
-mesh = SubResource( 26 )
-material/0 = SubResource( 25 )
+[node name="Door" parent="TableTop/Room/Yellow2" instance=ExtResource( 2 )]
+material_override = ExtResource( 13 )
 
-[node name="Green" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Green" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 0, -1, 0, 0.707107, 0, -0.707107, 0.707107, 0, 0.707107, 16, 16, -14 )
 exit_door = NodePath("../Green2")
 
-[node name="Door" parent="NormalRoom/Green" instance=ExtResource( 3 )]
-mesh = SubResource( 27 )
-material/0 = SubResource( 28 )
+[node name="Door" parent="TableTop/Room/Green" instance=ExtResource( 2 )]
+material_override = ExtResource( 14 )
 
-[node name="Green2" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="Green2" parent="TableTop/Room" instance=ExtResource( 1 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 7, 18, -16 )
 exit_door = NodePath("../Green")
 
-[node name="Door" parent="NormalRoom/Green2" instance=ExtResource( 3 )]
-mesh = SubResource( 29 )
-material/0 = SubResource( 28 )
+[node name="Door" parent="TableTop/Room/Green2" instance=ExtResource( 2 )]
+material_override = ExtResource( 14 )
 
-[node name="TheDoor" parent="NormalRoom" instance=ExtResource( 2 )]
+[node name="TheDoor" parent="TableTop/Room" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 0, 15 )
-exit_door = NodePath("../../TheBigRoom/TheDoor")
+exit_door = NodePath("../../../TheDoor")
 requires_door = true
 
-[node name="PickupDoor" parent="NormalRoom" instance=ExtResource( 13 )]
+[node name="PickupDoor" parent="TableTop/Room" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 1, 0, -0.906308, -3.9616e-08, -0.422618, -0.422618, -1.84732e-08, 0.906308, 0, 1.41, 15.25 )
-
-[node name="Door" parent="NormalRoom/PickupDoor" instance=ExtResource( 3 )]
-material_override = ExtResource( 5 )
-material/0 = SubResource( 30 )
+material_override = ExtResource( 3 )
