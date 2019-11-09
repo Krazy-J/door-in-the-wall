@@ -22,14 +22,8 @@ func toggle_door():
 		$Door/SoundOpen.stop()
 		$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 
-func _on_Interact_area_entered(area):
-	if area.name == "InteractArea": $Interact.visible = true
-
-func _on_Interact_area_exited(area):
-	if area.name == "InteractArea": $Interact.visible = false
-
 func _input(event):
-	if $Interact.visible and event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and ($Interact.visible or has_node("Door") and $Door/Interact.visible):
 		if has_node("Door"):
 			toggle_door()
 			if exit_door: get_node(exit_door).toggle_door()
