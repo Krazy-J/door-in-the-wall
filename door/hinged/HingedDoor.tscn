@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://door/Door.tscn" type="PackedScene" id=1]
-[ext_resource path="res://door/hinged/hinge.gd" type="Script" id=2]
-[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=3]
-[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=4]
+[ext_resource path="res://textures/normal/door_simple.jpg" type="Texture" id=2]
+[ext_resource path="res://door/hinged/hinge.gd" type="Script" id=3]
+[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=4]
+[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=5]
 
-[sub_resource type="Animation" id=2]
-resource_name = "DoorToggle"
+[sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees:y")
 tracks/0/interp = 1
@@ -19,13 +23,14 @@ tracks/0/keys = {
 }
 
 [node name="Door" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+material/0 = SubResource( 2 )
+script = ExtResource( 3 )
 
 [node name="SoundOpen" parent="." index="1"]
-stream = ExtResource( 3 )
-
-[node name="SoundClose" parent="." index="2"]
 stream = ExtResource( 4 )
 
+[node name="SoundClose" parent="." index="2"]
+stream = ExtResource( 5 )
+
 [node name="AnimationPlayer" parent="." index="3"]
-anims/DoorToggle = SubResource( 2 )
+anims/DoorToggle = SubResource( 3 )

@@ -33,8 +33,8 @@ func get_movement():
 func _physics_process(delta):
 	motion += global_transform.basis * get_movement() * speed * delta
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump"): motion += jump_power * transform.basis.y.normalized()
+		if Input.is_action_just_pressed("jump"): motion += transform.basis.y * jump_power
 		motion *= (1 - surface_friction)
 	motion *= (1 - air_resistance)
-	motion -= gravity * delta * transform.basis.y.normalized()
+	motion -= transform.basis.y * gravity * delta
 	motion = move_and_slide(motion, transform.basis.y.normalized())

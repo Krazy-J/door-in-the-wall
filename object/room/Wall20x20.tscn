@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player/smooth_surface.tres" type="PhysicsMaterial" id=1]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_diffuse.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_height.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=4]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_normal.jpg" type="Texture" id=5]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_glossiness.jpg" type="Texture" id=6]
+
+[sub_resource type="PlaneMesh" id=11]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 2 )
+metallic_specular = 0.0
+metallic_texture = ExtResource( 4 )
+roughness_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = true
+depth_min_layers = 8
+depth_max_layers = 32
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 3 )
+uv1_scale = Vector3( 2, 1.6, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 10, 0, 10 )
+
+[node name="Wall" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+physics_material_override = ExtResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+layers = 3
+mesh = SubResource( 11 )
+material/0 = SubResource( 10 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 12 )

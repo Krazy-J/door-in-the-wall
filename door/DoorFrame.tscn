@@ -1,41 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://door/door.gd" type="Script" id=2]
 
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.0588235 )
+
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.25, 3.5, 0.3 )
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 2, 0.25, 0.3 )
-
-[sub_resource type="BoxShape" id=3]
 extents = Vector3( 2, 3.5, 0.3 )
 
-[node name="Door" type="MeshInstance"]
+[node name="Door" type="CSGMesh"]
 layers = 3
+use_collision = true
 mesh = ExtResource( 1 )
-material/0 = null
 script = ExtResource( 2 )
-
-[node name="Collision" type="StaticBody" parent="."]
-
-[node name="FrameLeft" type="CollisionShape" parent="Collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 3.5, 0 )
-shape = SubResource( 1 )
-
-[node name="FrameRight" type="CollisionShape" parent="Collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 3.5, 0 )
-shape = SubResource( 1 )
-
-[node name="FrameTop" type="CollisionShape" parent="Collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.75, 0 )
-shape = SubResource( 2 )
 
 [node name="Interact" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+visible = false
+
+[node name="CSGBox" type="CSGBox" parent="Interact"]
+width = 4.01
+height = 7.01
+depth = 0.61
+material = SubResource( 2 )
 
 [node name="Doorway" type="CollisionShape" parent="Interact"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 [connection signal="area_entered" from="Interact" to="." method="_on_Interact_area_entered"]
 [connection signal="area_exited" from="Interact" to="." method="_on_Interact_area_exited"]

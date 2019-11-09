@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://textures/Sketch/sketched_effect.shader" type="Shader" id=1]
-[ext_resource path="res://textures/Sketch/pencil_shaded.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/sketch/sketched_effect.shader" type="Shader" id=1]
+[ext_resource path="res://textures/sketch/pencil_shaded.jpg" type="Texture" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
