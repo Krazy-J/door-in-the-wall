@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Spatial
 
 export var hinge_position = Vector3(1.5, 3.25, -.125)
 
