@@ -238,7 +238,7 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="SpatialMaterial" id=31]
+[sub_resource type="SpatialMaterial" id=30]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 12 )
 
@@ -277,6 +277,13 @@ use_collision = true
 invert_faces = true
 mesh = SubResource( 6 )
 
+[node name="Light" type="OmniLight" parent="NormalRoom/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+layers = 3
+shadow_enabled = true
+omni_range = 20.0
+omni_shadow_mode = 0
+
 [node name="Front" type="CSGMesh" parent="NormalRoom"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 9, -16 )
@@ -294,7 +301,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5.5 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.5, 0, 0 )
 
 [node name="Green2" parent="NormalRoom/Front" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9.53674e-07, -5.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5.5 )
 
 [node name="Left" type="CSGMesh" parent="NormalRoom"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 1.91069e-15, -16, 9, 0 )
@@ -313,6 +320,7 @@ mesh = SubResource( 8 )
 transform = Transform( -4.37114e-08, -4.37114e-08, 1, -4.37114e-08, 1, 4.37114e-08, -1, 0, 0, 12.5, 9.53674e-07, -3 )
 
 [node name="Right" type="CSGMesh" parent="NormalRoom"]
+editor/display_folded = true
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 16, 9, 0 )
 layers = 3
 use_collision = true
@@ -456,7 +464,7 @@ material/0 = SubResource( 25 )
 
 [node name="Green" parent="NormalRoom" instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 0, -1, 0, 0, 0, 1, -1, 0, 0, 16, 2, 10 )
+transform = Transform( 0, -1, 0, 0.707107, 0, -0.707107, 0.707107, 0, 0.707107, 16, 16, -14 )
 exit_door = NodePath("../Green2")
 
 [node name="Door" parent="NormalRoom/Green" instance=ExtResource( 3 )]
@@ -465,7 +473,7 @@ material/0 = SubResource( 28 )
 
 [node name="Green2" parent="NormalRoom" instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 8, 18, -16 )
+transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 7, 18, -16 )
 exit_door = NodePath("../Green")
 
 [node name="Door" parent="NormalRoom/Green2" instance=ExtResource( 3 )]
@@ -477,57 +485,9 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 0, 
 exit_door = NodePath("../../TheBigRoom/TheDoor")
 requires_door = true
 
-[node name="RedDoor" parent="NormalRoom" instance=ExtResource( 13 )]
+[node name="PickupDoor" parent="NormalRoom" instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 1, 0, -0.906308, -3.9616e-08, -0.422618, -0.422618, -1.84732e-08, 0.906308, 0, 1.41, 15.25 )
 
-[node name="Door" parent="NormalRoom/RedDoor" instance=ExtResource( 3 )]
+[node name="Door" parent="NormalRoom/PickupDoor" instance=ExtResource( 3 )]
 material_override = ExtResource( 5 )
-material/0 = SubResource( 31 )
-
-[node name="OmniLight-Y" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-layers = 3
-light_color = Color( 0, 1, 0, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="OmniLight+Y" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0 )
-layers = 3
-light_color = Color( 0, 1, 0, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="OmniLight-X" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 9, 0 )
-layers = 3
-light_color = Color( 1, 0, 0, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="OmniLight+X" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 9, 0 )
-layers = 3
-light_color = Color( 1, 0, 0, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="OmniLight-Z" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -8 )
-layers = 3
-light_color = Color( 0, 0, 1, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="OmniLight+Z" type="OmniLight" parent="NormalRoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 8 )
-layers = 3
-light_color = Color( 0, 0, 1, 1 )
-light_specular = 1.0
-shadow_enabled = true
-omni_range = 10.0
+material/0 = SubResource( 30 )
