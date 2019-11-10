@@ -1,7 +1,7 @@
 extends Spatial
 
 const mipmap_level = 1
-var in_door
+var entering_areas = {}
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
 func _ready():
@@ -17,6 +17,18 @@ func teleport(body):
 	if body.name == "Player":
 		body.motion = global_transform.basis.inverse() * body.motion
 		body.motion = exit_door.global_transform.basis * body.motion
+		if body.carrying:
+			if get_node(body.carrying).name == "Door":
+				get_node(body.carrying).transform = global_transform.affine_inverse() * get_node(body.carrying).transform
+				get_node(body.carrying).transform = exit_door.global_transform * get_node(body.carrying).transform
+			else:
+				for child in get_node(body.carrying).get_children():
+					child.global_transform.basis = global_transform.affine_inverse().basis * child.global_transform.basis
+					child.global_transform.basis = exit_door.global_transform.basis * child.global_transform.basis
+					if child.name == "CollisionShape":
+						get_node(body.carrying).gravity_scale = child.scale.x
+						get_node(body.carrying).mass = child.scale.x
+						child.shape = child.shape
 
 func place_camera():
 	$Viewport.size = $"/root".size / pow(2, mipmap_level)
@@ -26,20 +38,25 @@ func place_camera():
 
 func _on_EnterFront_area_entered(area):
 	if area.name == "TeleportArea":
-		if $EnterBack.visible: $EnterFront.visible = false
-		else:
-			exit_door.get_node("Connection/EnterFront").visible = false
+		if !entering_areas.has(area):
+			if area.get_parent().name == "Player": $EnterFront.visible = false
+			entering_areas[area] = "front"
+		elif entering_areas[area] == "back":
+			if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterFront").visible = false
 			teleport(area.get_parent())
 
 func _on_EnterBack_area_entered(area):
 	if area.name == "TeleportArea":
-		if $EnterFront.visible: $EnterBack.visible = false
-		else:
-			exit_door.get_node("Connection/EnterBack").visible = false
+		if !entering_areas.has(area):
+			if area.get_parent().name == "Player": $EnterBack.visible = false
+			entering_areas[area] = "back"
+		elif entering_areas[area] == "front":
+			if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterBack").visible = false
 			teleport(area.get_parent())
 
 func _on_Middle_area_exited(area):
 	if area.name == "TeleportArea":
+		entering_areas.erase(area)
 		$EnterFront.visible = true
 		$EnterBack.visible = true
 

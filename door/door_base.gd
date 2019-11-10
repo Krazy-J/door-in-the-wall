@@ -27,9 +27,9 @@ func _input(event):
 		if has_node("Door"):
 			toggle_door()
 			if exit_door: get_node(exit_door).toggle_door()
-		else:
-			if has_node("/root/Player/Hands/Door"):
-				add_child(load("res://door/sliding/SlidingDoor.tscn").instance())
-				$Door.material_override = $"/root/Player/Hands/Door".material_override
-				$"/root/Player/Hands/Door".queue_free()
-				add_child(load("res://door/DoorConnector.tscn").instance())
+		elif get_node($"/root/Player".carrying).name == "Door":
+			add_child(load("res://door/sliding/SlidingDoor.tscn").instance())
+			$Door.material_override = get_node($"/root/Player".carrying).material_override
+			get_node($"/root/Player".carrying).queue_free()
+			$"/root/Player".carrying = NodePath()
+			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
