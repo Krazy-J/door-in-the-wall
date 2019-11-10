@@ -37,9 +37,10 @@ func get_movement():
 func _physics_process(delta):
 	if carrying:
 		var body = get_node(carrying)
-		if body.name == "Door":
+		if body.has_node("Door"):
 			body.translation += ($Carry/Door.global_transform.origin - body.global_transform.origin) / 5
 			body.rotation_degrees += (rotation_degrees - body.rotation_degrees) / 5
+			body.get_node("Door").rotation_degrees += ($Carry/Door.rotation_degrees - body.get_node("Door").rotation_degrees) / 5
 			body.scale = $Carry/Door.scale
 		else:
 			body.linear_velocity = ($Carry/RigidBody.global_transform.origin - body.global_transform.origin) * 10

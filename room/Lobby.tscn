@@ -61,11 +61,12 @@ size = Vector2( 20, 16 )
 resource_local_to_scene = true
 albedo_texture = ExtResource( 15 )
 
-[sub_resource type="PlaneMesh" id=8]
-size = Vector2( 3, 6.5 )
-
 [sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 9 )
+size = Vector2( 3, 6.5 )
 
 [node name="Lobby" type="Spatial"]
 script = ExtResource( 1 )
@@ -91,41 +92,41 @@ layers = 3
 light_color = Color( 1, 1, 0.65098, 1 )
 omni_range = 16.0
 
-[node name="Front" type="CSGMesh" parent="Room"]
+[node name="FrontWall" type="CSGMesh" parent="Room"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 8, -10 )
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 8, -10 )
 layers = 3
 use_collision = true
 mesh = SubResource( 6 )
 
-[node name="Basic" parent="Room/Front" instance=ExtResource( 9 )]
+[node name="Basic" parent="Room/FrontWall" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4.5 )
 
-[node name="Left" type="CSGMesh" parent="Room"]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -10, 8, 0 )
+[node name="LeftWall" type="CSGMesh" parent="Room"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -10, 8, 0 )
 layers = 3
 use_collision = true
 mesh = SubResource( 6 )
 
-[node name="Back" type="CSGMesh" parent="Room"]
+[node name="BackWall" type="CSGMesh" parent="Room"]
 editor/display_folded = true
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 8, 10 )
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 8, 10 )
 layers = 3
 use_collision = true
 mesh = SubResource( 6 )
 
-[node name="Basic2" parent="Room/Back" instance=ExtResource( 9 )]
+[node name="Basic2" parent="Room/BackWall" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4.51 )
 
-[node name="Right" type="CSGMesh" parent="Room"]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 10, 8, 0 )
+[node name="RightWall" type="CSGMesh" parent="Room"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 8, 0 )
 layers = 3
 use_collision = true
 mesh = SubResource( 6 )
 
 [node name="Basic" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -8, 0, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10 )
 exit_door = NodePath("../Basic2")
 
 [node name="Door" parent="Basic" instance=ExtResource( 11 )]
@@ -142,7 +143,6 @@ material_override = ExtResource( 12 )
 mesh = ExtResource( 13 )
 
 [node name="TestRoom" parent="." instance=ExtResource( 10 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9 )
 
 [node name="Door" parent="TestRoom" instance=ExtResource( 14 )]
@@ -150,13 +150,12 @@ material_override = SubResource( 7 )
 mesh = ExtResource( 13 )
 room = ExtResource( 16 )
 
-[node name="Black" type="MeshInstance" parent="TestRoom"]
-transform = Transform( 1.02, 0, 0, 0, -4.37114e-08, 1.02, 0, -1, -4.45856e-08, 0, 3.5, 0.3 )
+[node name="Black" type="CSGMesh" parent="TestRoom"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 3.25, 0.3 )
+layers = 3
 mesh = SubResource( 8 )
-material/0 = SubResource( 9 )
 
 [node name="TheFunRoom" parent="." instance=ExtResource( 10 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9 )
 
 [node name="Door" parent="TheFunRoom" instance=ExtResource( 14 )]
@@ -164,7 +163,7 @@ material_override = ExtResource( 17 )
 mesh = ExtResource( 13 )
 room = ExtResource( 18 )
 
-[node name="Black" type="MeshInstance" parent="TheFunRoom"]
-transform = Transform( 1.02, 0, 0, 0, -4.37114e-08, 1.02, 0, -1, -4.45856e-08, 0, 3.5, 0.3 )
+[node name="Black" type="CSGMesh" parent="TheFunRoom"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 3.25, 0.3 )
+layers = 3
 mesh = SubResource( 8 )
-material/0 = SubResource( 9 )

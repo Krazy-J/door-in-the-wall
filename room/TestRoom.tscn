@@ -50,19 +50,19 @@ size = Vector2( 32, 18 )
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=8]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=9]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=10]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 14 )
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=11]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 14 )
 
@@ -103,10 +103,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5.5 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.5, 0, 0 )
 
 [node name="Green2" parent="Room/FrontWall" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9.53674e-07, -5.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9.53674e-007, -5.5 )
 
 [node name="LeftWall" type="CSGMesh" parent="Room"]
-transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 1.91069e-15, -16, 9, 0 )
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 1.91069e-015, -16, 9, 0 )
 layers = 3
 use_collision = true
 mesh = SubResource( 6 )
@@ -163,7 +163,7 @@ transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
 exit_door = NodePath("../TableSpace/TinyDoor")
 
 [node name="Door" parent="ToTable" instance=ExtResource( 7 )]
-material_override = SubResource( 14 )
+material_override = SubResource( 8 )
 
 [node name="Hinged" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
@@ -171,14 +171,14 @@ transform = Transform( -8.40151e-08, -0.34202, -0.939692, -3.0579e-08, 0.939693,
 open = true
 
 [node name="Door" parent="Hinged" instance=ExtResource( 7 )]
-material_override = SubResource( 15 )
+material_override = SubResource( 9 )
 
 [node name="Bit" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16 )
 
 [node name="Door" parent="Bit" instance=ExtResource( 13 )]
-material_override = SubResource( 16 )
+material_override = SubResource( 10 )
 
 [node name="Blue" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
@@ -246,7 +246,7 @@ material_override = ExtResource( 19 )
 
 [node name="Door" parent="." instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 1, 0, -0.906308, -3.9616e-08, -0.422618, -0.422618, -1.84732e-08, 0.906308, 0, 1.41, 15.25 )
-material_override = SubResource( 17 )
+material_override = SubResource( 11 )
 
 [node name="OmniLight-Y" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
