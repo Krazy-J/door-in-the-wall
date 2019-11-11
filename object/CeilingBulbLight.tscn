@@ -3,7 +3,7 @@
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 flags_unshaded = true
-albedo_color = Color( 1, 1, 1, 0.498039 )
+albedo_color = Color( 1, 1, 1, 0.5 )
 
 [node name="CeilingLight" type="CSGCylinder"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
@@ -32,5 +32,5 @@ material = SubResource( 1 )
 [node name="Light" type="OmniLight" parent="Top/Bulb"]
 layers = 3
 shadow_enabled = true
-omni_range = 20.0
+omni_range = 32.0
 omni_shadow_mode = 0

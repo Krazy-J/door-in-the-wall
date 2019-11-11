@@ -12,7 +12,7 @@ var motion : Vector3
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -38,13 +38,19 @@ func _physics_process(delta):
 	if carrying:
 		var body = get_node(carrying)
 		if body.has_node("Door"):
-			body.translation += ($Carry/Door.global_transform.origin - body.global_transform.origin) / 5
-			body.rotation_degrees += (rotation_degrees - body.rotation_degrees) / 5
-			body.get_node("Door").rotation_degrees += ($Carry/Door.rotation_degrees - body.get_node("Door").rotation_degrees) / 5
-			body.scale = $Carry/Door.scale
+			body.global_transform.origin += (global_transform.origin - body.global_transform.origin) * 10 * delta
+			body.get_node("Door").translation += ($CarryDoor.translation / body.scale * scale - body.get_node("Door").scale * Vector3(0, 3.5, 0) - body.get_node("Door").translation) * 10 * delta
+			if (global_transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
+				body.rotation_degrees += (rotation_degrees - body.rotation_degrees - global_transform.basis.y * 360) * 10 * delta
+			elif (global_transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
+				body.rotation_degrees += (rotation_degrees - body.rotation_degrees + global_transform.basis.y * 360) * 10 * delta
+			else:
+				body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
+			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
+			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
 		else:
-			body.linear_velocity = ($Carry/RigidBody.global_transform.origin - body.global_transform.origin) * 10
-			body.angular_velocity /= 1.1
+			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z * 3 - body.global_transform.origin) * 500 * delta
+			body.angular_velocity = -body.rotation_degrees * 20 * delta
 	motion += transform.basis * get_movement() * speed * delta
 	if is_on_floor():
 		motion *= (1 - surface_friction)

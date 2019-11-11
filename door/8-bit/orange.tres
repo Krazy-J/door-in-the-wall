@@ -4,5 +4,5 @@
 
 [resource]
 resource_local_to_scene = true
-albedo_color = Color( 1, 0.501961, 0, 1 )
+albedo_color = Color( 1, 0.5, 0, 1 )
 albedo_texture = ExtResource( 1 )

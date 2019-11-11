@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://door/Door.tscn" type="PackedScene" id=1]
-[ext_resource path="res://door/8-bit/white.tres" type="Material" id=2]
+[ext_resource path="res://textures/8-bit/door.png" type="Texture" id=2]
 [ext_resource path="res://door/sliding/sliding_door_open.wav" type="AudioStream" id=3]
 [ext_resource path="res://door/sliding/sliding_door_close.wav" type="AudioStream" id=4]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
@@ -43,8 +47,8 @@ tracks/2/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 0.1, 1, 1 ) ]
 }
 
-[node name="Door" index="0" instance=ExtResource( 1 )]
-material_override = ExtResource( 2 )
+[node name="Door" instance=ExtResource( 1 )]
+material_override = SubResource( 1 )
 
 [node name="SoundOpen" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.25, 0 )
@@ -55,4 +59,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.25, 0 )
 stream = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/DoorToggle = SubResource( 1 )
+anims/DoorToggle = SubResource( 2 )

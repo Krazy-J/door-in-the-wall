@@ -25,8 +25,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -8.0
 margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 stretch_mode = 4
@@ -40,13 +38,8 @@ transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
 layers = 2
 mesh = ExtResource( 3 )
 
-[node name="Carry" type="Spatial" parent="."]
-
-[node name="RigidBody" type="Spatial" parent="Carry"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -2 )
-
-[node name="Door" type="Spatial" parent="Carry"]
-transform = Transform( 0.7, 0, 0, 0, 0.657785, 0.239414, 0, -0.239414, 0.657785, 0, 0.2, -2 )
+[node name="CarryDoor" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.469846, 0.17101, 0, -0.17101, 0.469846, 0, 3.5, -2 )
 
 [node name="TeleportArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
@@ -68,5 +61,5 @@ far = 1000.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PivotX/InteractArea"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 shape = SubResource( 3 )

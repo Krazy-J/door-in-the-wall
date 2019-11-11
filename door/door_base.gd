@@ -30,6 +30,5 @@ func _input(event):
 		elif get_node($"/root/Player".carrying).has_node("Door"):
 			add_child(load("res://door/sliding/SlidingDoor.tscn").instance())
 			$Door.material_override = get_node($"/root/Player".carrying).get_node("Door").material_override
-			get_node($"/root/Player".carrying).queue_free()
-			$"/root/Player".carrying = NodePath()
 			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
+			get_node($"/root/Player".carrying).queue_free()

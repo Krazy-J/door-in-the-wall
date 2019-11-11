@@ -1,6 +1,6 @@
 extends Spatial
 
-const mipmap_level = 1
+const MIPMAP_LEVEL = 0
 var entering_areas = {}
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
@@ -12,26 +12,27 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
-	body.transform = global_transform.affine_inverse() * body.transform
-	body.transform = exit_door.global_transform * body.transform
+	body.global_transform = global_transform.affine_inverse() * body.global_transform
+	body.global_transform = exit_door.global_transform * body.global_transform
 	if body.name == "Player":
 		body.motion = global_transform.basis.inverse() * body.motion
 		body.motion = exit_door.global_transform.basis * body.motion
 		if body.carrying:
-			if get_node(body.carrying).name == "Door":
-				get_node(body.carrying).transform = global_transform.affine_inverse() * get_node(body.carrying).transform
-				get_node(body.carrying).transform = exit_door.global_transform * get_node(body.carrying).transform
+			var body_carried = get_node(body.carrying)
+			if body_carried.has_node("Door"):
+				body_carried.global_transform = global_transform.affine_inverse() * body_carried.global_transform
+				body_carried.global_transform = exit_door.global_transform * body_carried.global_transform
 			else:
-				for child in get_node(body.carrying).get_children():
+				for child in body_carried.get_children():
 					child.global_transform.basis = global_transform.affine_inverse().basis * child.global_transform.basis
 					child.global_transform.basis = exit_door.global_transform.basis * child.global_transform.basis
 					if child.name == "CollisionShape":
-						get_node(body.carrying).gravity_scale = child.scale.x
-						get_node(body.carrying).mass = child.scale.x
+						body_carried.gravity_scale = child.scale.x
+						body_carried.mass = child.scale.x
 						child.shape = child.shape
 
 func place_camera():
-	$Viewport.size = $"/root".size / pow(2, mipmap_level)
+	$Viewport.size = $"/root".size / pow(2, MIPMAP_LEVEL)
 	$Viewport/Spatial.global_transform = $"/root/Player/PivotX/Camera".global_transform
 	#$Viewport/Spatial.global_transform = $"/root/Main/ViewportContainer/PlayerViewport/Player/PivotY/PivotX/Camera".global_transform
 	teleport($Viewport/Spatial)

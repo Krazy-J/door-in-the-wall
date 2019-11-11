@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/door_classic_style.jpg-d7f5229984c6da5fc760d928d33cfd77.s3tc.stex"
-path.etc2="res://.import/door_classic_style.jpg-d7f5229984c6da5fc760d928d33cfd77.etc2.stex"
+path.s3tc="res://.import/back_to_lobby.png-e097e9f770e816717e84ccb8b579cfc2.s3tc.stex"
+path.etc2="res://.import/back_to_lobby.png-e097e9f770e816717e84ccb8b579cfc2.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/normal/door_classic_style.jpg"
-dest_files=[ "res://.import/door_classic_style.jpg-d7f5229984c6da5fc760d928d33cfd77.s3tc.stex", "res://.import/door_classic_style.jpg-d7f5229984c6da5fc760d928d33cfd77.etc2.stex" ]
+source_file="res://textures/back_to_lobby.png"
+dest_files=[ "res://.import/back_to_lobby.png-e097e9f770e816717e84ccb8b579cfc2.s3tc.stex", "res://.import/back_to_lobby.png-e097e9f770e816717e84ccb8b579cfc2.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

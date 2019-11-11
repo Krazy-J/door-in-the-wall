@@ -18,7 +18,13 @@ _global_script_class_icons={
 config/name="A Door in the Wall"
 run/main_scene="res://room/Lobby.tscn"
 boot_splash/image="res://boot_splash.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
 
 [input]
 
@@ -94,4 +100,5 @@ move={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"
