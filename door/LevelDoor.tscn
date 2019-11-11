@@ -5,12 +5,11 @@
 [ext_resource path="res://door/level_door.gd" type="Script" id=3]
 [ext_resource path="res://boot_splash.png" type="Texture" id=4]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
@@ -55,9 +54,12 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.48, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "add_fade_splash"
+}, {
 "args": [  ],
 "method": "load_level"
 } ]
@@ -107,4 +109,4 @@ texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="AnimationPlayer" parent="." index="5"]
-anims/DoorToggle = SubResource( 4 )
+anims/DoorToggle = SubResource( 2 )

@@ -1,7 +1,8 @@
 extends Spatial
 
-func load_level():
-	$"/root/Player".translation = Vector3()
-	$"/root/Player".scale = Vector3(1, 1, 1)
-	get_tree().change_scene("res://room/Lobby.tscn")
+func add_fade_splash():
 	$"/root".call_deferred("add_child", load("res://FadeSplash.tscn").instance())
+
+func load_level():
+	$"/root/Player".transform = Transform()
+	get_tree().change_scene("res://room/Lobby.tscn")
