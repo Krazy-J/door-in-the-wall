@@ -5,32 +5,43 @@ export var jump_power = 25
 export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
-export var mouse_sensitivity = .003 # radians/pixel
+export var look_sensitivity = .003 # radians/pixel
 export var carrying : NodePath
 var motion : Vector3
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	print(JOY_ANALOG_LX, JOY_ANALOG_LY, JOY_ANALOG_RX, JOY_ANALOG_RY, JOY_ANALOG_L2, JOY_ANALOG_R2)
+	print(JOY_L, JOY_R, JOY_L2, JOY_R2, JOY_L3, JOY_R3)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotate(transform.basis.y.normalized(), -event.relative.x * mouse_sensitivity)
-		$PivotX.rotate_x(-event.relative.y * mouse_sensitivity)
-		$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
+			$PivotX.rotate_x(-event.relative.y * look_sensitivity)
+			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
+		if event is InputEventJoypadMotion:
+			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
+			$PivotX.rotate_x(-event.relative.y * look_sensitivity)
+			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if is_on_floor():
-		if event.is_action_pressed("jump"): motion += transform.basis.y * jump_power
+		if event.is_action("jump"): motion += transform.basis.y * jump_power
 
 func get_movement():
 	var movement : Vector3
-	if Input.is_action_pressed("move_forward"): movement.z -= 1
-	if Input.is_action_pressed("move_back"): movement.z += 1
-	if Input.is_action_pressed("move_left"): movement.x -= 1
-	if Input.is_action_pressed("move_right"): movement.x += 1
-	movement = movement.normalized()
-	if Input.is_action_pressed("sprint"): movement *= 2
+	#print(Input.get_joy_axis(1, JOY_ANALOG_RX), 0, Input.get_joy_axis(1, JOY_ANALOG_RY))
+	if Input.is_class("InputEventJoypadMotion"):
+		movement = Vector3(Input.get_joy_axis(-1, JOY_ANALOG_RX), 0, Input.get_joy_axis(-1, JOY_ANALOG_RY))
+	else:
+		if Input.is_key_pressed(KEY_W): movement.z -= 1
+		if Input.is_key_pressed(KEY_S): movement.z += 1
+		if Input.is_key_pressed(KEY_A): movement.x -= 1
+		if Input.is_key_pressed(KEY_D): movement.x += 1
+		movement = movement.normalized()
+		if Input.is_key_pressed(KEY_SHIFT): movement *= 2
 	if !is_on_floor(): movement /= 20
 	return movement
 

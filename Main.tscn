@@ -1,31 +1,373 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://textures/sketch/sketched_effect.shader" type="Shader" id=1]
-[ext_resource path="res://textures/sketch/pencil_shaded.jpg" type="Texture" id=2]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://splash.png" type="Texture" id=2]
+[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=3]
+[ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=4]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=6]
+[ext_resource path="res://object/Table.tscn" type="PackedScene" id=7]
+[ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=8]
+[ext_resource path="res://textures/normal/door_simple.jpg" type="Texture" id=9]
+[ext_resource path="res://object/door.tres" type="ArrayMesh" id=10]
+[ext_resource path="res://textures/8-bit/door.png" type="Texture" id=11]
+[ext_resource path="res://door/8-bit/green.tres" type="Material" id=12]
+[ext_resource path="res://interface/FadeSplash.tscn" type="PackedScene" id=13]
 
+[sub_resource type="DynamicFontData" id=14]
+font_path = "res://DroidSerif.ttf"
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/saturation = 1.0
-shader_param/shading = 1.0
-shader_param/shimmering = 5.0
-shader_param/shaded = ExtResource( 2 )
+[sub_resource type="DynamicFont" id=15]
+size = 36
+font_data = SubResource( 14 )
 
-[node name="Main" type="Spatial"]
+[sub_resource type="Animation" id=6]
+resource_name = "begin"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade/Splash:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( -2, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("./..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.48, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_scenes"
+}, {
+"args": [  ],
+"method": "load_lobby"
+} ]
+}
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-material = SubResource( 1 )
+[sub_resource type="GDScript" id=27]
+script/source = "extends Spatial
+"
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 16, 16, 1 )
+
+[sub_resource type="PlaneMesh" id=17]
+material = SubResource( 16 )
+size = Vector2( 32, 32 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 8, 8, 1 )
+
+[sub_resource type="PlaneMesh" id=19]
+material = SubResource( 18 )
+size = Vector2( 32, 32 )
+
+[sub_resource type="SpatialMaterial" id=20]
+resource_local_to_scene = true
+albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 32, 18, 1 )
+
+[sub_resource type="PlaneMesh" id=21]
+material = SubResource( 20 )
+size = Vector2( 32, 18 )
+
+[sub_resource type="SpatialMaterial" id=22]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.25098, 0.74902, 0.25098, 1 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.87451, 0.247059, 0.247059, 1 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.247059, 0.247059, 0.87451, 1 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 1, 0.498039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=24]
+resource_local_to_scene = true
+albedo_color = Color( 0, 0.5, 1, 1 )
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=25]
+resource_local_to_scene = true
+albedo_color = Color( 1, 0.5, 0, 1 )
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=26]
+resource_local_to_scene = true
+albedo_color = Color( 1, 0.9, 0, 1 )
+albedo_texture = ExtResource( 11 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.36035
-margin_right = 1.36035
+
+[node name="Begin" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -80.0
+margin_right = 80.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 15 )
+text = "Begin"
+
+[node name="Fade" type="ColorRect" parent="Control"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
-stretch = true
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
-[node name="PlayerViewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1024, 600 )
-handle_input_locally = false
-render_target_update_mode = 3
+[node name="Splash" type="TextureRect" parent="Control/Fade"]
+self_modulate = Color( 1, 1, 1, 1.1828e-09 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 4
 
-[node name="Player" parent="ViewportContainer/PlayerViewport" instance=ExtResource( 3 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+anims/begin = SubResource( 6 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 11, 0 )
+fov = 90.0
+script = SubResource( 27 )
+
+[node name="Floor" type="CSGMesh" parent="Spatial"]
+mesh = SubResource( 17 )
+
+[node name="Ceiling" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
+invert_faces = true
+mesh = SubResource( 19 )
+
+[node name="Lights" type="Spatial" parent="Spatial/Ceiling"]
+
+[node name="1" parent="Spatial/Ceiling/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -10 )
+
+[node name="2" parent="Spatial/Ceiling/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -10 )
+
+[node name="3" parent="Spatial/Ceiling/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 10 )
+
+[node name="4" parent="Spatial/Ceiling/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10 )
+
+[node name="FrontWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 9, -16 )
+mesh = SubResource( 21 )
+
+[node name="LeftWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -16, 9, 0 )
+mesh = SubResource( 21 )
+
+[node name="BackWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 9, 16 )
+mesh = SubResource( 21 )
+
+[node name="RightWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 16, 9, 0 )
+mesh = SubResource( 21 )
+
+[node name="Table" parent="Spatial" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
+
+[node name="TableTop" type="Spatial" parent="Spatial"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14, 3, 0 )
+
+[node name="TinyDoor" type="CSGMesh" parent="Spatial/TableTop"]
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 0, 0 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/TableTop/TinyDoor"]
+layers = 3
+material_override = SubResource( 22 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="GreenBlock" type="CSGBox" parent="Spatial/TableTop"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 1, 6 )
+layers = 3
+material = SubResource( 8 )
+
+[node name="RedBlock" type="CSGBox" parent="Spatial/TableTop"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -2, 1, 4 )
+layers = 3
+material = SubResource( 9 )
+
+[node name="BlueBlock" type="CSGBox" parent="Spatial/TableTop"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0.5, 1, 3.5 )
+layers = 3
+material = SubResource( 10 )
+
+[node name="OrangeBlock" type="CSGBox" parent="Spatial/TableTop"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.700005, 3, 4.6 )
+layers = 3
+material = SubResource( 11 )
+
+[node name="ToTable" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/ToTable"]
+layers = 3
+material_override = SubResource( 23 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Blue" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Blue"]
+layers = 3
+material_override = SubResource( 24 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Blue2" type="CSGMesh" parent="Spatial"]
+transform = Transform( -0.866025, 0, -0.5, 0, -1, 0, -0.5, 0, 0.866025, 0, 18, 14 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Blue2"]
+layers = 3
+material_override = SubResource( 24 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Orange" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Orange"]
+layers = 3
+material_override = SubResource( 25 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Orange2" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 9, -16 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Orange2"]
+layers = 3
+material_override = SubResource( 25 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Yellow" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 12, 16 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Yellow"]
+layers = 3
+material_override = SubResource( 26 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Yellow2" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, -1, 0, 0.707107, 0, 0.707107, -0.707107, 0, 0.707107, 16, 16, 14 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Yellow2"]
+layers = 3
+material_override = SubResource( 26 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Green" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, -1, 0, 0.707107, 0, -0.707107, 0.707107, 0, 0.707107, 16, 16, -14 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Green"]
+layers = 3
+material_override = ExtResource( 12 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Green2" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 7, 18, -16 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 8 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/Green2"]
+layers = 3
+material_override = ExtResource( 12 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Fade" parent="." instance=ExtResource( 13 )]
+[connection signal="pressed" from="Control/Begin" to="." method="_on_Begin_pressed"]

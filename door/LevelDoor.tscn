@@ -3,7 +3,7 @@
 [ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=2]
 [ext_resource path="res://door/level_door.gd" type="Script" id=3]
-[ext_resource path="res://boot_splash.png" type="Texture" id=4]
+[ext_resource path="res://splash.png" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
@@ -58,14 +58,14 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "add_fade_splash"
+"method": "load_fade_splash"
 }, {
 "args": [  ],
 "method": "load_level"
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("FadeBlack:modulate")
+tracks/4/path = NodePath("Fade:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -77,7 +77,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("FadeBlack/Splash:modulate")
+tracks/5/path = NodePath("Fade/Splash:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -93,14 +93,14 @@ tracks/5/keys = {
 material_override = SubResource( 1 )
 script = ExtResource( 3 )
 
-[node name="FadeBlack" type="ColorRect" parent="." index="4"]
+[node name="Fade" type="ColorRect" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
-[node name="Splash" type="TextureRect" parent="FadeBlack" index="0"]
+[node name="Splash" type="TextureRect" parent="Fade" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0

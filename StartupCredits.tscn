@@ -1,0 +1,293 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://startup_cinematic.gd" type="Script" id=1]
+[ext_resource path="res://textures/normal/stone_bricks.jpg" type="Texture" id=2]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=4]
+[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://door/normal/classic.tres" type="Material" id=7]
+[ext_resource path="res://object/door.tres" type="ArrayMesh" id=8]
+[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=9]
+[ext_resource path="res://splash.png" type="Texture" id=10]
+[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=11]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 23
+load_path = "res://.import/stone_tiles.jpg-3e9bf90b060404f2308641f6bcfb6377.s3tc.stex"
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = SubResource( 1 )
+uv1_scale = Vector3( 5, 10, 1 )
+
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 2 )
+size = Vector2( 20, 40 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 5, 10, 1 )
+
+[sub_resource type="PlaneMesh" id=5]
+material = SubResource( 4 )
+size = Vector2( 20, 40 )
+
+[sub_resource type="SpatialMaterial" id=6]
+resource_local_to_scene = true
+albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 16, 12, 1 )
+
+[sub_resource type="PlaneMesh" id=7]
+material = SubResource( 6 )
+size = Vector2( 20, 12 )
+
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 6 )
+size = Vector2( 40, 12 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "cinematic"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 5.5, 8 ),
+"transitions": PoolRealArray( -2, 4, 0 ),
+"update": 0,
+"values": [ Vector3( 0, 5, 0 ), Vector3( 0, 5, -25 ), Vector3( 0, 5, -35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/DoorFrame/Door:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 6, 8 ),
+"transitions": PoolRealArray( -2, 0.5, 16, 0 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("Spatial/DoorFrame/Door/Sounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0, 7 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "closing"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade/Splash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_main"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "opening"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 4 ),
+"transitions": PoolRealArray( -2, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade/Splash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "cinematic"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "closing"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "opening"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+states/cinematic/node = SubResource( 12 )
+states/cinematic/position = Vector2( 379, 97 )
+states/closing/node = SubResource( 13 )
+states/closing/position = Vector2( 559, 97 )
+states/opening/node = SubResource( 14 )
+states/opening/position = Vector2( 182, 97 )
+transitions = [ "opening", "cinematic", SubResource( 15 ), "cinematic", "closing", SubResource( 16 ) ]
+start_node = "opening"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[node name="StartupCredits" type="Node"]
+script = ExtResource( 1 )
+door = NodePath("Spatial/DoorFrame/Door")
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Floor" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
+mesh = SubResource( 3 )
+
+[node name="Ceiling" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -20 )
+invert_faces = true
+mesh = SubResource( 5 )
+
+[node name="Lights" type="Spatial" parent="Spatial/Ceiling"]
+
+[node name="1" parent="Spatial/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -10 )
+
+[node name="2" parent="Spatial/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -10 )
+
+[node name="3" parent="Spatial/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 10 )
+
+[node name="4" parent="Spatial/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, 10 )
+
+[node name="FrontWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 6, -40 )
+mesh = SubResource( 7 )
+
+[node name="Hole" parent="Spatial/FrontWall" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5 )
+
+[node name="LeftWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -10, 6, -20 )
+mesh = SubResource( 8 )
+
+[node name="RightWall" type="CSGMesh" parent="Spatial"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 6, -20 )
+mesh = SubResource( 8 )
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+keep_aspect = 0
+fov = 110.0
+
+[node name="DoorFrame" type="CSGMesh" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
+layers = 3
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 6 )
+
+[node name="Door" type="MeshInstance" parent="Spatial/DoorFrame"]
+layers = 3
+material_override = ExtResource( 7 )
+mesh = ExtResource( 8 )
+material/0 = null
+
+[node name="Sounds" type="AudioStreamPlayer3D" parent="Spatial/DoorFrame/Door"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
+stream = ExtResource( 9 )
+attenuation_filter_cutoff_hz = 18000.0
+
+[node name="CinematicBar1" type="ColorRect" parent="Spatial"]
+anchor_right = 1.0
+anchor_bottom = 0.15
+color = Color( 0, 0, 0, 1 )
+
+[node name="CinematicBar2" type="ColorRect" parent="Spatial"]
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="Splash" type="TextureRect" parent="Fade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cinematic = SubResource( 9 )
+anims/closing = SubResource( 10 )
+anims/opening = SubResource( 11 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 17 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 18 )
