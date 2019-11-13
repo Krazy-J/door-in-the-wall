@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="A Door in the Wall"
-run/main_scene="res://StartupCredits.tscn"
+run/main_scene="res://StartupCinematic.tscn"
 boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.101961, 0.101961, 0.101961, 1 )
