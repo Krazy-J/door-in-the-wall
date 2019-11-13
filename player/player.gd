@@ -12,12 +12,10 @@ var motion : Vector3
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	print(JOY_ANALOG_LX, JOY_ANALOG_LY, JOY_ANALOG_RX, JOY_ANALOG_RY, JOY_ANALOG_L2, JOY_ANALOG_R2)
-	print(JOY_L, JOY_R, JOY_L2, JOY_R2, JOY_L3, JOY_R3)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)

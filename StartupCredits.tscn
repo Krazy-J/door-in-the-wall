@@ -10,7 +10,14 @@
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=8]
 [ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=9]
 [ext_resource path="res://splash.png" type="Texture" id=10]
-[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=11]
+[ext_resource path="res://fonts/DroidSerif-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://logo/base.png" type="Texture" id=12]
+[ext_resource path="res://logo/shard1.png" type="Texture" id=13]
+[ext_resource path="res://logo/shard2.png" type="Texture" id=14]
+[ext_resource path="res://logo/shard3.png" type="Texture" id=15]
+[ext_resource path="res://logo/glitch.wav" type="AudioStream" id=16]
+[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=17]
+[ext_resource path="res://logo/glass_shatter_tshang.wav" type="AudioStream" id=18]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 23
@@ -46,9 +53,12 @@ size = Vector2( 20, 12 )
 material = SubResource( 6 )
 size = Vector2( 40, 12 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "cinematic"
-length = 8.0
+[sub_resource type="DynamicFont" id=9]
+size = 48
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=10]
+length = 8.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spatial/Camera:translation")
 tracks/0/interp = 1
@@ -83,7 +93,7 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 11 )
+"stream": ExtResource( 17 )
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -91,9 +101,22 @@ tracks/2/keys = {
 } ],
 "times": PoolRealArray( 0, 7 )
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Fade:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=10]
-resource_name = "closing"
+[sub_resource type="Animation" id=11]
+resource_name = "opening"
+length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:modulate")
 tracks/0/interp = 1
@@ -101,10 +124,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0 ),
+"times": PoolRealArray( 7, 8 ),
+"transitions": PoolRealArray( -2, 0 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Fade/Splash:modulate")
@@ -113,88 +136,115 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0 ),
+"times": PoolRealArray( 0, 1, 8 ),
+"transitions": PoolRealArray( -2, 0, 0 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fade/Logo:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "load_main"
-} ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "opening"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fade:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 1.5, 4 ),
-"transitions": PoolRealArray( -2, 0 ),
+"times": PoolRealArray( 1.5, 2.5, 4, 4.1, 4.4, 4.6, 4.9, 5, 5.2, 6.5 ),
+"transitions": PoolRealArray( -2, 0, 0, 0, 0, 0, 0, 1, -2, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fade/Splash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( -2, 0 ),
+tracks/3/type = "value"
+tracks/3/path = NodePath("Fade/Logo/Base/Shard1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 40, 200 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Fade/Logo/Base/Shard1:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ 0.0, -20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Fade/Logo/Base/Shard2:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 100, 10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Fade/Logo/Base/Shard3:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 80, -30 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Fade/Logo/Base/Shard3:rect_rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("Fade/Logo/Sound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 16 )
+} ],
+"times": PoolRealArray( 3, 4 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "cinematic"
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "closing"
-
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "opening"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=17]
-states/cinematic/node = SubResource( 12 )
-states/cinematic/position = Vector2( 379, 97 )
-states/closing/node = SubResource( 13 )
-states/closing/position = Vector2( 559, 97 )
-states/opening/node = SubResource( 14 )
-states/opening/position = Vector2( 182, 97 )
-transitions = [ "opening", "cinematic", SubResource( 15 ), "cinematic", "closing", SubResource( 16 ) ]
-start_node = "opening"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
-
-[node name="StartupCredits" type="Node"]
+[node name="StartupCredits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 door = NodePath("Spatial/DoorFrame/Door")
 
 [node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+keep_aspect = 0
+current = true
+fov = 110.0
 
 [node name="Floor" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
@@ -235,11 +285,6 @@ mesh = SubResource( 8 )
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 6, -20 )
 mesh = SubResource( 8 )
 
-[node name="Camera" type="Camera" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
-keep_aspect = 0
-fov = 110.0
-
 [node name="DoorFrame" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
 layers = 3
@@ -258,21 +303,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 stream = ExtResource( 9 )
 attenuation_filter_cutoff_hz = 18000.0
 
-[node name="CinematicBar1" type="ColorRect" parent="Spatial"]
+[node name="CinematicBar1" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.15
 color = Color( 0, 0, 0, 1 )
 
-[node name="CinematicBar2" type="ColorRect" parent="Spatial"]
+[node name="CinematicBar2" type="ColorRect" parent="."]
 anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="Skip" type="Label" parent="CinematicBar2"]
+anchor_top = 0.5
+anchor_bottom = 1.0
+text = "Click to skip"
+valign = 2
+
 [node name="Fade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
 [node name="Splash" type="TextureRect" parent="Fade"]
@@ -281,13 +331,53 @@ anchor_bottom = 1.0
 texture = ExtResource( 10 )
 stretch_mode = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 9 )
-anims/closing = SubResource( 10 )
-anims/opening = SubResource( 11 )
+[node name="Logo" type="Control" parent="Fade"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 17 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 18 )
+[node name="Name" type="Label" parent="Fade/Logo"]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "ShatteredScreen
+Games"
+align = 1
+valign = 2
+
+[node name="Base" type="TextureRect" parent="Fade/Logo"]
+anchor_right = 1.0
+anchor_bottom = 0.8
+texture = ExtResource( 12 )
+stretch_mode = 4
+
+[node name="Shard1" type="TextureRect" parent="Fade/Logo/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+texture = ExtResource( 13 )
+stretch_mode = 4
+
+[node name="Shard2" type="TextureRect" parent="Fade/Logo/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.00146484
+texture = ExtResource( 14 )
+stretch_mode = 4
+
+[node name="Shard3" type="TextureRect" parent="Fade/Logo/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.00140381
+texture = ExtResource( 15 )
+stretch_mode = 4
+
+[node name="Sound" type="AudioStreamPlayer" parent="Fade/Logo"]
+stream = ExtResource( 16 )
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cinematic = SubResource( 10 )
+anims/opening = SubResource( 11 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
