@@ -1,6 +1,6 @@
 extends Spatial
 
-const MIPMAP_LEVEL = 0
+const MIPMAP_LEVEL = 1
 var entering_areas = {}
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
@@ -12,24 +12,25 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
+	var old_scale = body.scale
 	body.global_transform = global_transform.affine_inverse() * body.global_transform
 	body.global_transform = exit_door.global_transform * body.global_transform
+	var relative_scale = body.scale.y / old_scale.y
 	if body.name == "Player":
 		body.motion = global_transform.basis.inverse() * body.motion
 		body.motion = exit_door.global_transform.basis * body.motion
 		if body.carrying:
-			var body_carried = get_node(body.carrying)
-			if body_carried.has_node("Door"):
-				body_carried.global_transform = global_transform.affine_inverse() * body_carried.global_transform
-				body_carried.global_transform = exit_door.global_transform * body_carried.global_transform
+			var carried_body = get_node(body.carrying)
+			if carried_body.has_node("Door"):
+				carried_body.global_transform = global_transform.affine_inverse() * carried_body.global_transform
+				carried_body.global_transform = exit_door.global_transform * carried_body.global_transform
 			else:
-				for child in body_carried.get_children():
-					child.global_transform.basis = global_transform.affine_inverse().basis * child.global_transform.basis
-					child.global_transform.basis = exit_door.global_transform.basis * child.global_transform.basis
+				body.carry_distance *= relative_scale
+				for child in carried_body.get_children():
+					child.scale *= relative_scale
 					if child.name == "CollisionShape":
-						body_carried.gravity_scale = child.scale.x
-						body_carried.mass = child.scale.x
 						child.shape = child.shape
+						carried_body.mass *= relative_scale
 
 func place_camera():
 	$Viewport.size = $"/root".size / pow(2, MIPMAP_LEVEL)

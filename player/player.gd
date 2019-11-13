@@ -7,6 +7,7 @@ export var surface_friction = .2
 export var gravity = 80
 export var look_sensitivity = .003 # radians/pixel
 export var carrying : NodePath
+export var carry_distance : float
 var motion : Vector3
 
 func _ready():
@@ -60,11 +61,11 @@ func _physics_process(delta):
 			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
 			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
 		else:
-			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z * 3 - body.global_transform.origin) * 500 * delta
+			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
 			body.angular_velocity = -body.rotation_degrees * 20 * delta
 	motion += transform.basis * get_movement() * speed * delta
 	if is_on_floor():
 		motion *= (1 - surface_friction)
 	motion *= (1 - air_resistance)
-	motion -= transform.basis.y * gravity * delta
-	motion = move_and_slide(motion, transform.basis.y.normalized())
+	motion -= global_transform.basis.y * gravity * delta
+	motion = move_and_slide(motion, global_transform.basis.y.normalized())
