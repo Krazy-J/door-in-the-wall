@@ -11,9 +11,9 @@
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=9]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=10]
 [ext_resource path="res://door/8-bit/green.tres" type="Material" id=11]
-[ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=12]
-[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://fonts/LiberationSerif-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://fonts/LiberationSerif-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=13]
+[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -80,16 +80,16 @@ resource_local_to_scene = true
 albedo_color = Color( 1, 0.9, 0, 1 )
 albedo_texture = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=19]
-size = 60
-font_data = ExtResource( 13 )
-
 [sub_resource type="DynamicFont" id=17]
 size = 36
 use_mipmaps = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 60
 font_data = ExtResource( 14 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:self_modulate")
@@ -340,6 +340,17 @@ material_override = ExtResource( 11 )
 mesh = ExtResource( 9 )
 material/0 = null
 
+[node name="Begin" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -80.0
+margin_right = 80.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 17 )
+text = "Begin"
+
 [node name="Fade" type="ColorRect" parent="."]
 editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
@@ -361,28 +372,17 @@ margin_top = 12.0
 margin_right = 1024.0
 margin_bottom = 513.0
 mouse_filter = 2
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 stretch_mode = 4
 
 [node name="Name" type="Label" parent="Fade/Splash"]
 margin_top = 517.0
 margin_right = 1024.0
 margin_bottom = 588.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 18 )
 text = "A Door in the Wall"
 align = 1
 
-[node name="Begin" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-margin_left = -80.0
-margin_right = 80.0
-margin_bottom = 49.0
-custom_fonts/font = SubResource( 17 )
-text = "Begin"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/begin = SubResource( 18 )
+anims/begin = SubResource( 19 )
 [connection signal="pressed" from="Begin" to="." method="_on_Begin_pressed"]
