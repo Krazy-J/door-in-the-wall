@@ -1,7 +1,7 @@
 extends Node
 
 func _on_Begin_pressed():
-	$Control/AnimationPlayer.play("begin")
+	$AnimationPlayer.play("begin")
 
 func load_scenes():
 	$"/root".call_deferred("add_child", load("res://player/Player.tscn").instance())

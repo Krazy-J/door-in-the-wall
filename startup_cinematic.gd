@@ -16,7 +16,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "opening":
 		$AnimationPlayer.play("cinematic")
 	else:
-		get_tree().change_scene("res://Main.tscn")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://Main.tscn")
 
-func _process(delta): get_node(door).transform.origin = Vector3(1.5, 3.25, -.125) - Vector3(1.5, 3.25, -.125).rotated(get_node(door).transform.basis.y, get_node(door).rotation_degrees.y / 180 * PI)
+func _process(delta):
+	get_node(door).transform.origin = Vector3(1.5, 3.25, -.125) - Vector3(1.5, 3.25, -.125).rotated(get_node(door).transform.basis.y, get_node(door).rotation_degrees.y / 180 * PI)
+	if $AnimationPlayer.current_animation == "cinematic" and $AnimationPlayer.current_animation_position >= 9.48 and !$"/root".has_node("FadeSplash"):
+		$"/root".call_deferred("add_child", load("res://interface/FadeSplash.tscn").instance())

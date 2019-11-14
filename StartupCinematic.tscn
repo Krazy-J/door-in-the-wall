@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://startup_cinematic.gd" type="Script" id=1]
 [ext_resource path="res://textures/normal/stone_bricks.jpg" type="Texture" id=2]
@@ -8,17 +8,20 @@
 [ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://door/normal/classic.tres" type="Material" id=7]
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=8]
-[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=9]
+[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=9]
 [ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=10]
 [ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://logo/base.png" type="Texture" id=12]
 [ext_resource path="res://logo/shard1.png" type="Texture" id=13]
 [ext_resource path="res://logo/shard2.png" type="Texture" id=14]
 [ext_resource path="res://logo/shard3.png" type="Texture" id=15]
-[ext_resource path="res://fonts/DroidSerif-Bold.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://logo/glitch.wav" type="AudioStream" id=17]
-[ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=18]
-[ext_resource path="res://logo/shatter.wav" type="AudioStream" id=19]
+[ext_resource path="res://logo/shard4.png" type="Texture" id=16]
+[ext_resource path="res://logo/shard5.png" type="Texture" id=17]
+[ext_resource path="res://logo/shard6.png" type="Texture" id=18]
+[ext_resource path="res://fonts/DroidSerif-Bold.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://logo/glitch.wav" type="AudioStream" id=20]
+[ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=21]
+[ext_resource path="res://logo/shatter.wav" type="AudioStream" id=22]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 23
@@ -54,19 +57,19 @@ size = Vector2( 20, 12 )
 material = SubResource( 6 )
 size = Vector2( 40, 12 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 64
+[sub_resource type="DynamicFont" id=9]
+size = 60
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 size = 48
-font_data = ExtResource( 16 )
+font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=12]
-font_data = ExtResource( 16 )
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=10]
-length = 9.0
+[sub_resource type="Animation" id=12]
+length = 9.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spatial/Camera:translation")
 tracks/0/interp = 1
@@ -101,11 +104,11 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 18 )
+"stream": ExtResource( 9 )
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 9 )
+"stream": ExtResource( 21 )
 } ],
 "times": PoolRealArray( 0, 7 )
 }
@@ -128,7 +131,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 8.5, 9 ),
+"times": PoolRealArray( 8.5, 9.5 ),
 "transitions": PoolRealArray( -2, 0 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -145,9 +148,19 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
 
-[sub_resource type="Animation" id=11]
-resource_name = "opening"
+[sub_resource type="Animation" id=13]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:modulate")
@@ -207,10 +220,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 3, 6 ),
 "transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ Vector2( 418, 49 ), Vector2( 480, 20 ) ]
+"values": [ Vector2( 418, 34 ), Vector2( 460, 40 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Fade/Logo/Monitor/Base/Shard2:rect_position")
+tracks/5/path = NodePath("Fade/Logo/Monitor/Base/Shard1:rect_rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -219,10 +232,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 3, 6 ),
 "transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ Vector2( 418, 114 ), Vector2( 520, 80 ) ]
+"values": [ 0.0, -50.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Fade/Logo/Monitor/Base/Shard3:rect_rotation")
+tracks/6/path = NodePath("Fade/Logo/Monitor/Base/Shard2:rect_position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -231,28 +244,22 @@ tracks/6/keys = {
 "times": PoolRealArray( 3, 6 ),
 "transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ 0.0, 60.0 ]
+"values": [ Vector2( 418, 57 ), Vector2( 500, 70 ) ]
 }
-tracks/7/type = "audio"
-tracks/7/path = NodePath("Fade/Logo/Sound")
+tracks/7/type = "value"
+tracks/7/path = NodePath("Fade/Logo/Monitor/Base/Shard2:rect_rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 19 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 17 )
-} ],
-"times": PoolRealArray( 3, 4 )
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ 0.0, -30.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Fade/Logo/Monitor/Base/Shard2:rect_rotation")
+tracks/8/path = NodePath("Fade/Logo/Monitor/Base/Shard3:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -261,34 +268,34 @@ tracks/8/keys = {
 "times": PoolRealArray( 3, 6 ),
 "transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ 0.0, 15.0 ]
+"values": [ Vector2( 418, 115 ), Vector2( 540, 130 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Fade/Logo/Monitor/Base/Shard3:rect_position")
+tracks/9/path = NodePath("Fade/Logo/Monitor/Base/Shard3:rect_rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
 "times": PoolRealArray( 3, 6 ),
-"transitions": PoolRealArray( 0.25, 1 ),
+"transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ Vector2( 418, 176 ), Vector2( 500, 170 ) ]
+"values": [ 0.0, 20.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Skip:visible")
+tracks/10/path = NodePath("Fade/Logo/Monitor/Base/Shard4:rect_position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0, 0 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ Vector2( 418, 177 ), Vector2( 560, 200 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Fade/Logo/Monitor/Base/Shard1:rect_rotation")
+tracks/11/path = NodePath("Fade/Logo/Monitor/Base/Shard4:rect_rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -297,12 +304,88 @@ tracks/11/keys = {
 "times": PoolRealArray( 3, 6 ),
 "transitions": PoolRealArray( 0.25, 0 ),
 "update": 0,
-"values": [ 0.0, -40.0 ]
+"values": [ 0.0, 40.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Fade/Logo/Monitor/Base/Shard5:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ Vector2( 417, 241 ), Vector2( 500, 290 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Fade/Logo/Monitor/Base/Shard5:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ 0.0, 30.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Fade/Logo/Monitor/Base/Shard6:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ Vector2( 385, 282 ), Vector2( 420, 300 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Fade/Logo/Monitor/Base/Shard6:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 0.25, 0 ),
+"update": 0,
+"values": [ 0.0, 30.0 ]
+}
+tracks/16/type = "audio"
+tracks/16/path = NodePath("Fade/Logo/Sound")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 22 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 3, 4 )
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Skip:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 1,
+"values": [ false, true ]
 }
 
-[node name="StartupCredits" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="StartupCredits" type="Node"]
 script = ExtResource( 1 )
 door = NodePath("Spatial/DoorFrame/Door")
 
@@ -397,17 +480,17 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Door" type="TextureRect" parent="Fade/Splash"]
-margin_top = 9.0
+margin_top = 12.0
 margin_right = 1024.0
-margin_bottom = 510.0
+margin_bottom = 513.0
 texture = ExtResource( 10 )
 stretch_mode = 4
 
 [node name="Name" type="Label" parent="Fade/Splash"]
-margin_top = 514.0
+margin_top = 517.0
 margin_right = 1024.0
-margin_bottom = 590.0
-custom_fonts/font = SubResource( 13 )
+margin_bottom = 588.0
+custom_fonts/font = SubResource( 9 )
 text = "A Door in the Wall"
 align = 1
 
@@ -418,24 +501,23 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Monitor" type="CenterContainer" parent="Fade/Logo"]
-editor/display_folded = true
 margin_top = 35.0
 margin_right = 1024.0
 margin_bottom = 421.0
 
 [node name="Base" type="TextureRect" parent="Fade/Logo/Monitor"]
-margin_left = 286.0
+margin_left = 287.0
 margin_right = 737.0
 margin_bottom = 386.0
 texture = ExtResource( 12 )
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="Shard1" type="TextureRect" parent="Fade/Logo/Monitor/Base"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 418.0
-margin_top = 49.0
-margin_bottom = -257.0
+margin_top = 34.0
+margin_bottom = -313.0
 texture = ExtResource( 13 )
 stretch_mode = 3
 
@@ -443,9 +525,9 @@ stretch_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 418.0
-margin_top = 114.0
-margin_right = 9.15527e-005
-margin_bottom = -191.0
+margin_top = 57.0
+margin_right = 0.000152588
+margin_bottom = -257.998
 texture = ExtResource( 14 )
 stretch_mode = 3
 
@@ -453,17 +535,47 @@ stretch_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 418.0
-margin_top = 176.0
-margin_right = 3.05176e-005
-margin_bottom = -131.0
+margin_top = 115.0
+margin_right = 0.000274658
+margin_bottom = -190.999
 texture = ExtResource( 15 )
+stretch_mode = 3
+
+[node name="Shard4" type="TextureRect" parent="Fade/Logo/Monitor/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 418.0
+margin_top = 177.0
+margin_right = 6.10352e-05
+margin_bottom = -131.0
+texture = ExtResource( 16 )
+stretch_mode = 3
+
+[node name="Shard5" type="TextureRect" parent="Fade/Logo/Monitor/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 417.0
+margin_top = 241.0
+margin_right = 0.00109863
+margin_bottom = -73.0
+texture = ExtResource( 17 )
+stretch_mode = 3
+
+[node name="Shard6" type="TextureRect" parent="Fade/Logo/Monitor/Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 385.0
+margin_top = 282.0
+margin_right = -9.0
+margin_bottom = -64.0
+texture = ExtResource( 18 )
 stretch_mode = 3
 
 [node name="Name" type="Label" parent="Fade/Logo"]
 margin_top = 425.0
 margin_right = 1024.0
 margin_bottom = 542.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "ShatteredScreen
 Games"
 align = 1
@@ -472,12 +584,12 @@ align = 1
 margin_top = 546.0
 margin_right = 1024.0
 margin_bottom = 565.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 11 )
 text = "Unregistered"
 align = 1
 
 [node name="Sound" type="AudioStreamPlayer" parent="Fade/Logo"]
-stream = ExtResource( 17 )
+stream = ExtResource( 20 )
 volume_db = -20.0
 
 [node name="Skip" type="Label" parent="."]
@@ -488,6 +600,6 @@ text = "Click to skip"
 valign = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 10 )
-anims/opening = SubResource( 11 )
+anims/cinematic = SubResource( 12 )
+anims/opening = SubResource( 13 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

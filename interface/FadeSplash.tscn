@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://splash.png" type="Texture" id=1]
+[ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=1]
+[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="Animation" id=8]
-resource_name = "fade_in"
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -18,7 +22,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Splash:self_modulate")
+tracks/1/path = NodePath("Splash:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -56,8 +60,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -98,7 +101,7 @@ tracks/2/keys = {
 } ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Splash:self_modulate")
+tracks/3/path = NodePath("Splash:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -110,38 +113,52 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "fade_in"
 
-[sub_resource type="AnimationNodeStateMachine" id=11]
-states/fade_in/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/fade_in/node = SubResource( 4 )
 states/fade_in/position = Vector2( 527, 138 )
 start_node = "fade_in"
 end_node = "fade_in"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
 [node name="Fade" type="ColorRect"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
-[node name="Splash" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="Splash" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Door" type="TextureRect" parent="Splash"]
+margin_top = 12.0
+margin_right = 1024.0
+margin_bottom = 513.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 stretch_mode = 4
 
+[node name="Name" type="Label" parent="Splash"]
+margin_top = 517.0
+margin_right = 1024.0
+margin_bottom = 588.0
+custom_fonts/font = SubResource( 1 )
+text = "A Door in the Wall"
+align = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 8 )
-anims/fade_out = SubResource( 9 )
+anims/fade_in = SubResource( 2 )
+anims/fade_out = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 7 )
+parameters/playback = SubResource( 6 )

@@ -202,7 +202,7 @@ transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.700005, 3, 4.6 )
 
 [node name="LobbyDoor" parent="TableTopRoom" instance=ExtResource( 16 )]
-transform = Transform( -4.37114e-008, -0.34202, 0.939692, 0, 0.939693, 0.34202, -1, 1.49502e-008, -4.10752e-008, -13.32, 0.1, 7 )
+transform = Transform( -4.37114e-08, -0.34202, 0.939692, 0, 0.939693, 0.34202, -1, 1.49502e-08, -4.10752e-08, -13.32, 0.1, 7 )
 
 [node name="ToTable" parent="TableTopRoom" instance=ExtResource( 2 )]
 editor/display_folded = true
@@ -277,7 +277,7 @@ exit_door = NodePath("../Green")
 material_override = ExtResource( 20 )
 
 [node name="RedDoor" parent="TableTopRoom" instance=ExtResource( 21 )]
-transform = Transform( 8.74228e-008, 1, -7.57104e-008, 0.866026, -3.78552e-008, 0.5, 0.5, -1.09278e-007, -0.866026, 0, 1.36, 15.14 )
+transform = Transform( 8.74228e-08, 1, -7.57104e-08, 0.866026, -3.78552e-08, 0.5, 0.5, -1.09278e-07, -0.866026, 0, 1.36, 15.14 )
 
 [node name="Door" parent="TableTopRoom/RedDoor" instance=ExtResource( 22 )]
 material_override = ExtResource( 4 )
