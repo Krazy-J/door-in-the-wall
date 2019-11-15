@@ -12,6 +12,7 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
+	if !body.name == "Spatial": print(body)
 	var old_scale = body.scale
 	body.global_transform = global_transform.affine_inverse() * body.global_transform
 	body.global_transform = exit_door.global_transform * body.global_transform
@@ -39,28 +40,25 @@ func place_camera():
 	teleport($Viewport/Spatial)
 
 func _on_EnterFront_area_entered(area):
-	if area.name == "TeleportArea":
-		if !entering_areas.has(area):
-			if area.get_parent().name == "Player": $EnterFront.visible = false
-			entering_areas[area] = "front"
-		elif entering_areas[area] == "back":
-			if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterFront").visible = false
-			teleport(area.get_parent())
+	if !entering_areas.has(area):
+		if area.get_parent().name == "Player": $EnterFront.visible = false
+		entering_areas[area] = "front"
+	elif entering_areas[area] == "back":
+		if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterFront").visible = false
+		teleport(area.get_parent())
 
 func _on_EnterBack_area_entered(area):
-	if area.name == "TeleportArea":
-		if !entering_areas.has(area):
-			if area.get_parent().name == "Player": $EnterBack.visible = false
-			entering_areas[area] = "back"
-		elif entering_areas[area] == "front":
-			if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterBack").visible = false
-			teleport(area.get_parent())
+	if !entering_areas.has(area):
+		if area.get_parent().name == "Player": $EnterBack.visible = false
+		entering_areas[area] = "back"
+	elif entering_areas[area] == "front":
+		if area.get_parent().name == "Player": exit_door.get_node("Connection/EnterBack").visible = false
+		teleport(area.get_parent())
 
 func _on_Middle_area_exited(area):
-	if area.name == "TeleportArea":
-		entering_areas.erase(area)
-		$EnterFront.visible = true
-		$EnterBack.visible = true
+	entering_areas.erase(area)
+	$EnterFront.visible = true
+	$EnterBack.visible = true
 
 func _process(delta):
 	place_camera()

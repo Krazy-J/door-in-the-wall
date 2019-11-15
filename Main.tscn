@@ -191,6 +191,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14, 3, 0 )
 
 [node name="TinyDoor" type="CSGMesh" parent="Spatial/TableTop"]
+editor/display_folded = true
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 0, 0 )
 layers = 3
 collision_layer = 3
@@ -224,6 +225,7 @@ layers = 3
 material = SubResource( 12 )
 
 [node name="ToTable" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
 layers = 3
 collision_layer = 3
@@ -237,6 +239,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Blue" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 layers = 3
 collision_layer = 3
@@ -250,6 +253,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Blue2" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( -0.866025, 0, -0.5, 0, -1, 0, -0.5, 0, 0.866025, 0, 18, 14 )
 layers = 3
 collision_layer = 3
@@ -263,6 +267,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Orange" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16 )
 layers = 3
 collision_layer = 3
@@ -276,6 +281,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Orange2" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 9, -16 )
 layers = 3
 collision_layer = 3
@@ -289,6 +295,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Yellow" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 12, 16 )
 layers = 3
 collision_layer = 3
@@ -302,6 +309,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Yellow2" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0, -1, 0, 0.707107, 0, 0.707107, -0.707107, 0, 0.707107, 16, 16, 14 )
 layers = 3
 collision_layer = 3
@@ -315,6 +323,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Green" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0, -1, 0, 0.707107, 0, -0.707107, 0.707107, 0, 0.707107, 16, 16, -14 )
 layers = 3
 collision_layer = 3
@@ -328,6 +337,7 @@ mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Green2" type="CSGMesh" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 7, 18, -16 )
 layers = 3
 collision_layer = 3
@@ -352,7 +362,6 @@ custom_fonts/font = SubResource( 17 )
 text = "Begin"
 
 [node name="Fade" type="ColorRect" parent="."]
-editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -360,7 +369,6 @@ mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
 [node name="Splash" type="VBoxContainer" parent="Fade"]
-editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0

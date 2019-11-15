@@ -2,7 +2,7 @@
 
 [ext_resource path="res://door/8-bit/white.tres" type="Material" id=1]
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://interact/interact.gd" type="Script" id=3]
+[ext_resource path="res://interact/Interact.tscn" type="PackedScene" id=3]
 [ext_resource path="res://interact/yellow.tres" type="Material" id=4]
 
 [sub_resource type="BoxShape" id=1]
@@ -30,21 +30,20 @@ material/0 = null
 
 [node name="Collision" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
+collision_layer = 5
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Collision"]
 shape = SubResource( 1 )
 
-[node name="Interact" type="Area" parent="."]
-visible = false
-script = ExtResource( 3 )
+[node name="Interact" parent="." instance=ExtResource( 3 )]
 
-[node name="CollisionShape" type="CollisionShape" parent="Interact"]
+[node name="CollisionShape" parent="Interact" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 shape = SubResource( 1 )
 
-[node name="Outline" type="MeshInstance" parent="Interact"]
+[node name="Outline" parent="Interact" index="1"]
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="SoundOpen" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
@@ -55,5 +54,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 attenuation_filter_cutoff_hz = 18000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-[connection signal="area_entered" from="Interact" to="Interact" method="_on_Interact_area_entered"]
-[connection signal="area_exited" from="Interact" to="Interact" method="_on_Interact_area_exited"]
+
+[editable path="Interact"]

@@ -497,6 +497,7 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Monitor" type="CenterContainer" parent="Fade/Logo"]
+editor/display_folded = true
 margin_top = 35.0
 margin_right = 1024.0
 margin_bottom = 421.0

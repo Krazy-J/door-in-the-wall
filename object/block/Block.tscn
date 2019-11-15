@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://object/block/block.gd" type="Script" id=1]
-[ext_resource path="res://interact/interact.gd" type="Script" id=2]
+[ext_resource path="res://interact/Interact.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interact/yellow.tres" type="Material" id=3]
+[ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -14,17 +15,14 @@ absorbent = true
 [sub_resource type="SpatialMaterial" id=3]
 resource_local_to_scene = true
 
-[sub_resource type="SphereShape" id=4]
-margin = 0.001
-
 [sub_resource type="CubeMesh" id=5]
 material = ExtResource( 3 )
 flip_faces = true
 size = Vector3( 2.05, 2.05, 2.05 )
 
 [node name="Block" type="RigidBody"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 5
+collision_mask = 4
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
 
@@ -35,21 +33,14 @@ shape = SubResource( 2 )
 layers = 3
 material = SubResource( 3 )
 
-[node name="Interact" type="Area" parent="."]
-visible = false
-script = ExtResource( 2 )
+[node name="Interact" parent="." instance=ExtResource( 2 )]
 
-[node name="CollisionShape" type="CollisionShape" parent="Interact"]
-shape = SubResource( 4 )
+[node name="CollisionShape" parent="Interact" index="0"]
+shape = SubResource( 2 )
 
-[node name="Outline" type="MeshInstance" parent="Interact"]
-layers = 3
+[node name="Outline" parent="Interact" index="1"]
 mesh = SubResource( 5 )
-material/0 = null
 
-[node name="TeleportArea" type="Area" parent="."]
+[node name="TeleportArea" parent="." instance=ExtResource( 4 )]
 
-[node name="CollisionShape" type="CollisionShape" parent="TeleportArea"]
-shape = SubResource( 4 )
-[connection signal="area_entered" from="Interact" to="Interact" method="_on_Interact_area_entered"]
-[connection signal="area_exited" from="Interact" to="Interact" method="_on_Interact_area_exited"]
+[editable path="Interact"]
