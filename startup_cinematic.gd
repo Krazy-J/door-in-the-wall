@@ -21,5 +21,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _process(delta):
 	get_node(door).transform.origin = Vector3(1.5, 3.25, -.125) - Vector3(1.5, 3.25, -.125).rotated(get_node(door).transform.basis.y, get_node(door).rotation_degrees.y / 180 * PI)
-	if $AnimationPlayer.current_animation == "cinematic" and $AnimationPlayer.current_animation_position >= 9.48 and !$"/root".has_node("FadeSplash"):
+	if $AnimationPlayer.current_animation == "cinematic" and $AnimationPlayer.current_animation_position >= $AnimationPlayer.current_animation_length - 0.02 and !$"/root".has_node("FadeSplash"):
 		$"/root".call_deferred("add_child", load("res://interface/FadeSplash.tscn").instance())

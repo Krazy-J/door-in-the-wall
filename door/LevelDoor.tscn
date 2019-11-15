@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=2]
 [ext_resource path="res://door/level_door.gd" type="Script" id=3]
-[ext_resource path="res://splash.png" type="Texture" id=4]
+[ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=4]
+[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
@@ -83,10 +88,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 0, 1, 0 ),
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( 1, 0 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Door" index="0" instance=ExtResource( 1 )]
@@ -100,13 +105,28 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
-[node name="Splash" type="TextureRect" parent="Fade" index="0"]
+[node name="Splash" type="VBoxContainer" parent="Fade" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+alignment = 1
+
+[node name="Door" type="TextureRect" parent="Fade/Splash" index="0"]
+margin_top = 12.0
+margin_right = 1024.0
+margin_bottom = 513.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 stretch_mode = 4
 
+[node name="Name" type="Label" parent="Fade/Splash" index="1"]
+margin_top = 517.0
+margin_right = 1024.0
+margin_bottom = 588.0
+custom_fonts/font = SubResource( 2 )
+text = "A Door in the Wall"
+align = 1
+
 [node name="AnimationPlayer" parent="." index="5"]
-anims/DoorToggle = SubResource( 2 )
+anims/DoorToggle = SubResource( 3 )
