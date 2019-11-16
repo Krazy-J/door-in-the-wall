@@ -84,6 +84,7 @@ use_collision = true
 mesh = SubResource( 2 )
 
 [node name="Ceiling" type="CSGMesh" parent="Room"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
 layers = 3
 use_collision = true
@@ -147,7 +148,6 @@ exit_door = NodePath("../Basic")
 material_override = SubResource( 8 )
 
 [node name="TestRoom" parent="." instance=ExtResource( 9 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9 )
 
 [node name="Door" parent="TestRoom" instance=ExtResource( 12 )]

@@ -3,16 +3,13 @@
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
 height = 5.0
 
-[sub_resource type="SphereShape" id=2]
-margin = 0.001
-radius = 0.0
-
-[sub_resource type="RayShape" id=3]
+[sub_resource type="RayShape" id=2]
 length = 5.0
 
 [node name="Player" type="KinematicBody"]
@@ -41,11 +38,8 @@ mesh = ExtResource( 3 )
 [node name="CarryDoor" type="Spatial" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.469846, 0.17101, 0, -0.17101, 0.469846, 0, 3.5, -2 )
 
-[node name="TeleportArea" type="Area" parent="."]
+[node name="TeleportArea" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="TeleportArea"]
-shape = SubResource( 2 )
 
 [node name="PivotX" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
@@ -59,7 +53,8 @@ far = 1000.0
 
 [node name="InteractArea" type="Area" parent="PivotX"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="PivotX/InteractArea"]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )

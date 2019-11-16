@@ -9,8 +9,8 @@ albedo_color = Color( 1, 1, 1, 0.5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
+collision_layer = 5
+collision_mask = 0
 radius = 0.05
 height = 0.8
 
