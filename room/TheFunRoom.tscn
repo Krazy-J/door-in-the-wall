@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=2]
-[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://door/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://door/8-bit/red.tres" type="Material" id=4]
 [ext_resource path="res://object/Table.tscn" type="PackedScene" id=5]
 [ext_resource path="res://object/block/Block.tscn" type="PackedScene" id=6]
@@ -17,13 +17,13 @@
 [ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=15]
 [ext_resource path="res://door/LobbyDoor.tscn" type="PackedScene" id=16]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=17]
-[ext_resource path="res://textures/normal/door_simple.jpg" type="Texture" id=18]
-[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=19]
-[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=20]
-[ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=21]
-[ext_resource path="res://door/8-bit/green.tres" type="Material" id=22]
-[ext_resource path="res://door/LooseDoor.tscn" type="PackedScene" id=23]
-[ext_resource path="res://door/Door.tscn" type="PackedScene" id=24]
+[ext_resource path="res://door/normal/simple.tres" type="Material" id=18]
+[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=19]
+[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=20]
+[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=21]
+[ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=22]
+[ext_resource path="res://door/8-bit/green.tres" type="Material" id=23]
+[ext_resource path="res://door/LooseDoor.tscn" type="PackedScene" id=24]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 10, 0, 10 )
@@ -60,14 +60,6 @@ extents = Vector3( 0, 2, 20 )
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 10, 2, 0 )
 
-[sub_resource type="SpatialMaterial" id=10]
-resource_local_to_scene = true
-albedo_texture = ExtResource( 18 )
-
-[sub_resource type="SpatialMaterial" id=11]
-resource_local_to_scene = true
-albedo_texture = ExtResource( 18 )
-
 [node name="TheFunRoom" type="StaticBody"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -30, 0 )
 collision_layer = 3
@@ -85,12 +77,10 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 omni_range = 96.0
 
 [node name="TheDoor" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -6, 0, 1 )
 exit_door = NodePath("../TableTopRoom/TheDoor")
-
-[node name="Door" parent="TheDoor" instance=ExtResource( 3 )]
-material_override = ExtResource( 4 )
+door = ExtResource( 3 )
+door_material = ExtResource( 4 )
 
 [node name="TheTable" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0 )
@@ -243,12 +233,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 20 )
 shape = SubResource( 9 )
 
 [node name="TinyDoor" parent="TableTopRoom/TableTop" instance=ExtResource( 2 )]
-editor/display_folded = true
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 0, 0 )
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 9, 0, 0 )
 exit_door = NodePath("../../ToTable")
-
-[node name="Door" parent="TableTopRoom/TableTop/TinyDoor" instance=ExtResource( 17 )]
-material_override = SubResource( 10 )
+door = ExtResource( 17 )
+door_material = ExtResource( 18 )
 
 [node name="GreenBlock" parent="TableTopRoom/TableTop" instance=ExtResource( 8 )]
 transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 1, 6 )
@@ -263,82 +251,64 @@ transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.700005, 3, 4.6 )
 
 [node name="ToTable" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
 exit_door = NodePath("../TableTop/TinyDoor")
-
-[node name="Door" parent="TableTopRoom/ToTable" instance=ExtResource( 17 )]
-material_override = SubResource( 11 )
+door = ExtResource( 17 )
+door_material = ExtResource( 18 )
 
 [node name="Blue" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 exit_door = NodePath("../Blue2")
-
-[node name="Door" parent="TableTopRoom/Blue" instance=ExtResource( 3 )]
-material_override = ExtResource( 19 )
+door = ExtResource( 19 )
+door_material = ExtResource( 20 )
 
 [node name="Blue2" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( -0.866025, 0, -0.5, 0, -1, 0, -0.5, 0, 0.866025, 0, 18, 14 )
 exit_door = NodePath("../Blue")
-
-[node name="Door" parent="TableTopRoom/Blue2" instance=ExtResource( 3 )]
-material_override = ExtResource( 19 )
+door = ExtResource( 19 )
+door_material = ExtResource( 20 )
 
 [node name="Orange" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16 )
 exit_door = NodePath("../Orange2")
-
-[node name="Door" parent="TableTopRoom/Orange" instance=ExtResource( 3 )]
-material_override = ExtResource( 20 )
+door = ExtResource( 19 )
+door_material = ExtResource( 21 )
 
 [node name="Orange2" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 9, -16 )
 exit_door = NodePath("../Orange")
-
-[node name="Door" parent="TableTopRoom/Orange2" instance=ExtResource( 3 )]
-material_override = ExtResource( 20 )
+door = ExtResource( 19 )
+door_material = ExtResource( 21 )
 
 [node name="Yellow" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 12, 16 )
 exit_door = NodePath("../Yellow2")
-
-[node name="Door" parent="TableTopRoom/Yellow" instance=ExtResource( 3 )]
-material_override = ExtResource( 21 )
+door = ExtResource( 19 )
+door_material = ExtResource( 22 )
 
 [node name="Yellow2" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, -1, 0, 0.707107, 0, 0.707107, -0.707107, 0, 0.707107, 16, 16, 14 )
 exit_door = NodePath("../Yellow")
-
-[node name="Door" parent="TableTopRoom/Yellow2" instance=ExtResource( 3 )]
-material_override = ExtResource( 21 )
+door = ExtResource( 19 )
+door_material = ExtResource( 22 )
 
 [node name="Green" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 0, -1, 0, 0.707107, 0, -0.707107, 0.707107, 0, 0.707107, 16, 16, -14 )
 exit_door = NodePath("../Green2")
-
-[node name="Door" parent="TableTopRoom/Green" instance=ExtResource( 3 )]
-material_override = ExtResource( 22 )
+door = ExtResource( 19 )
+door_material = ExtResource( 23 )
 
 [node name="Green2" parent="TableTopRoom" instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 7, 18, -16 )
 exit_door = NodePath("../Green")
+door = ExtResource( 19 )
+door_material = ExtResource( 23 )
 
-[node name="Door" parent="TableTopRoom/Green2" instance=ExtResource( 3 )]
-material_override = ExtResource( 22 )
-
-[node name="RedDoor" parent="TableTopRoom" instance=ExtResource( 23 )]
+[node name="RedDoor" parent="TableTopRoom" instance=ExtResource( 24 )]
 editor/display_folded = true
 transform = Transform( 8.74228e-08, 1, -7.57104e-08, 0.866026, -3.78552e-08, 0.5, 0.5, -1.09278e-07, -0.866026, 0, 1.36, 15.14 )
 
-[node name="Door" parent="TableTopRoom/RedDoor" instance=ExtResource( 24 )]
+[node name="Door" parent="TableTopRoom/RedDoor" instance=ExtResource( 3 )]
 material_override = ExtResource( 4 )
 
 [node name="TheDoor" parent="TableTopRoom" instance=ExtResource( 2 )]

@@ -8,7 +8,7 @@ export var gravity = 80
 export var look_sensitivity = .003 # radians/pixel
 export var carrying : NodePath
 export var carry_distance : float
-var motion : Vector3
+export var motion : Vector3
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
