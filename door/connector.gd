@@ -12,7 +12,6 @@ func _ready():
 		#print((shaderMat.get_shader_param("Viewport") as ViewportTexture).get_viewport_path_in_scene())
 
 func teleport(body):
-	if !body.name == "Spatial": print(body)
 	var old_scale = body.scale
 	body.global_transform = global_transform.affine_inverse() * body.global_transform
 	body.global_transform = exit_door.global_transform * body.global_transform
