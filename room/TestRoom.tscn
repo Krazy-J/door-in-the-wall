@@ -116,7 +116,6 @@ mesh = SubResource( 6 )
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 12.5, 0, -3 )
 
 [node name="RightWall" type="CSGMesh" parent="Room"]
-editor/display_folded = true
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 16, 9, 0 )
 layers = 3
 use_collision = true
