@@ -385,6 +385,7 @@ script = ExtResource( 1 )
 door = NodePath("Spatial/DoorFrame/Door")
 
 [node name="Spatial" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
@@ -541,7 +542,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 418.0
 margin_top = 177.0
-margin_right = 6.10352e-05
+margin_right = 6.10352e-005
 margin_bottom = -131.0
 texture = ExtResource( 16 )
 stretch_mode = 3

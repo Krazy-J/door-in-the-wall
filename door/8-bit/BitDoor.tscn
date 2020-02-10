@@ -5,11 +5,11 @@
 [ext_resource path="res://door/8-bit/open.wav" type="AudioStream" id=3]
 [ext_resource path="res://door/8-bit/close.wav" type="AudioStream" id=4]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
@@ -48,7 +48,7 @@ tracks/2/keys = {
 }
 
 [node name="Door" index="0" instance=ExtResource( 1 )]
-material_override = SubResource( 2 )
+material_override = SubResource( 1 )
 
 [node name="SoundOpen" parent="." index="2"]
 stream = ExtResource( 3 )
@@ -57,4 +57,6 @@ stream = ExtResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/DoorToggle = SubResource( 1 )
+anims/DoorToggle = SubResource( 2 )
+
+[editable path="Interact"]

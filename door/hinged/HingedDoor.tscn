@@ -30,3 +30,5 @@ stream = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/DoorToggle = SubResource( 1 )
+
+[editable path="Interact"]

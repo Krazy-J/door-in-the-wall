@@ -31,6 +31,7 @@ material = SubResource( 1 )
 
 [node name="Light" type="OmniLight" parent="Top/Bulb"]
 layers = 3
+light_color = Color( 1, 1, 0.85, 1 )
 shadow_enabled = true
 omni_range = 32.0
 omni_shadow_mode = 0

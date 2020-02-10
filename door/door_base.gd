@@ -7,14 +7,13 @@ export var open = false
 export var door : PackedScene
 export var door_mesh : Mesh
 export var door_material : Material
-var is_open = false
 
 func _ready():
 	if door:
 		add_child(door.instance())
 		if door_mesh: $Door.mesh = door_mesh
-		if door_material: $Door.material_override = door_material
-	if exit_door and (!requires_door or has_node("Door")) and not Engine.editor_hint:
+		$Door.material_override = door_material
+	if not Engine.editor_hint and exit_door and (!requires_door or has_node("Door")):
 		add_child(load("res://door/DoorConnector.tscn").instance())
 
 func toggle_door():
@@ -39,15 +38,19 @@ func _input(event):
 			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
 			get_node($"/root/Player".carrying).queue_free()
 
+var is_open = false
 # warning-ignore:unused_argument
 func _process(delta):
-	if Engine.editor_hint and has_node("Door"):
-		if not open == is_open:
-			if open:
-				$Door/AnimationPlayer.play("DoorToggle")
-				$Door/SoundOpen.play()
-			else:
-				$Door/AnimationPlayer.play_backwards("DoorToggle")
-				$Door/SoundClose.play()
-			is_open = open
-			if exit_door: get_node(exit_door).open = open
+	if Engine.editor_hint:
+		if has_node("Door"):
+			if not open == is_open:
+				if open:
+					$Door/AnimationPlayer.play("DoorToggle")
+					$Door/SoundOpen.play()
+				else:
+					$Door/AnimationPlayer.play_backwards("DoorToggle")
+					$Door/SoundClose.play()
+				is_open = open
+				if exit_door: get_node(exit_door).open = open
+			if not door_material == $Door.material_override: $Door.material_override = door_material
+		elif door: add_child(door.instance())

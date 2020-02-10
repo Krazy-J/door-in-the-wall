@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://surface/normal/fine_wood.tres" type="Material" id=1]
+[ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=2]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=4]
+[ext_resource path="res://door/LobbyDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=6]
+
+[sub_resource type="PlaneMesh" id=1]
+material = ExtResource( 1 )
+size = Vector2( 32, 32 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = ExtResource( 2 )
+size = Vector2( 32, 32 )
+
+[sub_resource type="PlaneMesh" id=3]
+material = ExtResource( 4 )
+size = Vector2( 32, 16 )
+
+[sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 6 )
+
+[node name="Main" type="Spatial"]
+
+[node name="Room" type="Spatial" parent="."]
+
+[node name="Floor" type="CSGMesh" parent="Room"]
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 1 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+invert_faces = true
+mesh = SubResource( 2 )
+
+[node name="Lights" type="Spatial" parent="Room/Ceiling"]
+
+[node name="1" parent="Room/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -10 )
+
+[node name="2" parent="Room/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -10 )
+
+[node name="3" parent="Room/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 10 )
+
+[node name="4" parent="Room/Ceiling/Lights" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10 )
+
+[node name="FrontWall" type="CSGMesh" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 8, -16 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 3 )
+
+[node name="LeftWall" type="CSGMesh" parent="Room"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -16, 8, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 3 )
+
+[node name="BackWall" type="CSGMesh" parent="Room"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 8, 16 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 3 )
+
+[node name="RightWall" type="CSGMesh" parent="Room"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 16, 8, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 3 )
+
+[node name="LobbyDoor" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 0, 0, 16 )
+collision_layer = 3
+collision_mask = 3
+door_material = SubResource( 4 )
