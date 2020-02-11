@@ -153,19 +153,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
 invert_faces = true
 mesh = SubResource( 5 )
 
-[node name="Lights" type="Spatial" parent="Spatial/Ceiling"]
+[node name="Light1" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10 )
 
-[node name="1" parent="Spatial/Ceiling/Lights" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -10 )
+[node name="Light2" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10 )
 
-[node name="2" parent="Spatial/Ceiling/Lights" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, -10 )
+[node name="Light3" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10 )
 
-[node name="3" parent="Spatial/Ceiling/Lights" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 10 )
-
-[node name="4" parent="Spatial/Ceiling/Lights" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10 )
+[node name="Light4" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 
 [node name="FrontWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 9, -16 )
@@ -187,6 +184,7 @@ mesh = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 
 [node name="TableTop" type="Spatial" parent="Spatial"]
+editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14, 3, 0 )
 
 [node name="TinyDoor" type="CSGMesh" parent="Spatial/TableTop"]
@@ -361,6 +359,7 @@ custom_fonts/font = SubResource( 17 )
 text = "Begin"
 
 [node name="Fade" type="ColorRect" parent="."]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -368,6 +367,7 @@ mouse_filter = 2
 color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
 [node name="Splash" type="VBoxContainer" parent="Fade"]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0

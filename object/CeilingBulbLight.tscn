@@ -5,7 +5,13 @@ flags_transparent = true
 flags_unshaded = true
 albedo_color = Color( 1, 1, 1, 0.5 )
 
-[node name="CeilingLight" type="CSGCylinder"]
+[node name="CeilingLight" type="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10 )
+use_collision = true
+collision_layer = 5
+collision_mask = 0
+
+[node name="Bar" type="CSGCylinder" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
 layers = 3
 use_collision = true
@@ -14,14 +20,14 @@ collision_mask = 0
 radius = 0.05
 height = 0.8
 
-[node name="Top" type="CSGCylinder" parent="."]
+[node name="Top" type="CSGCylinder" parent="Bar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0 )
 layers = 3
 radius = 0.15
 height = 0.1
 sides = 16
 
-[node name="Bulb" type="CSGSphere" parent="Top"]
+[node name="Bulb" type="CSGSphere" parent="Bar/Top"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
 layers = 3
 radius = 0.4
@@ -29,7 +35,7 @@ radial_segments = 24
 rings = 12
 material = SubResource( 1 )
 
-[node name="Light" type="OmniLight" parent="Top/Bulb"]
+[node name="Light" type="OmniLight" parent="Bar/Top/Bulb"]
 layers = 3
 light_color = Color( 1, 1, 0.85, 1 )
 shadow_enabled = true

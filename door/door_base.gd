@@ -13,7 +13,7 @@ func _ready():
 		add_child(door.instance())
 		if door_mesh: $Door.mesh = door_mesh
 		$Door.material_override = door_material
-	if not Engine.editor_hint and exit_door and (!requires_door or has_node("Door")):
+	if exit_door and (!requires_door or has_node("Door")) and not Engine.editor_hint:
 		add_child(load("res://door/DoorConnector.tscn").instance())
 
 func toggle_door():

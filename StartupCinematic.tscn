@@ -22,6 +22,8 @@
 [ext_resource path="res://logo/shatter.wav" type="AudioStream" id=20]
 [ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=21]
 
+
+
 [sub_resource type="StreamTexture" id=1]
 flags = 23
 load_path = "res://.import/stone_tiles.jpg-3e9bf90b060404f2308641f6bcfb6377.s3tc.stex"
