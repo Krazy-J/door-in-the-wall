@@ -17,8 +17,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("cinematic")
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Main.tscn")
 
+# warning-ignore:unused_argument
 func _process(delta):
 	get_node(door).transform.origin = Vector3(1.5, 3.25, -.125) - Vector3(1.5, 3.25, -.125).rotated(get_node(door).transform.basis.y, get_node(door).rotation_degrees.y / 180 * PI)
 	if $AnimationPlayer.current_animation == "cinematic" and $AnimationPlayer.current_animation_position >= $AnimationPlayer.current_animation_length - 0.02 and !$"/root".has_node("FadeSplash"):

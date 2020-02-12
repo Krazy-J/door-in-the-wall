@@ -153,7 +153,7 @@ mesh = SubResource( 12 )
 [node name="SecondFloor" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
 
-[node name="Floor2" type="CSGMesh" parent="SecondFloor"]
+[node name="Floor" type="CSGMesh" parent="SecondFloor"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 10, -5 )
 layers = 3
 use_collision = true
@@ -161,7 +161,7 @@ collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 4 )
 
-[node name="FrontWall2" type="CSGMesh" parent="SecondFloor"]
+[node name="FrontWall" type="CSGMesh" parent="SecondFloor"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 5, 15, -10 )
 layers = 3
 use_collision = true

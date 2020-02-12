@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://textures/normal/wood_fine.jpg" type="Texture" id=20]
 [ext_resource path="res://surface/normal/stucco.tres" type="Material" id=21]
 [ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=22]
-[ext_resource path="res://room/Level1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=24]
 [ext_resource path="res://textures/8-bit/ceiling_tiles.png" type="Texture" id=25]
 [ext_resource path="res://object/8bit/LightPanel.tscn" type="PackedScene" id=26]
@@ -98,7 +97,7 @@ size = Vector2( 40, 10 )
 [sub_resource type="SpatialMaterial" id=14]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
-albedo_texture = ExtResource( 25 )
+albedo_texture = ExtResource( 22 )
 uv1_scale = Vector3( 16, 10, 1 )
 
 [sub_resource type="PlaneMesh" id=15]
@@ -130,12 +129,14 @@ uv1_scale = Vector3( 20, 5, 1 )
 material = SubResource( 20 )
 size = Vector2( 40, 10 )
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=23]
+resource_local_to_scene = true
+albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 27 )
 uv1_scale = Vector3( 8, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=23]
-material = SubResource( 22 )
+[sub_resource type="PlaneMesh" id=22]
+material = SubResource( 23 )
 size = Vector2( 16, 10 )
 
 [node name="Main" type="Spatial"]
@@ -345,10 +346,7 @@ layers = 3
 mesh = SubResource( 8 )
 
 [node name="Door" parent="Classic/Levels/1" instance=ExtResource( 18 )]
-layers = 3
 material_override = ExtResource( 14 )
-mesh = ExtResource( 19 )
-material/0 = null
 room = ExtResource( 26 )
 
 [node name="Bit" type="Spatial" parent="."]
