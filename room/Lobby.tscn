@@ -98,7 +98,7 @@ size = Vector2( 40, 10 )
 [sub_resource type="SpatialMaterial" id=14]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
-albedo_texture = ExtResource( 22 )
+albedo_texture = ExtResource( 25 )
 uv1_scale = Vector3( 16, 10, 1 )
 
 [sub_resource type="PlaneMesh" id=15]
@@ -345,8 +345,11 @@ layers = 3
 mesh = SubResource( 8 )
 
 [node name="Door" parent="Classic/Levels/1" instance=ExtResource( 18 )]
+layers = 3
 material_override = ExtResource( 14 )
-room = ExtResource( 23 )
+mesh = ExtResource( 19 )
+material/0 = null
+room = ExtResource( 26 )
 
 [node name="Bit" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
@@ -391,7 +394,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 23 )
+mesh = SubResource( 22 )
 
 [node name="BackWall" type="CSGMesh" parent="Bit/Room"]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 5, 10 )
@@ -410,7 +413,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 23 )
+mesh = SubResource( 22 )
 
 [node name="Main" parent="Bit" instance=ExtResource( 11 )]
 exit_door = NodePath("../../Lobby/Sections/Bit")

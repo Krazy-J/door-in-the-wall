@@ -1,6 +1,6 @@
 extends Spatial
 
-const MIPMAP_LEVEL = 1
+const MIPMAP_LEVEL = 0
 var entering_areas = {}
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
@@ -60,4 +60,6 @@ func _on_Middle_area_exited(area):
 	$EnterBack.visible = true
 
 func _process(delta):
-	place_camera()
+	if get_parent().is_open:
+		$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
+		place_camera()

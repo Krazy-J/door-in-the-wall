@@ -4,6 +4,7 @@ extends Spatial
 export var exit_door = NodePath()
 export var requires_door = false
 export var open = false
+var is_open = open
 export var door : PackedScene
 export var door_mesh : Mesh
 export var door_material : Material
@@ -38,7 +39,6 @@ func _input(event):
 			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
 			get_node($"/root/Main/Player".carrying).queue_free()
 
-var is_open = false
 # warning-ignore:unused_argument
 func _process(delta):
 	if Engine.editor_hint:
