@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=2]
@@ -18,30 +18,33 @@
 [ext_resource path="res://door/8-bit/white.tres" type="Material" id=16]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=17]
 [ext_resource path="res://door/LevelDoor.tscn" type="PackedScene" id=18]
-[ext_resource path="res://door/8-bit/red.tres" type="Material" id=19]
-[ext_resource path="res://textures/normal/wood_fine.jpg" type="Texture" id=20]
-[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=21]
-[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=22]
-[ext_resource path="res://room/Level1.tscn" type="PackedScene" id=23]
-[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=24]
-[ext_resource path="res://textures/8-bit/ceiling_tiles.png" type="Texture" id=25]
-[ext_resource path="res://object/8bit/LightPanel.tscn" type="PackedScene" id=26]
-[ext_resource path="res://textures/8-bit/bricks.png" type="Texture" id=27]
-[ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=28]
+[ext_resource path="res://object/door.tres" type="ArrayMesh" id=19]
+[ext_resource path="res://room/TestRoom.tscn" type="PackedScene" id=20]
+[ext_resource path="res://door/8-bit/red.tres" type="Material" id=21]
+[ext_resource path="res://room/TheFunRoom.tscn" type="PackedScene" id=22]
+[ext_resource path="res://textures/normal/wood_fine.jpg" type="Texture" id=23]
+[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=24]
+[ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=25]
+[ext_resource path="res://room/Level1.tscn" type="PackedScene" id=26]
+[ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=27]
+[ext_resource path="res://textures/8-bit/ceiling_tiles.png" type="Texture" id=28]
+[ext_resource path="res://object/8bit/LightPanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://textures/8-bit/bricks.png" type="Texture" id=30]
+[ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=31]
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 5, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=10]
-material = SubResource( 9 )
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
 size = Vector2( 20, 20 )
 
-[sub_resource type="PlaneMesh" id=12]
+[sub_resource type="PlaneMesh" id=3]
 material = ExtResource( 3 )
 size = Vector2( 20, 20 )
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 5 )
 metallic_specular = 0.0
 metallic_texture = ExtResource( 7 )
@@ -59,78 +62,78 @@ depth_flip_binormal = false
 depth_texture = ExtResource( 6 )
 uv1_scale = Vector3( 2, 1.6, 1 )
 
-[sub_resource type="PlaneMesh" id=14]
-material = SubResource( 13 )
+[sub_resource type="PlaneMesh" id=5]
+material = SubResource( 4 )
 size = Vector2( 20, 16 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=6]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 17 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=16]
-material = SubResource( 8 )
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
 size = Vector2( 3, 6.5 )
 
-[sub_resource type="SpatialMaterial" id=30]
-albedo_texture = ExtResource( 20 )
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 23 )
 uv1_scale = Vector3( 20, 8, 1 )
 
-[sub_resource type="PlaneMesh" id=31]
-material = SubResource( 30 )
+[sub_resource type="PlaneMesh" id=10]
+material = SubResource( 9 )
 size = Vector2( 40, 16 )
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 10, 4, 1 )
 
-[sub_resource type="PlaneMesh" id=18]
-material = SubResource( 17 )
+[sub_resource type="PlaneMesh" id=12]
+material = SubResource( 11 )
 size = Vector2( 40, 16 )
 
-[sub_resource type="PlaneMesh" id=21]
-material = ExtResource( 21 )
+[sub_resource type="PlaneMesh" id=13]
+material = ExtResource( 24 )
 size = Vector2( 40, 10 )
 
-[sub_resource type="SpatialMaterial" id=27]
+[sub_resource type="SpatialMaterial" id=14]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
-albedo_texture = ExtResource( 22 )
+albedo_texture = ExtResource( 25 )
 uv1_scale = Vector3( 16, 10, 1 )
 
-[sub_resource type="PlaneMesh" id=28]
-material = SubResource( 27 )
+[sub_resource type="PlaneMesh" id=15]
+material = SubResource( 14 )
 size = Vector2( 16, 10 )
 
-[sub_resource type="SpatialMaterial" id=24]
-albedo_texture = ExtResource( 24 )
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 27 )
 uv1_scale = Vector3( 20, 8, 1 )
 
-[sub_resource type="PlaneMesh" id=25]
-material = SubResource( 24 )
+[sub_resource type="PlaneMesh" id=17]
+material = SubResource( 16 )
 size = Vector2( 40, 16 )
 
-[sub_resource type="SpatialMaterial" id=32]
-albedo_texture = ExtResource( 25 )
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 28 )
 uv1_scale = Vector3( 20, 8, 1 )
 uv1_offset = Vector3( -0.063, -0.063, 0 )
 
 [sub_resource type="PlaneMesh" id=19]
-material = SubResource( 32 )
+material = SubResource( 18 )
 size = Vector2( 40, 16 )
 
-[sub_resource type="SpatialMaterial" id=29]
-albedo_texture = ExtResource( 27 )
+[sub_resource type="SpatialMaterial" id=20]
+albedo_texture = ExtResource( 30 )
 uv1_scale = Vector3( 20, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=26]
-material = SubResource( 29 )
+[sub_resource type="PlaneMesh" id=21]
+material = SubResource( 20 )
 size = Vector2( 40, 10 )
 
-[sub_resource type="PlaneMesh" id=23]
-material = ExtResource( 28 )
+[sub_resource type="PlaneMesh" id=22]
+material = ExtResource( 31 )
 size = Vector2( 16, 10 )
 
 [node name="Main" type="Spatial"]
@@ -147,7 +150,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 10 )
+mesh = SubResource( 2 )
 
 [node name="Ceiling" type="CSGMesh" parent="Lobby/Room"]
 editor/display_folded = true
@@ -157,7 +160,7 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 invert_faces = true
-mesh = SubResource( 12 )
+mesh = SubResource( 3 )
 
 [node name="Light" parent="Lobby/Room/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
@@ -169,7 +172,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 14 )
+mesh = SubResource( 5 )
 
 [node name="Classic" parent="Lobby/Room/FrontWall" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4.5 )
@@ -184,7 +187,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 14 )
+mesh = SubResource( 5 )
 
 [node name="Basic" parent="Lobby/Room/LeftWall" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5 )
@@ -196,7 +199,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 14 )
+mesh = SubResource( 5 )
 
 [node name="Basic2" parent="Lobby/Room/BackWall" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4.51 )
@@ -207,7 +210,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 14 )
+mesh = SubResource( 5 )
 
 [node name="Basic" parent="Lobby" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -10, 0, 2 )
@@ -239,28 +242,36 @@ door_material = ExtResource( 16 )
 [node name="TestRoom" parent="Lobby" instance=ExtResource( 11 )]
 editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 7, 0, 10 )
-door_material = SubResource( 15 )
+door_material = SubResource( 6 )
 
 [node name="Black" type="CSGMesh" parent="Lobby/TestRoom"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 3.25, -0.3 )
 layers = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 8 )
 
 [node name="Door" parent="Lobby/TestRoom" instance=ExtResource( 18 )]
-material_override = SubResource( 15 )
+layers = 3
+material_override = SubResource( 6 )
+mesh = ExtResource( 19 )
+material/0 = null
+room = ExtResource( 20 )
 
 [node name="TheFunRoom" parent="Lobby" instance=ExtResource( 11 )]
 editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2, 0, 10 )
-door_material = ExtResource( 19 )
+door_material = ExtResource( 21 )
 
 [node name="Black" type="CSGMesh" parent="Lobby/TheFunRoom"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 3.25, -0.3 )
 layers = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 8 )
 
 [node name="Door" parent="Lobby/TheFunRoom" instance=ExtResource( 18 )]
-material_override = ExtResource( 19 )
+layers = 3
+material_override = ExtResource( 21 )
+mesh = ExtResource( 19 )
+material/0 = null
+room = ExtResource( 22 )
 
 [node name="Classic" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
@@ -275,7 +286,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 31 )
+mesh = SubResource( 10 )
 
 [node name="Ceiling" type="CSGMesh" parent="Classic/Room"]
 editor/display_folded = true
@@ -285,7 +296,7 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 invert_faces = true
-mesh = SubResource( 18 )
+mesh = SubResource( 12 )
 
 [node name="Light1" parent="Classic/Room/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
@@ -302,7 +313,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 
 [node name="LeftWall" type="CSGMesh" parent="Classic/Room"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
@@ -310,7 +321,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 28 )
+mesh = SubResource( 15 )
 
 [node name="BackWall" type="CSGMesh" parent="Classic/Room"]
 editor/display_folded = true
@@ -319,7 +330,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 
 [node name="Main" parent="Classic/Room/BackWall" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -330,7 +341,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 28 )
+mesh = SubResource( 15 )
 
 [node name="Main" parent="Classic" instance=ExtResource( 11 )]
 exit_door = NodePath("../../Lobby/Sections/Classic")
@@ -348,17 +359,19 @@ door_material = ExtResource( 14 )
 [node name="Black" type="CSGMesh" parent="Classic/Levels/1"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 3.25, 0.3 )
 layers = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 8 )
 
 [node name="Door" parent="Classic/Levels/1" instance=ExtResource( 18 )]
+layers = 3
 material_override = ExtResource( 14 )
-room = ExtResource( 23 )
+mesh = ExtResource( 19 )
+material/0 = null
+room = ExtResource( 26 )
 
 [node name="Bit" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
 
 [node name="Room" type="Spatial" parent="Bit"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 
 [node name="Floor" type="CSGMesh" parent="Bit/Room"]
@@ -367,10 +380,9 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 25 )
+mesh = SubResource( 17 )
 
 [node name="Ceiling" type="CSGMesh" parent="Bit/Room"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2 )
 layers = 3
 use_collision = true
@@ -379,22 +391,16 @@ collision_mask = 3
 invert_faces = true
 mesh = SubResource( 19 )
 
-[node name="Light1" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
+[node name="Light1" parent="Bit/Room/Ceiling" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3 )
 
-[node name="Light2" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-
-[node name="Light3" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
+[node name="Light3" parent="Bit/Room/Ceiling" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3 )
 
-[node name="Light4" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
+[node name="Light4" parent="Bit/Room/Ceiling" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -3 )
 
-[node name="Light5" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
-
-[node name="Light6" parent="Bit/Room/Ceiling" instance=ExtResource( 26 )]
+[node name="Light6" parent="Bit/Room/Ceiling" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -3 )
 
 [node name="FrontWall" type="CSGMesh" parent="Bit/Room"]
@@ -403,7 +409,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 26 )
+mesh = SubResource( 21 )
 
 [node name="LeftWall" type="CSGMesh" parent="Bit/Room"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
@@ -411,7 +417,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 23 )
+mesh = SubResource( 22 )
 
 [node name="BackWall" type="CSGMesh" parent="Bit/Room"]
 editor/display_folded = true
@@ -420,7 +426,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 26 )
+mesh = SubResource( 21 )
 
 [node name="Main" parent="Bit/Room/BackWall" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -431,7 +437,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 23 )
+mesh = SubResource( 22 )
 
 [node name="Main" parent="Bit" instance=ExtResource( 11 )]
 exit_door = NodePath("../../Lobby/Sections/Bit")

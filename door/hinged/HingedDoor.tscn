@@ -17,6 +17,18 @@ tracks/0/keys = {
 "points": PoolRealArray( 0, 0, 0, 0.2, 0, -90, -0.5, 0, 0, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:is_open")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="Door" instance=ExtResource( 1 )]
 material_override = ExtResource( 2 )

@@ -2,9 +2,9 @@ extends RigidBody
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		if $"/root/Player".carrying == get_path():
-			$"/root/Player".carrying = NodePath()
-			$"/root/Player".carry_distance = float()
-		elif $Interact.visible and !$"/root/Player".carrying:
-			$"/root/Player".carrying = get_path()
-			$"/root/Player".carry_distance = global_transform.origin.distance_to($"/root/Player/PivotX".global_transform.origin)
+		if $"/root/Main/Player".carrying == get_path():
+			$"/root/Main/Player".carrying = NodePath()
+			$"/root/Main/Player".carry_distance = float()
+		elif $Interact.visible and !$"/root/Main/Player".carrying:
+			$"/root/Main/Player".carrying = get_path()
+			$"/root/Main/Player".carry_distance = global_transform.origin.distance_to($"/root/Main/Player/PivotX".global_transform.origin)
