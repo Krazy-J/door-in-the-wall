@@ -5,12 +5,12 @@ var speed = 0
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		if $Door/Interact.visible and !$"/root/Player".carrying:
-			$"/root/Player".carrying = get_path()
+		if $Door/Interact.visible and !$"/root/Main/Player".carrying:
+			$"/root/Main/Player".carrying = get_path()
 			falling = false
 			speed = 0
-		elif $"/root/Player".carrying == get_path():
-			$"/root/Player".carrying = NodePath()
+		elif $"/root/Main/Player".carrying == get_path():
+			$"/root/Main/Player".carrying = NodePath()
 			falling = true
 
 func _physics_process(delta):

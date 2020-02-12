@@ -15,7 +15,7 @@ absorbent = true
 [sub_resource type="SpatialMaterial" id=3]
 resource_local_to_scene = true
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=4]
 material = ExtResource( 3 )
 flip_faces = true
 size = Vector3( 2.05, 2.05, 2.05 )
@@ -39,7 +39,7 @@ material = SubResource( 3 )
 shape = SubResource( 2 )
 
 [node name="Outline" parent="Interact" index="1"]
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 
 [node name="TeleportArea" parent="." instance=ExtResource( 4 )]
 

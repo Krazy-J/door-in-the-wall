@@ -7,7 +7,6 @@ albedo_color = Color( 1, 1, 1, 0.5 )
 
 [node name="LightPanel" type="CSGCombiner"]
 layers = 3
-snap = 0.125
 use_collision = true
 collision_layer = 5
 collision_mask = 0
@@ -27,7 +26,7 @@ depth = 1.75
 material = SubResource( 1 )
 
 [node name="OmniLight" type="OmniLight" parent="Panel/Light"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 layers = 3
 light_color = Color( 1, 1, 0.85, 1 )
 shadow_enabled = true

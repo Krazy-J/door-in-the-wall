@@ -32,11 +32,11 @@ func _input(event):
 		if has_node("Door"):
 			toggle_door()
 			if exit_door: get_node(exit_door).toggle_door()
-		elif get_node($"/root/Player".carrying).has_node("Door"):
+		elif get_node($"/root/Main/Player".carrying).has_node("Door"):
 			add_child(load("res://door/sliding/SlidingDoor.tscn").instance())
-			$Door.material_override = get_node($"/root/Player".carrying).get_node("Door").material_override
+			$Door.material_override = get_node($"/root/Main/Player".carrying).get_node("Door").material_override
 			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
-			get_node($"/root/Player".carrying).queue_free()
+			get_node($"/root/Main/Player".carrying).queue_free()
 
 var is_open = false
 # warning-ignore:unused_argument

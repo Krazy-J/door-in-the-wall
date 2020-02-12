@@ -5,11 +5,7 @@ flags_transparent = true
 flags_unshaded = true
 albedo_color = Color( 1, 1, 1, 0.5 )
 
-[node name="CeilingLight" type="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10 )
-use_collision = true
-collision_layer = 5
-collision_mask = 0
+[node name="CeilingLight" type="Spatial"]
 
 [node name="Bar" type="CSGCylinder" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )

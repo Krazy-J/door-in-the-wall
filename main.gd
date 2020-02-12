@@ -4,7 +4,6 @@ func _on_Begin_pressed():
 	$AnimationPlayer.play("begin")
 
 func load_scenes():
-	#$"/root".call_deferred("add_child", load("res://player/Player.tscn").instance())
 	$"/root".call_deferred("add_child", load("res://interface/FadeSplash.tscn").instance())
 
 func load_lobby():
