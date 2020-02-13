@@ -1,7 +1,7 @@
 tool
 extends Spatial
 
-export var exit_door = NodePath()
+export var exit_door : NodePath
 export var requires_door = false
 export var open = false
 var is_open = open

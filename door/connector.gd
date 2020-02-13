@@ -13,12 +13,10 @@ func _ready():
 
 func teleport(body):
 	var old_scale = body.scale
-	body.global_transform = global_transform.affine_inverse() * body.global_transform
-	body.global_transform = exit_door.global_transform * body.global_transform
+	body.global_transform = exit_door.global_transform * global_transform.affine_inverse() * body.global_transform
 	var relative_scale = body.scale.y / old_scale.y
 	if body.name == "Player":
-		body.motion = global_transform.basis.inverse() * body.motion
-		body.motion = exit_door.global_transform.basis * body.motion
+		body.motion = exit_door.global_transform.basis * (global_transform.basis.inverse() * body.motion)
 		if body.carrying:
 			var carried_body = get_node(body.carrying)
 			if carried_body.has_node("Door"):
