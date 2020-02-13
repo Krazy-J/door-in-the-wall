@@ -33,6 +33,7 @@ shape = SubResource( 1 )
 [node name="DoorFrame" type="CSGMesh" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
 layers = 2
+cast_shadow = 0
 mesh = ExtResource( 3 )
 
 [node name="CarryDoor" type="Spatial" parent="."]

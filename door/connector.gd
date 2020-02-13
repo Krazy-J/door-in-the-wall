@@ -33,7 +33,7 @@ func teleport(body):
 func place_camera():
 	$Viewport.size = $"/root".size / pow(2, MIPMAP_LEVEL)
 	$Viewport/Spatial.global_transform = $"/root/Main/Player/PivotX/Camera".global_transform
-	$Viewport/Spatial/Camera.near = max(0.1, ($Viewport/Spatial.global_transform.origin - global_transform.origin).rotated(Vector3(0, 1, 0), -$Viewport/Spatial.rotation_degrees.y / 180 * PI).z - 1) * exit_door.scale.y / scale.y
+	#$Viewport/Spatial/Camera.near = max(0.1, ($Viewport/Spatial.global_transform.origin - global_transform.origin).rotated(Vector3(0, 1, 0), -$Viewport/Spatial.rotation_degrees.y / 180 * PI).z - 2) * exit_door.scale.y / scale.y
 	teleport($Viewport/Spatial)
 
 func _on_EnterFront_area_entered(area):
