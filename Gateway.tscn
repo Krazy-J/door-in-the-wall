@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gateway.gd" type="Script" id=1]
 
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 5, 5, 0.25 )
+
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 1, 1, 0.45 )
+extents = Vector3( 5, 5, 0.2 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type spatial;
@@ -33,10 +36,18 @@ material = SubResource( 4 )
 
 [node name="Gateway" type="Spatial"]
 script = ExtResource( 1 )
-size = Vector3( 2, 2, 1 )
+size = Vector3( 2, 2, 0.5 )
+
+[node name="OuterArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.25 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape" parent="OuterArea"]
+shape = SubResource( 6 )
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.25 )
 collision_layer = 0
 collision_mask = 2
 
@@ -45,12 +56,13 @@ shape = SubResource( 1 )
 
 [node name="Port" type="CSGMesh" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+cast_shadow = 0
 mesh = SubResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 1600, 871 )
 keep_3d_linear = true
-render_target_update_mode = 3
+render_target_update_mode = 0
 gui_disable_input = true
 shadow_atlas_size = 4096
 shadow_atlas_quad_0 = 1
@@ -69,4 +81,5 @@ current = true
 fov = 90.0
 near = 0.1
 far = 200.0
+[connection signal="area_entered" from="OuterArea" to="." method="_on_outer_area_entered"]
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

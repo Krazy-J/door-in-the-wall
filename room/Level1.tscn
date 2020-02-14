@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="PlaneMesh" id=2]
-size = Vector2( 40, 20 )
+size = Vector2( 40, 10 )
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 20, 10 )
@@ -28,11 +28,11 @@ albedo_texture = ExtResource( 8 )
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 4 )
-uv1_scale = Vector3( 2, 4, 1 )
+uv1_scale = Vector3( 2.4, 6, 1 )
 
 [sub_resource type="PlaneMesh" id=7]
 material = SubResource( 6 )
-size = Vector2( 10, 20 )
+size = Vector2( 12, 30 )
 
 [sub_resource type="SpatialMaterial" id=8]
 resource_local_to_scene = true
@@ -63,14 +63,6 @@ uv1_scale = Vector3( 20, 10, 1 )
 [sub_resource type="PlaneMesh" id=13]
 material = SubResource( 12 )
 size = Vector2( 20, 10 )
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_texture = ExtResource( 4 )
-uv1_scale = Vector3( 2.4, 2, 1 )
-
-[sub_resource type="PlaneMesh" id=15]
-material = SubResource( 14 )
-size = Vector2( 12, 10 )
 
 [sub_resource type="SpatialMaterial" id=16]
 resource_local_to_scene = true
@@ -133,9 +125,6 @@ size = Vector2( 12, 22 )
 [sub_resource type="PlaneMesh" id=29]
 size = Vector2( 12, 10 )
 
-[sub_resource type="PlaneMesh" id=30]
-size = Vector2( 2, 10 )
-
 [sub_resource type="SpatialMaterial" id=31]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 2.4, 2, 1 )
@@ -170,7 +159,6 @@ albedo_texture = ExtResource( 8 )
 [node name="Main" type="Spatial"]
 
 [node name="LevelTitle" parent="." instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 1 )
 
 [node name="Level" parent="LevelTitle" index="0"]
 margin_top = 216.0
@@ -190,7 +178,7 @@ parameters/playback = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5 )
 
 [node name="LightWallX1" type="CSGMesh" parent="."]
-transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 10, -10 )
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 5, -10 )
 layers = 3
 cast_shadow = 3
 collision_layer = 3
@@ -198,7 +186,7 @@ collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="LightWallX2" type="CSGMesh" parent="."]
-transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 0, 10, -10 )
+transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 0, 5, -10 )
 layers = 3
 cast_shadow = 3
 collision_layer = 3
@@ -206,7 +194,7 @@ collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="LightWallZ" type="CSGMesh" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 10, 5, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 10, 5, 0 )
 layers = 3
 cast_shadow = 3
 collision_layer = 3
@@ -217,7 +205,7 @@ mesh = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0 )
 
 [node name="LightWall" type="CSGMesh" parent="Room1"]
-transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 12, 5, -10 )
+transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 10.1, 5, -10 )
 layers = 3
 cast_shadow = 3
 collision_layer = 3
@@ -231,7 +219,7 @@ collision_mask = 3
 door_material = SubResource( 5 )
 
 [node name="Floor" type="CSGMesh" parent="Room1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15 )
 layers = 3
 use_collision = true
 collision_layer = 3
@@ -261,14 +249,6 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 13 )
-
-[node name="Floor2" type="CSGMesh" parent="Room1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -25 )
-layers = 3
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-mesh = SubResource( 15 )
 
 [node name="FrontWall" type="CSGMesh" parent="Room1"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 6, 5, -30 )
@@ -303,7 +283,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, -10 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.3
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 omni_range = 25.0
 
 [node name="Light4" type="OmniLight" parent="Room1/Ceiling"]
@@ -311,23 +292,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, 2 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.3
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 omni_range = 25.0
 
 [node name="Gateway" parent="Room1" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 11, 0, -25 )
-connection = NodePath("../../Room2/Gateway")
-size = Vector3( 10, 10, 1 )
+exit = NodePath("../../Room2/Gateway")
+start_enabled = true
+size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -25 )
 
 [node name="Gateway" parent="Room2" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 0 )
-connection = NodePath("../../Room1/Gateway")
-size = Vector3( 10, 10, 1 )
+exit = NodePath("../../Room1/Gateway")
+disable_gateways = [ NodePath("../Gateway2") ]
+size = Vector3( 10, 10, 0.5 )
 
 [node name="LightWall" type="CSGMesh" parent="Room2"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -7, 5, 11 )
+layers = 3
+cast_shadow = 3
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 22 )
+
+[node name="LightWall2" type="CSGMesh" parent="Room2"]
 transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, -7, 5, 11 )
 layers = 3
 cast_shadow = 3
@@ -405,7 +397,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -1.25, -6 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.3
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 omni_range = 25.0
 
 [node name="Light3" parent="Room2/Ceiling" instance=ExtResource( 3 )]
@@ -416,34 +409,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6 )
 
 [node name="Gateway2" parent="Room2" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 12 )
-connection = NodePath("../../Room3/Gateway2")
-size = Vector3( 10, 10, 1 )
+exit = NodePath("../../Room3/Gateway2")
+disable_gateways = [ NodePath("../Gateway") ]
+size = Vector3( 10, 10, 0.5 )
 
 [node name="Room3" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 17 )
 
 [node name="Gateway2" parent="Room3" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -4, 0, 0 )
-connection = NodePath("../../Room2/Gateway2")
-size = Vector3( 10, 10, 1 )
+exit = NodePath("../../Room2/Gateway2")
+size = Vector3( 10, 10, 0.5 )
 
-[node name="LightWall1" type="CSGMesh" parent="Room3"]
-transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -9, 5, -7 )
+[node name="LightWall" type="CSGMesh" parent="Room3"]
+transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -9, 5, -5.1 )
 layers = 3
 cast_shadow = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 29 )
-
-[node name="LightWall2" type="CSGMesh" parent="Room3"]
-transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -3, 5, -6 )
-layers = 3
-cast_shadow = 3
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-mesh = SubResource( 30 )
 
 [node name="Floor" type="CSGMesh" parent="Room3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
@@ -491,7 +476,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, -12 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.3
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 omni_range = 25.0
 
 [node name="Light4" type="OmniLight" parent="Room3/Ceiling"]
@@ -499,7 +485,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, 0 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.3
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
 omni_range = 25.0
 
 [node name="Goal" parent="Room3" instance=ExtResource( 12 )]
