@@ -117,5 +117,7 @@ jump={
 
 [rendering]
 
+quality/directional_shadow/size=8192
+quality/shadow_atlas/size=8192
 environment/default_clear_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"

@@ -1,169 +1,190 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=2]
 [ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/normal/wood_fine.jpg" type="Texture" id=4]
 [ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=5]
+[ext_resource path="res://interface/LevelTitle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://door/LobbyDoor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=8]
 [ext_resource path="res://door/GoalDoor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Gateway.tscn" type="PackedScene" id=13]
 
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 40, 20 )
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="PlaneMesh" id=2]
-size = Vector2( 20, 10 )
+size = Vector2( 40, 20 )
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 20, 10 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 20, 10 )
+
+[sub_resource type="SpatialMaterial" id=5]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 2, 4, 1 )
 
-[sub_resource type="PlaneMesh" id=6]
-material = SubResource( 5 )
+[sub_resource type="PlaneMesh" id=7]
+material = SubResource( 6 )
 size = Vector2( 10, 20 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=8]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 5, 10, 1 )
 
-[sub_resource type="PlaneMesh" id=8]
-material = SubResource( 7 )
+[sub_resource type="PlaneMesh" id=9]
+material = SubResource( 8 )
 size = Vector2( 10, 10 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=10]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 15, 10, 1 )
 
-[sub_resource type="PlaneMesh" id=10]
-material = SubResource( 9 )
+[sub_resource type="PlaneMesh" id=11]
+material = SubResource( 10 )
 size = Vector2( 30, 10 )
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=12]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 20, 10, 1 )
 
-[sub_resource type="PlaneMesh" id=12]
-material = SubResource( 11 )
+[sub_resource type="PlaneMesh" id=13]
+material = SubResource( 12 )
 size = Vector2( 20, 10 )
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=14]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 2.4, 2, 1 )
 
-[sub_resource type="PlaneMesh" id=14]
-material = SubResource( 13 )
+[sub_resource type="PlaneMesh" id=15]
+material = SubResource( 14 )
 size = Vector2( 12, 10 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=16]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 11, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=16]
-material = SubResource( 15 )
+[sub_resource type="PlaneMesh" id=17]
+material = SubResource( 16 )
 size = Vector2( 12, 10 )
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=18]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 1, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=18]
-material = SubResource( 17 )
+[sub_resource type="PlaneMesh" id=19]
+material = SubResource( 18 )
 size = Vector2( 2, 10 )
 
-[sub_resource type="SpatialMaterial" id=19]
+[sub_resource type="SpatialMaterial" id=20]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 3, 7.5, 1 )
 
-[sub_resource type="PlaneMesh" id=20]
-material = SubResource( 19 )
+[sub_resource type="PlaneMesh" id=21]
+material = SubResource( 20 )
 size = Vector2( 12, 30 )
 
-[sub_resource type="PlaneMesh" id=21]
+[sub_resource type="PlaneMesh" id=22]
 size = Vector2( 12, 10 )
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=23]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 2.4, 4.4, 1 )
 
-[sub_resource type="PlaneMesh" id=23]
-material = SubResource( 22 )
+[sub_resource type="PlaneMesh" id=24]
+material = SubResource( 23 )
 size = Vector2( 12, 22 )
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="SpatialMaterial" id=25]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 11, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=25]
-material = SubResource( 24 )
+[sub_resource type="PlaneMesh" id=26]
+material = SubResource( 25 )
 size = Vector2( 22, 10 )
 
-[sub_resource type="SpatialMaterial" id=26]
+[sub_resource type="SpatialMaterial" id=27]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 3, 5.5, 1 )
 uv1_offset = Vector3( 0.5, 0, 0 )
 
-[sub_resource type="PlaneMesh" id=27]
-material = SubResource( 26 )
+[sub_resource type="PlaneMesh" id=28]
+material = SubResource( 27 )
 size = Vector2( 12, 22 )
 
-[sub_resource type="PlaneMesh" id=28]
+[sub_resource type="PlaneMesh" id=29]
 size = Vector2( 12, 10 )
 
-[sub_resource type="PlaneMesh" id=29]
+[sub_resource type="PlaneMesh" id=30]
 size = Vector2( 2, 10 )
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="SpatialMaterial" id=31]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 2.4, 2, 1 )
+uv1_offset = Vector3( 0, 0.4, 0 )
 
-[sub_resource type="PlaneMesh" id=31]
-material = SubResource( 30 )
+[sub_resource type="PlaneMesh" id=32]
+material = SubResource( 31 )
 size = Vector2( 12, 10 )
 
-[sub_resource type="SpatialMaterial" id=32]
+[sub_resource type="SpatialMaterial" id=33]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 5, 5, 1 )
 
-[sub_resource type="PlaneMesh" id=33]
-material = SubResource( 32 )
+[sub_resource type="PlaneMesh" id=34]
+material = SubResource( 33 )
 size = Vector2( 10, 10 )
 
-[sub_resource type="SpatialMaterial" id=34]
+[sub_resource type="SpatialMaterial" id=35]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 3, 2.5, 1 )
 
-[sub_resource type="PlaneMesh" id=35]
-material = SubResource( 34 )
+[sub_resource type="PlaneMesh" id=36]
+material = SubResource( 35 )
 size = Vector2( 12, 10 )
 
-[sub_resource type="SpatialMaterial" id=36]
+[sub_resource type="SpatialMaterial" id=37]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
 [node name="Main" type="Spatial"]
+
+[node name="LevelTitle" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="Level" parent="LevelTitle" index="0"]
+margin_top = 216.0
+margin_bottom = 295.0
+text = "Level 1"
+
+[node name="Name" parent="LevelTitle" index="1"]
+margin_top = 299.0
+margin_bottom = 384.0
+text = "Introduction to
+The Impossible"
+
+[node name="AnimationTree" parent="LevelTitle" index="3"]
+parameters/playback = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5 )
@@ -174,7 +195,7 @@ layers = 3
 cast_shadow = 3
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 
 [node name="LightWallX2" type="CSGMesh" parent="."]
 transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 0, 10, -10 )
@@ -182,7 +203,7 @@ layers = 3
 cast_shadow = 3
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 
 [node name="LightWallZ" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 10, 5, 0 )
@@ -190,7 +211,7 @@ layers = 3
 cast_shadow = 3
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 
 [node name="Room1" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0 )
@@ -201,13 +222,13 @@ layers = 3
 cast_shadow = 3
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 
 [node name="LobbyDoor" parent="Room1" instance=ExtResource( 7 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, 0 )
 collision_layer = 3
 collision_mask = 3
-door_material = SubResource( 4 )
+door_material = SubResource( 5 )
 
 [node name="Floor" type="CSGMesh" parent="Room1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10 )
@@ -215,7 +236,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 6 )
+mesh = SubResource( 7 )
 
 [node name="BackWall" type="CSGMesh" parent="Room1"]
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 5, 5, 0 )
@@ -223,7 +244,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 8 )
+mesh = SubResource( 9 )
 
 [node name="LeftWall" type="CSGMesh" parent="Room1"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, 0, 5, -15 )
@@ -231,7 +252,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 10 )
+mesh = SubResource( 11 )
 
 [node name="RightWall" type="CSGMesh" parent="Room1"]
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 5, -10 )
@@ -239,7 +260,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 12 )
+mesh = SubResource( 13 )
 
 [node name="Floor2" type="CSGMesh" parent="Room1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -25 )
@@ -247,7 +268,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 14 )
+mesh = SubResource( 15 )
 
 [node name="FrontWall" type="CSGMesh" parent="Room1"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 6, 5, -30 )
@@ -255,7 +276,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 
 [node name="InnerWall1" type="CSGMesh" parent="Room1"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 11, 5, -20 )
@@ -263,7 +284,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 18 )
+mesh = SubResource( 19 )
 
 [node name="Ceiling" type="CSGMesh" parent="Room1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 10, -15 )
@@ -272,10 +293,7 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 invert_faces = true
-mesh = SubResource( 20 )
-
-[node name="Light1" parent="Room1/Ceiling" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10 )
+mesh = SubResource( 21 )
 
 [node name="Light2" parent="Room1/Ceiling" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10 )
@@ -285,7 +303,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, -10 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.5
+shadow_bias = 0.3
 omni_range = 25.0
 
 [node name="Light4" type="OmniLight" parent="Room1/Ceiling"]
@@ -293,7 +311,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, 2 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.5
+shadow_bias = 0.3
 omni_range = 25.0
 
 [node name="Gateway" parent="Room1" instance=ExtResource( 13 )]
@@ -315,7 +333,7 @@ layers = 3
 cast_shadow = 3
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 21 )
+mesh = SubResource( 22 )
 
 [node name="Floor" type="CSGMesh" parent="Room2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6 )
@@ -323,7 +341,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 23 )
+mesh = SubResource( 24 )
 
 [node name="OuterWall1" type="CSGMesh" parent="Room2"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, -1, 5, -5 )
@@ -331,7 +349,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 
 [node name="OuterWall2" type="CSGMesh" parent="Room2"]
 transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 5, 5, 6 )
@@ -339,7 +357,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 25 )
+mesh = SubResource( 26 )
 
 [node name="OuterWall3" type="CSGMesh" parent="Room2"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -1, 5, 17 )
@@ -347,7 +365,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 
 [node name="InnerWall1" type="CSGMesh" parent="Room2"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -6, 5, 5 )
@@ -355,7 +373,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 18 )
+mesh = SubResource( 19 )
 
 [node name="InnerWall2" type="CSGMesh" parent="Room2"]
 transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -5, 5, 6 )
@@ -363,7 +381,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 18 )
+mesh = SubResource( 19 )
 
 [node name="InnerWall3" type="CSGMesh" parent="Room2"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -6, 5, 7 )
@@ -371,7 +389,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 18 )
+mesh = SubResource( 19 )
 
 [node name="Ceiling" type="CSGMesh" parent="Room2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 10, 6 )
@@ -380,14 +398,14 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 invert_faces = true
-mesh = SubResource( 27 )
+mesh = SubResource( 28 )
 
 [node name="Light2" type="OmniLight" parent="Room2/Ceiling"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -1.25, -6 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.5
+shadow_bias = 0.3
 omni_range = 25.0
 
 [node name="Light3" parent="Room2/Ceiling" instance=ExtResource( 3 )]
@@ -416,7 +434,7 @@ cast_shadow = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 28 )
+mesh = SubResource( 29 )
 
 [node name="LightWall2" type="CSGMesh" parent="Room3"]
 transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -3, 5, -6 )
@@ -425,7 +443,7 @@ cast_shadow = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 29 )
+mesh = SubResource( 30 )
 
 [node name="Floor" type="CSGMesh" parent="Room3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
@@ -433,7 +451,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 31 )
+mesh = SubResource( 32 )
 
 [node name="EndWall" type="CSGMesh" parent="Room3"]
 transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -15, 5, 0 )
@@ -441,7 +459,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 33 )
+mesh = SubResource( 34 )
 
 [node name="LeftWall" type="CSGMesh" parent="Room3"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -9, 5, 5 )
@@ -449,7 +467,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 
 [node name="RightWall" type="CSGMesh" parent="Room3"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, -9, 5, -5 )
@@ -457,7 +475,7 @@ layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 
 [node name="Ceiling" type="CSGMesh" parent="Room3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 10, 0 )
@@ -466,14 +484,14 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 invert_faces = true
-mesh = SubResource( 35 )
+mesh = SubResource( 36 )
 
 [node name="Light3" type="OmniLight" parent="Room3/Ceiling"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, -12 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.5
+shadow_bias = 0.3
 omni_range = 25.0
 
 [node name="Light4" type="OmniLight" parent="Room3/Ceiling"]
@@ -481,9 +499,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1.25, 0 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 shadow_enabled = true
-shadow_bias = 0.5
+shadow_bias = 0.3
 omni_range = 25.0
 
 [node name="Goal" parent="Room3" instance=ExtResource( 12 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -15, 0, 0 )
-door_material = SubResource( 36 )
+door_material = SubResource( 37 )
+
+[editable path="LevelTitle"]
