@@ -11,11 +11,11 @@ export var carry_distance : float
 export var motion : Vector3
 
 func _ready():
+	if has_node("../LobbyDoor"): $Pause.dialog_text = "Quit to Lobby?"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if event.is_action_pressed("left_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if event.is_action_pressed("exit_mouse"): $Pause.popup()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
@@ -67,3 +67,13 @@ func _physics_process(delta):
 	motion *= (1 - air_resistance)
 	motion -= global_transform.basis.y * gravity * delta
 	motion = move_and_slide(motion, global_transform.basis.y.normalized())
+
+func _on_pause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func _on_unpause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_quit():
+	if has_node("../LobbyDoor"): get_node("../LobbyDoor").toggle_door()
+	# warning-ignore:return_value_discarded
+	else: get_tree().change_scene("res://Main.tscn")

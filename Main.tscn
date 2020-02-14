@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=2]
@@ -12,76 +12,78 @@
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=10]
 [ext_resource path="res://door/8-bit/green.tres" type="Material" id=11]
 [ext_resource path="res://fonts/LiberationSerif-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://interface/button/popup_button.gd" type="Script" id=13]
+[ext_resource path="res://interface/slider/Slider.tscn" type="PackedScene" id=14]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 36
+use_mipmaps = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
 "
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 16, 16, 1 )
 
-[sub_resource type="PlaneMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
 size = Vector2( 32, 32 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 8, 8, 1 )
 
-[sub_resource type="PlaneMesh" id=5]
-material = SubResource( 4 )
+[sub_resource type="PlaneMesh" id=6]
+material = SubResource( 5 )
 size = Vector2( 32, 32 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 resource_local_to_scene = true
 albedo_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 albedo_texture = ExtResource( 5 )
 uv1_scale = Vector3( 32, 18, 1 )
 
-[sub_resource type="PlaneMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
 size = Vector2( 32, 18 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
-
-[sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 0.25098, 0.74902, 0.25098, 1 )
 
 [sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 0.87451, 0.247059, 0.247059, 1 )
+albedo_color = Color( 0.25098, 0.74902, 0.25098, 1 )
 
 [sub_resource type="SpatialMaterial" id=11]
-albedo_color = Color( 0.247059, 0.247059, 0.87451, 1 )
+albedo_color = Color( 0.87451, 0.247059, 0.247059, 1 )
 
 [sub_resource type="SpatialMaterial" id=12]
-albedo_color = Color( 1, 0.498039, 0, 1 )
+albedo_color = Color( 0.247059, 0.247059, 0.87451, 1 )
 
 [sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 1, 0.498039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=15]
 resource_local_to_scene = true
 albedo_color = Color( 0, 0.5, 1, 1 )
 albedo_texture = ExtResource( 10 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=16]
 resource_local_to_scene = true
 albedo_color = Color( 1, 0.5, 0, 1 )
 albedo_texture = ExtResource( 10 )
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=17]
 resource_local_to_scene = true
 albedo_color = Color( 1, 0.9, 0, 1 )
 albedo_texture = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=17]
-size = 36
-use_mipmaps = true
-font_data = ExtResource( 12 )
 
 [sub_resource type="Animation" id=18]
 tracks/0/type = "value"
@@ -117,21 +119,96 @@ tracks/1/keys = {
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_right = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="Buttons"]
+margin_right = 200.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 1 )
+text = "Begin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuickStart" type="Button" parent="Buttons"]
+margin_top = 51.0
+margin_right = 200.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 1 )
+disabled = true
+text = "Quick Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="Buttons"]
+margin_top = 102.0
+margin_right = 200.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+popup = NodePath("../../Settings")
+
+[node name="Settings" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_right = 48.0
+margin_bottom = 40.0
+window_title = "Settings"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slider" parent="Settings" instance=ExtResource( 14 )]
+setting = "rendering/quality/directional_shadow/size"
+label = "Shadow Quality"
+min_value = 1024.0
+max_value = 16384.0
+step = 1024.0
+tick_count = 16
+
+[node name="Fade" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Spatial" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 11, 0 )
 current = true
 fov = 90.0
-script = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="Floor" type="CSGMesh" parent="Spatial"]
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 
 [node name="Ceiling" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
 invert_faces = true
-mesh = SubResource( 5 )
+mesh = SubResource( 6 )
 
 [node name="Light1" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10 )
@@ -147,19 +224,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10 )
 
 [node name="FrontWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 9, -16 )
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="LeftWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -16, 9, 0 )
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="BackWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 9, 16 )
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="RightWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 16, 9, 0 )
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="Table" parent="Spatial" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
@@ -176,29 +253,29 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/TableTop/TinyDoor"]
 layers = 3
-material_override = SubResource( 8 )
+material_override = SubResource( 9 )
 mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="GreenBlock" type="CSGBox" parent="Spatial/TableTop"]
 transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 1, 6 )
 layers = 3
-material = SubResource( 9 )
+material = SubResource( 10 )
 
 [node name="RedBlock" type="CSGBox" parent="Spatial/TableTop"]
 transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -2, 1, 4 )
 layers = 3
-material = SubResource( 10 )
+material = SubResource( 11 )
 
 [node name="BlueBlock" type="CSGBox" parent="Spatial/TableTop"]
 transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0.5, 1, 3.5 )
 layers = 3
-material = SubResource( 11 )
+material = SubResource( 12 )
 
 [node name="OrangeBlock" type="CSGBox" parent="Spatial/TableTop"]
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.700005, 3, 4.6 )
 layers = 3
-material = SubResource( 12 )
+material = SubResource( 13 )
 
 [node name="ToTable" type="CSGMesh" parent="Spatial"]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
@@ -209,7 +286,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/ToTable"]
 layers = 3
-material_override = SubResource( 13 )
+material_override = SubResource( 14 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -222,7 +299,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Blue"]
 layers = 3
-material_override = SubResource( 14 )
+material_override = SubResource( 15 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -235,7 +312,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Blue2"]
 layers = 3
-material_override = SubResource( 14 )
+material_override = SubResource( 15 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -248,7 +325,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Orange"]
 layers = 3
-material_override = SubResource( 15 )
+material_override = SubResource( 16 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -261,7 +338,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Orange2"]
 layers = 3
-material_override = SubResource( 15 )
+material_override = SubResource( 16 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -274,7 +351,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Yellow"]
 layers = 3
-material_override = SubResource( 16 )
+material_override = SubResource( 17 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -287,7 +364,7 @@ mesh = ExtResource( 7 )
 
 [node name="Door" type="MeshInstance" parent="Spatial/Yellow2"]
 layers = 3
-material_override = SubResource( 16 )
+material_override = SubResource( 17 )
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -317,30 +394,6 @@ material_override = ExtResource( 11 )
 mesh = ExtResource( 9 )
 material/0 = null
 
-[node name="Begin" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-margin_left = -80.0
-margin_right = 80.0
-margin_bottom = 49.0
-custom_fonts/font = SubResource( 17 )
-text = "Begin"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Fade" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.101961, 0.101961, 0.101961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/begin = SubResource( 18 )
-[connection signal="pressed" from="Begin" to="." method="_on_Begin_pressed"]
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]

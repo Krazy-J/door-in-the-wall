@@ -25,6 +25,22 @@ margin_top = -8.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="AcceptDialog" parent="."]
+visible = true
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+window_title = ""
+dialog_text = "Quit to menu?"
+dialog_hide_on_ok = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
@@ -59,3 +75,6 @@ collision_mask = 0
 [node name="CollisionShape" type="CollisionShape" parent="PivotX/InteractArea"]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 shape = SubResource( 2 )
+[connection signal="about_to_show" from="Pause" to="." method="_on_pause"]
+[connection signal="confirmed" from="Pause" to="." method="_on_quit"]
+[connection signal="popup_hide" from="Pause" to="." method="_on_unpause"]
