@@ -1,11 +1,11 @@
 extends Spatial
 
-const MIPMAP_LEVEL = 0
 var entering_areas = {}
 onready var exit_door = get_parent().get_node(get_parent().exit_door)
 
 func _ready():
 	$Viewport/Spatial/Camera.make_current()
+	$Viewport.shadow_atlas_size = ProjectSettings.get("rendering/quality/viewport/door_shadow_size")
 	#var shaderMat = (($DoorViewport as GeometryInstance).material_override as ShaderMaterial) # Supposed to fix missing viewports. Welp, I tried.
 	#if shaderMat.get_shader_param("Viewport") == null:
 		#shaderMat.set_shader_param("Viewport", $DoorViewport/Viewport.get_texture())
@@ -31,7 +31,7 @@ func teleport(body):
 						carried_body.mass *= relative_scale
 
 func place_camera():
-	$Viewport.size = $"/root".size / pow(2, MIPMAP_LEVEL)
+	$Viewport.size = $"/root".size / pow(2, ProjectSettings.get("rendering/quality/viewport/door_mipmap_level"))
 	$Viewport/Spatial.global_transform = $"/root/Main/Player/PivotX/Camera".global_transform
 	#$Viewport/Spatial/Camera.near = max(0.1, ($Viewport/Spatial.global_transform.origin - global_transform.origin).rotated(Vector3(0, 1, 0), -$Viewport/Spatial.rotation_degrees.y / 180 * PI).z - 2) * exit_door.scale.y / scale.y
 	teleport($Viewport/Spatial)
@@ -57,7 +57,7 @@ func _on_Middle_area_exited(area):
 	$EnterFront.visible = true
 	$EnterBack.visible = true
 
-func _process(delta):
+func _process(_delta):
 	if get_parent().is_open:
 		$Viewport.render_target_update_mode = Viewport.UPDATE_ONCE
 		place_camera()

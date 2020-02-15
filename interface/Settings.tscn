@@ -1,0 +1,145 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface/slider/QualitySlider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/slider/Slider.tscn" type="PackedScene" id=2]
+
+[node name="Settings" type="WindowDialog"]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_right = 48.0
+margin_bottom = 40.0
+window_title = "Settings"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graphics" type="HBoxContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="General" type="VBoxContainer" parent="TabContainer/Graphics"]
+margin_right = 262.0
+margin_bottom = 359.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadows" parent="TabContainer/Graphics/General" instance=ExtResource( 1 )]
+margin_right = 262.0
+margin_bottom = 52.0
+settings = PoolStringArray( "rendering/quality/viewport/door_shadow_size" )
+root_properties = PoolStringArray( "shadow_atlas_size" )
+label = "Shadows"
+values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
+names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+
+[node name="Notice" type="Label" parent="TabContainer/Graphics/General"]
+margin_top = 56.0
+margin_right = 262.0
+margin_bottom = 97.0
+text = "Notice:
+Shadows may act up
+if set above medium"
+
+[node name="Doors" type="PanelContainer" parent="TabContainer/Graphics"]
+margin_left = 266.0
+margin_right = 424.0
+margin_bottom = 359.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="TabContainer/Graphics/Doors"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 151.0
+margin_bottom = 352.0
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/Doors/List"]
+margin_right = 144.0
+margin_bottom = 19.0
+text = "Doors"
+align = 1
+
+[node name="Resolution" parent="TabContainer/Graphics/Doors/List" instance=ExtResource( 1 )]
+margin_top = 23.0
+margin_right = 144.0
+margin_bottom = 75.0
+settings = PoolStringArray( "rendering/quality/viewport/door_mipmap_level" )
+label = "Resolution"
+values = PoolIntArray( 2, 1, 0 )
+names = PoolStringArray( "1/4", "1/2", "Full" )
+
+[node name="Shadow" parent="TabContainer/Graphics/Doors/List" instance=ExtResource( 1 )]
+margin_top = 79.0
+margin_right = 144.0
+margin_bottom = 131.0
+settings = PoolStringArray( "rendering/quality/viewport/door_shadow_size" )
+label = "Shadows"
+values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
+names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+
+[node name="Sounds (not implemented)" type="VSplitContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+dragger_visibility = 2
+
+[node name="Master" parent="TabContainer/Sounds (not implemented)" instance=ExtResource( 2 )]
+margin_right = 654.4
+label = "Master Volume"
+
+[node name="OtherSounds" type="PanelContainer" parent="TabContainer/Sounds (not implemented)"]
+margin_top = 62.0
+margin_right = 654.4
+margin_bottom = 359.0
+
+[node name="VBoxContainer" type="VSplitContainer" parent="TabContainer/Sounds (not implemented)/OtherSounds"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 647.4
+margin_bottom = 290.0
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="TabContainer/Sounds (not implemented)/OtherSounds/VBoxContainer"]
+margin_right = 640.4
+margin_bottom = 19.0
+text = "Other Sounds"
+align = 1
+
+[node name="List" type="GridContainer" parent="TabContainer/Sounds (not implemented)/OtherSounds/VBoxContainer"]
+margin_top = 19.0
+margin_right = 640.4
+margin_bottom = 283.0
+columns = 2
+
+[node name="Sound" parent="TabContainer/Sounds (not implemented)/OtherSounds/VBoxContainer/List" instance=ExtResource( 2 )]
+label = "Sounds"
+
+[node name="Sound2" parent="TabContainer/Sounds (not implemented)/OtherSounds/VBoxContainer/List" instance=ExtResource( 2 )]
+margin_left = 208.0
+margin_right = 412.0
+label = "More Sounds"
+
+[node name="Sound3" parent="TabContainer/Sounds (not implemented)/OtherSounds/VBoxContainer/List" instance=ExtResource( 2 )]
+margin_top = 66.0
+margin_bottom = 128.0
+label = "Even More Sounds"

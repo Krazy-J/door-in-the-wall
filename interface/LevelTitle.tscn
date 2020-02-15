@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://dynamic_font/DroidSerif.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://font/normal.tres" type="DynamicFont" id=2]
+
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.2, 0.2, 0.2, 0.8 )
@@ -85,6 +88,7 @@ __meta__ = {
 margin_top = 321.0
 margin_right = 512.0
 margin_bottom = 362.0
+custom_fonts/font = ExtResource( 2 )
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

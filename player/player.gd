@@ -11,7 +11,7 @@ export var carry_distance : float
 export var motion : Vector3
 
 func _ready():
-	if has_node("../LobbyDoor"): $Pause.dialog_text = "Quit to Lobby?"
+	if not has_node("../LobbyDoor"): $Pause/List/QuitLevel.queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
@@ -25,7 +25,6 @@ func _unhandled_input(event):
 			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
 			$PivotX.rotate_x(-event.relative.y * look_sensitivity)
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
-	if event.is_action_pressed("exit_mouse"): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if is_on_floor():
 		if event.is_action("jump"): motion += transform.basis.y * jump_power
 
@@ -73,6 +72,10 @@ func _on_pause():
 func _on_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _on_quit_level():
+	if has_node("../LobbyDoor"): get_node("../LobbyDoor").toggle_door()
+	# warning-ignore:return_value_discarded
+	else: get_tree().change_scene("res://Main.tscn")
 func _on_quit():
 	if has_node("../LobbyDoor"): get_node("../LobbyDoor").toggle_door()
 	# warning-ignore:return_value_discarded

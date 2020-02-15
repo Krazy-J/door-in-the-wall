@@ -12,6 +12,10 @@ _global_script_classes=[  ]
 _global_script_class_icons={
 
 }
+=4096
+a=16384
+shadow_atlas_size=16384
+atlas=16384
 
 [application]
 
@@ -28,7 +32,7 @@ window/size/fullscreen=true
 
 [gui]
 
-theme/custom_font="res://default_font.tres"
+theme/custom_font="res://font/default.tres"
 
 [input]
 
@@ -119,3 +123,5 @@ jump={
 
 environment/default_clear_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"
+quality/viewport/door_mipmap_level=0
+quality/viewport/door_shadow_size=4096

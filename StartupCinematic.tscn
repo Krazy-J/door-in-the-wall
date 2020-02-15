@@ -10,7 +10,7 @@
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=8]
 [ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=9]
 [ext_resource path="res://textures/normal/door_classic_style.png" type="Texture" id=10]
-[ext_resource path="res://fonts/DroidSerif.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://dynamic_font/DroidSerif.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://logo/base.png" type="Texture" id=12]
 [ext_resource path="res://logo/shard1.png" type="Texture" id=13]
 [ext_resource path="res://logo/shard2.png" type="Texture" id=14]
@@ -18,9 +18,11 @@
 [ext_resource path="res://logo/shard4.png" type="Texture" id=16]
 [ext_resource path="res://logo/shard5.png" type="Texture" id=17]
 [ext_resource path="res://logo/shard6.png" type="Texture" id=18]
-[ext_resource path="res://fonts/DroidSerif-Bold.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://dynamic_font/DroidSerif-Bold.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://logo/shatter.wav" type="AudioStream" id=20]
 [ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=21]
+
+
 
 [sub_resource type="StreamTexture" id=1]
 flags = 23

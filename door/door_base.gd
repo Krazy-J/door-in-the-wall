@@ -39,8 +39,7 @@ func _input(event):
 			if exit_door: add_child(load("res://door/DoorConnector.tscn").instance())
 			get_node($"/root/Main/Player".carrying).queue_free()
 
-# warning-ignore:unused_argument
-func _process(delta):
+func _process(_delta):
 	if Engine.editor_hint:
 		if has_node("Door"):
 			if not open == is_open:
