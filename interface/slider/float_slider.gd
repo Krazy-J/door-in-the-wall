@@ -4,12 +4,16 @@ extends "res://interface/slider/slider.gd"
 export var min_value : float
 export var max_value : float = 100
 export var step : float = 1
-export var value : float
 export var prefix : String
 export var suffix : String
 export var tick_count : int
+export var value_override : float = -1
+var value : float
 
 func _ready():
+	if value_override >= 0: value = value_override
+	elif settings: value = ProjectSettings.get(settings[0])
+	elif root_properties: value = get_viewport().get(root_properties[0])
 	$Split/Label.text = label
 	$Split/Split/Slider.rect_min_size.x = 16 + ceil((max_value - min_value) / step)
 	$Split/Split/SpinBox.value = value

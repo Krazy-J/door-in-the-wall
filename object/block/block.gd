@@ -1,6 +1,6 @@
 extends RigidBody
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if $"/root/Main/Player".carrying == get_path():
 			$"/root/Main/Player".carrying = NodePath()

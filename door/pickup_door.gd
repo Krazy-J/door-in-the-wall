@@ -1,7 +1,16 @@
+tool
 extends Spatial
 
+export var door : PackedScene
+export var door_mesh : Mesh
+export var door_material : Material
 var falling
 var speed = 0
+
+func _ready():
+	add_child(door.instance())
+	if door_mesh: $Door.mesh = door_mesh
+	$Door.material_override = door_material
 
 func _input(event):
 	if event.is_action_pressed("interact"):
@@ -28,3 +37,9 @@ func _physics_process(delta):
 			$Door.translation.y = .3 * scale.z
 			speed = 0
 			falling = false
+
+func _process(_delta):
+	if Engine.editor_hint:
+		if has_node("Door"):
+			if not door_material == $Door.material_override: $Door.material_override = door_material
+		elif door: add_child(door.instance())

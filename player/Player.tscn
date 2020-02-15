@@ -5,7 +5,7 @@
 [ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/Settings.tscn" type="PackedScene" id=5]
-[ext_resource path="res://font/normal.tres" type="DynamicFont" id=6]
+[ext_resource path="res://font/large.tres" type="DynamicFont" id=6]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5

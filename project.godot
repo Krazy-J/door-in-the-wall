@@ -12,7 +12,6 @@ _global_script_classes=[  ]
 _global_script_class_icons={
 
 }
-=4096
 a=16384
 shadow_atlas_size=16384
 atlas=16384
@@ -109,6 +108,10 @@ jump={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/mouse_sensitivity=0.003
 
 [layer_names]
 

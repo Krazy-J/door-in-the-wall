@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://startup_cinematic.gd" type="Script" id=1]
 [ext_resource path="res://textures/normal/stone_bricks.jpg" type="Texture" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://dynamic_font/DroidSerif-Bold.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://logo/shatter.wav" type="AudioStream" id=20]
 [ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=21]
-
+[ext_resource path="res://font/large.tres" type="DynamicFont" id=22]
 
 
 [sub_resource type="StreamTexture" id=1]
@@ -592,6 +592,7 @@ volume_db = -20.0
 visible = false
 anchor_top = 0.9
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 22 )
 text = "Click to skip"
 valign = 2
 
