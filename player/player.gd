@@ -5,7 +5,6 @@ export var jump_power = 25
 export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
-export var look_sensitivity = .003 # radians/pixel
 export var carrying : NodePath
 export var carry_distance : float
 export var motion : Vector3
@@ -18,12 +17,12 @@ func _unhandled_input(event):
 	if event.is_action_pressed("exit_mouse"): $Pause.popup()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
-			$PivotX.rotate_x(-event.relative.y * look_sensitivity)
+			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
+			$PivotX.rotate_x(-event.relative.y * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 		if event is InputEventJoypadMotion:
-			rotate(transform.basis.y.normalized(), -event.relative.x * look_sensitivity)
-			$PivotX.rotate_x(-event.relative.y * look_sensitivity)
+			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
+			$PivotX.rotate_x(-event.relative.y * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 	if is_on_floor():
 		if event.is_action("jump"): motion += transform.basis.y * jump_power
@@ -47,12 +46,12 @@ func _physics_process(delta):
 	if carrying:
 		var body = get_node(carrying)
 		if body.has_node("Door"):
-			body.global_transform.origin += (global_transform.origin - body.global_transform.origin) * 10 * delta
+			body.global_transform.origin += (transform.origin - body.global_transform.origin) * 10 * delta
 			body.get_node("Door").translation += ($CarryDoor.translation / body.scale * scale - body.get_node("Door").scale * Vector3(0, 3.5, 0) - body.get_node("Door").translation) * 10 * delta
-			if (global_transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees - global_transform.basis.y * 360) * 10 * delta
-			elif (global_transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees + global_transform.basis.y * 360) * 10 * delta
+			if (transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
+				body.rotation_degrees += (rotation_degrees - body.rotation_degrees - transform.basis.y * 360) * 10 * delta
+			elif (transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
+				body.rotation_degrees += (rotation_degrees - body.rotation_degrees + transform.basis.y * 360) * 10 * delta
 			else:
 				body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
 			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
@@ -64,8 +63,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		motion *= (1 - surface_friction)
 	motion *= (1 - air_resistance)
-	motion -= global_transform.basis.y * gravity * delta
-	motion = move_and_slide(motion, global_transform.basis.y.normalized())
+	motion -= transform.basis.y * gravity * delta
+	motion = move_and_slide(motion, transform.basis.y.normalized())
 
 func _on_pause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -73,10 +72,8 @@ func _on_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_quit_level():
-	if has_node("../LobbyDoor"): get_node("../LobbyDoor").toggle_door()
-	# warning-ignore:return_value_discarded
-	else: get_tree().change_scene("res://Main.tscn")
+	get_node("../LobbyDoor").toggle_door()
 func _on_quit():
-	if has_node("../LobbyDoor"): get_node("../LobbyDoor").toggle_door()
 	# warning-ignore:return_value_discarded
-	else: get_tree().change_scene("res://Main.tscn")
+	get_tree().change_scene("res://Main.tscn")
+	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())

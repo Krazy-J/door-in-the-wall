@@ -16,17 +16,26 @@ func _ready():
 
 func teleport(body):
 	body.global_transform = get_node(exit).global_transform * (global_transform.affine_inverse() * body.global_transform).rotated(Vector3(0, -1, 0), PI)
-	if body.name == "Player": body.motion = get_node(exit).global_transform.basis * (global_transform.basis.inverse() * body.motion).rotated(Vector3(0, -1, 0), PI)
+	if body.name == "Player":
+		body.motion = get_node(exit).global_transform.basis * (global_transform.basis.inverse() * body.motion).rotated(Vector3(0, -1, 0), PI)
+		if body.carrying:
+			var carried_body = get_node(body.carrying)
+			if carried_body.has_node("Door"):
+				carried_body.global_transform = global_transform.affine_inverse() * carried_body.global_transform
+				carried_body.global_transform = get_node(exit).global_transform * carried_body.global_transform
+			else:
+				var relative_scale = get_node(exit).global_transform.basis.get_scale() / global_transform.basis.get_scale()
+				body.carry_distance *= relative_scale
+				for child in carried_body.get_children():
+					child.scale *= relative_scale
+					if child.name == "CollisionShape":
+						child.shape = child.shape
+						carried_body.mass *= relative_scale
 
 func _on_outer_area_entered(area):
 	if get_node(exit).has_node("Viewport"): get_node(exit).enable_viewport(area)
-
 func _on_area_entered(area):
 	teleport(area.get_parent())
 
 func _process(_delta):
-	if Engine.editor_hint:
-		$Area.translation = Vector3(0, size.y / 2, -size.z / 2)
-		$OuterArea.translation = $Area.translation
-		$Area/Collision.shape.extents = size / 2 + Vector3(0, 0, -0.05)
-		$OuterArea/Collision.shape.extents = size / 2
+	if Engine.editor_hint: _ready()

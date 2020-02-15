@@ -12,7 +12,7 @@ func _ready():
 	if door_mesh: $Door.mesh = door_mesh
 	$Door.material_override = door_material
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if $Door/Interact.visible and !$"/root/Main/Player".carrying:
 			$"/root/Main/Player".carrying = get_path()

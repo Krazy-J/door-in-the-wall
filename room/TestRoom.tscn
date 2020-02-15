@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/8-bit/checker_tiles.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=19]
 [ext_resource path="res://door/8-bit/green.tres" type="Material" id=20]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=21]
+[ext_resource path="res://interface/LevelTitle.tscn" type="PackedScene" id=22]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -51,6 +52,9 @@ resource_local_to_scene = true
 albedo_texture = ExtResource( 21 )
 
 [node name="Main" type="Spatial"]
+
+[node name="LevelTitle" parent="." instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 0.556632 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -139,6 +143,7 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14, 3, 0 )
 
 [node name="TinyDoor" parent="TableTop" instance=ExtResource( 9 )]
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 9, 0, 0 )
+exit = NodePath("../../../Main/ToTable")
 exit_door = NodePath("../../../Main/ToTable")
 door = ExtResource( 10 )
 door_material = ExtResource( 11 )
@@ -157,6 +162,7 @@ transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.
 
 [node name="ToTable" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, -7 )
+exit = NodePath("../../Main/TableTop/TinyDoor")
 exit_door = NodePath("../../Main/TableTop/TinyDoor")
 door = ExtResource( 10 )
 door_material = ExtResource( 11 )
@@ -167,48 +173,56 @@ door = ExtResource( 16 )
 
 [node name="Blue" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+exit = NodePath("../Blue2")
 exit_door = NodePath("../Blue2")
 door = ExtResource( 16 )
 door_material = ExtResource( 17 )
 
 [node name="Blue2" parent="." instance=ExtResource( 9 )]
 transform = Transform( -0.866025, 0, -0.5, 0, -1, 0, -0.5, 0, 0.866025, 0, 18, 14 )
+exit = NodePath("../Blue")
 exit_door = NodePath("../Blue")
 door = ExtResource( 16 )
 door_material = ExtResource( 17 )
 
 [node name="Orange" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16 )
+exit = NodePath("../../Main/Orange2")
 exit_door = NodePath("../../Main/Orange2")
 door = ExtResource( 16 )
 door_material = ExtResource( 18 )
 
 [node name="Orange2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 9, -16 )
+exit = NodePath("../../Main/Orange")
 exit_door = NodePath("../../Main/Orange")
 door = ExtResource( 16 )
 door_material = ExtResource( 18 )
 
 [node name="Yellow" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0, 1, 0, 1, 0, 0, 0, 0, -1, -16, 12, 16 )
+exit = NodePath("../../Main/Yellow2")
 exit_door = NodePath("../../Main/Yellow2")
 door = ExtResource( 16 )
 door_material = ExtResource( 19 )
 
 [node name="Yellow2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0, -1, 0, 0.707107, 0, 0.707107, -0.707107, 0, 0.707107, 16, 15, 13 )
+exit = NodePath("../../Main/Yellow")
 exit_door = NodePath("../../Main/Yellow")
 door = ExtResource( 16 )
 door_material = ExtResource( 19 )
 
 [node name="Green" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0, -1, 0, 0, 0, 1, -1, 0, 0, 16, 0, 8 )
+exit = NodePath("../../Main/Green2")
 exit_door = NodePath("../../Main/Green2")
 door = ExtResource( 16 )
 door_material = ExtResource( 20 )
 
 [node name="Green2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, -1, 8, 18, -16 )
+exit = NodePath("../../Main/Green")
 exit_door = NodePath("../../Main/Green")
 door = ExtResource( 16 )
 door_material = ExtResource( 20 )
