@@ -38,7 +38,7 @@ cast_shadow = 0
 mesh = SubResource( 4 )
 
 [node name="Viewport" type="Viewport" parent="." index="2"]
-size = Vector2( 1080, 459 )
+size = Vector2( 1070, 499 )
 keep_3d_linear = true
 render_target_update_mode = 0
 gui_disable_input = true

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gateway/ViewportGateway.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gateway/orthogonal_gateway.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform sampler2D viewport;
+render_mode unshaded;
+
+void vertex() {
+}
+
+void fragment() {
+	vec3 color = vec3(texture(viewport, SCREEN_UV).x, texture(viewport, SCREEN_UV).y, texture(viewport, SCREEN_UV).z);
+    ALBEDO = color;
+}"
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/viewport = SubResource( 2 )
+
+[sub_resource type="PlaneMesh" id=4]
+resource_local_to_scene = true
+material = SubResource( 3 )
+
+[node name="Gateway" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+size = Vector3( 2, 2, 0.4 )
+
+[node name="OuterArea" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.2 )
+
+[node name="Area" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.2 )
+
+[node name="Port" parent="Area" index="1"]
+mesh = SubResource( 4 )
+
+[node name="Viewport" parent="." index="2"]
+size = Vector2( 0, 0 )
+
+[node name="Camera" parent="Viewport/Spatial" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10 )
+projection = 1
+size = 20.0

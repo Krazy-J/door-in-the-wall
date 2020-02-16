@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/wood_fine.jpg-59fda399ceea4cfe95a67669a0e4c7cf.s3tc.stex"
-path.etc2="res://.import/wood_fine.jpg-59fda399ceea4cfe95a67669a0e4c7cf.etc2.stex"
+path.s3tc="res://.import/wood_flooring.jpg-603d4e5120b4e75dc30a0e00d0795fe1.s3tc.stex"
+path.etc2="res://.import/wood_flooring.jpg-603d4e5120b4e75dc30a0e00d0795fe1.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/normal/wood_fine.jpg"
-dest_files=[ "res://.import/wood_fine.jpg-59fda399ceea4cfe95a67669a0e4c7cf.s3tc.stex", "res://.import/wood_fine.jpg-59fda399ceea4cfe95a67669a0e4c7cf.etc2.stex" ]
+source_file="res://textures/normal/wood_flooring.jpg"
+dest_files=[ "res://.import/wood_flooring.jpg-603d4e5120b4e75dc30a0e00d0795fe1.s3tc.stex", "res://.import/wood_flooring.jpg-603d4e5120b4e75dc30a0e00d0795fe1.etc2.stex" ]
 
 [params]
 

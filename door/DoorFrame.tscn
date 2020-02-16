@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=1]
-[ext_resource path="res://door/door_base.gd" type="Script" id=2]
+[ext_resource path="res://door/gateway_door.gd" type="Script" id=2]
 [ext_resource path="res://interact/Interact.tscn" type="PackedScene" id=3]
 [ext_resource path="res://interact/yellow.tres" type="Material" id=4]
 
@@ -32,7 +32,7 @@ script = ExtResource( 2 )
 
 [node name="Interact" parent="." instance=ExtResource( 3 )]
 
-[node name="CollisionShape" parent="Interact" index="0"]
+[node name="Collision" parent="Interact" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 shape = SubResource( 1 )
 

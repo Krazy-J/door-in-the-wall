@@ -1,0 +1,394 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://room/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=2]
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=3]
+[ext_resource path="res://surface/mesh/20x10.tres" type="PlaneMesh" id=4]
+[ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=5]
+[ext_resource path="res://door/normal/classic.tres" type="Material" id=6]
+[ext_resource path="res://textures/normal/stone_tiles.jpg" type="Texture" id=7]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://door/normal/simple.tres" type="Material" id=10]
+[ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=11]
+[ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=12]
+[ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=14]
+[ext_resource path="res://gateway/OrthogonalGateway.tscn" type="PackedScene" id=15]
+[ext_resource path="res://surface/mesh/40x10.tres" type="PlaneMesh" id=16]
+[ext_resource path="res://surface/mesh/40x20.tres" type="PlaneMesh" id=17]
+[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=18]
+[ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=19]
+[ext_resource path="res://surface/mesh/100x40.tres" type="PlaneMesh" id=20]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 7 )
+uv1_scale = Vector3( 2.5, 5, 1 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
+size = Vector2( 10, 20 )
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+albedo_color = Color( 0.1, 0.1, 0.1, 1 )
+
+[sub_resource type="PlaneMesh" id=9]
+size = Vector2( 60, 10 )
+
+[sub_resource type="SpatialMaterial" id=7]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 7 )
+uv1_scale = Vector3( 2.5, 2.5, 1 )
+
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
+size = Vector2( 10, 10 )
+
+[node name="Main" instance=ExtResource( 1 )]
+
+[node name="LevelTitle" parent="." index="1"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Level" parent="LevelTitle" index="0"]
+margin_top = 216.0
+margin_bottom = 295.0
+text = "Orthogonal"
+
+[node name="Name" parent="LevelTitle" index="1"]
+margin_top = 299.0
+margin_bottom = 384.0
+text = "See things from a
+different perspective"
+
+[node name="AnimationTree" parent="LevelTitle" index="3"]
+parameters/playback = SubResource( 1 )
+
+[node name="Goal" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+door_material = SubResource( 2 )
+
+[node name="Room1" type="Spatial" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Floor" type="CSGMesh" parent="Room1" index="0"]
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 12 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room1" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+invert_faces = true
+mesh = SubResource( 4 )
+
+[node name="Light" parent="Room1/Ceiling" index="0" instance=ExtResource( 8 )]
+
+[node name="BackWall" type="CSGMesh" parent="Room1" index="2"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 10 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[node name="FrontWall" type="CSGMesh" parent="Room1" index="3"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -10 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[node name="Door" parent="Room1/FrontWall" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="LeftWall" type="CSGMesh" parent="Room1" index="4"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 4 )
+material = ExtResource( 2 )
+
+[node name="RightWall" type="CSGMesh" parent="Room1" index="5"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 5, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 4 )
+material = ExtResource( 2 )
+
+[node name="Door" parent="Room1" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+door = ExtResource( 13 )
+door_material = ExtResource( 6 )
+exit = NodePath("../../OrthogonalRoom/Door")
+
+[node name="Gateway" parent="Room1/Door" index="1" instance=ExtResource( 15 )]
+exit = NodePath("../../../OrthogonalRoom/Door/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+orthogonal = false
+
+[node name="OrthogonalRoom" type="Spatial" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
+
+[node name="Background" type="CSGMesh" parent="OrthogonalRoom" index="0"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 30, 10, -10 )
+layers = 3
+cast_shadow = 0
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 20 )
+material = SubResource( 5 )
+
+[node name="Door" parent="OrthogonalRoom" index="1" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+door = ExtResource( 13 )
+door_material = ExtResource( 6 )
+exit = NodePath("../../Room1/Door")
+
+[node name="Gateway" parent="OrthogonalRoom/Door" index="1" instance=ExtResource( 15 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+exit = NodePath("../../../Room1/Door/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Floor" type="CSGMesh" parent="OrthogonalRoom" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
+layers = 3
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource( 9 )
+
+[node name="Ceiling" type="CSGMesh" parent="OrthogonalRoom" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 20, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+invert_faces = true
+mesh = ExtResource( 16 )
+
+[node name="Light" parent="OrthogonalRoom/Ceiling" index="0" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3 )
+
+[node name="Light2" parent="OrthogonalRoom/Ceiling" index="1" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 3 )
+
+[node name="Ceiling2" type="CSGMesh" parent="OrthogonalRoom" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 10, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+invert_faces = true
+mesh = ExtResource( 4 )
+
+[node name="Light" parent="OrthogonalRoom/Ceiling2" index="0" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Wall" type="CSGMesh" parent="OrthogonalRoom" index="5"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 20, 10, -5 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 17 )
+material = ExtResource( 2 )
+
+[node name="Blue" parent="OrthogonalRoom/Wall" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 9.53674e-07, 6.5 )
+
+[node name="Orange" parent="OrthogonalRoom/Wall" index="1" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53674e-07, 6.5 )
+
+[node name="Wall2" type="CSGMesh" parent="OrthogonalRoom" index="6"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 50, 5, -5 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 4 )
+material = ExtResource( 2 )
+
+[node name="Blue2" parent="OrthogonalRoom/Wall2" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1.5 )
+
+[node name="Orange2" parent="OrthogonalRoom/Wall2" index="1" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5 )
+
+[node name="LeftWall" type="CSGMesh" parent="OrthogonalRoom" index="7"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 10, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 12 )
+
+[node name="Door" parent="OrthogonalRoom/LeftWall" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32443e-21, 1, 0, 1.05898e-06, 6.5 )
+
+[node name="RightWall" type="CSGMesh" parent="OrthogonalRoom" index="8"]
+transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 60, 5, 0 )
+layers = 3
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+
+[node name="Door2" parent="OrthogonalRoom/RightWall" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32443e-21, 1, 0, -7.62939e-06, -1.5 )
+
+[node name="RightWall2" type="CSGMesh" parent="OrthogonalRoom" index="9"]
+transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 40, 15, 0 )
+layers = 3
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+
+[node name="Blue" parent="OrthogonalRoom" index="10" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5 )
+door = ExtResource( 19 )
+door_material = ExtResource( 18 )
+exit = NodePath("../Blue2")
+
+[node name="Gateway" parent="OrthogonalRoom/Blue" index="1" instance=ExtResource( 15 )]
+exit = NodePath("../../Blue2/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Blue2" parent="OrthogonalRoom" index="11" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 45, 0, -5 )
+door = ExtResource( 19 )
+door_material = ExtResource( 18 )
+exit = NodePath("../Blue")
+
+[node name="Gateway" parent="OrthogonalRoom/Blue2" index="1" instance=ExtResource( 15 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+exit = NodePath("../../Blue/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Orange" parent="OrthogonalRoom" index="12" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -5 )
+door = ExtResource( 19 )
+door_material = ExtResource( 14 )
+exit = NodePath("../Orange2")
+
+[node name="Gateway" parent="OrthogonalRoom/Orange" index="1" instance=ExtResource( 15 )]
+exit = NodePath("../../Orange2/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Orange2" parent="OrthogonalRoom" index="13" instance=ExtResource( 3 )]
+transform = Transform( 1, -3.25841e-07, 3.25841e-07, -3.25841e-07, -1, 0, 3.25841e-07, -1.06173e-13, -1, 51, 10, -5 )
+door = ExtResource( 19 )
+door_material = ExtResource( 14 )
+exit = NodePath("../Orange")
+
+[node name="Gateway" parent="OrthogonalRoom/Orange2" index="1" instance=ExtResource( 15 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+exit = NodePath("../../Orange/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Door2" parent="OrthogonalRoom" index="14" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 3.25841e-07, 1, 0, -1, 3.25841e-07, 1, 5.30863e-14, 1.62921e-07, 60, 10, 0 )
+door = ExtResource( 13 )
+door_material = ExtResource( 10 )
+exit = NodePath("../../Room3/Door2")
+
+[node name="Gateway" parent="OrthogonalRoom/Door2" index="1" instance=ExtResource( 15 )]
+exit = NodePath("../../../Room3/Door2/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+
+[node name="Room3" type="Spatial" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45 )
+
+[node name="Door2" parent="Room3" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+door = ExtResource( 13 )
+door_material = ExtResource( 10 )
+exit = NodePath("../../OrthogonalRoom/Door2")
+
+[node name="Gateway" parent="Room3/Door2" index="1" instance=ExtResource( 15 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+exit = NodePath("../../../OrthogonalRoom/Door2/Gateway")
+size = Vector3( 3, 6.5, 0.6 )
+orthogonal = false
+
+[node name="Floor" type="CSGMesh" parent="Room3" index="1"]
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room3" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+invert_faces = true
+mesh = SubResource( 8 )
+
+[node name="Light" parent="Room3/Ceiling" index="0" instance=ExtResource( 8 )]
+
+[node name="BackWall" type="CSGMesh" parent="Room3" index="3"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[node name="Door2" parent="Room3/BackWall" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="FrontWall" type="CSGMesh" parent="Room3" index="4"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[node name="LeftWall" type="CSGMesh" parent="Room3" index="5"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[node name="RightWall" type="CSGMesh" parent="Room3" index="6"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 5, 0 )
+layers = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 11 )
+material = ExtResource( 2 )
+
+[editable path="LevelTitle"]

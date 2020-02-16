@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://door/scene_change/level_door.gd" type="Script" id=2]
+[ext_resource path="res://door/scene_change/SceneChangeDoor.tscn" type="PackedScene" id=5]
+
+[node name="Level" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+door = ExtResource( 5 )
+
+[editable path="Interact"]
