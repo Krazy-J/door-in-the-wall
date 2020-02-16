@@ -6,7 +6,7 @@ export var root_properties : PoolStringArray
 export var label : String = "name"
 
 func _ready():
-	pass
+	$Split/Label.text = label
 
 func _value_changed(value):
 	$Split/Split/SpinBox.value = value

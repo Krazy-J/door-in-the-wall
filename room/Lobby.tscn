@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
 [ext_resource path="res://room/Level2.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=10]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://door/normal/simple.tres" type="Material" id=12]
 [ext_resource path="res://door/normal/classic.tres" type="Material" id=13]
 [ext_resource path="res://door/8-bit/BitDoor.tscn" type="PackedScene" id=14]
 [ext_resource path="res://door/8-bit/white.tres" type="Material" id=15]
@@ -104,9 +103,6 @@ collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 2 )
 
-[node name="Basic" parent="Lobby/Room/LeftWall" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5 )
-
 [node name="BackWall" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 8, 10 )
 layers = 3
@@ -115,9 +111,6 @@ collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 2 )
 
-[node name="Basic2" parent="Lobby/Room/BackWall" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4.51 )
-
 [node name="RightWall" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 8, 0 )
 layers = 3
@@ -125,18 +118,6 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 mesh = SubResource( 2 )
-
-[node name="Basic" parent="Lobby" instance=ExtResource( 10 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 2 )
-door = ExtResource( 11 )
-door_material = ExtResource( 12 )
-exit = NodePath("../Basic2")
-
-[node name="Basic2" parent="Lobby" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10 )
-door = ExtResource( 11 )
-door_material = ExtResource( 12 )
-exit = NodePath("../Basic")
 
 [node name="Sections" type="Spatial" parent="Lobby"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
@@ -154,12 +135,12 @@ door_material = ExtResource( 15 )
 exit = NodePath("../../../../Main/Bit/Main")
 
 [node name="TestRoom" parent="Lobby" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 10 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -83 )
 door_material = ExtResource( 15 )
 room = ExtResource( 17 )
 
 [node name="TheFunRoom" parent="Lobby" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -78 )
 door_material = ExtResource( 19 )
 room = ExtResource( 20 )
 

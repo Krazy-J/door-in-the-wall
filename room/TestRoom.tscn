@@ -111,7 +111,7 @@ material = ExtResource( 5 )
 [node name="ToTable" parent="Room/RightWall" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5 )
 
-[node name="Lobby" parent="." instance=ExtResource( 6 )]
+[node name="LobbyDoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0, -0.34202, 0.939692, 0, 0.939693, 0.34202, -1, 0, 0, -13.32, 0.1, 7 )
 
 [node name="Table" parent="." instance=ExtResource( 8 )]

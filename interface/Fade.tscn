@@ -62,14 +62,14 @@ animation = "fade_in"
 
 [sub_resource type="AnimationNodeStateMachine" id=4]
 states/fade_in/node = SubResource( 3 )
-states/fade_in/position = Vector2( 527, 138 )
+states/fade_in/position = Vector2( 413, 135 )
 start_node = "fade_in"
 end_node = "fade_in"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
 [node name="Fade" type="ColorRect"]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.32767 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

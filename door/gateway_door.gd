@@ -6,8 +6,9 @@ export var requires_door = false
 
 func _ready():
 	if exit:
-		if not has_node("Gateway") and (!requires_door or has_node("Door")):
-			connect_gateway()
+		if not has_node("Gateway"):
+			if (not requires_door or has_node("Door")) and (not get_node(exit).requires_door or get_node(exit).has_node("Door")):
+				connect_gateway()
 		else:
 			$Gateway.exit = "../" + str(exit) + "/Gateway"
 
@@ -21,15 +22,20 @@ func _unhandled_input(event):
 		if has_node("Door"):
 			if exit: get_node(exit).toggle_door()
 		elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-			if exit: connect_gateway()
+			if exit:
+				connect_gateway()
+				get_node(exit).connect_gateway()
 
 func _process(_delta):
 	if Engine.editor_hint:
 		if has_node("Door"):
 			if not open == is_open:
 				if exit: get_node(exit).open = open
-	elif exit and has_node("Door") and $Door/AnimationPlayer.is_playing():
-		if $Door/AnimationPlayer.current_animation_position <= 0.01:
-			$Gateway.disable_viewport($"/root/Main/Player/TeleportArea")
-		else:
-			$Gateway.enable_viewport($"/root/Main/Player/TeleportArea")
+	elif has_node("Gateway"):
+		$Gateway/Viewport.shadow_atlas_size = ProjectSettings.get("rendering/quality/viewport/door_shadow_size")
+		$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.get("rendering/quality/viewport/door_mipmap_level"))
+		if has_node("Door") and $Door/AnimationPlayer.is_playing():
+			if $Door/AnimationPlayer.current_animation_position <= 0.01:
+				$Gateway.disable_viewport($"/root/Main/Player/TeleportArea")
+			else:
+				$Gateway.enable_viewport($"/root/Main/Player/TeleportArea")

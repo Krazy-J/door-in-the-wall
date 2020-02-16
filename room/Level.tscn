@@ -6,8 +6,6 @@
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=8]
 [ext_resource path="res://door/scene_change/GoalDoor.tscn" type="PackedScene" id=12]
 
-
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -20,7 +18,6 @@ albedo_texture = ExtResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
 
 [node name="LevelTitle" parent="." instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 1 )
 
 [node name="Level" parent="LevelTitle" index="0"]
 margin_top = 238.0
@@ -31,10 +28,10 @@ text = "Level "
 [node name="AnimationTree" parent="LevelTitle" index="3"]
 parameters/playback = SubResource( 1 )
 
-[node name="Lobby" parent="." instance=ExtResource( 7 )]
+[node name="LobbyDoor" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
-[node name="Goal" parent="." instance=ExtResource( 12 )]
+[node name="GoalDoor" parent="." instance=ExtResource( 12 )]
 door_material = SubResource( 2 )
 
 [editable path="LevelTitle"]
