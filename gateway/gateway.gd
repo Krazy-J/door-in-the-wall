@@ -24,7 +24,7 @@ func teleport(body):
 				carried_body.global_transform = global_transform.affine_inverse() * carried_body.global_transform
 				carried_body.global_transform = get_node(exit).global_transform * carried_body.global_transform
 			else:
-				var relative_scale = get_node(exit).global_transform.basis.get_scale() / global_transform.basis.get_scale()
+				var relative_scale = (get_node(exit).global_transform.basis.get_scale() / global_transform.basis.get_scale()).y
 				body.carry_distance *= relative_scale
 				for child in carried_body.get_children():
 					child.scale *= relative_scale
