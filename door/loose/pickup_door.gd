@@ -1,9 +1,9 @@
 tool
 extends Spatial
 
-export var door : PackedScene
-export var door_mesh : Mesh
-export var door_material : Material
+export(PackedScene) var door
+export(Mesh) var door_mesh
+export(Material) var door_material
 
 func _ready():
 	add_child(door.instance())

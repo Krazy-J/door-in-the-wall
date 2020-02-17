@@ -55,7 +55,7 @@ size = Vector2( 10, 10 )
 [node name="Main" instance=ExtResource( 1 )]
 
 [node name="LevelTitle" parent="." index="1"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 1 )
 
 [node name="Level" parent="LevelTitle" index="0"]
 margin_top = 216.0
@@ -71,17 +71,9 @@ different perspective"
 [node name="AnimationTree" parent="LevelTitle" index="3"]
 parameters/playback = SubResource( 1 )
 
-[node name="LobbyDoor" parent="." index="2"]
-door_mesh = null
-open = false
-room = null
-
 [node name="GoalDoor" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
-door_mesh = null
 door_material = SubResource( 2 )
-open = false
-room = null
 
 [node name="Room1" type="Spatial" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )

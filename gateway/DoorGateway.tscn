@@ -72,3 +72,6 @@ mesh = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.15 )
 cast_shadow = 0
 mesh = SubResource( 8 )
+
+[node name="Viewport" parent="." index="3"]
+size = Vector2( 0, 0 )

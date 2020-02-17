@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=1]
 [ext_resource path="res://door/scene_change/level_door.gd" type="Script" id=2]
+[ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=3]
+[ext_resource path="res://font/door_labels.tres" type="DynamicFont" id=4]
 [ext_resource path="res://door/scene_change/SceneChangeDoor.tscn" type="PackedScene" id=5]
 
 [node name="Level" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 door = ExtResource( 5 )
+
+[node name="Label" type="Spatial" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
+script = ExtResource( 3 )
+text = ""
+text_scale = 0.005
+extrude = 0.0
+font = ExtResource( 4 )
+align = 0
+color = Color( 0, 0, 0, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [editable path="Interact"]
