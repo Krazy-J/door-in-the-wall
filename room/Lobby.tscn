@@ -164,6 +164,17 @@ text = "Escher"
 text_scale = 0.005
 font = ExtResource( 33 )
 
+[node name="Label2" type="Spatial" parent="Lobby/Sections/Escher"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
+script = ExtResource( 22 )
+text = "Will be
+added after
+other
+sections."
+text_scale = 0.002
+font = ExtResource( 33 )
+align = 2
+
 [node name="Chaos" parent="Lobby/Sections" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 
@@ -174,6 +185,17 @@ text = "Chaos"
 text_scale = 0.005
 font = ExtResource( 33 )
 color = Color( 1, 0, 0, 1 )
+
+[node name="Label2" type="Spatial" parent="Lobby/Sections/Chaos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
+script = ExtResource( 22 )
+text = "Will be
+added after
+other
+sections."
+text_scale = 0.002
+font = ExtResource( 33 )
+align = 2
 
 [node name="TestRoom" parent="Lobby" instance=ExtResource( 16 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -83 )
