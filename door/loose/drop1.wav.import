@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drop1.wav-ad8925736f30152e7b6f5798b320025e.sample"
+
+[deps]
+
+source_file="res://door/loose/drop1.wav"
+dest_files=[ "res://.import/drop1.wav-ad8925736f30152e7b6f5798b320025e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
