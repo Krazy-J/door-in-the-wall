@@ -13,15 +13,8 @@ door = ExtResource( 5 )
 [node name="Label" type="Spatial" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
 script = ExtResource( 3 )
-text = ""
 text_scale = 0.005
-extrude = 0.0
 font = ExtResource( 4 )
-align = 0
 color = Color( 0, 0, 0, 1 )
-metallic = 0.0
-roughness = 0.5
-max_steps = 256
-step_size = 1.0
 
 [editable path="Interact"]
