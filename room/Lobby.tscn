@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
 [ext_resource path="res://room/Level2.tscn" type="PackedScene" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://surface/mesh/40x10.tres" type="PlaneMesh" id=32]
 [ext_resource path="res://font/door_labels.tres" type="DynamicFont" id=33]
 [ext_resource path="res://room/Level3.tscn" type="PackedScene" id=34]
+[ext_resource path="res://room/Orthogonal.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gateway/Gateway.tscn" type="PackedScene" id=36]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -72,6 +74,15 @@ collision_layer = 3
 collision_mask = 3
 mesh = ExtResource( 31 )
 material = ExtResource( 30 )
+
+[node name="Floor2" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
+layers = 3
+cast_shadow = 3
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+mesh = ExtResource( 31 )
 
 [node name="Ceiling" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
@@ -130,7 +141,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 door = ExtResource( 11 )
 door_material = ExtResource( 13 )
-exit = NodePath("../../../../Main/Classic/Main")
+exit = NodePath("../../../Classic/Main")
 
 [node name="Label" type="Spatial" parent="Lobby/Sections/Classic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
@@ -144,7 +155,7 @@ color = Color( 0.8, 0.5, 0, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 door = ExtResource( 14 )
 door_material = ExtResource( 15 )
-exit = NodePath("../../../../Main/Bit/Main")
+exit = NodePath("../../../Bit/Main")
 
 [node name="Label" type="Spatial" parent="Lobby/Sections/Bit"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
@@ -196,6 +207,11 @@ sections."
 text_scale = 0.002
 font = ExtResource( 33 )
 align = 2
+
+[node name="Secrets" parent="Lobby/Sections" instance=ExtResource( 36 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 6, 0, 19 )
+exit = NodePath("../../../Secrets/Gateway")
+size = Vector3( 0.5, 5, 0.1 )
 
 [node name="TestRoom" parent="Lobby" instance=ExtResource( 16 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -83 )
@@ -382,3 +398,15 @@ exit = NodePath("../../Lobby/Sections/Bit")
 
 [node name="Levels" type="Spatial" parent="Bit"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="Secrets" type="Spatial" parent="."]
+
+[node name="Gateway" parent="Secrets" instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
+exit = NodePath("../../Lobby/Sections/Secrets")
+size = Vector3( 4, 5, 0.5 )
+
+[node name="Orthogonal" parent="Secrets" instance=ExtResource( 16 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8, 0, 30 )
+room = ExtResource( 35 )
+label = "Orthogonal"

@@ -13,6 +13,19 @@ func _ready():
 	if not has_node("../LobbyDoor"): $Pause/List/QuitLevel.queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _on_pause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func _on_unpause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_quit_level():
+	get_node("../LobbyDoor").toggle_door()
+func _on_quit():
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Main.tscn")
+	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())
+func quit_game(): get_tree().quit()
+
 func _unhandled_input(event):
 	if event.is_action_pressed("exit_mouse"): $Pause.popup()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -65,16 +78,3 @@ func _physics_process(delta):
 	motion *= (1 - air_resistance)
 	motion -= transform.basis.y * gravity * delta
 	motion = move_and_slide(motion, transform.basis.y.normalized())
-
-func _on_pause():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-func _on_unpause():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _on_quit_level():
-	get_node("../LobbyDoor").toggle_door()
-func _on_quit():
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Main.tscn")
-	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())
-func quit_game(): get_tree().quit()

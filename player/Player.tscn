@@ -94,7 +94,6 @@ cull_mask = 1
 current = true
 fov = 90.0
 near = 0.01
-far = 1000.0
 
 [node name="InteractArea" type="Area" parent="PivotX"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )

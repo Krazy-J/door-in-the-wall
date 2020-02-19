@@ -41,10 +41,10 @@ func _process(_delta):
 				if not open == is_open:
 					if open:
 						$Door/AnimationPlayer.play("DoorToggle")
-						$Door/SoundOpen.play()
+						$Door/SoundOpen.play($Door/AnimationPlayer.current_animation_position)
 					else:
 						$Door/AnimationPlayer.play_backwards("DoorToggle")
-						$Door/SoundClose.play()
+						$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 					is_open = open
 				if door_material and not $Door.material_override == door_material: $Door.material_override = door_material.duplicate()
 		elif door: add_child(door.instance())

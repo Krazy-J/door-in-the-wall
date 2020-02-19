@@ -80,9 +80,9 @@ transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
-cull_mask = 3
 projection = 1
 current = true
 fov = 90.0

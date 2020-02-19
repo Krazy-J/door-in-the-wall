@@ -6,9 +6,8 @@ export var size = Vector3(2, 2, 0.4)
 
 func _ready():
 	$Area.translation = Vector3(0, size.y / 2, -size.z / 2)
-	$OuterArea.translation = $Area.translation
 	$Area/Collision.shape.extents = size / 2 + Vector3(0, 0, -0.05)
-	$OuterArea/Collision.shape.extents = size / 2
+	$Area/Outer/Collision.shape.extents = size / 2
 	#var shaderMat = (($DoorViewport as GeometryInstance).material_override as ShaderMaterial) # Supposed to fix missing viewports. Welp, I tried.
 	#if shaderMat.get_shader_param("Viewport") == null:
 		#shaderMat.set_shader_param("Viewport", $DoorViewport/Viewport.get_texture())
