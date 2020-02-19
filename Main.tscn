@@ -14,9 +14,11 @@
 [ext_resource path="res://interface/Settings.tscn" type="PackedScene" id=12]
 [ext_resource path="res://font/large.tres" type="DynamicFont" id=13]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=14]
-[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=15]
+[ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=15]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=16]
 [ext_resource path="res://door/8-bit/orange.tres" type="Material" id=17]
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial

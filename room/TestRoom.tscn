@@ -4,7 +4,7 @@
 [ext_resource path="res://surface/mesh/32x18.tres" type="PlaneMesh" id=2]
 [ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/mesh/32x32.tres" type="PlaneMesh" id=4]
-[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=5]
+[ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=5]
 [ext_resource path="res://door/scene_change/LobbyDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://object/Table.tscn" type="PackedScene" id=8]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=9]
@@ -23,6 +23,8 @@
 [ext_resource path="res://interface/LevelTitle.tscn" type="PackedScene" id=22]
 [ext_resource path="res://surface/8bit/checker_tiles.tres" type="Material" id=23]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=24]
+
+
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true

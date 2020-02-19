@@ -25,7 +25,9 @@
 [ext_resource path="res://surface/mesh/20x40.tres" type="PlaneMesh" id=23]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=24]
 [ext_resource path="res://surface/mesh/40x12.tres" type="PlaneMesh" id=25]
-[ext_resource path="res://surface/normal/stucco.tres" type="Material" id=26]
+[ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=26]
+
+
 
 [sub_resource type="DynamicFont" id=6]
 size = 60
