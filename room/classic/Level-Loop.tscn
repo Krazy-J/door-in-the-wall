@@ -43,7 +43,7 @@ uv1_triplanar = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -5 )
 
 [node name="Level" parent="LevelTitle" index="0"]
-text = "Level 3"
+text = "Level -"
 
 [node name="Name" parent="LevelTitle" index="1"]
 text = "Caught in a Loop"
