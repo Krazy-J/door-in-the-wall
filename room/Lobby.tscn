@@ -505,6 +505,7 @@ size = Vector3( 4, 5, 0.5 )
 
 [node name="Orthogonal" parent="Secrets" instance=ExtResource( 16 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8, 0, 30 )
+door_material = ExtResource( 15 )
 room = ExtResource( 35 )
 label = "Orthogonal"
 label_color = Color( 0.9, 0.9, 0.9, 1 )
