@@ -17,12 +17,12 @@ func _ready():
 	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
 	$Viewport/Spatial.global_transform.origin = get_node(exit).global_transform.origin + Vector3(0, 0, 10)
 
-func disable_viewport(area):
+func disable_viewport():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
-func enable_viewport(area):
+func enable_viewport():
 	$Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 
-func _on_outer_area_entered(area):
+func _on_outer_area_entered():
 	pass
 func _on_area_entered(area):
 	teleport(area.get_parent())

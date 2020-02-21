@@ -8,27 +8,22 @@ export var prefix : String
 export var suffix : String
 export var tick_count : int
 export var value_override : int = -1
-var value : float
 
 func _ready():
-	if value_override >= 0: value = value_override
+	$Split/Split/Slider.rect_min_size.x = 16 + ceil(float(max_value - min_value) / step)
+	var value
+	if not value_override == -1: value = value_override
 	elif settings: value = ProjectSettings.get(settings[0])
-	elif root_properties: value = get_viewport().get(root_properties[0])
-	$Split/Split/Slider.rect_min_size.x = 16 + ceil((max_value - min_value) / step)
-	_value_changed(value)
-	$Split/Split/SpinBox.min_value = min_value
-	$Split/Split/Slider.min_value = min_value
-	$Split/Split/SpinBox.max_value = max_value
-	$Split/Split/Slider.max_value = max_value
+	elif viewport: value = get_viewport().get(viewport[0])
+	elif os: value = OS.get(os[0])
+	$Split/Split/SpinBox.set_deferred("value",value)
+	$Split/Split/Slider.set_deferred("value",value)
+	$Split/Split/SpinBox.set_deferred("min_value",min_value)
+	$Split/Split/Slider.set_deferred("min_value",min_value)
+	$Split/Split/SpinBox.set_deferred("max_value",max_value)
+	$Split/Split/Slider.set_deferred("max_value",max_value)
 	$Split/Split/SpinBox.step = step
 	$Split/Split/Slider.step = step
 	$Split/Split/SpinBox.prefix = prefix
 	$Split/Split/SpinBox.suffix = suffix
 	$Split/Split/Slider.tick_count = tick_count
-
-func _value_changed(new_value):
-	value = new_value
-	$Split/Split/SpinBox.value = value
-	$Split/Split/Slider.value = value
-	for setting in settings: ProjectSettings.set(setting, value)
-	for property in root_properties: get_viewport().set(property, value)

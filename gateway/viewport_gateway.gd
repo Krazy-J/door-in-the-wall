@@ -7,11 +7,13 @@ func _ready():
 	$Area/Port.translation.z = -size.z / 2
 	$Area/Port.mesh.size = Vector2(size.x, size.y)
 	$Viewport.size = get_viewport().size
-	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
 	$Viewport/Spatial/Camera.make_current()
 	if start_enabled: $Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	$Viewport/Spatial/Camera.fov = 90
 
 func place_camera():
+	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
+	$Viewport/Spatial/Camera.fov = ProjectSettings.fov
 	$Viewport/Spatial.global_transform = $"/root/Main/Player/PivotX/Camera".global_transform
 	teleport($Viewport/Spatial)
 

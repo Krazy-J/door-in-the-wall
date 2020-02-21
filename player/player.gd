@@ -1,16 +1,19 @@
 extends KinematicBody
 
+export var view_distance = 100
 export var speed = 100
 export var jump_power = 25
 export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
-export var carrying : NodePath
-export var carry_distance : float
-export var motion : Vector3
+var carrying : NodePath
+var carry_distance : float
+var motion : Vector3
 
 func _ready():
-	if not has_node("../LobbyDoor"): $Pause/List/QuitLevel.queue_free()
+	if not has_node("../LobbyDoor"):
+		$Pause/List/QuitLevel.disabled = true
+		$Pause/List/QuitLevel.hint_tooltip = "You're not in a level!"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_pause():
@@ -20,22 +23,23 @@ func _on_unpause():
 
 func _on_quit_level():
 	get_node("../LobbyDoor").toggle_door()
-func _on_quit():
+func _on_quit_menu():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Main.tscn")
 	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())
-func quit_game(): get_tree().quit()
+func _on_quit_game(): get_tree().quit()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("exit_mouse"): $Pause.popup()
+	if event.is_action_pressed("fullscreen"): OS.window_fullscreen = not OS.window_fullscreen
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
-			$PivotX.rotate_x(-event.relative.y * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
+			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
+			$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 		if event is InputEventJoypadMotion:
-			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
-			$PivotX.rotate_x(-event.relative.y * ProjectSettings.get("input_devices/pointing/mouse_sensitivity"))
+			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
+			$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 	if is_on_floor():
 		if event.is_action("jump"): motion += transform.basis.y * jump_power
@@ -54,6 +58,9 @@ func get_movement():
 		if Input.is_key_pressed(KEY_SHIFT): movement *= 2
 	if !is_on_floor(): movement /= 20
 	return movement
+
+func _process(_delta):
+	$PivotX/Camera.fov = ProjectSettings.fov
 
 func _physics_process(delta):
 	if carrying:

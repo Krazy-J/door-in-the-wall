@@ -71,26 +71,13 @@ size = Vector2( 20, 16 )
 [node name="Floor" type="CSGMesh" parent="Lobby/Room"]
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 31 )
 material = ExtResource( 30 )
-
-[node name="Floor2" type="CSGMesh" parent="Lobby/Room"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
-layers = 3
-cast_shadow = 3
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-mesh = ExtResource( 31 )
 
 [node name="Ceiling" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 invert_faces = true
 mesh = ExtResource( 31 )
 material = ExtResource( 12 )
@@ -101,8 +88,6 @@ material = ExtResource( 12 )
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 8, -10 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="Classic" parent="Lobby/Room/FrontWall" instance=ExtResource( 9 )]
@@ -115,24 +100,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5 )
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -10, 8, 0 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="BackWall" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 8, 10 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="RightWall" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 8, 0 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = SubResource( 2 )
 
 [node name="Sections" type="Spatial" parent="Lobby"]
@@ -149,8 +128,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
 script = ExtResource( 22 )
 text = "Classic"
 text_scale = 0.005
+extrude = 0.0
 font = ExtResource( 33 )
+align = 0
 color = Color( 0.8, 0.5, 0, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Bit" parent="Lobby/Sections" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
@@ -163,8 +148,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
 script = ExtResource( 22 )
 text = "8-Bit"
 text_scale = 0.005
+extrude = 0.0
 font = ExtResource( 33 )
+align = 0
 color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Escher" parent="Lobby/Sections" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
@@ -174,7 +165,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
 script = ExtResource( 22 )
 text = "Escher"
 text_scale = 0.005
+extrude = 0.0
 font = ExtResource( 33 )
+align = 0
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Label2" type="Spatial" parent="Lobby/Sections/Escher"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
@@ -184,8 +182,14 @@ added after
 other
 sections."
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Chaos" parent="Lobby/Sections" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
@@ -195,8 +199,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
 script = ExtResource( 22 )
 text = "Chaos"
 text_scale = 0.005
+extrude = 0.0
 font = ExtResource( 33 )
+align = 0
 color = Color( 1, 0, 0, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Label2" type="Spatial" parent="Lobby/Sections/Chaos"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
@@ -206,11 +216,17 @@ added after
 other
 sections."
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Secrets" parent="Lobby/Sections" instance=ExtResource( 36 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 6, 0, 19 )
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 6, 0, 19 )
 exit = NodePath("../../../Secrets/Gateway")
 size = Vector3( 0.5, 5, 0.1 )
 
@@ -234,8 +250,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 28 )
 material = ExtResource( 23 )
 
@@ -243,8 +257,6 @@ material = ExtResource( 23 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 invert_faces = true
 mesh = ExtResource( 28 )
 material = ExtResource( 30 )
@@ -261,8 +273,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 5, 10 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 32 )
 material = ExtResource( 24 )
 
@@ -273,8 +283,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -6 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 32 )
 material = ExtResource( 24 )
 
@@ -282,8 +290,6 @@ material = ExtResource( 24 )
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 21 )
 material = ExtResource( 24 )
 
@@ -291,8 +297,6 @@ material = ExtResource( 24 )
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 20, 5, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 21 )
 material = ExtResource( 24 )
 
@@ -338,8 +342,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
 script = ExtResource( 22 )
 text = "Not started"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="6" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
@@ -355,8 +365,14 @@ __meta__ = {
 }
 text = "Not started"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="7" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
@@ -370,8 +386,14 @@ script = ExtResource( 22 )
 text = "Missing
 ideas"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
@@ -385,8 +407,14 @@ script = ExtResource( 22 )
 text = "Missing
 ideas"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
@@ -400,8 +428,14 @@ script = ExtResource( 22 )
 text = "Missing
 ideas"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="10" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
@@ -415,8 +449,14 @@ script = ExtResource( 22 )
 text = "Missing
 ideas"
 text_scale = 0.002
+extrude = 0.0
 font = ExtResource( 33 )
 align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Bit" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70 )
@@ -428,8 +468,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 28 )
 material = ExtResource( 26 )
 
@@ -437,8 +475,6 @@ material = ExtResource( 26 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 invert_faces = true
 mesh = ExtResource( 28 )
 material = ExtResource( 6 )
@@ -453,8 +489,6 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 11, 0, 
 transform = Transform( -1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0, 5, 10 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 32 )
 material = ExtResource( 5 )
 
@@ -465,8 +499,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -6 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 32 )
 material = ExtResource( 5 )
 
@@ -474,8 +506,6 @@ material = ExtResource( 5 )
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 21 )
 material = ExtResource( 5 )
 
@@ -483,8 +513,6 @@ material = ExtResource( 5 )
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 20, 5, 2 )
 layers = 3
 use_collision = true
-collision_layer = 3
-collision_mask = 3
 mesh = ExtResource( 21 )
 material = ExtResource( 5 )
 
@@ -502,6 +530,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
 exit = NodePath("../../Lobby/Sections/Secrets")
 size = Vector3( 4, 5, 0.5 )
+
+[node name="Floor" type="CSGMesh" parent="Secrets"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
+layers = 0
+use_collision = true
+mesh = ExtResource( 31 )
 
 [node name="Orthogonal" parent="Secrets" instance=ExtResource( 16 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8, 0, 30 )

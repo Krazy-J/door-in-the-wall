@@ -32,8 +32,9 @@ func _process(_delta):
 			if not open == is_open:
 				if exit: get_node(exit).open = open
 	elif has_node("Gateway"):
-		$Gateway/Viewport.shadow_atlas_size = ProjectSettings.get("rendering/quality/viewport/door_shadow_size")
-		$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.get("rendering/quality/viewport/door_mipmap_level"))
+		if is_open:
+			$Gateway/Viewport.shadow_atlas_size = ProjectSettings.door_shadow_atlas_size
+			$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.door_mipmap_level)
 		if has_node("Door") and $Door/AnimationPlayer.is_playing():
 			if $Door/AnimationPlayer.current_animation_position <= 0.01:
 				$Gateway.disable_viewport($"/root/Main/Player/TeleportArea")
