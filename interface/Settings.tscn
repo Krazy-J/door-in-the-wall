@@ -55,6 +55,13 @@ text = "Borderless"
 script = ExtResource( 5 )
 os = PoolStringArray( "window_borderless" )
 
+[node name="VSync" type="CheckButton" parent="TabContainer/Video/General"]
+pause_mode = 2
+pressed = true
+text = "VSync"
+script = ExtResource( 5 )
+os = PoolStringArray( "vsync_enabled" )
+
 [node name="FOV" parent="TabContainer/Video/General" instance=ExtResource( 2 )]
 margin_right = 164.0
 margin_bottom = 62.0
@@ -112,14 +119,6 @@ settings = PoolStringArray( "door_mipmap_level" )
 label = "Resolution"
 values = PoolIntArray( 2, 1, 0 )
 names = PoolStringArray( "1/4", "1/2", "Full" )
-
-[node name="Info" type="Label" parent="TabContainer/Video/Doors/List"]
-margin_top = 135.0
-margin_right = 144.0
-margin_bottom = 176.0
-text = "Must change level
-to take effect"
-align = 1
 
 [node name="Controls" type="HBoxContainer" parent="TabContainer"]
 visible = false
@@ -202,3 +201,4 @@ columns = 2
 [connection signal="toggled" from="TabContainer/Video/General/Fullscreen" to="TabContainer/Video/General/Fullscreen" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/General/Fullscreen" to="TabContainer/Video/General/Borderless" method="disable"]
 [connection signal="toggled" from="TabContainer/Video/General/Borderless" to="TabContainer/Video/General/Borderless" method="_toggled"]
+[connection signal="toggled" from="TabContainer/Video/General/VSync" to="TabContainer/Video/General/VSync" method="_toggled"]
