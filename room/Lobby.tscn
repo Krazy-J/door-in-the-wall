@@ -340,6 +340,9 @@ label = "-"
 [node name="Label2" type="Spatial" parent="Classic/Levels/5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
 script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": "Doors on other surfaces"
+}
 text = "Not started"
 text_scale = 0.002
 extrude = 0.0
@@ -383,8 +386,10 @@ label = "-"
 [node name="Label2" type="Spatial" parent="Classic/Levels/7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
 script = ExtResource( 22 )
-text = "Missing
-ideas"
+__meta__ = {
+"_editor_description_": "Scaling with mouse hole"
+}
+text = "Not started"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )

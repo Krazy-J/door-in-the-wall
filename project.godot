@@ -28,7 +28,6 @@ door_shadow_atlas_size=4096
 door_mipmap_level=0
 fov=90.0
 mouse_sensitivity=0.003
-=4096
 
 [application]
 
