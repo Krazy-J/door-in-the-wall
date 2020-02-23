@@ -6,15 +6,17 @@ export var jump_power = 25
 export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
+var motion : Vector3
 var carrying : NodePath
 var carry_distance : float
-var motion : Vector3
+var carry_transform : Transform
 
 func _ready():
 	if not has_node("../LobbyDoor"):
 		$Pause/List/QuitLevel.disabled = true
 		$Pause/List/QuitLevel.hint_tooltip = "You're not in a level!"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$PivotX/Camera.far = view_distance
 
 func _on_pause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -62,23 +64,24 @@ func get_movement():
 func _process(_delta):
 	$PivotX/Camera.fov = ProjectSettings.fov
 
-func _physics_process(delta):
-	if carrying:
-		var body = get_node(carrying)
-		if body.has_node("Door"):
-			body.global_transform.origin += (transform.origin - body.global_transform.origin) * 10 * delta
-			body.get_node("Door").translation += ($CarryDoor.translation / body.scale * scale - body.get_node("Door").scale * Vector3(0, 3.5, 0) - body.get_node("Door").translation) * 10 * delta
-			if (transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees - transform.basis.y * 360) * 10 * delta
-			elif (transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees + transform.basis.y * 360) * 10 * delta
-			else:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
-			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
-			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
+func _carry_process(delta, body):
+	if body.has_node("Door"):
+		body.global_transform.origin += (translation - body.global_transform.origin) * 10 * delta
+		if (transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
+			body.rotation_degrees += (rotation_degrees - body.rotation_degrees - transform.basis.y * 360) * 10 * delta
+		elif (transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
+			body.rotation_degrees += (rotation_degrees - body.rotation_degrees + transform.basis.y * 360) * 10 * delta
 		else:
-			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
-			body.angular_velocity = -body.rotation_degrees * 20 * delta
+			body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
+		body.get_node("Door").translation += ($CarryDoor.translation / body.scale * scale - body.get_node("Door").scale * Vector3(0, 3.5, 0) - body.get_node("Door").translation) * 10 * delta
+		body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
+		body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
+	else:
+		body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
+		body.angular_velocity = -body.rotation_degrees * 20 * delta
+
+func _physics_process(delta):
+	if carrying: _carry_process(delta, get_node(carrying))
 	motion += transform.basis * get_movement() * speed * delta
 	if is_on_floor():
 		motion *= (1 - surface_friction)

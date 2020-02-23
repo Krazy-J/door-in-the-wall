@@ -8,10 +8,12 @@ export var open = false
 var is_open = open
 
 func _ready():
-	if door:
-		add_child(door.instance())
-		if door_mesh: $Door.mesh = door_mesh
-		if door_material: $Door.material_override = door_material.duplicate()
+	if door: add_door()
+
+func add_door(source = self):
+	add_child(source.door.instance())
+	if source.door_mesh: $Door.mesh = source.door_mesh
+	if source.door_material: $Door.material_override = source.door_material.duplicate()
 
 func toggle_door():
 	open = not open
@@ -28,9 +30,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact") and ($Interact.visible or has_node("Door") and $Door/Interact.visible):
 		if has_node("Door"): toggle_door()
 		elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-			add_child(get_node($"/root/Main/Player".carrying).door.instance())
-			if door_mesh: $Door.mesh = get_node($"/root/Main/Player".carrying).door_mesh
-			$Door.material_override = get_node($"/root/Main/Player".carrying).door_material.duplicate()
+			add_door(get_node($"/root/Main/Player".carrying))
 			get_node($"/root/Main/Player".carrying).queue_free()
 
 func _process(_delta):

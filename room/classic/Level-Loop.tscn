@@ -110,7 +110,7 @@ mesh = ExtResource( 3 )
 
 [node name="Gateway" parent="Room1" index="9" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -10 )
-exit = NodePath("../../Room2/Gateway")
+exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2" type="Spatial" parent="." index="5"]
@@ -118,7 +118,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -15 )
 
 [node name="Gateway" parent="Room2" index="0" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, -10 )
-exit = NodePath("../../Room3/Gateway")
+exit_path = NodePath("../../Room3/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Floor" type="CSGMesh" parent="Room2" index="1"]
@@ -204,7 +204,7 @@ material = ExtResource( 1 )
 
 [node name="GatewayLoop" parent="Room2" index="12" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1, 0, -10 )
-exit = NodePath("../../Room2Loop/GatewayLoop")
+exit_path = NodePath("../../Room2Loop/GatewayLoop")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2Loop" type="Spatial" parent="." index="6"]
@@ -212,7 +212,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 25 )
 
 [node name="GatewayLoop" parent="Room2Loop" index="0" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1, 0, -10 )
-exit = NodePath("../../Room2/GatewayLoop")
+exit_path = NodePath("../../Room2/GatewayLoop")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Floor" type="CSGMesh" parent="Room2Loop" index="1"]
@@ -286,7 +286,7 @@ material = ExtResource( 1 )
 
 [node name="Gateway" parent="Room2Loop" index="11" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -10 )
-exit = NodePath("../../Room2/Gateway")
+exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room3" type="Spatial" parent="." index="7"]
@@ -294,7 +294,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, -15 )
 
 [node name="Gateway" parent="Room3" index="0" instance=ExtResource( 15 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -10 )
-exit = NodePath("../../Room2/Gateway")
+exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Floor" type="CSGMesh" parent="Room3" index="1"]

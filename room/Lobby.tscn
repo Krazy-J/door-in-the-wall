@@ -121,7 +121,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 door = ExtResource( 11 )
 door_material = ExtResource( 13 )
-exit = NodePath("../../../Classic/Main")
+exit_path = NodePath("../../../Classic/Main")
 
 [node name="Label" type="Spatial" parent="Lobby/Sections/Classic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
@@ -141,7 +141,7 @@ step_size = 1.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 door = ExtResource( 14 )
 door_material = ExtResource( 15 )
-exit = NodePath("../../../Bit/Main")
+exit_path = NodePath("../../../Bit/Main")
 
 [node name="Label" type="Spatial" parent="Lobby/Sections/Bit"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
@@ -227,7 +227,7 @@ step_size = 1.0
 
 [node name="Secrets" parent="Lobby/Sections" instance=ExtResource( 36 )]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 6, 0, 19 )
-exit = NodePath("../../../Secrets/Gateway")
+exit_path = NodePath("../../../Secrets/Gateway")
 size = Vector3( 0.5, 5, 0.1 )
 
 [node name="TestRoom" parent="Lobby" instance=ExtResource( 16 )]
@@ -303,7 +303,7 @@ material = ExtResource( 24 )
 [node name="Main" parent="Classic" instance=ExtResource( 10 )]
 door = ExtResource( 11 )
 door_material = ExtResource( 13 )
-exit = NodePath("../../Lobby/Sections/Classic")
+exit_path = NodePath("../../Lobby/Sections/Classic")
 
 [node name="Levels" type="Spatial" parent="Classic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
@@ -524,7 +524,7 @@ material = ExtResource( 5 )
 [node name="Main" parent="Bit" instance=ExtResource( 10 )]
 door = ExtResource( 14 )
 door_material = ExtResource( 15 )
-exit = NodePath("../../Lobby/Sections/Bit")
+exit_path = NodePath("../../Lobby/Sections/Bit")
 
 [node name="Levels" type="Spatial" parent="Bit"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
@@ -533,7 +533,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 
 [node name="Gateway" parent="Secrets" instance=ExtResource( 36 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
-exit = NodePath("../../Lobby/Sections/Secrets")
+exit_path = NodePath("../../Lobby/Sections/Secrets")
 size = Vector3( 4, 5, 0.5 )
 
 [node name="Floor" type="CSGMesh" parent="Secrets"]

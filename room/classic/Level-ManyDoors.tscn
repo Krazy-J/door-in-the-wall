@@ -106,7 +106,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../A2")
+exit_path = NodePath("../A2")
 close_timer = 3.0
 
 [node name="A2" parent="Room1" index="7" instance=ExtResource( 12 )]
@@ -114,7 +114,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../A1")
+exit_path = NodePath("../A1")
 close_timer = 3.0
 
 [node name="B1" parent="Room1" index="8" instance=ExtResource( 12 )]
@@ -122,7 +122,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../B2")
+exit_path = NodePath("../B2")
 close_timer = 3.0
 
 [node name="B2" parent="Room1" index="9" instance=ExtResource( 12 )]
@@ -130,7 +130,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../B1")
+exit_path = NodePath("../B1")
 close_timer = 3.0
 
 [node name="C1" parent="Room1" index="10" instance=ExtResource( 12 )]
@@ -138,7 +138,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../C2")
+exit_path = NodePath("../C2")
 close_timer = 3.0
 
 [node name="C2" parent="Room1" index="11" instance=ExtResource( 12 )]
@@ -146,7 +146,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../C1")
+exit_path = NodePath("../C1")
 close_timer = 3.0
 
 [node name="Exit" parent="Room1" index="12" instance=ExtResource( 12 )]
@@ -154,7 +154,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../../Room2/Entry")
+exit_path = NodePath("../../Room2/Entry")
 close_timer = 3.0
 
 [node name="Room3" type="Spatial" parent="." index="5"]
@@ -165,7 +165,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../../Room2/Exit")
+exit_path = NodePath("../../Room2/Exit")
 close_timer = 3.0
 
 [node name="Floor" type="CSGMesh" parent="Room3" index="1"]
@@ -289,7 +289,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 3 )
-exit = NodePath("../../Room1/Exit")
+exit_path = NodePath("../../Room1/Exit")
 close_timer = 3.0
 
 [node name="A1" parent="Room2" index="7" instance=ExtResource( 12 )]
@@ -297,7 +297,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 2, 0, 0
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../A2")
+exit_path = NodePath("../A2")
 close_timer = 3.0
 
 [node name="A2" parent="Room2" index="8" instance=ExtResource( 12 )]
@@ -305,7 +305,7 @@ transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -8
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../A1")
+exit_path = NodePath("../A1")
 close_timer = 3.0
 
 [node name="B1" parent="Room2" index="9" instance=ExtResource( 12 )]
@@ -313,7 +313,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../B2")
+exit_path = NodePath("../B2")
 close_timer = 3.0
 
 [node name="B2" parent="Room2" index="10" instance=ExtResource( 12 )]
@@ -321,7 +321,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -32
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../B1")
+exit_path = NodePath("../B1")
 close_timer = 3.0
 
 [node name="C1" parent="Room2" index="11" instance=ExtResource( 12 )]
@@ -329,7 +329,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../C2")
+exit_path = NodePath("../C2")
 close_timer = 3.0
 
 [node name="C2" parent="Room2" index="12" instance=ExtResource( 12 )]
@@ -337,7 +337,7 @@ transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -1
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../C1")
+exit_path = NodePath("../C1")
 close_timer = 3.0
 
 [node name="D1" parent="Room2" index="13" instance=ExtResource( 12 )]
@@ -345,7 +345,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../D2")
+exit_path = NodePath("../D2")
 close_timer = 3.0
 
 [node name="D2" parent="Room2" index="14" instance=ExtResource( 12 )]
@@ -353,7 +353,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -8 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../D1")
+exit_path = NodePath("../D1")
 close_timer = 3.0
 
 [node name="E1" parent="Room2" index="15" instance=ExtResource( 12 )]
@@ -361,7 +361,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../E2")
+exit_path = NodePath("../E2")
 close_timer = 3.0
 
 [node name="E2" parent="Room2" index="16" instance=ExtResource( 12 )]
@@ -369,7 +369,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -36
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../E1")
+exit_path = NodePath("../E1")
 close_timer = 3.0
 
 [node name="F1" parent="Room2" index="17" instance=ExtResource( 12 )]
@@ -377,7 +377,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -40 )
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../F2")
+exit_path = NodePath("../F2")
 close_timer = 3.0
 
 [node name="F2" parent="Room2" index="18" instance=ExtResource( 12 )]
@@ -385,7 +385,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -16
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../F1")
+exit_path = NodePath("../F1")
 close_timer = 3.0
 
 [node name="G1" parent="Room2" index="19" instance=ExtResource( 12 )]
@@ -393,7 +393,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../G2")
+exit_path = NodePath("../G2")
 close_timer = 3.0
 
 [node name="G2" parent="Room2" index="20" instance=ExtResource( 12 )]
@@ -401,7 +401,7 @@ transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -3
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../G1")
+exit_path = NodePath("../G1")
 close_timer = 3.0
 
 [node name="H1" parent="Room2" index="21" instance=ExtResource( 12 )]
@@ -409,7 +409,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -5, 0, -3
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../H2")
+exit_path = NodePath("../H2")
 close_timer = 3.0
 
 [node name="H2" parent="Room2" index="22" instance=ExtResource( 12 )]
@@ -417,7 +417,7 @@ transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -20
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../H1")
+exit_path = NodePath("../H1")
 close_timer = 3.0
 
 [node name="I1" parent="Room2" index="23" instance=ExtResource( 12 )]
@@ -425,7 +425,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../I2")
+exit_path = NodePath("../I2")
 close_timer = 3.0
 
 [node name="I2" parent="Room2" index="24" instance=ExtResource( 12 )]
@@ -433,7 +433,7 @@ transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -2
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../I1")
+exit_path = NodePath("../I1")
 close_timer = 3.0
 
 [node name="J1" parent="Room2" index="25" instance=ExtResource( 12 )]
@@ -441,7 +441,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../J2")
+exit_path = NodePath("../J2")
 close_timer = 3.0
 
 [node name="J2" parent="Room2" index="26" instance=ExtResource( 12 )]
@@ -449,7 +449,7 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -2, 0, 
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../J1")
+exit_path = NodePath("../J1")
 close_timer = 3.0
 
 [node name="Exit" parent="Room2" index="27" instance=ExtResource( 12 )]
@@ -457,9 +457,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 5, 0, -
 script = ExtResource( 18 )
 door = ExtResource( 1 )
 door_material = ExtResource( 16 )
-exit = NodePath("../../Room3/Entry")
+exit_path = NodePath("../../Room3/Entry")
 close_timer = 3.0
 
 [editable path="LevelTitle"]
-
-[editable path="GoalDoor"]

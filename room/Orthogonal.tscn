@@ -108,12 +108,11 @@ material = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 door = ExtResource( 13 )
 door_material = ExtResource( 6 )
-exit = NodePath("../../OrthogonalRoom/Door")
+exit_path = NodePath("../../OrthogonalRoom/Door")
 
 [node name="Gateway" parent="Enter/Door" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../../OrthogonalRoom/Door/Gateway")
+exit_path = NodePath("../../../OrthogonalRoom/Door/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
 orthogonal = false
 
 [node name="OrthogonalRoom" type="Spatial" parent="." index="5"]
@@ -130,14 +129,12 @@ material = SubResource( 3 )
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
 door = ExtResource( 13 )
 door_material = ExtResource( 6 )
-exit = NodePath("../../Enter/Door")
+exit_path = NodePath("../../Enter/Door")
 
 [node name="Gateway" parent="OrthogonalRoom/Door" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../../Enter/Door/Gateway")
+exit_path = NodePath("../../../Enter/Door/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Floor" type="CSGMesh" parent="OrthogonalRoom" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
@@ -271,163 +268,137 @@ mesh = ExtResource( 26 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 18 )
-exit = NodePath("../Blue2")
+exit_path = NodePath("../Blue2")
 
 [node name="Gateway" parent="OrthogonalRoom/Blue" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Blue2/Gateway")
+exit_path = NodePath("../../Blue2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Blue2" parent="OrthogonalRoom" index="15" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 45, 0, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 18 )
-exit = NodePath("../Blue")
+exit_path = NodePath("../Blue")
 
 [node name="Gateway" parent="OrthogonalRoom/Blue2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Blue/Gateway")
+exit_path = NodePath("../../Blue/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Yellow" parent="OrthogonalRoom" index="16" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 21 )
-exit = NodePath("../Yellow2")
+exit_path = NodePath("../Yellow2")
 
 [node name="Gateway" parent="OrthogonalRoom/Yellow" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Yellow2/Gateway")
+exit_path = NodePath("../../Yellow2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Yellow2" parent="OrthogonalRoom" index="17" instance=ExtResource( 3 )]
 transform = Transform( 1, -3.25841e-07, 3.25841e-07, -3.25841e-07, -1, 0, 3.25841e-07, -1.06173e-13, -1, 11, 30, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 21 )
-exit = NodePath("../Yellow")
+exit_path = NodePath("../Yellow")
 
 [node name="Gateway" parent="OrthogonalRoom/Yellow2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Yellow/Gateway")
+exit_path = NodePath("../../Yellow/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Green" parent="OrthogonalRoom" index="18" instance=ExtResource( 3 )]
 transform = Transform( -1, -3.25841e-07, 0, 3.25841e-07, -1, 0, 0, 0, 1, 19, 30, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 22 )
-exit = NodePath("../Green2")
+exit_path = NodePath("../Green2")
 
 [node name="Gateway" parent="OrthogonalRoom/Green" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Green2/Gateway")
+exit_path = NodePath("../../Green2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Green2" parent="OrthogonalRoom" index="19" instance=ExtResource( 3 )]
 transform = Transform( 1.62921e-07, 1, -3.25841e-07, 1, -1.62921e-07, 0, -5.30863e-14, -3.25841e-07, -1, 0, 7, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 22 )
-exit = NodePath("../Green")
+exit_path = NodePath("../Green")
 
 [node name="Gateway" parent="OrthogonalRoom/Green2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Green/Gateway")
+exit_path = NodePath("../../Green/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Red" parent="OrthogonalRoom" index="20" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 24 )
-exit = NodePath("../Red2")
+exit_path = NodePath("../Red2")
 
 [node name="Gateway" parent="OrthogonalRoom/Red" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Red2/Gateway")
+exit_path = NodePath("../../Red2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Red2" parent="OrthogonalRoom" index="21" instance=ExtResource( 3 )]
 transform = Transform( 1.62921e-07, 1, -1.50996e-07, 1, -1.62921e-07, 4.06576e-20, -2.46003e-14, -1.50996e-07, -1, 0, 14, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 24 )
-exit = NodePath("../Red")
+exit_path = NodePath("../Red")
 
 [node name="Gateway" parent="OrthogonalRoom/Red2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Red/Gateway")
+exit_path = NodePath("../../Red/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Purple" parent="OrthogonalRoom" index="22" instance=ExtResource( 3 )]
 transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 21, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 25 )
-exit = NodePath("../Purple2")
+exit_path = NodePath("../Purple2")
 
 [node name="Gateway" parent="OrthogonalRoom/Purple" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Purple2/Gateway")
+exit_path = NodePath("../../Purple2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Purple2" parent="OrthogonalRoom" index="23" instance=ExtResource( 3 )]
 transform = Transform( 1.62921e-07, -1, 3.25841e-07, -1, -1.62921e-07, 0, 5.30863e-14, -3.25841e-07, -1, 30, 22, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 25 )
-exit = NodePath("../Purple")
+exit_path = NodePath("../Purple")
 
 [node name="Gateway" parent="OrthogonalRoom/Purple2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 3.71456e-21, -3.25841e-07, 6.56812e-15, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Purple/Gateway")
+exit_path = NodePath("../../Purple/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Orange" parent="OrthogonalRoom" index="24" instance=ExtResource( 3 )]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 40, 12, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 14 )
-exit = NodePath("../Orange2")
+exit_path = NodePath("../Orange2")
 
 [node name="Gateway" parent="OrthogonalRoom/Orange" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../Orange2/Gateway")
+exit_path = NodePath("../../Orange2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Orange2" parent="OrthogonalRoom" index="25" instance=ExtResource( 3 )]
 transform = Transform( 1, -3.25841e-07, 3.25841e-07, -3.25841e-07, -1, 0, 3.25841e-07, -1.06173e-13, -1, 52, 10, -5 )
 door = ExtResource( 19 )
 door_material = ExtResource( 14 )
-exit = NodePath("../Orange")
+exit_path = NodePath("../Orange")
 
 [node name="Gateway" parent="OrthogonalRoom/Orange2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../Orange/Gateway")
+exit_path = NodePath("../../Orange/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Door2" parent="OrthogonalRoom" index="26" instance=ExtResource( 3 )]
 transform = Transform( -1.62921e-07, -3.25841e-07, -1, 0, -1, 3.25841e-07, -1, 5.30863e-14, 1.62921e-07, 60, 10, 0 )
 door = ExtResource( 13 )
 door_material = ExtResource( 10 )
-exit = NodePath("../../Exit/Door2")
+exit_path = NodePath("../../Exit/Door2")
 
 [node name="Gateway" parent="OrthogonalRoom/Door2" index="1" instance=ExtResource( 15 )]
-exit = NodePath("../../../Exit/Door2/Gateway")
+exit_path = NodePath("../../../Exit/Door2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
-orthogonal = true
 
 [node name="Exit" type="Spatial" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45 )
@@ -436,13 +407,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 door = ExtResource( 13 )
 door_material = ExtResource( 10 )
-exit = NodePath("../../OrthogonalRoom/Door2")
+exit_path = NodePath("../../OrthogonalRoom/Door2")
 
 [node name="Gateway" parent="Exit/Door2" index="1" instance=ExtResource( 15 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-exit = NodePath("../../../OrthogonalRoom/Door2/Gateway")
+exit_path = NodePath("../../../OrthogonalRoom/Door2/Gateway")
 size = Vector3( 3, 6.5, 0.6 )
-start_enabled = false
 orthogonal = false
 
 [node name="Floor" type="CSGMesh" parent="Exit" index="1"]
