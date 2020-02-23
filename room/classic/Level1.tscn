@@ -146,7 +146,7 @@ mesh = SubResource( 3 )
 
 [node name="Gateway" parent="Room1" index="11" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -25 )
-exit = NodePath("../../Room2/Gateway")
+exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2" type="Spatial" parent="." index="5"]
