@@ -12,12 +12,12 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		if $Door/Interact.visible and !$"/root/Main/Player".carrying:
-			$"/root/Main/Player".carrying = get_path()
-			$AnimationPlayer.stop()
-		elif $"/root/Main/Player".carrying == get_path():
+		if $"/root/Main/Player".carrying == get_path():
 			$"/root/Main/Player".carrying = NodePath()
 			$AnimationPlayer.play("drop")
+		elif $Door/Interact.interact and !$"/root/Main/Player".carrying:
+			$"/root/Main/Player".carrying = get_path()
+			$AnimationPlayer.stop()
 
 func _process(_delta):
 	if Engine.editor_hint:

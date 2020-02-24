@@ -27,7 +27,7 @@ func toggle_door():
 		$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact") and ($Interact.visible or has_node("Door") and $Door/Interact.visible):
+	if event.is_action_pressed("interact") and ($Interact.interact or has_node("Door") and $Door/Interact.interact):
 		if has_node("Door"): toggle_door()
 		elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
 			add_door(get_node($"/root/Main/Player".carrying))
