@@ -20,7 +20,7 @@ func teleport_player(body):
 	if body.carrying:
 		var carried_body = get_node(body.carrying)
 		if carried_body.has_node("Door"):
-			teleport(carried_body)
+			carried_body.global_transform = get_node(exit_path).global_transform * (global_transform.affine_inverse() * carried_body.global_transform)
 		elif carried_body.is_class("RigidBody"):
 			var relative_scale = (get_node(exit_path).global_transform.basis.get_scale() / global_transform.basis.get_scale()).y
 			body.carry_distance *= relative_scale
