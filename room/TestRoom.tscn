@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/mesh/32x18.tres" type="PlaneMesh" id=2]
@@ -24,7 +24,8 @@
 [ext_resource path="res://interface/LevelTitle.tscn" type="PackedScene" id=22]
 [ext_resource path="res://surface/8bit/checker_tiles.tres" type="Material" id=23]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=24]
-
+[ext_resource path="res://door/8-bit/white.tres" type="Material" id=25]
+[ext_resource path="res://door/8-bit/BitDoor.tscn" type="PackedScene" id=26]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -164,7 +165,8 @@ transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -0.
 
 [node name="Bit" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16 )
-door = ExtResource( 16 )
+door = ExtResource( 26 )
+door_material = ExtResource( 25 )
 
 [node name="Blue" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
