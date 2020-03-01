@@ -37,6 +37,7 @@
 [ext_resource path="res://room/Orthogonal.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gateway/Gateway.tscn" type="PackedScene" id=36]
 [ext_resource path="res://room/classic/_4ManyDoors.tscn" type="PackedScene" id=37]
+[ext_resource path="res://room/levels.gd" type="Script" id=38]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -307,39 +308,41 @@ exit_path = NodePath("../../Lobby/Sections/Classic")
 
 [node name="Levels" type="Spatial" parent="Classic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+script = ExtResource( 38 )
 
 [node name="1" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0 )
 door_material = ExtResource( 13 )
 room = ExtResource( 18 )
 label = "1"
 
 [node name="2" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0 )
 door_material = ExtResource( 13 )
 room = ExtResource( 2 )
 label = "2"
 
+[node name="3" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+door_material = ExtResource( 13 )
+room = ExtResource( 34 )
+label = "–"
+
 [node name="6" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 door_material = ExtResource( 13 )
 label = "New!
 –
 "
 
-[node name="3" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
-door_material = ExtResource( 13 )
-room = ExtResource( 34 )
-label = "–"
-
 [node name="4" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 door_material = ExtResource( 13 )
 room = ExtResource( 37 )
 label = "–"
 
 [node name="5" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "–"
@@ -362,7 +365,7 @@ max_steps = 256
 step_size = 1.0
 
 [node name="7" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "–"
@@ -385,7 +388,7 @@ max_steps = 256
 step_size = 1.0
 
 [node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "–"
@@ -406,7 +409,7 @@ max_steps = 256
 step_size = 1.0
 
 [node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "–"
@@ -427,7 +430,7 @@ max_steps = 256
 step_size = 1.0
 
 [node name="10" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "–"
