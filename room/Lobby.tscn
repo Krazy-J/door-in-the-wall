@@ -1,0 +1,550 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
+[ext_resource path="res://room/classic/Level2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_diffuse.jpg" type="Texture" id=4]
+[ext_resource path="res://surface/8bit/bricks.tres" type="Material" id=5]
+[ext_resource path="res://surface/8bit/ceiling_tiles.tres" type="Material" id=6]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_normal.jpg" type="Texture" id=7]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_glossiness.jpg" type="Texture" id=8]
+[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=10]
+[ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://surface/normal/stone_bricks.tres" type="Material" id=12]
+[ext_resource path="res://door/normal/classic.tres" type="Material" id=13]
+[ext_resource path="res://door/8-bit/BitDoor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://door/8-bit/white.tres" type="Material" id=15]
+[ext_resource path="res://door/scene_change/LevelDoor.tscn" type="PackedScene" id=16]
+[ext_resource path="res://room/TestRoom.tscn" type="PackedScene" id=17]
+[ext_resource path="res://room/classic/Level1.tscn" type="PackedScene" id=18]
+[ext_resource path="res://door/8-bit/red.tres" type="Material" id=19]
+[ext_resource path="res://room/TheFunRoom.tscn" type="PackedScene" id=20]
+[ext_resource path="res://surface/mesh/16x10.tres" type="PlaneMesh" id=21]
+[ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=22]
+[ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=23]
+[ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=24]
+[ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_height.jpg" type="Texture" id=25]
+[ext_resource path="res://surface/8bit/checker_tiles.tres" type="Material" id=26]
+[ext_resource path="res://object/8bit/LightPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://surface/mesh/40x16.tres" type="PlaneMesh" id=28]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=29]
+[ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=30]
+[ext_resource path="res://surface/mesh/20x20.tres" type="PlaneMesh" id=31]
+[ext_resource path="res://surface/mesh/40x10.tres" type="PlaneMesh" id=32]
+[ext_resource path="res://font/door_labels.tres" type="DynamicFont" id=33]
+[ext_resource path="res://room/classic/Level-Loop.tscn" type="PackedScene" id=34]
+[ext_resource path="res://room/Orthogonal.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gateway/Gateway.tscn" type="PackedScene" id=36]
+[ext_resource path="res://room/classic/Level-ManyDoors.tscn" type="PackedScene" id=37]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 4 )
+metallic_texture = ExtResource( 1 )
+metallic_texture_channel = 4
+roughness_texture = ExtResource( 8 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 7 )
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = true
+depth_min_layers = 8
+depth_max_layers = 32
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 25 )
+uv1_scale = Vector3( 2, 1.6, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 20, 16 )
+
+[node name="Main" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 29 )]
+
+[node name="Lobby" type="Spatial" parent="."]
+
+[node name="Room" type="Spatial" parent="Lobby"]
+
+[node name="Floor" type="CSGMesh" parent="Lobby/Room"]
+layers = 3
+use_collision = true
+mesh = ExtResource( 31 )
+material = ExtResource( 30 )
+
+[node name="Ceiling" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
+layers = 3
+use_collision = true
+invert_faces = true
+mesh = ExtResource( 31 )
+material = ExtResource( 12 )
+
+[node name="Light" parent="Lobby/Room/Ceiling" instance=ExtResource( 3 )]
+
+[node name="FrontWall" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 8, -10 )
+layers = 3
+use_collision = true
+mesh = SubResource( 2 )
+
+[node name="Classic" parent="Lobby/Room/FrontWall" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4.5 )
+
+[node name="Bit" parent="Lobby/Room/FrontWall" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5 )
+
+[node name="LeftWall" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -10, 8, 0 )
+layers = 3
+use_collision = true
+mesh = SubResource( 2 )
+
+[node name="BackWall" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 8, 10 )
+layers = 3
+use_collision = true
+mesh = SubResource( 2 )
+
+[node name="RightWall" type="CSGMesh" parent="Lobby/Room"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 10, 8, 0 )
+layers = 3
+use_collision = true
+mesh = SubResource( 2 )
+
+[node name="Sections" type="Spatial" parent="Lobby"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Classic" parent="Lobby/Sections" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+door = ExtResource( 11 )
+door_material = ExtResource( 13 )
+exit_path = NodePath("../../../Classic/Main")
+
+[node name="Label" type="Spatial" parent="Lobby/Sections/Classic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
+script = ExtResource( 22 )
+text = "Classic"
+text_scale = 0.005
+extrude = 0.0
+font = ExtResource( 33 )
+align = 0
+color = Color( 0.8, 0.5, 0, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Bit" parent="Lobby/Sections" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+door = ExtResource( 14 )
+door_material = ExtResource( 15 )
+exit_path = NodePath("../../../Bit/Main")
+
+[node name="Label" type="Spatial" parent="Lobby/Sections/Bit"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
+script = ExtResource( 22 )
+text = "8-Bit"
+text_scale = 0.005
+extrude = 0.0
+font = ExtResource( 33 )
+align = 0
+color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Escher" parent="Lobby/Sections" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="Label" type="Spatial" parent="Lobby/Sections/Escher"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
+script = ExtResource( 22 )
+text = "Escher"
+text_scale = 0.005
+extrude = 0.0
+font = ExtResource( 33 )
+align = 0
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Label2" type="Spatial" parent="Lobby/Sections/Escher"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
+script = ExtResource( 22 )
+text = "Will be
+added after
+other
+sections."
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Chaos" parent="Lobby/Sections" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="Label" type="Spatial" parent="Lobby/Sections/Chaos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0.3 )
+script = ExtResource( 22 )
+text = "Chaos"
+text_scale = 0.005
+extrude = 0.0
+font = ExtResource( 33 )
+align = 0
+color = Color( 1, 0, 0, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Label2" type="Spatial" parent="Lobby/Sections/Chaos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.1 )
+script = ExtResource( 22 )
+text = "Will be
+added after
+other
+sections."
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Secrets" parent="Lobby/Sections" instance=ExtResource( 36 )]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 6, 0, 19 )
+exit_path = NodePath("../../../Secrets/Gateway")
+size = Vector3( 0.5, 5, 0.1 )
+
+[node name="TestRoom" parent="Lobby" instance=ExtResource( 16 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -83 )
+door_material = ExtResource( 15 )
+room = ExtResource( 17 )
+
+[node name="TheFunRoom" parent="Lobby" instance=ExtResource( 16 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20, 0, -78 )
+door_material = ExtResource( 19 )
+room = ExtResource( 20 )
+
+[node name="Classic" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30 )
+
+[node name="Room" type="Spatial" parent="Classic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Floor" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 28 )
+material = ExtResource( 23 )
+
+[node name="Ceiling" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2 )
+layers = 3
+use_collision = true
+invert_faces = true
+mesh = ExtResource( 28 )
+material = ExtResource( 30 )
+
+[node name="Light1" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="Light2" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
+
+[node name="Light3" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="BackWall" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 5, 10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 32 )
+material = ExtResource( 24 )
+
+[node name="Main" parent="Classic/Room/BackWall" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="FrontWall" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -6 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 32 )
+material = ExtResource( 24 )
+
+[node name="LeftWall" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 21 )
+material = ExtResource( 24 )
+
+[node name="RightWall" type="CSGMesh" parent="Classic/Room"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 20, 5, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 21 )
+material = ExtResource( 24 )
+
+[node name="Main" parent="Classic" instance=ExtResource( 10 )]
+door = ExtResource( 11 )
+door_material = ExtResource( 13 )
+exit_path = NodePath("../../Lobby/Sections/Classic")
+
+[node name="Levels" type="Spatial" parent="Classic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="1" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+door_material = ExtResource( 13 )
+room = ExtResource( 18 )
+label = "1"
+
+[node name="2" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+door_material = ExtResource( 13 )
+room = ExtResource( 2 )
+label = "2"
+
+[node name="3" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+door_material = ExtResource( 13 )
+room = ExtResource( 34 )
+label = "-"
+
+[node name="4" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+door_material = ExtResource( 13 )
+room = ExtResource( 37 )
+label = "-"
+
+[node name="5" parent="Classic/Levels" instance=ExtResource( 16 )]
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": "Doors on other surfaces"
+}
+text = "Not started"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="6" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": "Memory series of doors"
+}
+text = "Not started"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="7" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": "Scaling with mouse hole"
+}
+text = "Not started"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+text = "Missing
+ideas"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+text = "Missing
+ideas"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="10" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "-"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+text = "Missing
+ideas"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="Bit" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70 )
+
+[node name="Room" type="Spatial" parent="Bit"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Floor" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 28 )
+material = ExtResource( 26 )
+
+[node name="Ceiling" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2 )
+layers = 3
+use_collision = true
+invert_faces = true
+mesh = ExtResource( 28 )
+material = ExtResource( 6 )
+
+[node name="Light1" parent="Bit/Room/Ceiling" instance=ExtResource( 27 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -11, 0, 0 )
+
+[node name="Light2" parent="Bit/Room/Ceiling" instance=ExtResource( 27 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 11, 0, 0 )
+
+[node name="BackWall" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( -1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0, 5, 10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 32 )
+material = ExtResource( 5 )
+
+[node name="Main" parent="Bit/Room/BackWall" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="FrontWall" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -6 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 32 )
+material = ExtResource( 5 )
+
+[node name="LeftWall" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -20, 5, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 21 )
+material = ExtResource( 5 )
+
+[node name="RightWall" type="CSGMesh" parent="Bit/Room"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 20, 5, 2 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 21 )
+material = ExtResource( 5 )
+
+[node name="Main" parent="Bit" instance=ExtResource( 10 )]
+door = ExtResource( 14 )
+door_material = ExtResource( 15 )
+exit_path = NodePath("../../Lobby/Sections/Bit")
+
+[node name="Levels" type="Spatial" parent="Bit"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="Secrets" type="Spatial" parent="."]
+
+[node name="Gateway" parent="Secrets" instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
+exit_path = NodePath("../../Lobby/Sections/Secrets")
+size = Vector3( 4, 5, 0.5 )
+
+[node name="Floor" type="CSGMesh" parent="Secrets"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
+layers = 0
+use_collision = true
+mesh = ExtResource( 31 )
+
+[node name="Orthogonal" parent="Secrets" instance=ExtResource( 16 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8, 0, 30 )
+door_material = ExtResource( 15 )
+room = ExtResource( 35 )
+label = "Orthogonal"
+label_color = Color( 0.9, 0.9, 0.9, 1 )

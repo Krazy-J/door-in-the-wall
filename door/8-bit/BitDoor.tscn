@@ -5,14 +5,13 @@
 [ext_resource path="res://door/8-bit/open.wav" type="AudioStream" id=3]
 [ext_resource path="res://door/8-bit/close.wav" type="AudioStream" id=4]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "DoorToggle"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
+tracks/0/path = NodePath(".:translation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,10 +20,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
 "transitions": PoolRealArray( 0, 0, 0, 0, 0 ),
 "update": 1,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0.4, 0, 0 ), Vector3( 0.8, 0, 0 ), Vector3( 1.2, 0, 0 ), Vector3( 1.6, 0, 0 ) ]
+"values": [ 0.0, 0.4, 0.8, 1.2, 1.4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath(".:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -33,29 +32,31 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
 "transitions": PoolRealArray( 0, 0, 0, 0, 0 ),
 "update": 1,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 0.8, 1, 1 ), Vector3( 0.6, 1, 1 ), Vector3( 0.4, 1, 1 ), Vector3( 0.2, 1, 1 ) ]
+"values": [ 1.0, 0.75, 0.5, 0.25, 0.125 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:material/0:uv1_scale")
+tracks/2/path = NodePath(".:material_override:uv1_scale:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"times": PoolRealArray( 0.00867973, 0.25, 0.5, 0.75, 1 ),
 "transitions": PoolRealArray( 0, 0, 0, 0, 0 ),
 "update": 1,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 0.8, 1, 1 ), Vector3( 0.6, 1, 1 ), Vector3( 0.4, 1, 1 ), Vector3( 0.2, 1, 1 ) ]
+"values": [ 1.0, 0.75, 0.5, 0.25, 0.125 ]
 }
 
-[node name="Door" index="0" instance=ExtResource( 1 )]
-material/0 = SubResource( 2 )
+[node name="Door" instance=ExtResource( 1 )]
+material_override = SubResource( 1 )
 
-[node name="SoundOpen" parent="." index="1"]
+[node name="SoundOpen" parent="." index="2"]
 stream = ExtResource( 3 )
 
-[node name="SoundClose" parent="." index="2"]
+[node name="SoundClose" parent="." index="3"]
 stream = ExtResource( 4 )
 
-[node name="AnimationPlayer" parent="." index="3"]
-anims/DoorToggle = SubResource( 1 )
+[node name="AnimationPlayer" parent="." index="4"]
+anims/DoorToggle = SubResource( 2 )
+
+[editable path="Interact"]

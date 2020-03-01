@@ -1,0 +1,463 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=2]
+[ext_resource path="res://door/normal/simple.tres" type="Material" id=3]
+[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=5]
+[ext_resource path="res://room/Level.tscn" type="PackedScene" id=6]
+[ext_resource path="res://surface/mesh/10x40.tres" type="PlaneMesh" id=7]
+[ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=9]
+[ext_resource path="res://surface/mesh/40x10.tres" type="PlaneMesh" id=11]
+[ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=12]
+[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=13]
+[ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=14]
+[ext_resource path="res://surface/mesh/20x10.tres" type="PlaneMesh" id=15]
+[ext_resource path="res://door/normal/classic.tres" type="Material" id=16]
+[ext_resource path="res://surface/normal/stucco/blue.tres" type="Material" id=17]
+[ext_resource path="res://door/timed_gateway_door.gd" type="Script" id=18]
+[ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=19]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="Main" instance=ExtResource( 6 )]
+
+[node name="Level" parent="LevelTitle" index="0"]
+text = "Level -"
+
+[node name="Name" parent="LevelTitle" index="1"]
+text = "Many Doors"
+
+[node name="AnimationTree" parent="LevelTitle" index="3"]
+parameters/playback = SubResource( 1 )
+
+[node name="GoalDoor" parent="." index="3"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -40, 0, 0 )
+
+[node name="Room1" type="Spatial" parent="." index="4"]
+
+[node name="Floor" type="CSGMesh" parent="Room1" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 14 )
+material = ExtResource( 2 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room1" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10 )
+layers = 3
+invert_faces = true
+mesh = ExtResource( 14 )
+material = ExtResource( 19 )
+
+[node name="Light" parent="Room1/Ceiling" index="0" instance=ExtResource( 4 )]
+
+[node name="BackWall" type="CSGMesh" parent="Room1" index="2"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 0 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="FrontWall" type="CSGMesh" parent="Room1" index="3"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -20 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="Door" parent="Room1/FrontWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="LeftWall" type="CSGMesh" parent="Room1" index="4"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, -10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 15 )
+material = ExtResource( 9 )
+
+[node name="Door1" parent="Room1/LeftWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1.5 )
+
+[node name="Door2" parent="Room1/LeftWall" index="1" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="Door3" parent="Room1/LeftWall" index="2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1.5 )
+
+[node name="RightWall" type="CSGMesh" parent="Room1" index="5"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 5, -10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 15 )
+material = ExtResource( 9 )
+
+[node name="Door1" parent="Room1/RightWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1.5 )
+
+[node name="Door2" parent="Room1/RightWall" index="1" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="Door3" parent="Room1/RightWall" index="2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1.5 )
+
+[node name="A1" parent="Room1" index="6" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -10 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../A2")
+close_timer = 3.0
+
+[node name="A2" parent="Room1" index="7" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -5, 0, -4 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../A1")
+close_timer = 3.0
+
+[node name="B1" parent="Room1" index="8" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -16 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../B2")
+close_timer = 3.0
+
+[node name="B2" parent="Room1" index="9" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 5, 0, -4 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../B1")
+close_timer = 3.0
+
+[node name="C1" parent="Room1" index="10" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -10 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../C2")
+close_timer = 3.0
+
+[node name="C2" parent="Room1" index="11" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -20 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../C1")
+close_timer = 3.0
+
+[node name="Exit" parent="Room1" index="12" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -16 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../../Room2/Entry")
+close_timer = 3.0
+
+[node name="Room3" type="Spatial" parent="." index="5"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, 0 )
+
+[node name="Entry" parent="Room3" index="0" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../../Room2/Exit")
+close_timer = 3.0
+
+[node name="Floor" type="CSGMesh" parent="Room3" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 2 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room3" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -5 )
+layers = 3
+invert_faces = true
+mesh = ExtResource( 5 )
+material = ExtResource( 19 )
+
+[node name="Light" parent="Room3/Ceiling" index="0" instance=ExtResource( 4 )]
+
+[node name="BackWall" type="CSGMesh" parent="Room3" index="3"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 0 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="Entry" parent="Room3/BackWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 3.25841e-07, 0, -3.25841e-07, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+
+[node name="FrontWall" type="CSGMesh" parent="Room3" index="4"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -10 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="LeftWall" type="CSGMesh" parent="Room3" index="5"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, -5 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="RightWall" type="CSGMesh" parent="Room3" index="6"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 5, -5 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 9 )
+
+[node name="Room2" type="Spatial" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0 )
+
+[node name="Floor" type="CSGMesh" parent="Room2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 7 )
+material = ExtResource( 2 )
+
+[node name="Ceiling" type="CSGMesh" parent="Room2" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -20 )
+layers = 3
+invert_faces = true
+mesh = ExtResource( 7 )
+material = ExtResource( 19 )
+
+[node name="Light" parent="Room2/Ceiling" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="Light2" parent="Room2/Ceiling" index="1" instance=ExtResource( 4 )]
+
+[node name="Light3" parent="Room2/Ceiling" index="2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="BackWall" type="CSGMesh" parent="Room2" index="2"]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 0 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 17 )
+
+[node name="Doors" parent="Room2/BackWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 3.25841e-07, 0, -3.25841e-07, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+width = 8.0
+
+[node name="FrontWall" type="CSGMesh" parent="Room2" index="3"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -40 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 5 )
+material = ExtResource( 17 )
+
+[node name="Doors" parent="Room2/FrontWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, 0, 0, 1.5 )
+width = 8.0
+
+[node name="LeftWall" type="CSGMesh" parent="Room2" index="4"]
+transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, -20 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 11 )
+material = ExtResource( 17 )
+
+[node name="Doors" parent="Room2/LeftWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+width = 36.0
+
+[node name="RightWall" type="CSGMesh" parent="Room2" index="5"]
+transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 5, -20 )
+layers = 3
+use_collision = true
+mesh = ExtResource( 11 )
+material = ExtResource( 17 )
+
+[node name="Doors" parent="Room2/RightWall" index="0" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+width = 36.0
+
+[node name="Entry" parent="Room2" index="6" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 3 )
+exit_path = NodePath("../../Room1/Exit")
+close_timer = 3.0
+
+[node name="A1" parent="Room2" index="7" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 2, 0, 0 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../A2")
+close_timer = 3.0
+
+[node name="A2" parent="Room2" index="8" instance=ExtResource( 12 )]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -8 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../A1")
+close_timer = 3.0
+
+[node name="B1" parent="Room2" index="9" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -4 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../B2")
+close_timer = 3.0
+
+[node name="B2" parent="Room2" index="10" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -32 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../B1")
+close_timer = 3.0
+
+[node name="C1" parent="Room2" index="11" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -4 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../C2")
+close_timer = 3.0
+
+[node name="C2" parent="Room2" index="12" instance=ExtResource( 12 )]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -16 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../C1")
+close_timer = 3.0
+
+[node name="D1" parent="Room2" index="13" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -24 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../D2")
+close_timer = 3.0
+
+[node name="D2" parent="Room2" index="14" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -8 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../D1")
+close_timer = 3.0
+
+[node name="E1" parent="Room2" index="15" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -12 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../E2")
+close_timer = 3.0
+
+[node name="E2" parent="Room2" index="16" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -36 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../E1")
+close_timer = 3.0
+
+[node name="F1" parent="Room2" index="17" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -40 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../F2")
+close_timer = 3.0
+
+[node name="F2" parent="Room2" index="18" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -16 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../F1")
+close_timer = 3.0
+
+[node name="G1" parent="Room2" index="19" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -20 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../G2")
+close_timer = 3.0
+
+[node name="G2" parent="Room2" index="20" instance=ExtResource( 12 )]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -36 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../G1")
+close_timer = 3.0
+
+[node name="H1" parent="Room2" index="21" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -5, 0, -32 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../H2")
+close_timer = 3.0
+
+[node name="H2" parent="Room2" index="22" instance=ExtResource( 12 )]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 5, 0, -20 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../H1")
+close_timer = 3.0
+
+[node name="I1" parent="Room2" index="23" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -24 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../I2")
+close_timer = 3.0
+
+[node name="I2" parent="Room2" index="24" instance=ExtResource( 12 )]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -5, 0, -28 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../I1")
+close_timer = 3.0
+
+[node name="J1" parent="Room2" index="25" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 5, 0, -28 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../J2")
+close_timer = 3.0
+
+[node name="J2" parent="Room2" index="26" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -2, 0, -40 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../J1")
+close_timer = 3.0
+
+[node name="Exit" parent="Room2" index="27" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 5, 0, -12 )
+script = ExtResource( 18 )
+door = ExtResource( 1 )
+door_material = ExtResource( 16 )
+exit_path = NodePath("../../Room3/Entry")
+close_timer = 3.0
+
+[editable path="LevelTitle"]

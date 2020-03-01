@@ -1,22 +1,121 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://textures/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://models/door_frame.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/Settings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://font/large.tres" type="DynamicFont" id=6]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CylinderShape" id=1]
 radius = 0.5
-height = 4.0
+height = 5.0
 
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.5
-height = 6.0
+[sub_resource type="RayShape" id=2]
+length = 5.0
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
+[node name="Crosshair" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="WindowDialog" parent="."]
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+margin_left = -0.200012
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 391, 201 )
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -50.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="Pause/List"]
+margin_top = 20.0
+margin_right = 309.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 6 )
+text = "Settings"
+
+[node name="QuitLevel" type="Button" parent="Pause/List"]
+margin_top = 71.0
+margin_right = 309.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 6 )
+text = "Quit to Lobby"
+
+[node name="QuitMenu" type="Button" parent="Pause/List"]
+margin_top = 122.0
+margin_right = 309.0
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 6 )
+text = "Quit to Menu"
+
+[node name="QuitGame" type="Button" parent="Pause/List"]
+margin_top = 173.0
+margin_right = 309.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 6 )
+text = "Quit Game"
+
+[node name="Settings" parent="Pause" instance=ExtResource( 5 )]
+
+[node name="ConfirmQuit" type="ConfirmationDialog" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+window_title = "Confirm"
+dialog_text = "Quit game?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Collision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 shape = SubResource( 1 )
+
+[node name="DoorFrame" type="CSGMesh" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+layers = 2
+cast_shadow = 0
+mesh = ExtResource( 3 )
+
+[node name="Carry" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.469846, 0.17101, 0, -0.17101, 0.469846, 0, 3.5, -2 )
+
+[node name="CarryDoor" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.469846, 0.17101, 0, -0.17101, 0.469846, 0, 3.5, -2 )
+
+[node name="TeleportArea" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
 
 [node name="PivotX" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
@@ -25,16 +124,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
 cull_mask = 1
 current = true
 fov = 90.0
+near = 0.01
 
 [node name="InteractArea" type="Area" parent="PivotX"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+collision_mask = 0
 
 [node name="Collision" type="CollisionShape" parent="PivotX/InteractArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 shape = SubResource( 2 )
-
-[node name="DoorFrame" type="MeshInstance" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
-layers = 2
-mesh = ExtResource( 2 )
-material/0 = null
+[connection signal="about_to_show" from="Pause" to="." method="_on_pause"]
+[connection signal="popup_hide" from="Pause" to="." method="_on_unpause"]
+[connection signal="pressed" from="Pause/List/Settings" to="Pause/Settings" method="popup"]
+[connection signal="pressed" from="Pause/List/QuitLevel" to="." method="_on_quit_level"]
+[connection signal="pressed" from="Pause/List/QuitMenu" to="." method="_on_quit_menu"]
+[connection signal="pressed" from="Pause/List/QuitGame" to="Pause/ConfirmQuit" method="popup"]
+[connection signal="confirmed" from="Pause/ConfirmQuit" to="." method="_on_quit_game"]
