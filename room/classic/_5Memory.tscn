@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=2]
@@ -14,6 +14,12 @@
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://room/classic/memory/start.gd" type="Script" id=13]
 [ext_resource path="res://room/classic/memory/combo_doors.gd" type="Script" id=14]
+[ext_resource path="res://surface/normal/stucco/grey.tres" type="Material" id=15]
+[ext_resource path="res://surface/normal/stucco/red.tres" type="Material" id=16]
+[ext_resource path="res://surface/normal/stucco/orange.tres" type="Material" id=17]
+[ext_resource path="res://surface/normal/stucco/blue.tres" type="Material" id=18]
+[ext_resource path="res://surface/normal/stucco/teal.tres" type="Material" id=19]
+[ext_resource path="res://surface/normal/stucco/yellow.tres" type="Material" id=20]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -135,7 +141,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 15 )
 
 [node name="Door" parent="Rooms/Room1/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -145,7 +151,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 15 )
 
 [node name="Door" parent="Rooms/Room1/FrontWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -155,7 +161,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 15 )
 
 [node name="Door" parent="Rooms/Room1/LeftWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -165,7 +171,7 @@ transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 15 )
 
 [node name="Door" parent="Rooms/Room1/RightWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 4.76837e-07, 1.5 )
@@ -201,7 +207,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 16 )
 
 [node name="Door" parent="Rooms/Room2/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -211,7 +217,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 16 )
 
 [node name="Door" parent="Rooms/Room2/FrontWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -221,7 +227,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 16 )
 
 [node name="Door" parent="Rooms/Room2/LeftWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -231,7 +237,7 @@ transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 16 )
 
 [node name="Door" parent="Rooms/Room2/RightWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 4.76837e-07, 1.5 )
@@ -267,7 +273,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 17 )
 
 [node name="Door" parent="Rooms/Room3/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -277,7 +283,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 17 )
 
 [node name="Door" parent="Rooms/Room3/FrontWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -287,7 +293,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 17 )
 
 [node name="Door" parent="Rooms/Room3/LeftWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -297,7 +303,7 @@ transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 17 )
 
 [node name="Door" parent="Rooms/Room3/RightWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 4.76837e-07, 1.5 )
@@ -333,7 +339,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 20 )
 
 [node name="Door" parent="Rooms/Room4/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -343,7 +349,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 20 )
 
 [node name="Door" parent="Rooms/Room4/FrontWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -353,7 +359,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 20 )
 
 [node name="Door" parent="Rooms/Room4/LeftWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -363,7 +369,7 @@ transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 20 )
 
 [node name="Door" parent="Rooms/Room4/RightWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 4.76837e-07, 1.5 )
@@ -399,7 +405,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 19 )
 
 [node name="Door" parent="Rooms/Room5/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -409,7 +415,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 19 )
 
 [node name="Door" parent="Rooms/Room5/FrontWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -419,7 +425,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 19 )
 
 [node name="Door" parent="Rooms/Room5/LeftWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -429,7 +435,7 @@ transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 19 )
 
 [node name="Door" parent="Rooms/Room5/RightWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 4.76837e-07, 1.5 )
@@ -465,7 +471,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 5, 5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 18 )
 
 [node name="Door" parent="Room6/BackWall" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
@@ -475,21 +481,21 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 18 )
 
 [node name="LeftWall" type="CSGMesh" parent="Room6" index="3"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 18 )
 
 [node name="RightWall" type="CSGMesh" parent="Room6" index="4"]
 transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 5, 5, 0 )
 layers = 3
 use_collision = true
 mesh = ExtResource( 11 )
-material = ExtResource( 2 )
+material = ExtResource( 18 )
 [connection signal="body_exited" from="Rooms/Start/StartArea" to="Rooms" method="_on_start_body_exited"]
 
 [editable path="LevelTitle"]
