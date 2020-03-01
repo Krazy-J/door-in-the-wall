@@ -46,6 +46,13 @@ window/size/fullscreen=true
 
 enabled=PoolStringArray( "SIsilicon.3d.text" )
 
+[global]
+
+shadow_atlas_size=4096
+shadow_atlas_size.Windows=4096
+door_shadow_atlas_size=2048
+door_shadow_atlas_size.Windows=2048
+
 [gui]
 
 theme/custom_font="res://font/default.tres"
@@ -143,3 +150,5 @@ fullscreen={
 
 environment/default_clear_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"
+quality/shadow_atlas/size.Windows=2048
+quality/directional_shadow/size.Windows=2048
