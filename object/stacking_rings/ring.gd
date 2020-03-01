@@ -3,10 +3,13 @@ extends "res://object/rigid_object.gd"
 
 export var radius : float = 2
 export var size : float = 1
+export var material : Material
+
 
 func _ready():
 	$Ring.inner_radius = radius
 	$Ring.outer_radius = radius + size
+	$Ring.material = material
 	$Interact/Outline.inner_radius = $Ring.inner_radius - 0.1
 	$Interact/Outline.outer_radius = radius + size + 0.1
 	$Interact/Collision.shape = $Interact/Collision.shape.duplicate()

@@ -24,11 +24,10 @@ func teleport_player(body):
 		elif carried_body.is_class("RigidBody"):
 			var relative_scale = (get_node(exit_path).global_transform.basis.get_scale() / global_transform.basis.get_scale()).y
 			body.carry_distance *= relative_scale
+			#carried_body.mass *= relative_scale
 			for child in carried_body.get_children():
 				child.scale *= relative_scale
-				if child.name == "CollisionShape":
-					child.shape = child.shape
-					carried_body.mass *= relative_scale
+				child.translation *= relative_scale
 
 func duplicate_carried(body):
 	pass
