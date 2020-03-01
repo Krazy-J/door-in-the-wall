@@ -3,9 +3,9 @@
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://surface/mesh/32x32.tres" type="PlaneMesh" id=2]
 [ext_resource path="res://surface/mesh/32x18.tres" type="PlaneMesh" id=3]
-[ext_resource path="res://object/CeilingBulbLight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://object/classic/CeilingBulbLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=5]
-[ext_resource path="res://object/Table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://object/classic/Table.tscn" type="PackedScene" id=6]
 [ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=7]
 [ext_resource path="res://door/8-bit/blue.tres" type="Material" id=8]
 [ext_resource path="res://object/door.tres" type="ArrayMesh" id=9]
@@ -17,6 +17,7 @@
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=15]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=16]
 [ext_resource path="res://door/8-bit/orange.tres" type="Material" id=17]
+
 
 
 
