@@ -3,9 +3,9 @@ extends Area
 var valid
 
 func _on_Interact_area_entered(area):
-	if area.name == "InteractArea":
+	if area.name == "InteractArea" and area.get_parent().get_parent().name == "Player":
 		visible = true
-		if $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y and not get_parent().get("locked"):
+		if not get_parent().get("locked") and $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y:
 			$Outline.material_override = load("res://interact/yellow.tres")
 			valid = true
 		else:

@@ -20,6 +20,11 @@ func teleport(body):
 			body = $"/root/Main/Player2"
 			body.global_transform.origin = get_node(exit_path).global_transform.origin + get_node(exit_path).global_transform.basis * Vector3(0, 0, 2)
 
+func disable_viewport(_area = $"/root/Main/Player/TeleportArea"):
+	$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+func enable_viewport(_area = $"/root/Main/Player/TeleportArea"):
+	$Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+
 func place_camera():
 	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
 	teleport($Viewport/Spatial)

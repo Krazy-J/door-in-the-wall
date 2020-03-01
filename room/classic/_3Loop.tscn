@@ -16,16 +16,12 @@
 [ext_resource path="res://gateway/ViewportGateway.tscn" type="PackedScene" id=15]
 [ext_resource path="res://surface/mesh/20x30.tres" type="PlaneMesh" id=16]
 
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="Main" instance=ExtResource( 2 )]
 
 [node name="Player" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -5 )
-
-[node name="Level" parent="LevelTitle" index="0"]
-text = "Level -"
 
 [node name="Name" parent="LevelTitle" index="1"]
 text = "Caught in a Loop"
