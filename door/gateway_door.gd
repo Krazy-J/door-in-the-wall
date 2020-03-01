@@ -16,23 +16,21 @@ func _ready():
 func connect_gateway():
 	add_child(load("res://gateway/DoorGateway.tscn").instance())
 	$Gateway.exit_path = "../" + str(exit_path) + "/Gateway"
-	if exit.has_node("Gateway"): $Gateway.rotation_degrees.y += 180
+	if exit.has_node("Gateway") and exit.get_node("Gateway").rotation_degrees.y == 0: $Gateway.rotation_degrees.y += 180
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact") and ($Interact.visible or has_node("Door") and $Door/Interact.visible):
-		if has_node("Door"):
-			if exit: exit.toggle_door()
-		elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-			if exit:
-				connect_gateway()
-				exit.connect_gateway()
+	if event.is_action_pressed("interact"):
+			if $Interact.valid and not has_node("Door") and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
+				if exit:
+					connect_gateway()
+					exit.connect_gateway()
 
 func _process(_delta):
 	if Engine.editor_hint:
 		if has_node("Door"):
 			if not open == is_open:
 				if exit: exit.open = open
-	elif has_node("Gateway"):
+	elif has_node("Gateway/Area/Port"):
 		if has_node("Door"):
 			if $Door/AnimationPlayer.is_playing():
 				is_open = $Door/AnimationPlayer.current_animation_position > 0.01

@@ -76,9 +76,13 @@ func _physics_process(delta):
 				body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
 			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
 			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
-		else:
+		elif body.is_class("StaticBody"):
+			body.global_transform.origin = $PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance
+		elif body.is_class("RigidBody"):
 			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
 			body.angular_velocity = -body.rotation_degrees * 20 * delta
+		else:
+			body.global_transform = $PivotX/Carry.global_transform
 	motion += transform.basis * get_movement() * speed * delta
 	if is_on_floor():
 		motion *= (1 - surface_friction)

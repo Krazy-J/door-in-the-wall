@@ -5,6 +5,7 @@ export(PackedScene) var door
 export(Mesh) var door_mesh
 export(Material) var door_material
 export var open = false
+export var locked = false
 var is_open = open
 
 func _ready():
@@ -27,11 +28,20 @@ func toggle_door():
 		$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact") and ($Interact.interact or has_node("Door") and $Door/Interact.interact):
-		if has_node("Door"): toggle_door()
-		elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-			add_door(get_node($"/root/Main/Player".carrying))
+	if event.is_action_pressed("interact"):
+		if not locked and ($Interact.valid or has_node("Door") and $Door/Interact.valid):
+			if has_node("Door"):
+				toggle_door()
+				if get("exit"): get("exit").toggle_door()
+			elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
+				add_door(get_node($"/root/Main/Player".carrying))
+				get_node($"/root/Main/Player".carrying).queue_free()
+		if locked and $Door/Interact.valid and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).name == "Key":
+			locked = false
+			if get("exit"): get("exit").locked = false
+			$Interact._on_Interact_area_entered($"/root/Main/Player/PivotX/InteractArea")
 			get_node($"/root/Main/Player".carrying).queue_free()
+			$SoundUnlock.play()
 
 func _process(_delta):
 	if Engine.editor_hint:

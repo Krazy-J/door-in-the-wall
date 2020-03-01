@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://door/gateway_door.gd" type="Script" id=2]
 [ext_resource path="res://interact/Interact.tscn" type="PackedScene" id=3]
+[ext_resource path="res://door/unlock.wav" type="AudioStream" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 3.5, 0.3 )
@@ -39,5 +40,10 @@ shape = SubResource( 1 )
 
 [node name="Outline" parent="Interact" index="1"]
 mesh = SubResource( 2 )
+material/0 = null
+
+[node name="SoundUnlock" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+stream = ExtResource( 4 )
 
 [editable path="Interact"]

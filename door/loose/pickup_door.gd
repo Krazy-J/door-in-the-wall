@@ -15,7 +15,7 @@ func _unhandled_input(event):
 		if $"/root/Main/Player".carrying == get_path():
 			$"/root/Main/Player".carrying = NodePath()
 			$AnimationPlayer.play("drop")
-		elif $Door/Interact.interact and !$"/root/Main/Player".carrying:
+		elif $Door/Interact.valid and !$"/root/Main/Player".carrying:
 			$"/root/Main/Player".carrying = get_path()
 			$AnimationPlayer.stop()
 
