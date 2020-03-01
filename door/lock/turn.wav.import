@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/unlock.wav-f1a92491455ecb66ed2679352ddd0b20.sample"
+path="res://.import/turn.wav-e3cc2cc71fb7581a42a521df5fe2243c.sample"
 
 [deps]
 
-source_file="res://door/unlock.wav"
-dest_files=[ "res://.import/unlock.wav-f1a92491455ecb66ed2679352ddd0b20.sample" ]
+source_file="res://door/lock/turn.wav"
+dest_files=[ "res://.import/turn.wav-e3cc2cc71fb7581a42a521df5fe2243c.sample" ]
 
 [params]
 

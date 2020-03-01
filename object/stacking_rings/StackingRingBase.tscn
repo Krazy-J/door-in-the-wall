@@ -5,12 +5,9 @@
 [ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/plastic/yellow.tres" type="Material" id=4]
 [ext_resource path="res://surface/plastic/white.tres" type="Material" id=5]
+[ext_resource path="res://object/plastic.phymat" type="PhysicsMaterial" id=6]
 
-[sub_resource type="PhysicsMaterial" id=1]
-friction = 2.0
-bounce = 0.1
-
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 3, 0.5, 3 )
 
 [sub_resource type="CylinderShape" id=2]
@@ -24,11 +21,11 @@ extents = Vector3( 3, 0.5, 3 )
 collision_layer = 5
 collision_mask = 4
 mass = 0.2
-physics_material_override = SubResource( 1 )
+physics_material_override = ExtResource( 6 )
 script = ExtResource( 2 )
 
 [node name="CollisionBase" type="CollisionShape" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionPost" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0 )

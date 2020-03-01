@@ -20,10 +20,14 @@ func connect_gateway():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-			if $Interact.valid and not has_node("Door") and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-				if exit_path:
-					connect_gateway()
-					exit.connect_gateway()
+		if has_node("Door") and not locked and ($Interact.valid or $Door/Interact.valid):
+			if exit: exit.toggle_door()
+		if locked and $Door/Interact.valid and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).name == "Key":
+			if exit: exit.unlock()
+		if $Interact.valid and not has_node("Door") and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
+			if exit_path:
+				connect_gateway()
+				exit.connect_gateway()
 
 func _process(_delta):
 	if Engine.editor_hint:
@@ -31,9 +35,8 @@ func _process(_delta):
 			if not open == is_open:
 				if exit_path: exit.open = open
 	elif has_node("Gateway/Area/Port"):
-		if has_node("Door"):
-			if $Door/AnimationPlayer.is_playing():
-				is_open = $Door/AnimationPlayer.current_animation_position > 0.01
+		if has_node("Door") and $Door/AnimationPlayer.is_playing():
+			is_open = $Door/AnimationPlayer.current_animation_position > 0.01
 		if is_open:
 			$Gateway.enable_viewport()
 			$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.door_mipmap_level)

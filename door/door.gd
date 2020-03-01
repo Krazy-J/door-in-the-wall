@@ -27,21 +27,23 @@ func toggle_door():
 		$Door/SoundOpen.stop()
 		$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 
+func unlock():
+	$Door.add_child(load("res://object/Key.tscn").instance())
+	$Door/Key/Interact.queue_free()
+	$Door/Key.set_script(null)
+	$Door/AnimationPlayer.play("Unlock")
+
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if not locked and ($Interact.valid or has_node("Door") and $Door/Interact.valid):
 			if has_node("Door"):
 				toggle_door()
-				if get("exit"): get("exit").toggle_door()
 			elif $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
 				add_door(get_node($"/root/Main/Player".carrying))
 				get_node($"/root/Main/Player".carrying).queue_free()
 		if locked and $Door/Interact.valid and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).name == "Key":
-			locked = false
-			if get("exit"): get("exit").locked = false
-			$Interact._on_Interact_area_entered($"/root/Main/Player/PivotX/InteractArea")
 			get_node($"/root/Main/Player".carrying).queue_free()
-			$SoundUnlock.play()
+			unlock()
 
 func _process(_delta):
 	if Engine.editor_hint:
@@ -58,3 +60,5 @@ func _process(_delta):
 					is_open = open
 				if door_material and not $Door.material_override == door_material: $Door.material_override = door_material.duplicate()
 		elif door: add_child(door.instance())
+	if has_node("Door") and $Interact.visible and $Door/AnimationPlayer.current_animation == "Unlock":
+		$Interact._on_Interact_area_entered($"/root/Main/Player/PivotX/InteractArea")
