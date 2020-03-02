@@ -3,9 +3,10 @@
 [ext_resource path="res://interact/interact.gd" type="Script" id=1]
 [ext_resource path="res://object/rigid_object.gd" type="Script" id=2]
 [ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=3]
-[ext_resource path="res://surface/plastic/yellow.tres" type="Material" id=4]
-[ext_resource path="res://surface/plastic/white.tres" type="Material" id=5]
+[ext_resource path="res://object/plastic/yellow.tres" type="Material" id=4]
+[ext_resource path="res://object/plastic/white.tres" type="Material" id=5]
 [ext_resource path="res://object/plastic.phymat" type="PhysicsMaterial" id=6]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3, 0.5, 3 )

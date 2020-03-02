@@ -1,8 +1,8 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
 [ext_resource path="res://room/classic/2.tscn" type="PackedScene" id=2]
-[ext_resource path="res://object/classic/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_diffuse.jpg" type="Texture" id=4]
 [ext_resource path="res://surface/8bit/bricks.tres" type="Material" id=5]
 [ext_resource path="res://surface/8bit/ceiling_tiles.tres" type="Material" id=6]
@@ -26,7 +26,7 @@
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=24]
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_height.jpg" type="Texture" id=25]
 [ext_resource path="res://surface/8bit/checker_tiles.tres" type="Material" id=26]
-[ext_resource path="res://object/8bit/LightPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://object/light/LightPanel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://surface/mesh/40x16.tres" type="PlaneMesh" id=28]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=29]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=30]
@@ -40,6 +40,7 @@
 [ext_resource path="res://room/levels.gd" type="Script" id=38]
 [ext_resource path="res://room/classic/_5Memory.tscn" type="PackedScene" id=39]
 [ext_resource path="res://room/classic/_6Locked.tscn" type="PackedScene" id=40]
+[ext_resource path="res://room/classic/_7Flipped.tscn" type="PackedScene" id=41]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -404,8 +405,31 @@ roughness = 0.5
 max_steps = 256
 step_size = 1.0
 
-[node name="4" parent="Classic/Levels" instance=ExtResource( 16 )]
+[node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+door = null
+door_material = ExtResource( 13 )
+label = "– (–)"
+
+[node name="Label2" type="Spatial" parent="Classic/Levels/9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": "Crates"
+}
+text = "Not started"
+text_scale = 0.002
+extrude = 0.0
+font = ExtResource( 33 )
+align = 2
+color = Color( 0.6, 0.6, 0.6, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
+
+[node name="4" parent="Classic/Levels" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 door_material = ExtResource( 13 )
 room = ExtResource( 37 )
 label = "– (4)"
@@ -425,30 +449,28 @@ max_steps = 256
 step_size = 1.0
 
 [node name="7" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
-door = null
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
 door_material = ExtResource( 13 )
-label = "– (–)"
+room = ExtResource( 41 )
+label = "– (7)"
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
 script = ExtResource( 22 )
-__meta__ = {
-"_editor_description_": "Doors on other surfaces"
-}
-text = "Not started"
+text = "Recently added!
+2020-03-03"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
 align = 2
-color = Color( 0.6, 0.6, 0.6, 1 )
+color = Color( 0, 0, 0, 1 )
 metallic = 0.0
 roughness = 0.5
 max_steps = 256
 step_size = 1.0
 
 [node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "– (–)"
@@ -460,27 +482,6 @@ __meta__ = {
 "_editor_description_": "Scaling with mouse hole"
 }
 text = "Not started"
-text_scale = 0.002
-extrude = 0.0
-font = ExtResource( 33 )
-align = 2
-color = Color( 0.6, 0.6, 0.6, 1 )
-metallic = 0.0
-roughness = 0.5
-max_steps = 256
-step_size = 1.0
-
-[node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
-door = null
-door_material = ExtResource( 13 )
-label = "– (–)"
-
-[node name="Label2" type="Spatial" parent="Classic/Levels/9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
-script = ExtResource( 22 )
-text = "Missing
-ideas"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )

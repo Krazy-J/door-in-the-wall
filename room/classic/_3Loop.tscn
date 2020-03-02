@@ -4,7 +4,7 @@
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://surface/mesh/20x10.tres" type="PlaneMesh" id=3]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=4]
-[ext_resource path="res://object/classic/CeilingBulbLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=6]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=7]
 [ext_resource path="res://surface/mesh/22x10.tres" type="PlaneMesh" id=9]
@@ -15,6 +15,8 @@
 [ext_resource path="res://surface/mesh/2x10.tres" type="PlaneMesh" id=14]
 [ext_resource path="res://gateway/ViewportGateway.tscn" type="PackedScene" id=15]
 [ext_resource path="res://surface/mesh/20x30.tres" type="PlaneMesh" id=16]
+
+
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 

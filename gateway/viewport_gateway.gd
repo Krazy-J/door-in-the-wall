@@ -2,6 +2,7 @@ tool
 extends "res://gateway/gateway.gd"
 
 export var start_enabled = false
+export var stay_enabled = false
 
 func _ready():
 	$Area/Port.translation.z = -size.z / 2
@@ -9,7 +10,7 @@ func _ready():
 	$Viewport.size = get_viewport().size
 	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
 	$Viewport/Spatial/Camera.make_current()
-	if start_enabled: enable_viewport()
+	if start_enabled and not Engine.editor_hint: enable_viewport()
 
 func place_camera():
 	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
@@ -18,9 +19,11 @@ func place_camera():
 	teleport($Viewport/Spatial)
 
 func disable_viewport(area = $"/root/Main/Player/TeleportArea"):
-	if area.get_parent().name == "Player": $Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+	if not stay_enabled and area.get_parent().name == "Player":
+		$Viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 func enable_viewport(area = $"/root/Main/Player/TeleportArea"):
-	if area.get_parent().name == "Player": $Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	if area.get_parent().name == "Player":
+		$Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 
 func _process(_delta):
 	if not Engine.editor_hint: place_camera()

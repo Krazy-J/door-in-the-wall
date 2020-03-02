@@ -2,7 +2,7 @@
 
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/mesh/30x20.tres" type="PlaneMesh" id=2]
-[ext_resource path="res://object/classic/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=4]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=5]
 [ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=6]
@@ -16,19 +16,19 @@
 [ext_resource path="res://surface/mesh/20x10.tres" type="PlaneMesh" id=14]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=15]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=16]
-[ext_resource path="res://surface/plastic/orange.tres" type="Material" id=17]
-[ext_resource path="res://object/classic/Table.tscn" type="PackedScene" id=18]
+[ext_resource path="res://object/plastic/orange.tres" type="Material" id=17]
+[ext_resource path="res://object/Table.tscn" type="PackedScene" id=18]
 [ext_resource path="res://object/block/GreenBlock.tscn" type="PackedScene" id=19]
 [ext_resource path="res://object/block/BlueBlock.tscn" type="PackedScene" id=20]
 [ext_resource path="res://object/block/RedBlock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://object/block/OrangeBlock.tscn" type="PackedScene" id=22]
 [ext_resource path="res://object/block/YellowBlock.tscn" type="PackedScene" id=23]
 [ext_resource path="res://object/PhysicalKey.tscn" type="PackedScene" id=24]
-[ext_resource path="res://surface/plastic/green.tres" type="Material" id=25]
-[ext_resource path="res://surface/plastic/red.tres" type="Material" id=26]
+[ext_resource path="res://object/plastic/green.tres" type="Material" id=25]
+[ext_resource path="res://object/plastic/red.tres" type="Material" id=26]
 [ext_resource path="res://object/stacking_rings/StackingRingBase.tscn" type="PackedScene" id=27]
-[ext_resource path="res://surface/plastic/blue.tres" type="Material" id=28]
-[ext_resource path="res://surface/plastic/yellow.tres" type="Material" id=29]
+[ext_resource path="res://object/plastic/blue.tres" type="Material" id=28]
+[ext_resource path="res://object/plastic/yellow.tres" type="Material" id=29]
 [ext_resource path="res://object/stacking_rings/Ring.tscn" type="PackedScene" id=30]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=31]
 
@@ -87,63 +87,65 @@ mesh = ExtResource( 12 )
 [node name="Table" parent="MainFloor" index="0" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -16 )
 
-[node name="TableTop2" type="Spatial" parent="MainFloor" index="1"]
+[node name="TableTop" type="Spatial" parent="MainFloor" index="1"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 3, -16 )
 
-[node name="StackingRingBase" parent="MainFloor/TableTop2" index="0" instance=ExtResource( 27 )]
+[node name="StackingRingBase" parent="MainFloor/TableTop" index="0" instance=ExtResource( 27 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 10 )
 mass = 0.3
 
-[node name="Key" parent="MainFloor/TableTop2" index="1" instance=ExtResource( 24 )]
+[node name="Key" parent="MainFloor/TableTop" index="1" instance=ExtResource( 24 )]
 transform = Transform( 5, 0, 0, 0, 4.82963, 1.2941, 0, -1.2941, 4.82963, 5, 2.77, 10.54 )
 
-[node name="Ring1" parent="MainFloor/TableTop2" index="2" instance=ExtResource( 30 )]
+[node name="Ring1" parent="MainFloor/TableTop" index="2" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 10 )
 material = ExtResource( 26 )
 
-[node name="Ring2" parent="MainFloor/TableTop2" index="3" instance=ExtResource( 30 )]
+[node name="Ring2" parent="MainFloor/TableTop" index="3" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.4, 10 )
 radius = 1.6
 size = 0.9
 material = ExtResource( 17 )
 
-[node name="Ring3" parent="MainFloor/TableTop2" index="4" instance=ExtResource( 30 )]
+[node name="Ring3" parent="MainFloor/TableTop" index="4" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.2, 10 )
 radius = 1.2
 size = 0.8
 material = ExtResource( 29 )
 
-[node name="Ring4" parent="MainFloor/TableTop2" index="5" instance=ExtResource( 30 )]
+[node name="Ring4" parent="MainFloor/TableTop" index="5" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.9, 10 )
 radius = 0.9
 size = 0.7
 material = ExtResource( 25 )
 
-[node name="Ring5" parent="MainFloor/TableTop2" index="6" instance=ExtResource( 30 )]
+[node name="Ring5" parent="MainFloor/TableTop" index="6" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 10 )
 radius = 0.6
 size = 0.6
 material = ExtResource( 28 )
 
-[node name="RedBlock" parent="MainFloor/TableTop2" index="7" instance=ExtResource( 21 )]
+[node name="RedBlock" parent="MainFloor/TableTop" index="7" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5 )
 
-[node name="OrangeBlock" parent="MainFloor/TableTop2" index="8" instance=ExtResource( 22 )]
+[node name="OrangeBlock" parent="MainFloor/TableTop" index="8" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="YellowBlock" parent="MainFloor/TableTop2" index="9" instance=ExtResource( 23 )]
+[node name="YellowBlock" parent="MainFloor/TableTop" index="9" instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10 )
 
-[node name="GreenBlock" parent="MainFloor/TableTop2" index="10" instance=ExtResource( 19 )]
+[node name="GreenBlock" parent="MainFloor/TableTop" index="10" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10 )
 
-[node name="BlueBlock" parent="MainFloor/TableTop2" index="11" instance=ExtResource( 20 )]
+[node name="BlueBlock" parent="MainFloor/TableTop" index="11" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5 )
 
 [node name="Floor" type="CSGMesh" parent="MainFloor" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 4 )
 material = ExtResource( 15 )
 
@@ -151,6 +153,8 @@ material = ExtResource( 15 )
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 10, 0 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 4 )
 material = ExtResource( 5 )
 
@@ -158,6 +162,8 @@ material = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -20 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 7 )
 material = ExtResource( 5 )
 
@@ -165,6 +171,8 @@ material = ExtResource( 5 )
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -5, 10, -15 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 2 )
 material = ExtResource( 5 )
 
@@ -190,6 +198,8 @@ transform = Transform( 1, -6.82121e-13, -2.20229e-20, 6.82121e-13, 1, 6.82121e-1
 transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 5, 10, -10 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 12 )
 material = ExtResource( 5 )
 
@@ -223,6 +233,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10, -25 )
 [node name="Floor" type="CSGMesh" parent="SecondFloor" index="0"]
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 14 )
 material = ExtResource( 15 )
 
@@ -230,6 +242,8 @@ material = ExtResource( 15 )
 transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 10, 5, 0 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 7 )
 material = ExtResource( 5 )
 
@@ -237,6 +251,8 @@ material = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 5, -5 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 14 )
 material = ExtResource( 5 )
 
@@ -244,6 +260,8 @@ material = ExtResource( 5 )
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 5, 5, 5 )
 layers = 3
 use_collision = true
+collision_layer = 5
+collision_mask = 0
 mesh = ExtResource( 7 )
 material = ExtResource( 5 )
 

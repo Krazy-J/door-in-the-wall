@@ -7,7 +7,7 @@
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=5]
 [ext_resource path="res://door/scene_change/LobbyDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://object/Key.tscn" type="PackedScene" id=7]
-[ext_resource path="res://object/classic/Table.tscn" type="PackedScene" id=8]
+[ext_resource path="res://object/Table.tscn" type="PackedScene" id=8]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=9]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=11]
@@ -26,6 +26,7 @@
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=24]
 [ext_resource path="res://door/8-bit/white.tres" type="Material" id=25]
 [ext_resource path="res://door/8-bit/BitDoor.tscn" type="PackedScene" id=26]
+
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 

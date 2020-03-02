@@ -2,7 +2,7 @@
 
 [ext_resource path="res://startup_cinematic.gd" type="Script" id=1]
 [ext_resource path="res://surface/normal/stone_bricks.tres" type="Material" id=2]
-[ext_resource path="res://object/classic/CeilingBulbLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/mesh/20x12.tres" type="PlaneMesh" id=4]
 [ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=5]
 [ext_resource path="res://object/door_frame.tres" type="ArrayMesh" id=6]
@@ -26,6 +26,8 @@
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=24]
 [ext_resource path="res://surface/mesh/40x12.tres" type="PlaneMesh" id=25]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=26]
+
+
 
 
 
