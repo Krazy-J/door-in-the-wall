@@ -405,17 +405,17 @@ roughness = 0.5
 max_steps = 256
 step_size = 1.0
 
-[node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
+[node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
-label = "– (–)"
+label = "– (8)"
 
-[node name="Label2" type="Spatial" parent="Classic/Levels/9"]
+[node name="Label2" type="Spatial" parent="Classic/Levels/8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
 script = ExtResource( 22 )
 __meta__ = {
-"_editor_description_": "Crates"
+"_editor_description_": ""
 }
 text = "Not started"
 text_scale = 0.002
@@ -469,19 +469,19 @@ roughness = 0.5
 max_steps = 256
 step_size = 1.0
 
-[node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
+[node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
 door = null
 door_material = ExtResource( 13 )
 label = "– (–)"
 
-[node name="Label2" type="Spatial" parent="Classic/Levels/8"]
+[node name="Label2" type="Spatial" parent="Classic/Levels/9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
 script = ExtResource( 22 )
 __meta__ = {
 "_editor_description_": "Scaling with mouse hole"
 }
-text = "Not started"
+text = "In progress"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
