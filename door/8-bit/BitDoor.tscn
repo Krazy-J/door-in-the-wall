@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://door/Door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/8-bit/door.png" type="Texture" id=2]
@@ -10,6 +10,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
+resource_name = "door_toggle"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation:x")
 tracks/0/interp = 1
@@ -47,16 +48,54 @@ tracks/2/keys = {
 "values": [ 1.0, 0.75, 0.5, 0.25, 0.125 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "locked"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 1,
+"values": [ Vector3( 0.05, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SoundLatch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 1.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [node name="Door" instance=ExtResource( 1 )]
 material_override = SubResource( 1 )
 
 [node name="SoundOpen" parent="." index="2"]
 stream = ExtResource( 3 )
+max_db = 2.0
 
 [node name="SoundClose" parent="." index="3"]
 stream = ExtResource( 4 )
+max_db = 2.0
 
-[node name="AnimationPlayer" parent="." index="4"]
-anims/DoorToggle = SubResource( 2 )
+[node name="SoundLatch" parent="." index="4"]
+stream = ExtResource( 4 )
+unit_size = 2.0
+max_db = 2.0
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/door_toggle = SubResource( 2 )
+anims/locked = SubResource( 3 )
 
 [editable path="Interact"]

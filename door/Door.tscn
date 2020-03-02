@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.5, 3.25, 0.125 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.5, 3.25, 0.125 )
 
 [sub_resource type="ArrayMesh" id=3]
@@ -27,7 +27,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Unlock"
+resource_name = "unlock"
 length = 2.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Key:rotation_degrees")
@@ -54,7 +54,7 @@ tracks/1/keys = {
 "values": [ Vector3( -1.05, 2.85, 1 ), Vector3( -1.05, 2.85, 0.13 ), Vector3( -1.05, 2.85, 0.15 ) ]
 }
 tracks/2/type = "audio"
-tracks/2/path = NodePath("SoundLock")
+tracks/2/path = NodePath("SoundLatch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -101,7 +101,7 @@ shape = SubResource( 1 )
 
 [node name="Collision" parent="Interact" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Outline" parent="Interact" index="1"]
 mesh = SubResource( 3 )
@@ -115,11 +115,11 @@ attenuation_filter_cutoff_hz = 18000.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0 )
 attenuation_filter_cutoff_hz = 18000.0
 
-[node name="SoundLock" type="AudioStreamPlayer3D" parent="."]
+[node name="SoundLatch" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 0 )
-stream = ExtResource( 5 )
+unit_size = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Unlock = SubResource( 4 )
+anims/unlock = SubResource( 4 )
 
 [editable path="Interact"]
