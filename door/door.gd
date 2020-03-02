@@ -18,7 +18,7 @@ func add_door(source = self):
 
 func toggle_door():
 	if locked:
-		$Door/AnimationPlayer.play("locked")
+		if not $Door/AnimationPlayer.is_playing(): $Door/AnimationPlayer.play("locked")
 	else:
 		open = not open
 		if open:

@@ -8,11 +8,11 @@ func toggle_door():
 	open = not open
 	if open:
 		timer = close_timer
-		$Door/AnimationPlayer.play("DoorToggle")
+		$Door/AnimationPlayer.play("door_toggle")
 		$Door/SoundClose.stop()
 		$Door/SoundOpen.play($Door/AnimationPlayer.current_animation_position)
 	else:
-		$Door/AnimationPlayer.play_backwards("DoorToggle")
+		$Door/AnimationPlayer.play_backwards("door_toggle")
 		$Door/SoundOpen.stop()
 		$Door/SoundClose.play(1 - $Door/AnimationPlayer.current_animation_position)
 

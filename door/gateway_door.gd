@@ -23,7 +23,7 @@ func _unhandled_input(event):
 		if has_node("Door") and ($Interact.valid or $Door/Interact.valid):
 			if locked and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).name == "Key":
 				if exit: exit.unlock()
-			elif exit: exit.toggle_door()
+			elif exit and (not locked or exit.locked): exit.toggle_door()
 		if $Interact.valid and not has_node("Door") and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
 			if exit_path:
 				connect_gateway()

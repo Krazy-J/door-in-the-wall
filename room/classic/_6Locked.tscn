@@ -181,7 +181,7 @@ cast_shadow = 3
 mesh = ExtResource( 13 )
 
 [node name="Up" parent="MainFloor/LeftLightWall" index="0" instance=ExtResource( 6 )]
-transform = Transform( 1, -6.82121e-13, -2.20229e-20, 6.82121e-13, 1, 6.82121e-13, -7.11508e-20, -6.82121e-13, 1, -5, -9.53674e-07, 11.5 )
+transform = Transform( 1, -6.82121e-13, -1.86347e-20, 6.82121e-13, 1, 6.82121e-13, -6.77626e-20, -6.82121e-13, 1, -3, -4.76837e-07, 11.5 )
 
 [node name="Up2" parent="MainFloor/LeftLightWall" index="1" instance=ExtResource( 6 )]
 transform = Transform( 1, -6.82121e-13, -2.20229e-20, 6.82121e-13, 1, 6.82121e-13, -7.11508e-20, -6.82121e-13, 1, 5, -9.53674e-07, 1.5 )
@@ -194,7 +194,7 @@ mesh = ExtResource( 12 )
 material = ExtResource( 5 )
 
 [node name="Light2" type="OmniLight" parent="MainFloor" index="8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.75, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.75, -17 )
 layers = 3
 light_color = Color( 1, 1, 0.9, 1 )
 light_specular = 0.25
