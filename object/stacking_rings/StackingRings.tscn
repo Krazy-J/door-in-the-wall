@@ -16,28 +16,29 @@ mass = 0.3
 
 [node name="Ring1" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+continuous_cd = true
 material = ExtResource( 2 )
 
 [node name="Ring2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0 )
 radius = 1.6
-size = 0.9
+size = 0.95
 material = ExtResource( 4 )
 
 [node name="Ring3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0 )
 radius = 1.2
-size = 0.8
+size = 0.9
 material = ExtResource( 3 )
 
 [node name="Ring4" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, 0 )
 radius = 0.9
-size = 0.7
+size = 0.85
 material = ExtResource( 7 )
 
 [node name="Ring5" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0 )
 radius = 0.6
-size = 0.6
+size = 0.8
 material = ExtResource( 5 )

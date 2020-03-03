@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/mesh/30x20.tres" type="PlaneMesh" id=2]
@@ -17,12 +17,8 @@
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=15]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=16]
 [ext_resource path="res://object/plastic/orange.tres" type="Material" id=17]
-[ext_resource path="res://object/Table.tscn" type="PackedScene" id=18]
-[ext_resource path="res://object/block/GreenBlock.tscn" type="PackedScene" id=19]
-[ext_resource path="res://object/block/BlueBlock.tscn" type="PackedScene" id=20]
-[ext_resource path="res://object/block/RedBlock.tscn" type="PackedScene" id=21]
-[ext_resource path="res://object/block/OrangeBlock.tscn" type="PackedScene" id=22]
-[ext_resource path="res://object/block/YellowBlock.tscn" type="PackedScene" id=23]
+[ext_resource path="res://object/furniture/Table.tscn" type="PackedScene" id=18]
+[ext_resource path="res://object/block/Block.tscn" type="PackedScene" id=19]
 [ext_resource path="res://object/PhysicalKey.tscn" type="PackedScene" id=24]
 [ext_resource path="res://object/plastic/green.tres" type="Material" id=25]
 [ext_resource path="res://object/plastic/red.tres" type="Material" id=26]
@@ -168,7 +164,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 10 )
 mass = 0.3
 
 [node name="Key" parent="MainFloor/TableTop" index="1" instance=ExtResource( 24 )]
-transform = Transform( 5, 0, 0, 0, 4.82963, 1.2941, 0, -1.2941, 4.82963, 5, 2.77, 10.54 )
+transform = Transform( 5, 0, 0, 0, 4.92404, 0.868246, 0, -0.868246, 4.92404, 5, 2, 11 )
+collision_layer = 4
+collision_mask = 4
+continuous_cd = true
 
 [node name="Ring1" parent="MainFloor/TableTop" index="2" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 10 )
@@ -198,20 +197,25 @@ radius = 0.6
 size = 0.6
 material = ExtResource( 28 )
 
-[node name="RedBlock" parent="MainFloor/TableTop" index="7" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5 )
+[node name="RedBlock" parent="MainFloor/TableTop" index="7" instance=ExtResource( 19 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 1, -11.5 )
+material = ExtResource( 26 )
 
-[node name="OrangeBlock" parent="MainFloor/TableTop" index="8" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[node name="OrangeBlock" parent="MainFloor/TableTop" index="8" instance=ExtResource( 19 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -3, 1, -13 )
+material = ExtResource( 17 )
 
-[node name="YellowBlock" parent="MainFloor/TableTop" index="9" instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10 )
+[node name="YellowBlock" parent="MainFloor/TableTop" index="9" instance=ExtResource( 19 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.5, 1, -14 )
+material = ExtResource( 29 )
 
 [node name="GreenBlock" parent="MainFloor/TableTop" index="10" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10 )
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.5, 1, -10.5 )
+material = ExtResource( 25 )
 
-[node name="BlueBlock" parent="MainFloor/TableTop" index="11" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5 )
+[node name="BlueBlock" parent="MainFloor/TableTop" index="11" instance=ExtResource( 19 )]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1.3, 3, -12.5 )
+material = ExtResource( 28 )
 
 [node name="Up" parent="." index="8" instance=ExtResource( 9 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -17 )

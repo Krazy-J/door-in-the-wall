@@ -7,7 +7,7 @@
 [ext_resource path="res://object/plastic.phymat" type="PhysicsMaterial" id=5]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.434783
+radius = 0.45
 height = 2.5
 
 [sub_resource type="CylinderShape" id=2]
@@ -23,27 +23,27 @@ script = ExtResource( 2 )
 material = ExtResource( 4 )
 
 [node name="Collision1" type="CollisionShape" parent="."]
-transform = Transform( 0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.16667 )
+transform = Transform( 0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.15 )
 shape = SubResource( 1 )
 
 [node name="Collision2" type="CollisionShape" parent="."]
-transform = Transform( 0, -0.5, -0.866025, 1, 0, 0, 0, -0.866025, 0.5, -1.87639, 0, 1.08333 )
+transform = Transform( 0, -0.5, -0.866025, 1, 0, 0, 0, -0.866025, 0.5, -1.86195, 0, 1.075 )
 shape = SubResource( 1 )
 
 [node name="Collision3" type="CollisionShape" parent="."]
-transform = Transform( 0, 0.5, -0.866025, 1, 0, 0, 0, -0.866025, -0.5, -1.87639, 0, -1.08333 )
+transform = Transform( 0, 0.5, -0.866025, 1, 0, 0, 0, -0.866025, -0.5, -1.86195, 0, -1.075 )
 shape = SubResource( 1 )
 
 [node name="Collision4" type="CollisionShape" parent="."]
-transform = Transform( 0, 1, 8.74228e-08, 1, 0, 0, 0, 8.74228e-08, -1, 1.89416e-07, 0, -2.16667 )
+transform = Transform( 0, 1, 8.74228e-08, 1, 0, 0, 0, 8.74228e-08, -1, 1.87959e-07, 0, -2.15 )
 shape = SubResource( 1 )
 
 [node name="Collision5" type="CollisionShape" parent="."]
-transform = Transform( 0, 0.5, 0.866025, 1, 0, 0, 0, 0.866025, -0.5, 1.87639, 0, -1.08333 )
+transform = Transform( 0, 0.5, 0.866025, 1, 0, 0, 0, 0.866025, -0.5, 1.86195, 0, -1.075 )
 shape = SubResource( 1 )
 
 [node name="Collision6" type="CollisionShape" parent="."]
-transform = Transform( 0, -0.5, 0.866025, 1, 0, 0, 0, 0.866025, 0.5, 1.87639, 0, 1.08333 )
+transform = Transform( 0, -0.5, 0.866025, 1, 0, 0, 0, 0.866025, 0.5, 1.86195, 0, 1.075 )
 shape = SubResource( 1 )
 
 [node name="Ring" type="CSGTorus" parent="."]

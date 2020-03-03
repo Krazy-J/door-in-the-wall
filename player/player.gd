@@ -34,13 +34,23 @@ func _unhandled_input(event):
 	if event.is_action_pressed("fullscreen"): OS.window_fullscreen = not OS.window_fullscreen
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
-			$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
-			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
+			if Input.is_mouse_button_pressed(BUTTON_MIDDLE) and carrying:
+				var body = get_node(carrying)
+				body.rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
+				if not body.is_class("StaticBody"): body.rotate(transform.basis.x.normalized(), -event.relative.y * ProjectSettings.mouse_sensitivity)
+			else:
+				rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
+				$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
+				$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 		if event is InputEventJoypadMotion:
 			rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
 			$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
+	if carrying and event is InputEventMouseButton:
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP) and carry_distance < $PivotX/InteractArea/Collision.shape.length:
+			carry_distance += .1
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN) and carry_distance > 2:
+			carry_distance -= .1
 	if is_on_floor():
 		if event.is_action("jump"): motion += transform.basis.y * jump_power
 
@@ -77,10 +87,9 @@ func _physics_process(delta):
 			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
 			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
 		elif body.is_class("StaticBody"):
-			body.global_transform.origin = $PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance
+			body.constant_linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
 		elif body.is_class("RigidBody"):
 			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
-			body.angular_velocity = -body.rotation_degrees * 20 * delta
 		else:
 			body.global_transform = $PivotX/Carry.global_transform
 	motion += transform.basis * get_movement() * speed * delta

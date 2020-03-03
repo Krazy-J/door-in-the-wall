@@ -111,6 +111,9 @@ mesh = ExtResource( 3 )
 [node name="CarryDoor" type="Spatial" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.469846, 0.17101, 0, -0.17101, 0.469846, 0, 3.5, -2 )
 
+[node name="Carry" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2 )
+
 [node name="TeleportArea" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0 )
 
@@ -130,9 +133,6 @@ collision_mask = 0
 [node name="Collision" type="CollisionShape" parent="PivotX/InteractArea"]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 shape = SubResource( 2 )
-
-[node name="Carry" type="Spatial" parent="PivotX"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2 )
 [connection signal="about_to_show" from="Pause" to="." method="_on_pause"]
 [connection signal="popup_hide" from="Pause" to="." method="_on_unpause"]
 [connection signal="pressed" from="Pause/List/Settings" to="Pause/Settings" method="popup"]
