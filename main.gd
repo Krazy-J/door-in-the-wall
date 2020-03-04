@@ -1,11 +1,9 @@
 tool
 extends Node
 
-var completed_levels = 0
 var levels = [
 	[
 		{
-			"completed": false,
 			"locked": false,
 			"scene": "Lobby"
 		},
@@ -27,7 +25,6 @@ var levels = [
 	],
 	[
 		{
-			"completed": false,
 			"locked": false,
 			"requirement": 0
 		},
@@ -38,7 +35,7 @@ var levels = [
 		},
 		{
 			"completed": false,
-			"locked": false,
+			"locked": true,
 			"scene": "classic/2"
 		},
 		{
@@ -74,21 +71,18 @@ var levels = [
 	],
 	[
 		{
-			"completed": false,
 			"locked": true,
 			"requirement": 8
 		}
 	],
 	[
 		{
-			"completed": false,
 			"locked": true,
 			"requirement": 0
 		}
 	],
 	[
 		{
-			"completed": false,
 			"locked": true,
 			"requirement": 0
 		}
@@ -110,5 +104,4 @@ func quit_game(): get_tree().quit()
 func _process(delta):
 	if Engine.editor_hint:
 		ProjectSettings.set("levels", levels)
-		ProjectSettings.set("completed_levels", completed_levels)
 	else: $Spatial/Camera.rotation_degrees.y -= 2 * delta

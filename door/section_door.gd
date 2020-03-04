@@ -1,10 +1,12 @@
 tool
 extends "res://door/gateway_door.gd"
 
-export var section = 0
+export var section_number = 0
 export(String, MULTILINE) var label setget set_label
 export var label_color : Color setget set_label_color
-var section_settings
+onready var section = ProjectSettings.levels[section_number]
+var section_completed = 0
+var total_completed = 0
 
 func set_label(set_label):
 	label = set_label
@@ -16,21 +18,28 @@ func set_label_color(set_label_color):
 
 func _ready():
 	if not Engine.editor_hint and door:
-		section_settings = ProjectSettings.levels[section][0]
-		if section_settings.locked:
+		for section in ProjectSettings.levels:
+			for level in section:
+				if not level == section[0] and level.completed:
+					total_completed += 1
+					if section == ProjectSettings.levels[section_number]: section_completed += 1
+		if section[0].locked:
 			material_override = load("res://object/plastic/red.tres")
 			locked = true
-			$Label2.text = str(ProjectSettings.completed_levels) + "/" + str(section_settings.requirement)
-			if ProjectSettings.completed_levels >= section_settings.requirement:
+			$Label2.text = str(total_completed) + "/" + str(section[0].requirement)
+			if total_completed >= section[0].requirement:
 				$Label2.color = Color(0,1,0)
-		elif section_settings.completed:
-			material_override = load("res://object/plastic/yellow.tres")
+		else:
+			if section_completed == section.size() - 1:
+				material_override = load("res://object/gold.tres")
+				exit.material_override = load("res://object/gold.tres")
 
 func toggle_door():
 	if locked and not $Door/AnimationPlayer.is_playing():
-		if ProjectSettings.completed_levels >= section_settings.requirement:
-			$Door/AnimationPlayer.play("unlock")
+		if total_completed >= section[0].requirement:
+			unlock()
 			$Label2.queue_free()
+			material_override = null
 		else: $Door/AnimationPlayer.play("locked")
 	else:
 		open = not open
