@@ -6,7 +6,7 @@ onready var exit = get_node(exit_path)
 export var requires_door = false
 
 func _ready():
-	if exit_path:
+	if not Engine.editor_hint and exit_path:
 		if not has_node("Gateway"):
 			if (not requires_door or has_node("Door")) and (not exit.requires_door or exit.has_node("Door")):
 				connect_gateway()
