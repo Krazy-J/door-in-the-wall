@@ -29,18 +29,23 @@ func _ready():
 			$Label2.text = str(total_completed) + "/" + str(section[0].requirement)
 			if total_completed >= section[0].requirement:
 				$Label2.color = Color(0,1,0)
-		else:
-			if section_completed == section.size() - 1:
-				material_override = load("res://object/gold.tres")
-				exit.material_override = load("res://object/gold.tres")
+		elif section_completed == section.size() - 1:
+			material_override = load("res://object/medal/gold.tres")
+			exit.material_override = load("res://object/medal/gold.tres")
+		elif section_completed >= section.size() * .75 - 1:
+			material_override = load("res://object/silver.tres")
+			exit.material_override = load("res://object/silver.tres")
+		elif section_completed >= section.size() * .5 - 1:
+			material_override = load("res://object/bronze.tres")
+			exit.material_override = load("res://object/bronze.tres")
 
 func toggle_door():
-	if locked and not $Door/AnimationPlayer.is_playing():
+	if locked:
 		if total_completed >= section[0].requirement:
 			unlock()
 			$Label2.queue_free()
 			material_override = null
-		else: $Door/AnimationPlayer.play("locked")
+		elif not $Door/AnimationPlayer.is_playing(): $Door/AnimationPlayer.play("locked")
 	else:
 		open = not open
 		if open:

@@ -9,7 +9,7 @@ onready var current_level = ProjectSettings.current_level
 func load_scene():
 	if not levels[current_section][current_level].completed:
 		levels[current_section][current_level].completed = true
-		if levels[current_section].size() >= current_level:
+		if levels[current_section].size() > current_level + 1:
 			 levels[current_section][current_level + 1].locked = false
 	ProjectSettings.set("levels", levels)
 	get_tree().change_scene("res://room/" + level.scene + ".tscn")
