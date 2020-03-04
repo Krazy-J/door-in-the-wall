@@ -51,3 +51,11 @@ func _on_quit():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Main.tscn")
 	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())
+
+
+func _on_quit_menu():
+	pass # Replace with function body.
+
+
+func _on_quit_game():
+	pass # Replace with function body.

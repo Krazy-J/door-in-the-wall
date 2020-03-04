@@ -24,12 +24,78 @@ _global_script_class_icons={
 "Label3D": ""
 }
 shadow_atlas_size=4096
-shadow_atlas_size.Windows=2048
 door_shadow_atlas_size=4096
-door_shadow_atlas_size.Windows=2048
 door_mipmap_level=0
 fov=90.0
 mouse_sensitivity=0.003
+levels=[ [ {
+"completed": false,
+"locked": false,
+"scene": "Lobby"
+}, {
+"completed": false,
+"locked": false,
+"scene": "TestRoom"
+}, {
+"completed": false,
+"locked": false,
+"scene": "TheFunRoom"
+}, {
+"completed": false,
+"locked": false,
+"scene": "Orthogonal"
+} ], [ {
+"completed": false,
+"locked": false,
+"requirement": 0
+}, {
+"completed": false,
+"locked": false,
+"scene": "classic/1"
+}, {
+"completed": false,
+"locked": false,
+"scene": "classic/2"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_3Loop"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_6Locked"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_5Memory"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_8BuildUp"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_4ManyDoors"
+}, {
+"completed": false,
+"locked": true,
+"scene": "classic/_7Flipped"
+} ], [ {
+"completed": false,
+"locked": true,
+"requirement": 8
+} ], [ {
+"completed": false,
+"locked": true,
+"requirement": 0
+} ], [ {
+"completed": false,
+"locked": true,
+"requirement": 0
+} ] ]
+current_section=0
+current_level=0
+completed_levels=8
 
 [application]
 
@@ -47,13 +113,6 @@ window/size/fullscreen=true
 [editor_plugins]
 
 enabled=PoolStringArray( "SIsilicon.3d.text" )
-
-[global]
-
-shadow_atlas_size=4096
-shadow_atlas_size.Windows=4096
-door_shadow_atlas_size=2048
-door_shadow_atlas_size.Windows=2048
 
 [gui]
 

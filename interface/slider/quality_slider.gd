@@ -29,7 +29,7 @@ func _value_changed(value):
 	for property in viewport: get_viewport().set(property, values[value])
 	for property in os: OS.set(property, values[value])
 
-func _process(delta):
+func _process(_delta):
 	var value = 0
 	if settings: while value < len(values) and not values[value] == ProjectSettings.get(settings[0]): value += 1
 	$Split/Split/Slider.value = value

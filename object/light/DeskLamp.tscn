@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://surface/metal.tres" type="Material" id=1]
+[ext_resource path="res://object/metal.tres" type="Material" id=1]
 [ext_resource path="res://object/bulb.tres" type="Material" id=2]
 [ext_resource path="res://object/plastic/grey.tres" type="Material" id=3]
+
 
 [node name="Lamp" type="Spatial"]
 

@@ -13,20 +13,21 @@
 [ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=11]
 [ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=12]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=13]
-[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=14]
+[ext_resource path="res://door/8bit/orange.tres" type="Material" id=14]
 [ext_resource path="res://gateway/OrthogonalGateway.tscn" type="PackedScene" id=15]
 [ext_resource path="res://surface/mesh/30x10.tres" type="PlaneMesh" id=16]
 [ext_resource path="res://surface/mesh/30x30.tres" type="PlaneMesh" id=17]
-[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=18]
+[ext_resource path="res://door/8bit/blue.tres" type="Material" id=18]
 [ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://surface/mesh/100x50.tres" type="PlaneMesh" id=20]
-[ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=21]
-[ext_resource path="res://door/8-bit/green.tres" type="Material" id=22]
+[ext_resource path="res://door/8bit/yellow.tres" type="Material" id=21]
+[ext_resource path="res://door/8bit/green.tres" type="Material" id=22]
 [ext_resource path="res://surface/mesh/10x30.tres" type="PlaneMesh" id=23]
-[ext_resource path="res://door/8-bit/red.tres" type="Material" id=24]
-[ext_resource path="res://door/8-bit/purple.tres" type="Material" id=25]
+[ext_resource path="res://door/8bit/red.tres" type="Material" id=24]
+[ext_resource path="res://door/8bit/purple.tres" type="Material" id=25]
 [ext_resource path="res://surface/mesh/60x30.tres" type="PlaneMesh" id=26]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=27]
+
 
 
 

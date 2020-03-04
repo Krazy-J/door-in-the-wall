@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=2]
 
-[ext_resource path="res://door/8-bit/white.tres" type="Material" id=1]
+[ext_resource path="res://door/8bit/white.tres" type="Material" id=1]
 
 [resource]
 surfaces/0 = {

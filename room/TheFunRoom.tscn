@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://door/8-bit/red.tres" type="Material" id=1]
+[ext_resource path="res://door/8bit/red.tres" type="Material" id=1]
 [ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=3]
 [ext_resource path="res://door/sliding/SlidingDoor.tscn" type="PackedScene" id=4]
@@ -16,10 +16,10 @@
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=18]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=20]
-[ext_resource path="res://door/8-bit/blue.tres" type="Material" id=21]
-[ext_resource path="res://door/8-bit/orange.tres" type="Material" id=22]
-[ext_resource path="res://door/8-bit/yellow.tres" type="Material" id=23]
-[ext_resource path="res://door/8-bit/green.tres" type="Material" id=24]
+[ext_resource path="res://door/8bit/blue.tres" type="Material" id=21]
+[ext_resource path="res://door/8bit/orange.tres" type="Material" id=22]
+[ext_resource path="res://door/8bit/yellow.tres" type="Material" id=23]
+[ext_resource path="res://door/8bit/green.tres" type="Material" id=24]
 [ext_resource path="res://door/loose/LooseDoor.tscn" type="PackedScene" id=25]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=26]
 [ext_resource path="res://surface/mesh/32x18.tres" type="PlaneMesh" id=27]
@@ -27,6 +27,7 @@
 [ext_resource path="res://object/plastic/orange.tres" type="Material" id=29]
 [ext_resource path="res://object/plastic/green.tres" type="Material" id=30]
 [ext_resource path="res://object/plastic/red.tres" type="Material" id=31]
+
 
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]

@@ -1,5 +1,5 @@
 tool
-extends Spatial
+extends CSGShape
 
 export(PackedScene) var door
 export(Mesh) var door_mesh

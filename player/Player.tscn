@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/crosshair.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://door/TeleportArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/Settings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://font/large.tres" type="DynamicFont" id=6]
+[ext_resource path="res://interface/QuickStart.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -62,6 +63,13 @@ margin_bottom = 67.0
 custom_fonts/font = ExtResource( 6 )
 text = "Settings"
 
+[node name="QuickStart" type="Button" parent="Pause/List"]
+margin_top = 71.0
+margin_right = 309.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 6 )
+text = "Quick Select"
+
 [node name="QuitLevel" type="Button" parent="Pause/List"]
 margin_top = 71.0
 margin_right = 309.0
@@ -84,6 +92,9 @@ custom_fonts/font = ExtResource( 6 )
 text = "Quit Game"
 
 [node name="Settings" parent="Pause" instance=ExtResource( 5 )]
+
+[node name="QuickStart" parent="Pause" instance=ExtResource( 7 )]
+window_title = "Quick Select"
 
 [node name="ConfirmQuit" type="ConfirmationDialog" parent="Pause"]
 anchor_left = 0.5
@@ -136,6 +147,7 @@ shape = SubResource( 2 )
 [connection signal="about_to_show" from="Pause" to="." method="_on_pause"]
 [connection signal="popup_hide" from="Pause" to="." method="_on_unpause"]
 [connection signal="pressed" from="Pause/List/Settings" to="Pause/Settings" method="popup"]
+[connection signal="pressed" from="Pause/List/QuickStart" to="Pause/QuickStart" method="popup"]
 [connection signal="pressed" from="Pause/List/QuitLevel" to="." method="_on_quit_level"]
 [connection signal="pressed" from="Pause/List/QuitMenu" to="." method="_on_quit_menu"]
 [connection signal="pressed" from="Pause/List/QuitGame" to="Pause/ConfirmQuit" method="popup"]
