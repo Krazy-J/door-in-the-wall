@@ -45,6 +45,7 @@ func toggle_door():
 			unlock()
 			$Label2.queue_free()
 			material_override = null
+			section[0].locked = false
 		elif not $Door/AnimationPlayer.is_playing(): $Door/AnimationPlayer.play("locked")
 	else:
 		open = not open
