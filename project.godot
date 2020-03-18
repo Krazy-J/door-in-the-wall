@@ -198,8 +198,8 @@ fullscreen={
 3d_render/layer_1="Player"
 3d_physics/layer_1="Player"
 3d_render/layer_2="Door Viewport"
-3d_physics/layer_2="Teleport"
-3d_physics/layer_3="Objects"
+3d_physics/layer_2="Objects"
+3d_physics/layer_3="Teleport"
 
 [rendering]
 

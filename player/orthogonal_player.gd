@@ -5,13 +5,14 @@ export var jump_power = 25
 export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
-export var carrying : NodePath
-export var carry_distance : float
-export var motion : Vector3
+var motion : Vector3
+var interact : Dictionary
 
 func _ready():
 	if not has_node("../LobbyDoor"): $Pause/List/QuitLevel.queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	for interact_ray in $Interact.get_children():
+		interact[interact_ray] = null
 
 func _unhandled_input(event):
 	if event.is_action_pressed("exit_mouse"): $Pause.popup()
@@ -30,6 +31,14 @@ func get_movement():
 
 func _process(_delta):
 	if name == "Player2" and not get_parent().has_node("Player"): name = "Player"
+	for interact_ray in $Interact.get_children():
+		if not interact[interact_ray] == interact_ray.get_collider():
+			if interact[interact_ray]:
+				interact[interact_ray].interact_exited()
+				interact[interact_ray] = null
+			if interact_ray.is_colliding() and interact_ray.get_collider().has_node("Interact"):
+				interact[interact_ray] = interact_ray.get_collider().get_node("Interact")
+				interact[interact_ray].interact_entered()
 
 func _physics_process(delta):
 	motion += transform.basis * get_movement() * speed * delta

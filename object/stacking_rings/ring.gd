@@ -9,11 +9,8 @@ func _ready():
 	$Ring.inner_radius = radius
 	$Ring.outer_radius = radius + size
 	$Ring.material = material
-	$Interact/Outline.inner_radius = $Ring.inner_radius - 0.1
-	$Interact/Outline.outer_radius = radius + size + 0.1
-	$Interact/Collision.shape = $Interact/Collision.shape.duplicate()
-	$Interact/Collision.shape.radius = radius + size
-	$Interact/Collision.shape.height = size
+	$Interact/Ring.inner_radius = $Ring.inner_radius - 0.1
+	$Interact/Ring.outer_radius = radius + size + 0.1
 	get_child(0).shape = get_child(0).shape.duplicate()
 	get_child(0).shape.radius = size / 2.0  * 0.9
 	get_child(0).shape.height = $Ring.outer_radius - size / 2.0
@@ -23,3 +20,4 @@ func _ready():
 
 func _process(_delta):
 	if Engine.editor_hint: _ready()
+	

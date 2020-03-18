@@ -4,7 +4,7 @@
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=2]
 [ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=4]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://door/PlaneDoorHole.tscn" type="PackedScene" id=5]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=6]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=7]
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=8]
@@ -21,6 +21,7 @@
 [ext_resource path="res://surface/normal/stucco/teal.tres" type="Material" id=19]
 [ext_resource path="res://surface/normal/stucco/yellow.tres" type="Material" id=20]
 [ext_resource path="res://door/door.gd" type="Script" id=21]
+
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -44,12 +45,17 @@ parameters/playback = SubResource( 1 )
 
 [node name="LobbyDoor" parent="." index="2"]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 15.5 )
-room = false
 
 [node name="GoalDoor" parent="." index="3"]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 36.2, 0, -21 )
+door_mesh = null
 door_material = SubResource( 2 )
-room = false
+open = false
+locked = false
+section_number = 0
+level_number = 0
+label = ""
+label_color = Color( 0, 0, 0, 1 )
 
 [node name="Floor" type="CSGMesh" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, -5.3 )
@@ -116,10 +122,10 @@ door_material = ExtResource( 10 )
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )
 
 [node name="StartArea" type="Area" parent="Rooms/Start" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -4.9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -5.2 )
+collision_mask = 0
 
 [node name="Collision" type="CollisionShape" parent="Rooms/Start/StartArea" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3 )
 shape = SubResource( 3 )
 
 [node name="Room1" type="Spatial" parent="Rooms" index="1"]

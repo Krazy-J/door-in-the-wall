@@ -11,7 +11,7 @@
 [ext_resource path="res://surface/8bit/checker_tiles.tres" type="Material" id=13]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=14]
 [ext_resource path="res://textures/normal/stucco_wall.jpg" type="Texture" id=15]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=16]
+[ext_resource path="res://door/PlaneDoorHole.tscn" type="PackedScene" id=16]
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=17]
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=18]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=19]
@@ -27,6 +27,7 @@
 [ext_resource path="res://object/plastic/orange.tres" type="Material" id=29]
 [ext_resource path="res://object/plastic/green.tres" type="Material" id=30]
 [ext_resource path="res://object/plastic/red.tres" type="Material" id=31]
+
 
 
 

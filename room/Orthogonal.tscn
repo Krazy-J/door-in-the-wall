@@ -8,7 +8,7 @@
 [ext_resource path="res://door/normal/classic.tres" type="Material" id=6]
 [ext_resource path="res://surface/normal/stone_tile.tres" type="Material" id=7]
 [ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=8]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://door/PlaneDoorHole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=10]
 [ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=11]
 [ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=12]
@@ -27,6 +27,7 @@
 [ext_resource path="res://door/8bit/purple.tres" type="Material" id=25]
 [ext_resource path="res://surface/mesh/60x30.tres" type="PlaneMesh" id=26]
 [ext_resource path="res://surface/normal/wood_flooring.tres" type="Material" id=27]
+
 
 
 

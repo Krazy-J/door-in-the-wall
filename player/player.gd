@@ -7,7 +7,8 @@ export var air_resistance = .01
 export var surface_friction = .2
 export var gravity = 80
 var motion : Vector3
-var carrying : NodePath
+var interact : Node
+var carrying : Node
 var carry_distance : float
 
 func _ready():
@@ -35,7 +36,7 @@ func _unhandled_input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			if Input.is_mouse_button_pressed(BUTTON_MIDDLE) and carrying:
-				var body = get_node(carrying)
+				var body = carrying
 				body.rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
 				if not body.is_class("StaticBody"): body.rotate(transform.basis.x.normalized(), -event.relative.y * ProjectSettings.mouse_sensitivity)
 			else:
@@ -47,10 +48,10 @@ func _unhandled_input(event):
 			$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
 			$PivotX.rotation.x = clamp($PivotX.rotation.x, -1.5, 1.5)
 	if carrying and event is InputEventMouseButton:
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP) and carry_distance < $PivotX/InteractArea/Collision.shape.length:
-			carry_distance += .1
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN) and carry_distance > 2:
-			carry_distance -= .1
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
+			carry_distance = min(carry_distance + .1, abs($PivotX/Interact.cast_to.z))
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
+			carry_distance = max(carry_distance - .1, 2)
 	if is_on_floor():
 		if event.is_action("jump"): motion += transform.basis.y * jump_power
 
@@ -71,27 +72,33 @@ func get_movement():
 
 func _process(_delta):
 	$PivotX/Camera.fov = ProjectSettings.fov
+	if not interact == $PivotX/Interact.get_collider():
+		if interact:
+			interact.interact_exited()
+			interact = null
+		if $PivotX/Interact.is_colliding() and $PivotX/Interact.get_collider().has_node("Interact"):
+			interact = $PivotX/Interact.get_collider().get_node("Interact")
+			interact.interact_entered()
 
 func _physics_process(delta):
 	if carrying:
-		var body = get_node(carrying)
-		if body.has_node("Door"):
-			body.global_transform.origin += (transform.origin - body.global_transform.origin) * 10 * delta
-			body.get_node("Door").translation += ($CarryDoor.translation / body.scale * scale - body.get_node("Door").scale * Vector3(0, 3.5, 0) - body.get_node("Door").translation) * 10 * delta
-			if (transform.basis * (rotation_degrees - body.rotation_degrees)).y > 180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees - transform.basis.y * 360) * 10 * delta
-			elif (transform.basis * (rotation_degrees - body.rotation_degrees)).y < -180:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees + transform.basis.y * 360) * 10 * delta
+		if carrying.has_node("Door"):
+			carrying.global_transform.origin += (transform.origin - carrying.global_transform.origin) * 10 * delta
+			carrying.get_node("Door").translation += ($CarryDoor.translation / carrying.scale * scale - carrying.get_node("Door").scale * Vector3(0, 3.5, 0) - carrying.get_node("Door").translation) * 10 * delta
+			if (transform.basis * (rotation_degrees - carrying.rotation_degrees)).y > 180:
+				carrying.rotation_degrees += (rotation_degrees - carrying.rotation_degrees - transform.basis.y * 360) * 10 * delta
+			elif (transform.basis * (rotation_degrees - carrying.rotation_degrees)).y < -180:
+				carrying.rotation_degrees += (rotation_degrees - carrying.rotation_degrees + transform.basis.y * 360) * 10 * delta
 			else:
-				body.rotation_degrees += (rotation_degrees - body.rotation_degrees) * 10 * delta
-			body.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - body.get_node("Door").rotation_degrees) * 10 * delta
-			body.get_node("Door").scale += ($CarryDoor.scale - body.get_node("Door").scale) * 10 * delta
-		elif body.is_class("StaticBody"):
-			body.constant_linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
-		elif body.is_class("RigidBody"):
-			body.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - body.global_transform.origin) * 500 * delta
+				carrying.rotation_degrees += (rotation_degrees - carrying.rotation_degrees) * 10 * delta
+			carrying.get_node("Door").rotation_degrees += ($CarryDoor.rotation_degrees - carrying.get_node("Door").rotation_degrees) * 10 * delta
+			carrying.get_node("Door").scale += ($CarryDoor.scale - carrying.get_node("Door").scale) * 10 * delta
+		elif carrying.is_class("StaticBody"):
+			carrying.constant_linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - carrying.global_transform.origin) * 500 * delta
+		elif carrying.is_class("RigidBody"):
+			carrying.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - carrying.global_transform.origin) * 500 * delta
 		else:
-			body.global_transform = $PivotX/Carry.global_transform
+			carrying.global_transform = $PivotX/Carry.global_transform
 	motion += transform.basis * get_movement() * speed * delta
 	if is_on_floor():
 		motion *= (1 - surface_friction)

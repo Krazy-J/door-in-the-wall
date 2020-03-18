@@ -17,9 +17,10 @@
 [ext_resource path="res://surface/mesh/2x10.tres" type="PlaneMesh" id=15]
 [ext_resource path="res://door/door.gd" type="Script" id=16]
 [ext_resource path="res://surface/mesh/16x10.tres" type="PlaneMesh" id=17]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=18]
+[ext_resource path="res://door/PlaneDoorHole.tscn" type="PackedScene" id=18]
 [ext_resource path="res://surface/mesh/10x11.tres" type="PlaneMesh" id=19]
 [ext_resource path="res://object/furniture/Chair.tscn" type="PackedScene" id=20]
+
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 

@@ -2,16 +2,59 @@ tool
 extends "res://door/door.gd"
 
 export var exit_path : NodePath
-onready var exit = get_node(exit_path)
 export var requires_door = false
+onready var exit setget set_exit
 
 func _ready():
-	if not Engine.editor_hint and exit_path:
-		if not has_node("Gateway"):
-			if (not requires_door or has_node("Door")) and (not exit.requires_door or exit.has_node("Door")):
-				connect_gateway()
-		else:
-			$Gateway.exit_path = "../" + str(exit_path) + "/Gateway"
+	set_exit(exit)
+
+func set_exit(_set_exit):
+	if exit_path:
+		exit = get_node(exit_path)
+		if not Engine.editor_hint:
+			if not has_node("Gateway"):
+				if (not requires_door or door) and (not exit.requires_door or exit.door):
+					connect_gateway()
+			else:
+				$Gateway.exit_path = "../" + str(exit_path) + "/Gateway"
+	else: exit = null
+
+func set_door(set_door):
+	door = set_door
+	if door:
+		add_child(door.instance())
+	elif has_node("Door"): $Door.queue_free()
+	if exit and not exit.door == door: exit.door = door
+
+func set_door_mesh(set_door_mesh):
+	door_mesh = set_door_mesh
+	if door:
+		if door_mesh: $Door.mesh = door_mesh
+		else: $Door.mesh = door.instance().mesh
+	if exit and not exit.door_mesh == door_mesh: exit.door_mesh = door_mesh
+
+func set_door_material(set_door_material):
+	door_material = set_door_material
+	if door and door_material:
+		if door_material: $Door.material_override = door_material.duplicate()
+		else: $Door.material_override = null
+	if exit and not exit.door_material == door_material: exit.door_material = door_material
+
+func set_open(set_open):
+	if door:
+		if Engine.editor_hint and not is_open == set_open:
+			open = not set_open
+			toggle_door()
+			is_open = set_open
+			if exit and not exit.open == open: exit.open = open
+		elif not $Door/AnimationPlayer.is_playing():
+			open = set_open
+			if open:
+				$Door/AnimationPlayer.play("door_toggle")
+				$Door/AnimationPlayer.seek($Door/AnimationPlayer.current_animation_length)
+			else:
+				$Door/AnimationPlayer.play_backwards("door_toggle")
+				$Door/AnimationPlayer.seek(0)
 
 func connect_gateway():
 	add_child(load("res://gateway/DoorGateway.tscn").instance())
@@ -20,22 +63,18 @@ func connect_gateway():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		if has_node("Door") and ($Interact.valid or $Door/Interact.valid):
-			if locked and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).name == "Key":
+		if has_node("Door") and ($Frame/Interact.valid or $Door/Body/Interact.valid):
+			if locked and $"/root/Main/Player".carrying and $"/root/Main/Player".carrying.name == "Key":
 				if exit: exit.unlock()
 			elif exit and (not locked or exit.locked): exit.toggle_door()
-		if $Interact.valid and not has_node("Door") and $"/root/Main/Player".carrying and get_node($"/root/Main/Player".carrying).has_node("Door"):
-			if exit_path:
+		if $Frame/Interact.valid and not door and $"/root/Main/Player".carrying and $"/root/Main/Player".carrying.has_node("Door"):
+			if exit:
 				connect_gateway()
 				exit.connect_gateway()
 
 func _process(_delta):
-	if Engine.editor_hint:
-		if has_node("Door"):
-			if not open == is_open:
-				if exit_path: exit.open = open
-	elif has_node("Gateway/Area/Port"):
-		if has_node("Door") and $Door/AnimationPlayer.is_playing():
+	if not Engine.editor_hint and has_node("Gateway/Area/Port"):
+		if door and $Door/AnimationPlayer.is_playing():
 			is_open = $Door/AnimationPlayer.current_animation_position > 0.01
 		if is_open:
 			$Gateway.enable_viewport()

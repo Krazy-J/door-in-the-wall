@@ -1,11 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://room/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/mesh/30x20.tres" type="PlaneMesh" id=2]
 [ext_resource path="res://object/light/CeilingBulbLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://surface/mesh/10x20.tres" type="PlaneMesh" id=4]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=5]
-[ext_resource path="res://door/DoorHole.tscn" type="PackedScene" id=6]
+[ext_resource path="res://door/PlaneDoorHole.tscn" type="PackedScene" id=6]
 [ext_resource path="res://surface/mesh/10x10.tres" type="PlaneMesh" id=7]
 [ext_resource path="res://textures/normal/door_classic_style.jpg" type="Texture" id=8]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=9]
@@ -19,14 +19,14 @@
 [ext_resource path="res://object/plastic/orange.tres" type="Material" id=17]
 [ext_resource path="res://object/furniture/Table.tscn" type="PackedScene" id=18]
 [ext_resource path="res://object/block/Block.tscn" type="PackedScene" id=19]
+[ext_resource path="res://object/stacking_rings/StackingRings.tscn" type="PackedScene" id=20]
 [ext_resource path="res://object/PhysicalKey.tscn" type="PackedScene" id=24]
 [ext_resource path="res://object/plastic/green.tres" type="Material" id=25]
 [ext_resource path="res://object/plastic/red.tres" type="Material" id=26]
-[ext_resource path="res://object/stacking_rings/StackingRingBase.tscn" type="PackedScene" id=27]
 [ext_resource path="res://object/plastic/blue.tres" type="Material" id=28]
 [ext_resource path="res://object/plastic/yellow.tres" type="Material" id=29]
-[ext_resource path="res://object/stacking_rings/Ring.tscn" type="PackedScene" id=30]
 [ext_resource path="res://door/normal/simple.tres" type="Material" id=31]
+
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -39,6 +39,9 @@ resource_local_to_scene = true
 albedo_texture = ExtResource( 8 )
 
 [node name="Main" instance=ExtResource( 1 )]
+
+[node name="LevelTitle" parent="." index="1"]
+modulate = Color( 1, 1, 1, 1 )
 
 [node name="Name" parent="LevelTitle" index="1"]
 text = "Locked Out"
@@ -156,64 +159,33 @@ omni_range = 25.0
 [node name="Table" parent="MainFloor" index="7" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -16 )
 
-[node name="TableTop" type="Spatial" parent="MainFloor" index="8"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 3, -16 )
-
-[node name="StackingRingBase" parent="MainFloor/TableTop" index="0" instance=ExtResource( 27 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 10 )
-mass = 0.3
-
-[node name="Key" parent="MainFloor/TableTop" index="1" instance=ExtResource( 24 )]
-transform = Transform( 5, 0, 0, 0, 4.92404, 0.868246, 0, -0.868246, 4.92404, 5, 2, 11 )
-collision_layer = 4
-collision_mask = 4
+[node name="Key" parent="MainFloor" index="8" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173649, 0, -0.173649, 0.984808, 4, 3.4, -13.8 )
 continuous_cd = true
 
-[node name="Ring1" parent="MainFloor/TableTop" index="2" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 10 )
-material = ExtResource( 26 )
+[node name="TableTop" type="Spatial" parent="MainFloor" index="9"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 3, -16 )
 
-[node name="Ring2" parent="MainFloor/TableTop" index="3" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.4, 10 )
-radius = 1.6
-size = 0.9
-material = ExtResource( 17 )
+[node name="StackingRings" parent="MainFloor/TableTop" index="0" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 10 )
 
-[node name="Ring3" parent="MainFloor/TableTop" index="4" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.2, 10 )
-radius = 1.2
-size = 0.8
-material = ExtResource( 29 )
-
-[node name="Ring4" parent="MainFloor/TableTop" index="5" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.9, 10 )
-radius = 0.9
-size = 0.7
-material = ExtResource( 25 )
-
-[node name="Ring5" parent="MainFloor/TableTop" index="6" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, 10 )
-radius = 0.6
-size = 0.6
-material = ExtResource( 28 )
-
-[node name="RedBlock" parent="MainFloor/TableTop" index="7" instance=ExtResource( 19 )]
+[node name="RedBlock" parent="MainFloor/TableTop" index="1" instance=ExtResource( 19 )]
 transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 1, -11.5 )
 material = ExtResource( 26 )
 
-[node name="OrangeBlock" parent="MainFloor/TableTop" index="8" instance=ExtResource( 19 )]
+[node name="OrangeBlock" parent="MainFloor/TableTop" index="2" instance=ExtResource( 19 )]
 transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -3, 1, -13 )
 material = ExtResource( 17 )
 
-[node name="YellowBlock" parent="MainFloor/TableTop" index="9" instance=ExtResource( 19 )]
+[node name="YellowBlock" parent="MainFloor/TableTop" index="3" instance=ExtResource( 19 )]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.5, 1, -14 )
 material = ExtResource( 29 )
 
-[node name="GreenBlock" parent="MainFloor/TableTop" index="10" instance=ExtResource( 19 )]
+[node name="GreenBlock" parent="MainFloor/TableTop" index="4" instance=ExtResource( 19 )]
 transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.5, 1, -10.5 )
 material = ExtResource( 25 )
 
-[node name="BlueBlock" parent="MainFloor/TableTop" index="11" instance=ExtResource( 19 )]
+[node name="BlueBlock" parent="MainFloor/TableTop" index="5" instance=ExtResource( 19 )]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1.3, 3, -12.5 )
 material = ExtResource( 28 )
 
