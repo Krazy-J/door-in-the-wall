@@ -26,8 +26,8 @@ func set_door_mesh(set_door_mesh):
 func set_door_material(set_door_material):
 	door_material = set_door_material
 	if door:
-		if door_material: $Door.material_override = door_material.duplicate()
-		else: $Door.material_override = null
+		if door_material: $Door.material = door_material.duplicate()
+		else: $Door.material = null
 
 func set_open(set_open):
 	if door:
@@ -70,6 +70,17 @@ func unlock():
 	$Door/Key.set_script(null)
 	$Door/AnimationPlayer.play("unlock")
 
+func update_interact():
+	if door:
+		if not $Frame/Interact.focused:
+			if $Door/Body/Interact.focused: $Frame/Interact.update_valid()
+			$Frame/Interact.visible = $Door/Body/Interact.focused
+		if not $Door/Body/Interact.focused:
+			if $Frame/Interact.focused: $Door/Body/Interact.update_valid()
+			$Door/Body/Interact.visible = $Frame/Interact.focused
+		if $Frame/Interact.visible and $Door/AnimationPlayer.current_animation == "unlock":
+			$Frame/Interact.update_valid()
+
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if $Frame/Interact.valid or door and $Door/Body/Interact.valid:
@@ -87,16 +98,4 @@ func _unhandled_input(event):
 				$"/root/Main/Player".carrying = null
 
 func _process(_delta):
-	if not Engine.editor_hint and door:
-		if not $Frame/Interact.focused:
-			if $Door/Body/Interact.focused:
-				$Frame/Interact.interact_entered()
-				$Frame/Interact.interact_exited()
-			$Frame/Interact.visible = $Door/Body/Interact.focused
-		if not $Door/Body/Interact.focused:
-			if $Frame/Interact.focused:
-				$Door/Body/Interact.interact_entered()
-				$Door/Body/Interact.interact_exited()
-			$Door/Body/Interact.visible = $Frame/Interact.focused
-		if $Frame/Interact.visible and $Door/AnimationPlayer.current_animation == "unlock":
-			$Frame/Interact.interact_entered()
+	if not Engine.editor_hint: update_interact()

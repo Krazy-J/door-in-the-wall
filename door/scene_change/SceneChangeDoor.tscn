@@ -30,7 +30,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:material_override:uv1_scale:x")
+tracks/2/path = NodePath(".:material:uv1_scale:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -112,7 +112,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" parent="." index="5"]
 anims/door_toggle = SubResource( 1 )
-
-[editable path="Interact"]

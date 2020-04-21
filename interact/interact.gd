@@ -4,13 +4,17 @@ var focused = false
 var valid = false
 var locked = false
 
+func update_valid():
+	valid = $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y
+	for child in get_children():
+		if valid and not locked: child.material = load("res://interact/yellow.tres")
+		else: child.material = load("res://interact/red.tres")
+	if not focused: valid = false
+
 func interact_entered():
 	visible = true
 	focused = true
-	valid = $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y
-	for child in get_children():
-		if valid and not locked: child.material_override = load("res://interact/yellow.tres")
-		else: child.material_override = load("res://interact/red.tres")
+	update_valid()
 
 func interact_exited():
 	visible = false

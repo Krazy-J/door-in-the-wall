@@ -103,5 +103,6 @@ func quit_game(): get_tree().quit()
 
 func _process(delta):
 	if Engine.editor_hint:
+		ProjectSettings.set("object_model_quality", 1)
 		ProjectSettings.set("levels", levels)
 	else: $Spatial/Camera.rotation_degrees.y -= 2 * delta

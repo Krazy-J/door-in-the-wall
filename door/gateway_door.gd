@@ -5,6 +5,7 @@ export var exit_path : NodePath
 export var requires_door = false
 onready var exit setget set_exit
 
+
 func _ready():
 	set_exit(exit)
 
@@ -61,6 +62,21 @@ func connect_gateway():
 	$Gateway.exit_path = "../" + str(exit_path) + "/Gateway"
 	if exit.has_node("Gateway") and exit.get_node("Gateway").rotation_degrees.y == 0: $Gateway.rotation_degrees.y += 180
 
+func update_interact():
+	if door:
+		if $Door/Body/Interact.focused: $Frame/Interact.update_valid()
+		if not $Frame/Interact.focused: $Frame/Interact.visible = $Door/Body/Interact.focused
+		if $Frame/Interact.focused: $Door/Body/Interact.update_valid()
+		if not $Door/Body/Interact.focused: $Door/Body/Interact.visible = $Frame/Interact.focused
+		if $Frame/Interact.visible and $Door/AnimationPlayer.current_animation == "unlock":
+			$Frame/Interact.update_valid()
+	if exit and (exit.get_node("Frame/Interact").focused or door and exit.get_node("Door/Body/Interact").focused):
+			$Frame/Interact.update_valid()
+			$Frame/Interact.visible = exit.get_node("Frame/Interact").visible
+			if door:
+				$Door/Body/Interact.update_valid()
+				$Door/Body/Interact.visible = exit.get_node("Door/Body/Interact").visible
+
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if has_node("Door") and ($Frame/Interact.valid or $Door/Body/Interact.valid):
@@ -73,12 +89,13 @@ func _unhandled_input(event):
 				exit.connect_gateway()
 
 func _process(_delta):
-	if not Engine.editor_hint and has_node("Gateway/Area/Port"):
-		if door and $Door/AnimationPlayer.is_playing():
-			is_open = $Door/AnimationPlayer.current_animation_position > 0.01
-		if is_open:
-			$Gateway.enable_viewport()
-			$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.door_mipmap_level)
-			$Gateway/Viewport.shadow_atlas_size = ProjectSettings.door_shadow_atlas_size
-		else:
-			$Gateway.disable_viewport()
+	if not Engine.editor_hint:
+		if has_node("Gateway/Area/Port"):
+			if door and $Door/AnimationPlayer.is_playing():
+				is_open = $Door/AnimationPlayer.current_animation_position > 0.01
+			if is_open:
+				$Gateway.enable_viewport()
+				$Gateway/Viewport.size = get_viewport().size / pow(2, ProjectSettings.door_mipmap_level)
+				$Gateway/Viewport.shadow_atlas_size = ProjectSettings.door_shadow_atlas_size
+			else:
+				$Gateway.disable_viewport()

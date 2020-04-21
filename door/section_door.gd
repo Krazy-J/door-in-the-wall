@@ -16,20 +16,20 @@ func _ready():
 					total_completed += 1
 					if section == ProjectSettings.levels[section_number]: section_completed += 1
 		if section[0].locked:
-			$Frame.material_override = load("res://object/plastic/red.tres")
+			$Frame.material = load("res://object/plastic/red.tres")
 			set_locked(true)
 			$Label2.text = str(total_completed) + "/" + str(section[0].requirement)
 			if total_completed >= section[0].requirement:
 				$Label2.color = Color(0,1,0)
 		elif section_completed == section.size() - 1:
-			$Frame.material_override = load("res://object/medal/gold.tres")
+			$Frame.material = load("res://object/medal/gold.tres")
 			exit.get_node("Frame").material_override = load("res://object/medal/gold.tres")
 		elif section_completed >= section.size() * .75 - 1:
-			$Frame.material_override = load("res://object/silver.tres")
+			$Frame.material = load("res://object/silver.tres")
 			exit.get_node("Frame").material_override = load("res://object/silver.tres")
 		elif section_completed >= section.size() * .5 - 1:
-			$Frame.material_override = load("res://object/bronze.tres")
-			exit.get_node("Frame").material_override = load("res://object/bronze.tres")
+			$Frame.material = load("res://object/bronze.tres")
+			exit.get_node("Frame").material = load("res://object/bronze.tres")
 
 func set_label(set_label):
 	label = set_label

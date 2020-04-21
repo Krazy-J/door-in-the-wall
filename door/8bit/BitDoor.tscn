@@ -5,7 +5,6 @@
 [ext_resource path="res://door/8bit/open.wav" type="AudioStream" id=3]
 [ext_resource path="res://door/8bit/close.wav" type="AudioStream" id=4]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
 albedo_texture = ExtResource( 2 )
@@ -37,7 +36,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.75, 0.5, 0.25, 0.125 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:material_override:uv1_scale:x")
+tracks/2/path = NodePath(".:material:uv1_scale:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -82,21 +81,19 @@ tracks/1/keys = {
 [node name="Door" instance=ExtResource( 1 )]
 material_override = SubResource( 1 )
 
-[node name="SoundOpen" parent="." index="2"]
+[node name="SoundOpen" parent="." index="1"]
 stream = ExtResource( 3 )
 max_db = 2.0
 
-[node name="SoundClose" parent="." index="3"]
+[node name="SoundClose" parent="." index="2"]
 stream = ExtResource( 4 )
 max_db = 2.0
 
-[node name="SoundLatch" parent="." index="4"]
+[node name="SoundLatch" parent="." index="3"]
 stream = ExtResource( 4 )
 unit_size = 2.0
 max_db = 2.0
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 anims/door_toggle = SubResource( 2 )
 anims/locked = SubResource( 3 )
-
-[editable path="Interact"]

@@ -22,7 +22,7 @@ text = "Caught in a Loop"
 parameters/playback = SubResource( 1 )
 
 [node name="LobbyDoor" parent="." index="2"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -62, 0, -5 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -60, 0, -5 )
 
 [node name="GoalDoor" parent="." index="3"]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 70, 0, -5 )
