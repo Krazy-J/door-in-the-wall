@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[sub_resource type="Animation" id=1]
+[ext_resource path="res://font/large.tres" type="DynamicFont" id=1]
+
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -28,8 +30,20 @@ tracks/1/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Loading:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
@@ -66,10 +80,10 @@ states/fade_in/position = Vector2( 413, 135 )
 start_node = "fade_in"
 end_node = "fade_in"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
 [node name="Fade" type="ColorRect"]
-self_modulate = Color( 1, 1, 1, 0.32767 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -78,12 +92,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Loading" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -73.5
+margin_top = -20.5
+margin_right = 73.5
+margin_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
+text = "Loading..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 1 )
-anims/fade_out = SubResource( 2 )
+anims/fade_in = SubResource( 5 )
+anims/fade_out = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 4 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 7 )
