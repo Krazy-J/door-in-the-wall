@@ -80,7 +80,7 @@ levels=[ [ {
 "scene": "classic/_7Flipped"
 } ], [ {
 "locked": true,
-"requirement": 0
+"requirement": 8
 } ], [ {
 "locked": true,
 "requirement": 0

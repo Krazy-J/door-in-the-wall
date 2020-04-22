@@ -573,6 +573,7 @@ material = ExtResource( 5 )
 
 [node name="Main" parent="8-Bit" instance=ExtResource( 10 )]
 door = ExtResource( 14 )
+door_material = ExtResource( 15 )
 exit_path = NodePath("../../Lobby/Sections/Bit")
 
 [node name="Levels" type="Spatial" parent="8-Bit"]

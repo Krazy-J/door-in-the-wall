@@ -72,7 +72,7 @@ var levels = [
 	[
 		{
 			"locked": true,
-			"requirement": 0
+			"requirement": 8
 		}
 	],
 	[

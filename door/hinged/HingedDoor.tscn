@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://door/Door.tscn" type="PackedScene" id=1]
-[ext_resource path="res://door/normal/simple.tres" type="Material" id=2]
 [ext_resource path="res://door/hinged/hinge.gd" type="Script" id=3]
 [ext_resource path="res://door/hinged/open.wav" type="AudioStream" id=4]
 [ext_resource path="res://door/hinged/close.wav" type="AudioStream" id=5]
@@ -57,17 +56,14 @@ tracks/1/keys = {
 
 [node name="Door" instance=ExtResource( 1 )]
 transform = Transform( 0.999977, 0, 0, 0, 1, 0, 0, 0, 0.999977, 0, 0, 0 )
-material_override = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="SoundOpen" parent="." index="2"]
+[node name="SoundOpen" parent="." index="1"]
 stream = ExtResource( 4 )
 
-[node name="SoundClose" parent="." index="3"]
+[node name="SoundClose" parent="." index="2"]
 stream = ExtResource( 5 )
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 anims/door_toggle = SubResource( 1 )
 anims/locked = SubResource( 2 )
-
-[editable path="Interact"]
