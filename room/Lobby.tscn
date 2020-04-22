@@ -79,6 +79,10 @@ mesh = ExtResource( 31 )
 material = ExtResource( 12 )
 
 [node name="Light" parent="Lobby/Room/Ceiling" instance=ExtResource( 3 )]
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="FrontWall" type="CSGMesh" parent="Lobby/Room"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 8, -10 )
@@ -223,11 +227,23 @@ material = ExtResource( 30 )
 
 [node name="Light1" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light3" parent="Classic/Room/Ceiling" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="BackWall" type="CSGMesh" parent="Classic/Room"]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 5, 10 )

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://object/plastic/white.tres" type="Material" id=1]
 [ext_resource path="res://object/light/light_switch.gd" type="Script" id=2]
 [ext_resource path="res://interact/interact.gd" type="Script" id=3]
 [ext_resource path="res://object/plastic/light_grey.tres" type="Material" id=4]
+[ext_resource path="res://object/light/light_switch_on.wav" type="AudioStream" id=5]
+[ext_resource path="res://object/light/light_switch_off.wav" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.2, 0.35, 0.03 )
@@ -23,6 +25,7 @@ layers = 3
 width = 0.4
 height = 0.7
 depth = 0.06
+material = ExtResource( 1 )
 
 [node name="Inner" type="CSGBox" parent="Panel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.035 )
@@ -30,6 +33,14 @@ layers = 3
 width = 0.3
 height = 0.6
 depth = 0.01
+material = ExtResource( 4 )
+
+[node name="SwitchOn" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, -0.17, 1, 0, -0.15, 0.065 )
+layers = 3
+width = 0.3
+height = 0.3
+depth = 0.06
 material = ExtResource( 4 )
 
 [node name="SwitchOff" type="CSGBox" parent="."]
@@ -41,13 +52,15 @@ height = 0.3
 depth = 0.06
 material = ExtResource( 4 )
 
-[node name="SwitchOn" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, -0.17, 1, 0, -0.15, 0.065 )
-layers = 3
-width = 0.3
-height = 0.3
-depth = 0.06
-material = ExtResource( 4 )
+[node name="SoundOn" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
+stream = ExtResource( 5 )
+unit_size = 3.0
+
+[node name="SoundOff" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
+stream = ExtResource( 6 )
+unit_size = 3.0
 
 [node name="Interact" type="Spatial" parent="."]
 visible = false

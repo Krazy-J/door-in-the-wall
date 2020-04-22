@@ -127,17 +127,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5 )
 [node name="RedSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -12 )
 material = ExtResource( 27 )
-nodes = [ NodePath("../../OmniLight-X"), NodePath("../../OmniLight+X") ]
+nodes = [ NodePath("../OmniLight-X"), NodePath("../OmniLight+X") ]
 
 [node name="GreenSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11.5 )
 material = ExtResource( 14 )
-nodes = [ NodePath("../../OmniLight-Y"), NodePath("../../OmniLight+Y") ]
+nodes = [ NodePath("../OmniLight-Y"), NodePath("../OmniLight+Y") ]
 
 [node name="BlueSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11 )
 material = ExtResource( 12 )
-nodes = [ NodePath("../../OmniLight-Z"), NodePath("../../OmniLight+Z") ]
+nodes = [ NodePath("../OmniLight-Z"), NodePath("../OmniLight+Z") ]
 
 [node name="LobbyDoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0, -0.34202, 0.939692, 0, 0.939693, 0.34202, -1, 0, 0, -13.32, 0.1, 7 )

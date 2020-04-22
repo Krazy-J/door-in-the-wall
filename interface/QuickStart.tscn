@@ -92,7 +92,7 @@ margin_bottom = 25.0
 text = "8"
 script = ExtResource( 1 )
 
-[node name="8-Bit" type="CenterContainer" parent="Levels"]
+[node name="8Bit" type="CenterContainer" parent="Levels"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,13 +101,13 @@ margin_top = 37.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="2" type="GridContainer" parent="Levels/8-Bit"]
+[node name="2" type="GridContainer" parent="Levels/8Bit"]
 margin_left = 303.0
 margin_top = 159.0
 margin_right = 303.0
 margin_bottom = 159.0
 
-[node name="Label" type="Label" parent="Levels/8-Bit"]
+[node name="Label" type="Label" parent="Levels/8Bit"]
 margin_left = 196.0
 margin_top = 150.0
 margin_right = 410.0

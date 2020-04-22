@@ -44,7 +44,7 @@ func toggle_door():
 		if total_completed >= section[0].requirement:
 			unlock()
 			$Label2.queue_free()
-			$Frame.material_override = null
+			$Frame.material = null
 			section[0].locked = false
 		elif not $Door/AnimationPlayer.is_playing(): $Door/AnimationPlayer.play("locked")
 	else:

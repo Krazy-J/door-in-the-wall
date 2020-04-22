@@ -18,4 +18,7 @@ func set_on(set_on):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		if $Interact.valid: set_on(not on)
+		if $Interact.valid:
+			set_on(not on)
+			if on: $SoundOn.play()
+			else: $SoundOff.play()

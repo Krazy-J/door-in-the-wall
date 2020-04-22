@@ -185,15 +185,31 @@ material = ExtResource( 5 )
 
 [node name="Light1" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light3" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light4" parent="Spatial/Ceiling" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="FrontWall" type="CSGMesh" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 9, -16 )

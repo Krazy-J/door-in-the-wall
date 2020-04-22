@@ -12,6 +12,7 @@ var carrying : Node
 var carry_distance : float
 
 func _ready():
+	$PivotX/Camera.far = view_distance
 	if not has_node("../LobbyDoor"):
 		$Pause/List/QuitLevel.disabled = true
 		$Pause/List/QuitLevel.hint_tooltip = "You're not in a level!"
