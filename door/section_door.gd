@@ -25,11 +25,11 @@ func _ready():
 			$Frame.material = load("res://object/medal/gold.tres")
 			exit.get_node("Frame").material_override = load("res://object/medal/gold.tres")
 		elif section_completed >= section.size() * .75 - 1:
-			$Frame.material = load("res://object/silver.tres")
-			exit.get_node("Frame").material_override = load("res://object/silver.tres")
+			$Frame.material = load("res://object/medal/silver.tres")
+			exit.get_node("Frame").material = load("res://object/medal/silver.tres")
 		elif section_completed >= section.size() * .5 - 1:
-			$Frame.material = load("res://object/bronze.tres")
-			exit.get_node("Frame").material = load("res://object/bronze.tres")
+			$Frame.material = load("res://object/medal/bronze.tres")
+			exit.get_node("Frame").material = load("res://object/medal/bronze.tres")
 
 func set_label(set_label):
 	label = set_label

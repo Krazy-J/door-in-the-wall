@@ -53,12 +53,10 @@ depth = 0.06
 material = ExtResource( 4 )
 
 [node name="SoundOn" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
 stream = ExtResource( 5 )
 unit_size = 3.0
 
 [node name="SoundOff" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
 stream = ExtResource( 6 )
 unit_size = 3.0
 

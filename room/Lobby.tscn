@@ -364,8 +364,7 @@ label = "– (6)"
 [node name="Label2" type="Spatial" parent="Classic/Levels/6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
 script = ExtResource( 22 )
-text = "Recently added!
-2020-03-01"
+text = "2020-03-01"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
@@ -387,8 +386,7 @@ label = "– (5)"
 [node name="Label2" type="Spatial" parent="Classic/Levels/5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
 script = ExtResource( 22 )
-text = "Recently added!
-2020-02-29"
+text = "2020-02-29"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
@@ -410,8 +408,7 @@ label = "– (8)"
 [node name="Label2" type="Spatial" parent="Classic/Levels/8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
 script = ExtResource( 22 )
-text = "Recently added!
-2020-03-02"
+text = "2020-03-02"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
@@ -455,8 +452,7 @@ label = "– (7)"
 [node name="Label2" type="Spatial" parent="Classic/Levels/7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
 script = ExtResource( 22 )
-text = "Recently added!
-2020-03-02"
+text = "2020-03-02"
 text_scale = 0.002
 extrude = 0.0
 font = ExtResource( 33 )
