@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://object/plastic/white.tres" type="Material" id=1]
+[ext_resource path="res://object/light/light_switch.gd" type="Script" id=2]
+[ext_resource path="res://interact/interact.gd" type="Script" id=3]
+[ext_resource path="res://object/plastic/light_grey.tres" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.2, 0.35, 0.03 )
+
+[node name="LightSwitch" type="StaticBody"]
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03 )
+shape = SubResource( 1 )
+
+[node name="Panel" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03 )
+layers = 3
+width = 0.4
+height = 0.7
+depth = 0.06
+material = ExtResource( 1 )
+
+[node name="Inner" type="CSGBox" parent="Panel"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.035 )
+layers = 3
+width = 0.3
+height = 0.6
+depth = 0.01
+material = ExtResource( 4 )
+
+[node name="SwitchOff" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0.17, 1, 0, 0.15, 0.065 )
+visible = false
+layers = 3
+width = 0.3
+height = 0.3
+depth = 0.06
+material = ExtResource( 4 )
+
+[node name="SwitchOn" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, -0.17, 1, 0, -0.15, 0.065 )
+layers = 3
+width = 0.3
+height = 0.3
+depth = 0.06
+material = ExtResource( 4 )
+
+[node name="Interact" type="Spatial" parent="."]
+visible = false
+script = ExtResource( 3 )
+object_size = 0.1
+
+[node name="Panel" type="CSGBox" parent="Interact"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03 )
+layers = 3
+invert_faces = true
+width = 0.45
+height = 0.75
+depth = 0.12

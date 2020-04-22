@@ -26,12 +26,12 @@ func teleport_player(body):
 		elif body.carrying.is_class("RigidBody"):
 			var relative_scale = (get_node(exit_path).global_transform.basis.get_scale() / global_transform.basis.get_scale()).y
 			body.carry_distance *= relative_scale
-			#carried_body.mass *= relative_scale
+			#body.carrying.mass *= relative_scale
 			for child in body.carrying.get_children():
 				child.scale *= relative_scale
 				child.translation *= relative_scale
-			body.carrying.teleport_linear_velocity = get_node(exit_path).global_transform.origin - global_transform.origin.inverse()
-			body.carrying.teleport_angular_velocity = teleported_basis(body.carrying.linear_velocity)
+			#body.carrying.teleport_linear_velocity = get_node(exit_path).global_transform.origin - global_transform.origin.inverse()
+			#body.carrying.teleport_angular_velocity = teleported_basis(body.carrying.linear_velocity)
 
 func teleport_rigidbody(body):
 	#carried_body.mass *= relative_scale
@@ -45,7 +45,7 @@ func _on_area_entered(area):
 	if get_node(exit_path).has_node("Viewport"): get_node(exit_path).enable_viewport(area)
 	teleport(area.get_parent())
 	if area.get_parent().name == "Player": teleport_player(area.get_parent())
-	elif area.get_parent().is_class("RigidBody"): teleport_rigidbody(area.get_parent())
+	#elif area.get_parent().is_class("RigidBody"): teleport_rigidbody(area.get_parent())
 
 func _process(_delta):
 	if Engine.editor_hint: _ready()

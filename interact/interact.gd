@@ -1,11 +1,12 @@
 extends Spatial
 
+export var object_size : float = 1
 var focused = false
 var valid = false
 var locked = false
 
 func update_valid():
-	valid = $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y
+	valid = $"/root/Main/Player".scale.y * 2 >= (global_transform.orthonormalized() * global_transform).basis.y.y * object_size
 	for child in get_children():
 		if valid and not locked: child.material = load("res://interact/yellow.tres")
 		else: child.material = load("res://interact/red.tres")

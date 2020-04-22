@@ -1,58 +1,67 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://object/pickup_object.gd" type="Script" id=1]
 [ext_resource path="res://interact/interact.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.1, 0.25, 0.02 )
+
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 1, 1, 0.7, 1 )
 metallic = 0.8
 
-[node name="Key" type="CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, 0, 0, 0 )
+[node name="Key" type="StaticBody"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 1 )
+drop_transform = Transform( 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0.21, 0 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Key" type="CSGCylinder" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0 )
 layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 0
 radius = 0.02
 height = 0.3
-material = SubResource( 1 )
-script = ExtResource( 1 )
-drop_transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.021, 0 )
+material = SubResource( 2 )
 
-[node name="Head" type="CSGTorus" parent="."]
+[node name="Head" type="CSGTorus" parent="Key"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.21, 9.17939e-09 )
 layers = 3
 inner_radius = 0.04
 outer_radius = 0.08
 ring_sides = 4
-material = SubResource( 1 )
+material = SubResource( 2 )
 
-[node name="Tooth" type="CSGBox" parent="."]
+[node name="Tooth" type="CSGBox" parent="Key"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.1, 0 )
 layers = 3
 width = 0.06
 height = 0.06
 depth = 0.01
-material = SubResource( 1 )
+material = SubResource( 2 )
 
-[node name="Bit1" type="CSGBox" parent="Tooth"]
+[node name="Bit1" type="CSGBox" parent="Key/Tooth"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.02, -8.88178e-16 )
 layers = 3
 width = 0.02
 height = 0.02
 depth = 0.01
-material = SubResource( 1 )
+material = SubResource( 2 )
 
-[node name="Bit2" type="CSGBox" parent="Tooth"]
+[node name="Bit2" type="CSGBox" parent="Key/Tooth"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.02, 0 )
 layers = 3
 width = 0.02
 height = 0.02
 depth = 0.01
-material = SubResource( 1 )
+material = SubResource( 2 )
 
 [node name="Interact" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 0.0504614, 2.20574e-09 )
 visible = false
 script = ExtResource( 2 )
 

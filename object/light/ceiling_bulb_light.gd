@@ -19,13 +19,11 @@ func set_on(set_on):
 	on = set_on
 	$Bulb.material = $Bulb.material.duplicate()
 	$Bulb.material.flags_unshaded = on
-	$Bulb/Light.shadow_enabled = on
-	set_omni_range(omni_range)
+	$Bulb/Light.visible = on
 
 func set_omni_range(set_omni_range):
 	omni_range = set_omni_range
-	if on: $Bulb/Light.omni_range = omni_range
-	else: $Bulb/Light.omni_range = 0
+	$Bulb/Light.omni_range = omni_range
 
 func set_height(set_height):
 	height = set_height

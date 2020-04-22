@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://surface/mesh/32x18.tres" type="PlaneMesh" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://surface/mesh/32x32.tres" type="PlaneMesh" id=4]
 [ext_resource path="res://surface/normal/stucco/white.tres" type="Material" id=5]
 [ext_resource path="res://door/scene_change/LobbyDoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://object/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://object/PhysicalKey.tscn" type="PackedScene" id=7]
 [ext_resource path="res://object/furniture/Table.tscn" type="PackedScene" id=8]
 [ext_resource path="res://door/DoorFrame.tscn" type="PackedScene" id=9]
 [ext_resource path="res://door/hinged/HingedDoor.tscn" type="PackedScene" id=10]
@@ -27,9 +27,7 @@
 [ext_resource path="res://door/8bit/white.tres" type="Material" id=25]
 [ext_resource path="res://door/8bit/BitDoor.tscn" type="PackedScene" id=26]
 [ext_resource path="res://object/plastic/red.tres" type="Material" id=27]
-
-
-
+[ext_resource path="res://object/light/LightSwitch.tscn" type="PackedScene" id=28]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -55,7 +53,7 @@ parameters/playback = SubResource( 1 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 mesh = ExtResource( 4 )
 material = ExtResource( 23 )
 
@@ -67,7 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 invert_faces = true
 mesh = ExtResource( 4 )
 material = ExtResource( 24 )
@@ -77,7 +75,7 @@ transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 9, -16 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 mesh = ExtResource( 2 )
 material = ExtResource( 5 )
 
@@ -98,7 +96,7 @@ transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, -16, 9, 0 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 mesh = ExtResource( 2 )
 material = ExtResource( 5 )
 
@@ -107,7 +105,7 @@ transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 9, 16 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 mesh = ExtResource( 2 )
 material = ExtResource( 5 )
 
@@ -119,16 +117,30 @@ transform = Transform( 0, -1, 0, 0, 0, -1, 1, 0, 0, 16, 9, 0 )
 layers = 3
 use_collision = true
 collision_layer = 3
-collision_mask = 3
+collision_mask = 0
 mesh = ExtResource( 2 )
 material = ExtResource( 5 )
 
 [node name="ToTable" parent="Room/RightWall" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5 )
 
+[node name="RedSwitch" parent="Room" instance=ExtResource( 28 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -12 )
+material = ExtResource( 27 )
+nodes = [ NodePath("../../OmniLight-X"), NodePath("../../OmniLight+X") ]
+
+[node name="GreenSwitch" parent="Room" instance=ExtResource( 28 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11.5 )
+material = ExtResource( 14 )
+nodes = [ NodePath("../../OmniLight-Y"), NodePath("../../OmniLight+Y") ]
+
+[node name="BlueSwitch" parent="Room" instance=ExtResource( 28 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11 )
+material = ExtResource( 12 )
+nodes = [ NodePath("../../OmniLight-Z"), NodePath("../../OmniLight+Z") ]
+
 [node name="LobbyDoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0, -0.34202, 0.939692, 0, 0.939693, 0.34202, -1, 0, 0, -13.32, 0.1, 7 )
-room = false
 
 [node name="Table" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
