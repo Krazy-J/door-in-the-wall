@@ -124,17 +124,17 @@ material = ExtResource( 5 )
 [node name="ToTable" parent="Room/RightWall" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5 )
 
-[node name="RedSwitch" parent="Room" instance=ExtResource( 28 )]
+[node name="RedSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -12 )
 material = ExtResource( 27 )
 nodes = [ NodePath("../../OmniLight-X"), NodePath("../../OmniLight+X") ]
 
-[node name="GreenSwitch" parent="Room" instance=ExtResource( 28 )]
+[node name="GreenSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11.5 )
 material = ExtResource( 14 )
 nodes = [ NodePath("../../OmniLight-Y"), NodePath("../../OmniLight+Y") ]
 
-[node name="BlueSwitch" parent="Room" instance=ExtResource( 28 )]
+[node name="BlueSwitch" parent="." instance=ExtResource( 28 )]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 4, -11 )
 material = ExtResource( 12 )
 nodes = [ NodePath("../../OmniLight-Z"), NodePath("../../OmniLight+Z") ]

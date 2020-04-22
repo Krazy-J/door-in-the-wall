@@ -91,9 +91,9 @@ func _unhandled_input(event):
 					$"/root/Main/Player".carrying = null
 				else: toggle_door()
 			elif $"/root/Main/Player".carrying and $"/root/Main/Player".carrying.has_node("Door"):
-				door = $"/root/Main/Player".carrying.door
-				door_mesh = $"/root/Main/Player".carrying.door_mesh
-				door_material = $"/root/Main/Player".carrying.door_material
+				set_door($"/root/Main/Player".carrying.door)
+				set_door_mesh($"/root/Main/Player".carrying.door_mesh)
+				set_door_material($"/root/Main/Player".carrying.door_material)
 				$"/root/Main/Player".carrying.queue_free()
 				$"/root/Main/Player".carrying = null
 
