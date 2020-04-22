@@ -27,3 +27,6 @@ func _ready():
 	$Split/Split/SpinBox.prefix = prefix
 	$Split/Split/SpinBox.suffix = suffix
 	$Split/Split/Slider.tick_count = tick_count
+
+func _process(_delta):
+	if Engine.editor_hint: _ready()

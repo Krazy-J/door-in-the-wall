@@ -22,14 +22,15 @@ func _ready():
 
 func _value_changed(value):
 	if names: $Split/Split/Quality.text = names[value]
-	if names[value] == "Min" or names[value] == "Off": $Split/Split/Quality.modulate = Color(1,0,0)
-	elif names[value] == "Max" or names[value] == "On" or names[value] == "Full": $Split/Split/Quality.modulate = Color(0,1,0)
-	else: $Split/Split/Quality.modulate = Color(1,1,1)
+	$Split/Split/Quality.modulate = Color(1,1,1)
+	for v_name in ["Min","Off"]: if names[value] == v_name: $Split/Split/Quality.modulate = Color(1,0,0)
+	for v_name in ["Max","On","Full"]: if names[value] == v_name: $Split/Split/Quality.modulate = Color(0,1,0)
 	for setting in settings: ProjectSettings.set(setting, values[value])
 	for property in viewport: get_viewport().set(property, values[value])
 	for property in os: OS.set(property, values[value])
 
 func _process(_delta):
+	if Engine.editor_hint: _ready()
 	var value = 0
 	if settings: while value < len(values) and not values[value] == ProjectSettings.get(settings[0]): value += 1
 	$Split/Split/Slider.value = value

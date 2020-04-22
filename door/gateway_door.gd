@@ -37,8 +37,8 @@ func set_door_mesh(set_door_mesh):
 func set_door_material(set_door_material):
 	door_material = set_door_material
 	if door and door_material:
-		if door_material: $Door.material_override = door_material.duplicate()
-		else: $Door.material_override = null
+		if door_material: $Door.material = door_material.duplicate()
+		else: $Door.material = null
 	if exit and not exit.door_material == door_material: exit.door_material = door_material
 
 func set_open(set_open):
@@ -70,10 +70,10 @@ func update_interact():
 		if not $Door/Body/Interact.focused: $Door/Body/Interact.visible = $Frame/Interact.focused
 		if $Frame/Interact.visible and $Door/AnimationPlayer.current_animation == "unlock":
 			$Frame/Interact.update_valid()
-	if exit and (exit.get_node("Frame/Interact").focused or door and exit.get_node("Door/Body/Interact").focused):
+	if exit and (exit.get_node("Frame/Interact").focused or exit.door and exit.get_node("Door/Body/Interact").focused):
 			$Frame/Interact.update_valid()
 			$Frame/Interact.visible = exit.get_node("Frame/Interact").visible
-			if door:
+			if exit.door:
 				$Door/Body/Interact.update_valid()
 				$Door/Body/Interact.visible = exit.get_node("Door/Body/Interact").visible
 

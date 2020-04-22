@@ -6,7 +6,6 @@
 [ext_resource path="res://door/loose/drop1.wav" type="AudioStream" id=4]
 [ext_resource path="res://door/loose/drop2.wav" type="AudioStream" id=5]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "drop"
 length = 2.0
