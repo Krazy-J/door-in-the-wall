@@ -8,6 +8,7 @@ uv1_triplanar = true
 
 [node name="Stool" type="CSGBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
+layers = 3
 use_collision = true
 collision_layer = 3
 collision_mask = 0

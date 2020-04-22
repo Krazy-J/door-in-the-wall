@@ -92,6 +92,7 @@ current_section=0
 current_level=0
 object_model_quality=1
 object_models=1
+object_model=4
 
 [application]
 
