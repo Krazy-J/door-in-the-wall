@@ -78,6 +78,7 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="Interact" type="Spatial" parent="Body"]
+visible = false
 script = ExtResource( 2 )
 
 [node name="Door" type="CSGBox" parent="Body/Interact"]
