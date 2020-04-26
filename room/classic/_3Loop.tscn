@@ -13,7 +13,7 @@
 [node name="Main" instance=ExtResource( 2 )]
 
 [node name="Player" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, -5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 10 )
 
 [node name="Name" parent="LevelTitle" index="1"]
 text = "Caught in a Loop"
@@ -22,13 +22,13 @@ text = "Caught in a Loop"
 parameters/playback = SubResource( 1 )
 
 [node name="LobbyDoor" parent="." index="2"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -60, 0, -5 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -60, 0, 10 )
 
 [node name="GoalDoor" parent="." index="3"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 70, 0, -5 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 70, 0, 10 )
 
 [node name="Room1" type="CSGBox" parent="." index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 5, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 5, 0 )
 use_collision = true
 collision_mask = 0
 invert_faces = true
@@ -55,9 +55,17 @@ material = ExtResource( 7 )
 
 [node name="Light1" parent="Room1/Ceiling" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" parent="Room1/Ceiling" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Wall" type="CSGBox" parent="Room1" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
@@ -73,7 +81,7 @@ exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2" type="CSGBox" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, 0 )
 layers = 3
 use_collision = true
 collision_mask = 0
@@ -106,9 +114,17 @@ material = ExtResource( 7 )
 
 [node name="Light1" parent="Room2/Ceiling" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" parent="Room2/Ceiling" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Wall" type="CSGBox" parent="Room2" index="3"]
 operation = 2
@@ -123,7 +139,7 @@ exit_path = NodePath("../../Room2Loop/GatewayLoop")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room2Loop" type="CSGBox" parent="." index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5, 0 )
 use_collision = true
 collision_mask = 0
 invert_faces = true
@@ -155,9 +171,17 @@ material = ExtResource( 7 )
 
 [node name="Light1" parent="Room2Loop/Ceiling" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" parent="Room2Loop/Ceiling" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Wall" type="CSGBox" parent="Room2Loop" index="3"]
 operation = 2
@@ -172,7 +196,7 @@ exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
 
 [node name="Room3" type="CSGBox" parent="." index="7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 5, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 5, 0 )
 use_collision = true
 collision_mask = 0
 invert_faces = true
@@ -185,6 +209,8 @@ material = ExtResource( 1 )
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 1, -5, -10 )
 exit_path = NodePath("../../Room2/Gateway")
 size = Vector3( 10, 10, 0.5 )
+start_enabled = false
+stay_enabled = false
 
 [node name="Floor" type="CSGBox" parent="Room3" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0 )
@@ -204,6 +230,10 @@ material = ExtResource( 7 )
 
 [node name="Light1" parent="Room3/Ceiling" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10 )
+on = true
+omni_range = 25.0
+height = 0.8
+bulb_radius = 0.4
 
 [node name="Light2" type="OmniLight" parent="Room3/Ceiling" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1.25, -10 )
@@ -224,9 +254,8 @@ depth = 10.0
 material = ExtResource( 1 )
 
 [node name="LightWall" type="CSGBox" parent="." index="8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 5, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 5, 0 )
 cast_shadow = 3
-operation = 2
 width = 8.0
 height = 10.0
 depth = 8.0

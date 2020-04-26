@@ -1,7 +1,6 @@
 [gd_scene format=2]
 
 [node name="Hole" type="CSGBox"]
-transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 3.5, 0 )
 operation = 2
 width = 4.0
 height = 0.6

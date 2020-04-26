@@ -25,11 +25,18 @@ func _on_unpause():
 
 func _on_quit_level():
 	get_node("../LobbyDoor").toggle_door()
+
 func _on_quit_menu():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Main.tscn")
 	$"/root".call_deferred("add_child", load("res://interface/Fade.tscn").instance())
-func _on_quit_game(): get_tree().quit()
+
+func _on_save_and_exit_game():
+	var save = File.new()
+	save.open("res://save.json", File.WRITE)
+	save.store_line(to_json(ProjectSettings.levels))
+	save.close()
+	get_tree().quit()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("exit_mouse"): $Pause.popup()

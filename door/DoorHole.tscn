@@ -1,9 +1,7 @@
 [gd_scene format=2]
 
-[node name="Door" type="CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.5, 4.8 )
-operation = 2
-use_collision = true
+[node name="Hole" type="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+invert_faces = true
 width = 4.0
 height = 7.0
-depth = 0.6

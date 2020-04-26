@@ -101,6 +101,22 @@ func load_lobby(): get_tree().change_scene("res://room/Lobby.tscn")
 
 func quit_game(): get_tree().quit()
 
+func load_game():
+	var save = File.new()
+	save.open("res://save.json", File.READ)
+	var data = []
+	data = parse_json(save.get_line())
+	ProjectSettings.set("levels", data)
+	save.close()
+	$Buttons/Load.disabled = true
+
+func save_and_exit_game():
+	var save := File.new()
+	save.open("res://save.json", File.WRITE)
+	save.store_line(to_json(ProjectSettings.levels))
+	save.close()
+	get_tree().quit()
+
 func _process(delta):
 	if Engine.editor_hint:
 		ProjectSettings.set("levels", levels)

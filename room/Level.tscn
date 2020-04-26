@@ -8,7 +8,6 @@
 [node name="Main" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
 
 [node name="LevelTitle" parent="." instance=ExtResource( 6 )]
 

@@ -82,12 +82,12 @@ margin_bottom = 169.0
 custom_fonts/font = ExtResource( 6 )
 text = "Quit to Menu"
 
-[node name="QuitGame" type="Button" parent="Pause/List"]
+[node name="SaveQuit" type="Button" parent="Pause/List"]
 margin_top = 173.0
 margin_right = 309.0
 margin_bottom = 220.0
 custom_fonts/font = ExtResource( 6 )
-text = "Quit Game"
+text = "Save and Exit"
 
 [node name="Settings" parent="Pause" instance=ExtResource( 5 )]
 
@@ -102,7 +102,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 window_title = "Confirm"
-dialog_text = "Quit game?"
+dialog_text = "Are you sure you want to exit? Your current level progress will not be saved."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,5 +144,5 @@ cast_to = Vector3( 0, 0, -6 )
 [connection signal="pressed" from="Pause/List/QuickStart" to="Pause/QuickStart" method="popup"]
 [connection signal="pressed" from="Pause/List/QuitLevel" to="." method="_on_quit_level"]
 [connection signal="pressed" from="Pause/List/QuitMenu" to="." method="_on_quit_menu"]
-[connection signal="pressed" from="Pause/List/QuitGame" to="Pause/ConfirmQuit" method="popup"]
+[connection signal="pressed" from="Pause/List/SaveQuit" to="Pause/ConfirmQuit" method="popup"]
 [connection signal="confirmed" from="Pause/ConfirmQuit" to="." method="_on_quit_game"]

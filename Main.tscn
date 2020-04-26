@@ -123,7 +123,7 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="Buttons"]
-margin_right = 200.0
+margin_right = 212.0
 margin_bottom = 47.0
 custom_fonts/font = ExtResource( 13 )
 text = "Begin"
@@ -133,7 +133,7 @@ __meta__ = {
 
 [node name="QuickStart" type="Button" parent="Buttons"]
 margin_top = 51.0
-margin_right = 200.0
+margin_right = 212.0
 margin_bottom = 98.0
 custom_fonts/font = ExtResource( 13 )
 text = "Quick Start"
@@ -143,7 +143,7 @@ __meta__ = {
 
 [node name="Settings" type="Button" parent="Buttons"]
 margin_top = 102.0
-margin_right = 200.0
+margin_right = 212.0
 margin_bottom = 149.0
 custom_fonts/font = ExtResource( 13 )
 text = "Settings"
@@ -151,12 +151,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="Buttons"]
+[node name="Load" type="Button" parent="Buttons"]
 margin_top = 153.0
-margin_right = 200.0
+margin_right = 212.0
 margin_bottom = 200.0
 custom_fonts/font = ExtResource( 13 )
-text = "Quit Game"
+text = "Load Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveQuit" type="Button" parent="Buttons"]
+margin_top = 204.0
+margin_right = 212.0
+margin_bottom = 251.0
+custom_fonts/font = ExtResource( 13 )
+text = "Save and Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -364,4 +374,5 @@ anims/menu_popup = SubResource( 7 )
 [connection signal="pressed" from="Buttons/Start" to="AnimationPlayer" method="play" binds= [ "begin" ]]
 [connection signal="pressed" from="Buttons/QuickStart" to="QuickStart" method="popup"]
 [connection signal="pressed" from="Buttons/Settings" to="Settings" method="popup"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="quit_game"]
+[connection signal="pressed" from="Buttons/Load" to="." method="load_game"]
+[connection signal="pressed" from="Buttons/SaveQuit" to="." method="save_and_exit_game"]
