@@ -111,7 +111,7 @@ func load_game():
 	$Buttons/Load.disabled = true
 
 func save_and_exit_game():
-	var save := File.new()
+	var save = File.new()
 	save.open("res://save.json", File.WRITE)
 	save.store_line(to_json(ProjectSettings.levels))
 	save.close()
