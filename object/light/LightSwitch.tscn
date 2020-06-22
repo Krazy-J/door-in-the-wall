@@ -54,11 +54,13 @@ material = ExtResource( 4 )
 
 [node name="SoundOn" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 5 )
-unit_size = 3.0
+unit_size = 4.0
+attenuation_filter_db = -2.0
 
 [node name="SoundOff" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 6 )
-unit_size = 3.0
+unit_size = 4.0
+attenuation_filter_db = -2.0
 
 [node name="Interact" type="Spatial" parent="."]
 visible = false

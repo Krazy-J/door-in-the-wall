@@ -139,6 +139,7 @@ depth = 0.002
 
 [node name="Door" parent="LightWall" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 1.90735e-06 )
+operation = 2
 
 [node name="LightFloor" type="CSGBox" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, -25 )
