@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://textures/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
 [ext_resource path="res://door/section_door.gd" type="Script" id=2]
@@ -31,7 +31,6 @@
 [ext_resource path="res://surface/mesh/20x20.tres" type="PlaneMesh" id=31]
 [ext_resource path="res://surface/mesh/40x10.tres" type="PlaneMesh" id=32]
 [ext_resource path="res://font/door_labels.tres" type="DynamicFont" id=33]
-[ext_resource path="res://gateway/Gateway.tscn" type="PackedScene" id=36]
 [ext_resource path="res://room/levels.gd" type="Script" id=38]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -198,11 +197,6 @@ metallic = 0.0
 roughness = 0.5
 max_steps = 256
 step_size = 1.0
-
-[node name="Secrets" parent="Lobby/Sections" instance=ExtResource( 36 )]
-transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 6, 0, 19 )
-exit_path = NodePath("../../../Secrets/Gateway")
-size = Vector3( 0.5, 5, 0.1 )
 
 [node name="Classic" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -69.9, 0.1, 0.2 )
@@ -590,44 +584,3 @@ door = ExtResource( 17 )
 door_material = ExtResource( 19 )
 level_number = 2
 label = "\"Fun\" Room"
-
-[node name="Secrets" type="Spatial" parent="."]
-
-[node name="Gateway" parent="Secrets" instance=ExtResource( 36 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
-exit_path = NodePath("../../Lobby/Sections/Secrets")
-size = Vector3( 4, 5, 0.5 )
-
-[node name="Floor" type="CSGMesh" parent="Secrets"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
-layers = 0
-use_collision = true
-mesh = ExtResource( 31 )
-
-[node name="Levels" type="Spatial" parent="Secrets"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
-script = ExtResource( 38 )
-section_number = 0
-first_level = 3
-
-[node name="Orthogonal" parent="Secrets/Levels" instance=ExtResource( 16 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-door = ExtResource( 17 )
-door_material = ExtResource( 15 )
-level_number = 3
-label = "Orthogonal"
-label_color = Color( 0.9, 0.9, 0.9, 1 )
-
-[node name="Label2" type="Spatial" parent="Secrets/Levels/Orthogonal"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
-script = ExtResource( 22 )
-text = "2020-02-15"
-text_scale = 0.002
-extrude = 0.0
-font = ExtResource( 33 )
-align = 2
-color = Color( 0, 0, 0, 1 )
-metallic = 0.0
-roughness = 0.5
-max_steps = 256
-step_size = 1.0
