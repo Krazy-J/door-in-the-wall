@@ -2,42 +2,36 @@
 
 [ext_resource path="res://src/Interface/Slider/QualitySlider.gd" type="Script" id=1]
 
-
-
-
-
-[node name="Slider" type="PanelContainer"]
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Split" type="VSplitContainer" parent="."]
+[node name="Slider" type="VSplitContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 105.0
 margin_bottom = 45.0
 dragger_visibility = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Split"]
+[node name="Label" type="Label" parent="."]
 margin_right = 98.0
 margin_bottom = 19.0
 text = "name"
 align = 1
 
-[node name="Split" type="HSplitContainer" parent="Split"]
+[node name="Split" type="HSplitContainer" parent="."]
 margin_top = 19.0
 margin_right = 98.0
 margin_bottom = 38.0
 dragger_visibility = 2
 
-[node name="Quality" type="Label" parent="Split/Split"]
+[node name="Quality" type="Label" parent="Split"]
 margin_right = 50.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 50, 0 )
 text = "Low"
 
-[node name="Slider" type="HSlider" parent="Split/Split"]
+[node name="Slider" type="HSlider" parent="Split"]
 margin_left = 50.0
 margin_right = 98.0
 margin_bottom = 16.0
@@ -45,4 +39,4 @@ rect_min_size = Vector2( 48, 0 )
 max_value = 2.0
 tick_count = 3
 ticks_on_borders = true
-[connection signal="value_changed" from="Split/Split/Slider" to="." method="_value_changed"]
+[connection signal="value_changed" from="Split/Slider" to="." method="_value_changed"]

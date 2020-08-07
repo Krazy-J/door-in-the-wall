@@ -2,45 +2,39 @@
 
 [ext_resource path="res://src/Interface/Slider/Slider.gd" type="Script" id=1]
 
-
-
-
-
-[node name="Slider" type="PanelContainer"]
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Split" type="VSplitContainer" parent="."]
+[node name="Slider" type="VSplitContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 197.0
 margin_bottom = 55.0
 dragger_visibility = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Split"]
+[node name="Label" type="Label" parent="."]
 margin_right = 190.0
 margin_bottom = 19.0
 text = "name"
 align = 1
 
-[node name="Split" type="HSplitContainer" parent="Split"]
+[node name="Split" type="HSplitContainer" parent="."]
 margin_top = 19.0
 margin_right = 190.0
 margin_bottom = 48.0
 dragger_visibility = 2
 
-[node name="SpinBox" type="SpinBox" parent="Split/Split"]
+[node name="SpinBox" type="SpinBox" parent="Split"]
 margin_right = 74.0
 margin_bottom = 29.0
 align = 2
 
-[node name="Slider" type="HSlider" parent="Split/Split"]
+[node name="Slider" type="HSlider" parent="Split"]
 margin_left = 74.0
 margin_right = 190.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 116, 0 )
 ticks_on_borders = true
-[connection signal="value_changed" from="Split/Split/SpinBox" to="." method="_value_changed"]
-[connection signal="value_changed" from="Split/Split/Slider" to="." method="_value_changed"]
+[connection signal="value_changed" from="Split/SpinBox" to="." method="_value_changed"]
+[connection signal="value_changed" from="Split/Slider" to="." method="_value_changed"]

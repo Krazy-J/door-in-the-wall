@@ -4,12 +4,7 @@
 [ext_resource path="res://assets/sound/door/bit_open.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sound/door/bit_close.wav" type="AudioStream" id=4]
 
-
-
-
-
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "door_toggle"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation:x")
@@ -82,17 +77,16 @@ tracks/1/keys = {
 
 [node name="SoundOpen" parent="." index="1"]
 stream = ExtResource( 3 )
-max_db = 2.0
+max_db = 1.0
 
 [node name="SoundClose" parent="." index="2"]
 stream = ExtResource( 4 )
-max_db = 2.0
+max_db = 1.0
 
 [node name="SoundLatch" parent="." index="3"]
 stream = ExtResource( 4 )
-unit_size = 2.0
 max_db = 2.0
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/door_toggle = SubResource( 3 )
+anims/door_toggle = SubResource( 1 )
 anims/locked = SubResource( 2 )

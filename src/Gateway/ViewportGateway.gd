@@ -1,8 +1,9 @@
 tool
 extends "res://src/Gateway/Gateway.gd"
 
-export var start_enabled = false
-export var stay_enabled = false
+export var start_enabled : bool
+export var stay_enabled : bool
+export var is_door : bool
 
 func _ready():
 	$Area/Port.translation.z = -size.z / 2
@@ -13,8 +14,6 @@ func _ready():
 	if start_enabled and not Engine.editor_hint: enable_viewport()
 
 func place_camera():
-	$Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
-	$Viewport/Spatial/Camera.fov = ProjectSettings.fov
 	$Viewport/Spatial.global_transform = $"/root/Main/Player/PivotX/Camera".global_transform
 	teleport($Viewport/Spatial)
 
@@ -26,4 +25,7 @@ func enable_viewport(area = $"/root/Main/Player/TeleportArea"):
 		$Viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 
 func _process(_delta):
-	if not Engine.editor_hint: place_camera()
+	$Viewport/Spatial/Camera.fov = ProjectSettings.fov
+	if is_door: $Viewport.shadow_atlas_size = ProjectSettings.door_shadow_atlas_size
+	else: $Viewport.shadow_atlas_size = get_viewport().shadow_atlas_size
+	if not Viewport.UPDATE_DISABLED and not Engine.editor_hint: place_camera()

@@ -14,8 +14,8 @@ func set_on(set_on):
 		on = set_on
 		if on: $SoundOn.play()
 		else: $SoundOff.play()
-	$SwitchOn.visible = on
-	$SwitchOff.visible = not on
+	$Switch/On.visible = on
+	$Switch/Off.visible = not on
 	for light in lights: get_node(light).on = on
 	for node in nodes: get_node(node).visible = on
 

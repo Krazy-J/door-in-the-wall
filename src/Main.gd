@@ -95,22 +95,28 @@ func _on_start_pressed():
 
 func _on_fade_timeout():
 	get_viewport().call_deferred("add_child", load("res://src/Interface/Fade.tscn").instance())
+	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/Room/Lobby.tscn")
 
 func quit_game(): get_tree().quit()
 
 func load_game():
 	var save = File.new()
-	save.open("res://save.json", File.READ)
+	save.open("res://DITW-SavedData/save.json", File.READ)
 	var data = []
 	data = parse_json(save.get_line())
 	ProjectSettings.set("levels", data)
 	save.close()
 	$Buttons/Load.disabled = true
+	$Buttons/Load.text = "Save Loaded"
 
 func save_and_exit_game():
+	# Create directory
+	# warning-ignore:return_value_discarded
+	if not Directory.new().dir_exists("res://DITW-SavedData"): Directory.new().make_dir("res://DITW-SavedData")
+	# Save data to file
 	var save = File.new()
-	save.open("res://save.json", File.WRITE)
+	save.open("res://DITW-SavedData/save.json", File.WRITE)
 	save.store_line(to_json(ProjectSettings.levels))
 	save.close()
 	get_tree().quit()

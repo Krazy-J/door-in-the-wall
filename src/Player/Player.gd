@@ -18,30 +18,9 @@ func _ready():
 		$Pause/List/QuitLevel.hint_tooltip = "You're not in a level!"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _on_pause():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-func _on_unpause():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _on_quit_level():
-	get_node("../LobbyDoor").toggle_door()
-
-func _on_quit_menu():
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://src/Main.tscn")
-	$"/root".call_deferred("add_child", load("res://src/Interface/Fade.tscn").instance())
-
-func _on_save_and_exit_game():
-	var save = File.new()
-	save.open("res://save.json", File.WRITE)
-	save.store_line(to_json(ProjectSettings.levels))
-	save.close()
-	get_tree().quit()
-
 func _unhandled_input(event):
-	if event.is_action_pressed("exit_mouse"): $Pause.popup()
 	if event.is_action_pressed("fullscreen"): OS.window_fullscreen = not OS.window_fullscreen
-	if not $Pause.visible:
+	if not ProjectSettings.paused:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			if event is InputEventMouseMotion:
 				if Input.is_mouse_button_pressed(BUTTON_MIDDLE) and carrying:
@@ -90,7 +69,7 @@ func _process(_delta):
 			interact.interact_entered()
 
 func _physics_process(delta):
-	if not $Pause.visible:
+	if not ProjectSettings.paused:
 		if carrying:
 			if carrying.has_node("Door"):
 				carrying.global_transform.origin += (transform.origin - carrying.global_transform.origin) * 10 * delta

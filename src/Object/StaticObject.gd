@@ -38,7 +38,7 @@ func _physics_process(delta):
 			if ray.is_colliding():
 				collisions.append(ray.get_collision_point() - global_transform.origin - global_transform.basis * ray.cast_to)
 				if not carrying:
-					if ray == $Ray/CastDown: for ray in $Ray.get_children(): ray.enabled = false
+					ray.enabled = false
 					constant_linear_velocity = Vector3()
 				if not rays[ray]:
 					$SoundThud.play()

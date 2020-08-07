@@ -90,12 +90,13 @@ object_model_quality=1
 object_models=1
 object_model=4
 save_slot=""
+paused=false
 
 [application]
 
 config/name="A Door in the Wall"
 run/main_scene="res://src/StartupCinematic.tscn"
-boot_splash/image="res://assets/splash.png"
+boot_splash/image="res://assets/texture/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 config/icon="res://icon.png"

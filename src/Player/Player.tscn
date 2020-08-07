@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://assets/models/door_frame.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://src/Gateway/TeleportArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Interface/Settings.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/dynamic_font/large.tres" type="DynamicFont" id=6]
-[ext_resource path="res://src/Interface/QuickStart.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Interface/Pause.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -30,82 +28,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="WindowDialog" parent="."]
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-margin_left = -0.200012
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 391, 201 )
-resizable = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="List" type="VBoxContainer" parent="Pause"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = -50.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Settings" type="Button" parent="Pause/List"]
-margin_top = 20.0
-margin_right = 309.0
-margin_bottom = 67.0
-custom_fonts/font = ExtResource( 6 )
-text = "Settings"
-
-[node name="QuickStart" type="Button" parent="Pause/List"]
-margin_top = 71.0
-margin_right = 309.0
-margin_bottom = 118.0
-custom_fonts/font = ExtResource( 6 )
-text = "Quick Select"
-
-[node name="QuitLevel" type="Button" parent="Pause/List"]
-margin_top = 71.0
-margin_right = 309.0
-margin_bottom = 118.0
-custom_fonts/font = ExtResource( 6 )
-text = "Quit to Lobby"
-
-[node name="QuitMenu" type="Button" parent="Pause/List"]
-margin_top = 122.0
-margin_right = 309.0
-margin_bottom = 169.0
-custom_fonts/font = ExtResource( 6 )
-text = "Quit to Menu"
-
-[node name="SaveQuit" type="Button" parent="Pause/List"]
-margin_top = 173.0
-margin_right = 309.0
-margin_bottom = 220.0
-custom_fonts/font = ExtResource( 6 )
-text = "Save and Exit"
-
-[node name="Settings" parent="Pause" instance=ExtResource( 5 )]
-
-[node name="QuickStart" parent="Pause" instance=ExtResource( 7 )]
-window_title = "Quick Select"
-
-[node name="ConfirmQuit" type="ConfirmationDialog" parent="Pause"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-window_title = "Confirm"
-dialog_text = "Are you sure you want to exit? Your current level progress will not be saved."
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Pause" parent="." instance=ExtResource( 5 )]
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
@@ -138,11 +61,3 @@ near = 0.01
 [node name="Interact" type="RayCast" parent="PivotX"]
 enabled = true
 cast_to = Vector3( 0, 0, -6 )
-[connection signal="about_to_show" from="Pause" to="." method="_on_pause"]
-[connection signal="popup_hide" from="Pause" to="." method="_on_unpause"]
-[connection signal="pressed" from="Pause/List/Settings" to="Pause/Settings" method="popup"]
-[connection signal="pressed" from="Pause/List/QuickStart" to="Pause/QuickStart" method="popup"]
-[connection signal="pressed" from="Pause/List/QuitLevel" to="." method="_on_quit_level"]
-[connection signal="pressed" from="Pause/List/QuitMenu" to="." method="_on_quit_menu"]
-[connection signal="pressed" from="Pause/List/SaveQuit" to="Pause/ConfirmQuit" method="popup"]
-[connection signal="confirmed" from="Pause/ConfirmQuit" to="." method="_on_quit_game"]

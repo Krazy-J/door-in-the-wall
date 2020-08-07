@@ -2,11 +2,9 @@
 
 [ext_resource path="res://src/Gateway/ViewportGateway.tscn" type="PackedScene" id=1]
 
-
-
 [sub_resource type="BoxShape" id=1]
 resource_local_to_scene = true
-extents = Vector3( 1.5, 3.25, 0.14 )
+extents = Vector3( 1.5, 3.25, 0.13 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type spatial;
@@ -64,6 +62,7 @@ size = Vector2( 3, 0.3 )
 
 [node name="Gateway" instance=ExtResource( 1 )]
 size = Vector3( 3, 6.5, 0.3 )
+is_door = true
 
 [node name="Area" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -0.15 )
@@ -81,4 +80,4 @@ cast_shadow = 0
 mesh = SubResource( 9 )
 
 [node name="Viewport" parent="." index="2"]
-size = Vector2( 1052, 713 )
+size = Vector2( 1084, 499 )

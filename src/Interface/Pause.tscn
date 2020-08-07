@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/dynamic_font/large.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/Interface/QuickStart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Interface/Settings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Interface/Pause.gd" type="Script" id=4]
+
+[node name="Pause" type="WindowDialog"]
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+margin_left = -0.200012
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 391, 201 )
+window_title = "Paused"
+resizable = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -50.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="List"]
+margin_top = 20.0
+margin_right = 309.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 1 )
+text = "Settings"
+
+[node name="QuickStart" type="Button" parent="List"]
+margin_top = 71.0
+margin_right = 309.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quick Select"
+
+[node name="QuitLevel" type="Button" parent="List"]
+margin_top = 71.0
+margin_right = 309.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quit to Lobby"
+
+[node name="QuitMenu" type="Button" parent="List"]
+margin_top = 122.0
+margin_right = 309.0
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quit to Menu"
+
+[node name="SaveQuit" type="Button" parent="List"]
+margin_top = 173.0
+margin_right = 309.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 1 )
+text = "Save and Exit"
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+
+[node name="QuickStart" parent="." instance=ExtResource( 2 )]
+window_title = "Quick Select"
+
+[node name="ConfirmQuit" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+window_title = "Confirm"
+dialog_text = "Are you sure you want to exit? Your current level progress will not be saved."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="about_to_show" from="." to="." method="_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_popup_hide"]
+[connection signal="pressed" from="List/Settings" to="Settings" method="popup"]
+[connection signal="pressed" from="List/QuickStart" to="QuickStart" method="popup"]
+[connection signal="pressed" from="List/QuitLevel" to="." method="quit_level"]
+[connection signal="pressed" from="List/QuitMenu" to="." method="quit_menu"]
+[connection signal="pressed" from="List/SaveQuit" to="ConfirmQuit" method="popup"]
+[connection signal="custom_action" from="ConfirmQuit" to="." method="save_and_quit"]
