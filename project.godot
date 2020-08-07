@@ -39,10 +39,6 @@ levels=[ [ {
 "completed": false,
 "locked": false,
 "scene": "TheFunRoom"
-}, {
-"completed": false,
-"locked": false,
-"scene": "Orthogonal"
 } ], [ {
 "locked": false,
 "requirement": 0

@@ -16,11 +16,6 @@ var levels = [
 			"completed": false,
 			"locked": false,
 			"scene": "TheFunRoom"
-		},
-		{
-			"completed": false,
-			"locked": false,
-			"scene": "Orthogonal"
 		}
 	],
 	[
