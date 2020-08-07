@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Hole" type="CSGBox"]
+operation = 2
+width = 4.0
+height = 0.6
+depth = 7.0

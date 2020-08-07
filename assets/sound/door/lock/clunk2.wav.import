@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clunk2.wav-c6c652a69a6794a0f42ef8c4aefebdc9.sample"
+
+[deps]
+
+source_file="res://assets/sound/door/lock/clunk2.wav"
+dest_files=[ "res://.import/clunk2.wav-c6c652a69a6794a0f42ef8c4aefebdc9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

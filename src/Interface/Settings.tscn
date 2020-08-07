@@ -1,0 +1,280 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Interface/Slider/QualitySlider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Interface/Slider/Slider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Interface/Slider/FloatSlider.gd" type="Script" id=3]
+[ext_resource path="res://src/Interface/Slider/IntSlider.gd" type="Script" id=4]
+[ext_resource path="res://src/Interface/Switch.gd" type="Script" id=5]
+
+
+
+
+
+
+
+[node name="Settings" type="WindowDialog"]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+window_title = "Settings"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+drag_to_rearrange_enabled = true
+use_hidden_tabs_for_min_size = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Settings" type="HBoxContainer" parent="TabContainer/Video"]
+margin_left = 287.0
+margin_right = 319.0
+margin_bottom = 14.0
+size_flags_horizontal = 6
+
+[node name="Window" type="PanelContainer" parent="TabContainer/Video/Settings"]
+margin_right = 161.0
+margin_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="TabContainer/Video/Settings/Window"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 154.0
+margin_bottom = 146.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="TabContainer/Video/Settings/Window/List"]
+margin_right = 147.0
+margin_bottom = 19.0
+text = "Window"
+align = 1
+
+[node name="Fullscreen" type="CheckButton" parent="TabContainer/Video/Settings/Window/List"]
+pause_mode = 2
+margin_top = 19.0
+margin_right = 147.0
+margin_bottom = 59.0
+text = "Fullscreen"
+script = ExtResource( 5 )
+os = PoolStringArray( "window_fullscreen" )
+
+[node name="Borderless" type="CheckButton" parent="TabContainer/Video/Settings/Window/List"]
+pause_mode = 2
+margin_top = 59.0
+margin_right = 147.0
+margin_bottom = 99.0
+text = "Borderless"
+script = ExtResource( 5 )
+os = PoolStringArray( "window_borderless" )
+
+[node name="VSync" type="CheckButton" parent="TabContainer/Video/Settings/Window/List"]
+pause_mode = 2
+margin_top = 99.0
+margin_right = 147.0
+margin_bottom = 139.0
+pressed = true
+text = "VSync"
+script = ExtResource( 5 )
+os = PoolStringArray( "vsync_enabled" )
+
+[node name="Graphics" type="PanelContainer" parent="TabContainer/Video/Settings"]
+margin_left = 165.0
+margin_right = 505.0
+margin_bottom = 290.0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Split" type="VSplitContainer" parent="TabContainer/Video/Settings/Graphics"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 333.0
+margin_bottom = 283.0
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="TabContainer/Video/Settings/Graphics/Split"]
+margin_right = 326.0
+margin_bottom = 19.0
+text = "Graphics"
+align = 1
+
+[node name="List" type="HBoxContainer" parent="TabContainer/Video/Settings/Graphics/Split"]
+margin_top = 19.0
+margin_right = 326.0
+margin_bottom = 276.0
+
+[node name="General" type="VBoxContainer" parent="TabContainer/Video/Settings/Graphics/Split/List"]
+margin_right = 164.0
+margin_bottom = 257.0
+
+[node name="FOV" parent="TabContainer/Video/Settings/Graphics/Split/List/General" instance=ExtResource( 2 )]
+margin_right = 164.0
+margin_bottom = 62.0
+script = ExtResource( 4 )
+settings = PoolStringArray( "fov" )
+label = "FOV"
+min_value = 60
+max_value = 120
+tick_count = 7
+
+[node name="Quality" type="PanelContainer" parent="TabContainer/Video/Settings/Graphics/Split/List"]
+margin_left = 168.0
+margin_right = 326.0
+margin_bottom = 257.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 151.0
+margin_bottom = 250.0
+
+[node name="Label" type="Label" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality/List"]
+margin_right = 144.0
+margin_bottom = 19.0
+text = "Quality"
+align = 1
+
+[node name="Models" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality/List" instance=ExtResource( 1 )]
+margin_top = 23.0
+margin_right = 144.0
+margin_bottom = 75.0
+settings = PoolStringArray( "object_model_quality" )
+label = "Object Models"
+values = PoolIntArray( 0, 1, 2, 3, 4 )
+names = PoolStringArray( "Min", "Low", "Med", "High", "Max" )
+
+[node name="Shadows" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality/List" instance=ExtResource( 1 )]
+margin_top = 79.0
+margin_right = 144.0
+margin_bottom = 131.0
+settings = PoolStringArray( "shadow_atlas_size", "door_shadow_atlas_size" )
+viewport = PoolStringArray( "shadow_atlas_size" )
+label = "Shadows"
+values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
+names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+
+[node name="DoorShadows" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality/List" instance=ExtResource( 1 )]
+margin_top = 135.0
+margin_right = 144.0
+margin_bottom = 187.0
+settings = PoolStringArray( "door_shadow_atlas_size" )
+label = "Door Shadows"
+values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
+names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+
+[node name="DoorResolution" parent="TabContainer/Video/Settings/Graphics/Split/List/Quality/List" instance=ExtResource( 1 )]
+margin_top = 191.0
+margin_right = 144.0
+margin_bottom = 243.0
+settings = PoolStringArray( "door_mipmap_level" )
+label = "Door Resolution"
+values = PoolIntArray( 2, 1, 0 )
+names = PoolStringArray( "1/4", "1/2", "Full" )
+
+[node name="Controls" type="HBoxContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Mouse" type="PanelContainer" parent="TabContainer/Controls"]
+margin_right = 132.0
+margin_bottom = 319.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="TabContainer/Controls/Mouse"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 125.0
+margin_bottom = 312.0
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Mouse/List"]
+margin_right = 118.0
+margin_bottom = 19.0
+text = "Mouse"
+align = 1
+
+[node name="Sensitivity" parent="TabContainer/Controls/Mouse/List" instance=ExtResource( 2 )]
+margin_top = 23.0
+margin_right = 118.0
+margin_bottom = 85.0
+script = ExtResource( 3 )
+settings = PoolStringArray( "mouse_sensitivity" )
+label = "Look Sensitivity"
+min_value = 0.001
+max_value = 0.01
+step = 0.001
+
+[node name="Audio" type="VSplitContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+dragger_visibility = 2
+
+[node name="Master" parent="TabContainer/Audio" instance=ExtResource( 2 )]
+margin_right = 606.4
+margin_bottom = 62.0
+label = "Master Volume"
+
+[node name="OtherSounds" type="PanelContainer" parent="TabContainer/Audio"]
+margin_top = 62.0
+margin_right = 606.4
+margin_bottom = 319.0
+
+[node name="VBoxContainer" type="VSplitContainer" parent="TabContainer/Audio/OtherSounds"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 599.4
+margin_bottom = 250.0
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/OtherSounds/VBoxContainer"]
+margin_right = 592.4
+margin_bottom = 19.0
+text = "Other Sounds"
+align = 1
+
+[node name="List" type="GridContainer" parent="TabContainer/Audio/OtherSounds/VBoxContainer"]
+margin_top = 19.0
+margin_right = 592.4
+margin_bottom = 243.0
+columns = 2
+[connection signal="toggled" from="TabContainer/Video/Settings/Window/List/Fullscreen" to="TabContainer/Video/Settings/Window/List/Fullscreen" method="_toggled"]
+[connection signal="toggled" from="TabContainer/Video/Settings/Window/List/Fullscreen" to="TabContainer/Video/Settings/Window/List/Borderless" method="disable"]
+[connection signal="toggled" from="TabContainer/Video/Settings/Window/List/Borderless" to="TabContainer/Video/Settings/Window/List/Borderless" method="_toggled"]
+[connection signal="toggled" from="TabContainer/Video/Settings/Window/List/VSync" to="TabContainer/Video/Settings/Window/List/VSync" method="_toggled"]

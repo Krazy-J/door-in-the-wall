@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sliding_open.wav-65c5508b6cb245f632c47c124a5e492c.sample"
+
+[deps]
+
+source_file="res://assets/sound/door/sliding_open.wav"
+dest_files=[ "res://.import/sliding_open.wav-65c5508b6cb245f632c47c124a5e492c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

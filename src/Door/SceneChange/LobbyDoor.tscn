@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Door/SceneChange/LevelDoor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Door/SceneChange/SceneChangeDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/material/normal/door/classic.tres" type="Material" id=4]
+
+[node name="LobbyDoor" instance=ExtResource( 1 )]
+door = ExtResource( 2 )
+door_material = ExtResource( 4 )
+label = "Back to Lobby"
+
+[node name="Label" parent="." index="1"]
+text = "Back to Lobby"
