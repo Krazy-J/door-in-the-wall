@@ -286,7 +286,6 @@ margin_bottom = 19.0
 text = "Other Sounds"
 align = 1
 
-[node name="Viewport" type="Viewport" parent="."]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Fullscreen" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Borderless" method="disable"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Borderless" to="TabContainer/Video/Settings/Window/Borderless" method="_toggled"]
