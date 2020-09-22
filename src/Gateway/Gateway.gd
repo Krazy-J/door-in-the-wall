@@ -18,6 +18,7 @@ func teleport(body):
 	body.global_transform = get_node(exit_path).global_transform * (global_transform.affine_inverse() * body.global_transform).rotated(Vector3(0, -1, 0), PI)
 
 func teleport_player(body):
+	teleport(body)
 	body.motion = teleported_basis(body.motion)
 	if body.carrying:
 		if body.carrying.has_node("Door"):
@@ -25,26 +26,24 @@ func teleport_player(body):
 		elif body.carrying.is_class("RigidBody"):
 			var relative_scale = (get_node(exit_path).global_transform.basis.get_scale() / global_transform.basis.get_scale()).y
 			body.carry_distance *= relative_scale
+			teleport_rigidbody(body.carrying)
 			#body.carrying.mass *= relative_scale
-			for child in body.carrying.get_children():
-				child.scale *= relative_scale
-				child.translation *= relative_scale
-			#body.carrying.teleport_linear_velocity = get_node(exit_path).global_transform.origin - global_transform.origin.inverse()
-			#body.carrying.teleport_angular_velocity = teleported_basis(body.carrying.linear_velocity)
 
 func teleport_rigidbody(body):
-	#carried_body.mass *= relative_scale
+	teleport(body)
+	#body.mass *= relative_scale
 	for child in body.get_children():
-		child.scale = teleported_basis(child.scale)
-		child.translation = teleported_basis(child.translation)
-	body.teleport_linear_velocity = get_node(exit_path).global_transform.origin - global_transform.origin.inverse()
-	body.teleport_angular_velocity = teleported_basis(body.linear_velocity)
+		child.scale *= 1
+		child.translation *= 1
+	body.linear_velocity = teleported_basis(body.linear_velocity)
+	body.angular_velocity = teleported_basis(body.angular_velocity)
 
 func _on_area_entered(area):
 	if get_node(exit_path).has_node("Viewport"): get_node(exit_path).enable_viewport(area)
-	teleport(area.get_parent())
 	if area.get_parent().name == "Player": teleport_player(area.get_parent())
-	#elif area.get_parent().is_class("RigidBody"): teleport_rigidbody(area.get_parent())
+	elif area.get_parent().is_class("RigidBody"):
+		 if not area.get_parent().carrying: teleport_rigidbody(area.get_parent())
+	else: teleport(area.get_parent())
 
 func _process(_delta):
 	if Engine.editor_hint: _ready()

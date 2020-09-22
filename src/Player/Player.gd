@@ -30,14 +30,14 @@ func _unhandled_input(event):
 				rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
 				$PivotX.rotate_x(-event.relative.y * ProjectSettings.mouse_sensitivity)
 				$PivotX.rotation.x = clamp($PivotX.rotation.x, -PI / 2, PI / 2)
-	if get_tree().paused:
-		if carrying and event is InputEventMouseButton:
-			if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
-				carry_distance = min(carry_distance + .1, abs($PivotX/Interact.cast_to.z))
-			if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
-				carry_distance = max(carry_distance - .1, 2)
-		if is_on_floor():
-			if event.is_action("jump"): motion += transform.basis.y * jump_power
+	if carrying and event is InputEventMouseButton:
+		var relative_scale = (transform.basis.y.normalized().inverse() * transform.basis.y).y
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
+			carry_distance = min(carry_distance + .1 * relative_scale, abs($PivotX/Interact.cast_to.z) * relative_scale)
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
+			carry_distance = max(carry_distance - .1 * relative_scale, 2 * relative_scale)
+	if is_on_floor():
+		if event.is_action("jump"): motion += transform.basis.y * jump_power
 
 func get_movement():
 	var movement : Vector3
@@ -88,4 +88,4 @@ func _physics_process(delta):
 		motion *= (1 - surface_friction)
 	motion *= (1 - air_resistance)
 	motion -= transform.basis.y * gravity * delta
-	motion = move_and_slide(motion, transform.basis.y.normalized())
+	motion = move_and_slide(motion, transform.basis.y.normalized(), false, 4, .8, false)

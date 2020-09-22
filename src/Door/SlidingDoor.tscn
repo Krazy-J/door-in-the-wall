@@ -14,7 +14,7 @@
 
 
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "door_toggle"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation:x")
@@ -105,5 +105,5 @@ stream = ExtResource( 4 )
 stream = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/door_toggle = SubResource( 3 )
+anims/door_toggle = SubResource( 1 )
 anims/locked = SubResource( 2 )
