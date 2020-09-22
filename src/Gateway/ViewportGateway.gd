@@ -1,5 +1,4 @@
-tool
-extends "res://src/Gateway/Gateway.gd"
+tool extends "res://src/Gateway/Gateway.gd"
 
 export var start_enabled : bool
 export var stay_enabled : bool

@@ -1,5 +1,4 @@
-tool
-extends "res://src/Interface/Slider/Slider.gd"
+tool extends "res://src/Interface/Slider/Slider.gd"
 
 export var values : PoolIntArray
 export var names : PoolStringArray = ["Low", "Medium", "High"]

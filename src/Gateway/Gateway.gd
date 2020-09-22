@@ -1,5 +1,4 @@
-tool
-extends Spatial
+tool extends Spatial
 
 export var exit_path : NodePath
 export var size = Vector3(2, 2, 0.4)

@@ -1,5 +1,4 @@
-tool
-extends CheckButton
+tool extends CheckButton
 
 export var settings : PoolStringArray
 export var viewport : PoolStringArray

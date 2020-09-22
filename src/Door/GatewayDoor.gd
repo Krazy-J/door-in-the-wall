@@ -1,5 +1,4 @@
-tool
-extends "res://src/Door/Door.gd"
+tool extends "res://src/Door/Door.gd"
 
 export var exit_path : NodePath
 export var requires_door = false

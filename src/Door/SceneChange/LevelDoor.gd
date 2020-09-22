@@ -1,5 +1,4 @@
-tool
-extends "res://src/Door/Door.gd"
+tool extends "res://src/Door/Door.gd"
 
 export var section_number : int
 export var level_number : int

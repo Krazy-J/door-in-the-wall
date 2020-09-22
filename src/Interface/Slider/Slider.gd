@@ -1,5 +1,4 @@
-tool
-extends Control
+tool extends Control
 
 export var settings : PoolStringArray
 export var viewport : PoolStringArray

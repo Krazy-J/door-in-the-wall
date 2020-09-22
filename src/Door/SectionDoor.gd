@@ -1,5 +1,4 @@
-tool
-extends "res://src/Door/GatewayDoor.gd"
+tool extends "res://src/Door/GatewayDoor.gd"
 
 export var section_number = 0
 export(String, MULTILINE) var label setget set_label

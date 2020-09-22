@@ -1,5 +1,4 @@
-tool
-extends "res://src/Door/SceneChange/LevelDoor.gd"
+tool extends "res://src/Door/SceneChange/LevelDoor.gd"
 
 # warning-ignore:return_value_discarded
 func change_scene():

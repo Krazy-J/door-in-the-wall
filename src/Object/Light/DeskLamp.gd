@@ -1,5 +1,4 @@
-tool
-extends Node
+tool extends Node
 
 export var on : bool = true setget set_on
 export var omni_range : float = 25 setget set_omni_range

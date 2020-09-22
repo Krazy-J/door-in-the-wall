@@ -1,5 +1,4 @@
-tool
-extends "res://src/Interface/Slider/Slider.gd"
+tool extends "res://src/Interface/Slider/Slider.gd"
 
 export var min_value : int
 export var max_value : int = 100

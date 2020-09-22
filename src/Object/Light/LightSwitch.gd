@@ -1,5 +1,4 @@
-tool
-extends Spatial
+tool extends Spatial
 
 export var on : bool = true setget set_on
 export var material : Material

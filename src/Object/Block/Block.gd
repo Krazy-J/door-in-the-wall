@@ -1,5 +1,4 @@
-tool
-extends "res://src/Object/RigidObject.gd"
+tool extends "res://src/Object/RigidObject.gd"
 
 export var material : Material
 

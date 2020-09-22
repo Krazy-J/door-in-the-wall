@@ -1,5 +1,4 @@
-tool
-extends Spatial
+tool extends Spatial
 
 export(PackedScene) var door setget set_door
 export(Mesh) var door_mesh setget set_door_mesh

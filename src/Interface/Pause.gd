@@ -1,21 +1,21 @@
 extends Popup
 
 func _about_to_show():
-	ProjectSettings.set("paused", true)
+	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _popup_hide():
-	ProjectSettings.set("paused", false)
+	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func quit_level():
-	get_node("../LobbyDoor").toggle_door()
+	get_viewport().get_child(0).get_node("LobbyDoor").toggle_door()
 
 func quit_menu():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/Main.tscn")
 	$"/root".call_deferred("add_child", load("res://src/Interface/Fade.tscn").instance())
 
-func save_and_quit():
+func save():
 	# Create directory
 	# warning-ignore:return_value_discarded
 	if not Directory.new().dir_exists("res://DITW-SavedData"): Directory.new().make_dir("res://DITW-SavedData")
@@ -24,6 +24,9 @@ func save_and_quit():
 	save.open("res://save.json", File.WRITE)
 	save.store_line(to_json(ProjectSettings.levels))
 	save.close()
+
+func save_and_quit():
+	save()
 	get_tree().quit()
 
 func _unhandled_input(event):

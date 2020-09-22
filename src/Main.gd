@@ -1,5 +1,4 @@
-tool
-extends Node
+tool extends Node
 
 var levels = [
 	[

@@ -1,5 +1,4 @@
-tool
-extends Spatial
+tool extends Spatial
 
 export var section_number = 0
 export var first_level = 1

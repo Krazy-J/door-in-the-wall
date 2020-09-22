@@ -1,5 +1,4 @@
-tool
-extends "res://src/Door/Door.gd"
+tool extends "res://src/Door/Door.gd"
 
 export var close_timer : float = 5
 var timer : float
