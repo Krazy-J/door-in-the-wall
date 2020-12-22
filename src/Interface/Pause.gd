@@ -1,5 +1,10 @@
 extends Popup
 
+func _ready():
+	if not has_node("../LobbyDoor"):
+		$Panel/List/QuitLevel.disabled = true
+		$Panel/List/QuitLevel.hint_tooltip = "You're not in a level!"
+
 func _about_to_show():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -30,4 +35,4 @@ func save_and_quit():
 	get_tree().quit()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("exit_mouse"): popup()
+	if event.is_action_pressed("ui_cancel"): popup()

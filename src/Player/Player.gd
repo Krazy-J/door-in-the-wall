@@ -13,9 +13,6 @@ var carry_distance : float
 
 func _ready():
 	$PivotX/Camera.far = view_distance
-	if not has_node("../LobbyDoor"):
-		$Pause/List/QuitLevel.disabled = true
-		$Pause/List/QuitLevel.hint_tooltip = "You're not in a level!"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
@@ -47,7 +44,9 @@ func get_movement():
 	if Input.is_key_pressed(KEY_S): movement.z += 1
 	if Input.is_key_pressed(KEY_A): movement.x -= 1
 	if Input.is_key_pressed(KEY_D): movement.x += 1
-	if ProjectSettings.noclip and Input.is_action_pressed("jump"): movement.y += 1
+	if ProjectSettings.noclip:
+		if Input.is_action_pressed("jump"): movement.y += 1
+		if Input.is_action_pressed("crouch"): movement.y -= 1
 	movement = movement.normalized()
 	if Input.is_key_pressed(KEY_SHIFT): movement *= 2
 	if !is_on_floor(): movement /= 20

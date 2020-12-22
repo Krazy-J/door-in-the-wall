@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://assets/models/door_frame.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://src/Gateway/TeleportArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Interface/Pause.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -27,8 +26,6 @@ stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Pause" parent="." instance=ExtResource( 5 )]
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )

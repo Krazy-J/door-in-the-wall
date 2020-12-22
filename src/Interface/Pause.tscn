@@ -5,72 +5,106 @@
 [ext_resource path="res://src/Interface/Settings.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Interface/Pause.gd" type="Script" id=4]
 
-[node name="Pause" type="WindowDialog"]
+[node name="Pause" type="Popup"]
 pause_mode = 2
-anchor_left = 0.3
-anchor_top = 0.3
-anchor_right = 0.7
-anchor_bottom = 0.7
-margin_left = -0.200012
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 391, 201 )
-window_title = "Paused"
-resizable = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="List" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = -50.0
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 223.0
+margin_bottom = 489.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Button" parent="List"]
-margin_top = 20.0
-margin_right = 309.0
-margin_bottom = 67.0
+[node name="Label" type="Label" parent="Panel/List"]
+margin_top = 30.0
+margin_right = 216.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "Paused"
+align = 1
+
+[node name="Separator1" type="HSeparator" parent="Panel/List"]
+margin_top = 75.0
+margin_right = 216.0
+margin_bottom = 79.0
+
+[node name="Unpause" type="Button" parent="Panel/List"]
+margin_top = 405.0
+margin_right = 216.0
+margin_bottom = 452.0
+custom_fonts/font = ExtResource( 1 )
+text = "Resume"
+
+[node name="Separator2" type="HSeparator" parent="Panel/List"]
+margin_top = 185.0
+margin_right = 216.0
+margin_bottom = 189.0
+
+[node name="Settings" type="Button" parent="Panel/List"]
+margin_top = 83.0
+margin_right = 216.0
+margin_bottom = 130.0
 custom_fonts/font = ExtResource( 1 )
 text = "Settings"
 
-[node name="QuickStart" type="Button" parent="List"]
-margin_top = 71.0
-margin_right = 309.0
-margin_bottom = 118.0
+[node name="QuickStart" type="Button" parent="Panel/List"]
+margin_top = 134.0
+margin_right = 216.0
+margin_bottom = 181.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quick Select"
 
-[node name="QuitLevel" type="Button" parent="List"]
-margin_top = 71.0
-margin_right = 309.0
-margin_bottom = 118.0
+[node name="Separator3" type="HSeparator" parent="Panel/List"]
+margin_top = 397.0
+margin_right = 216.0
+margin_bottom = 401.0
+
+[node name="QuitLevel" type="Button" parent="Panel/List"]
+margin_top = 193.0
+margin_right = 216.0
+margin_bottom = 240.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit to Lobby"
 
-[node name="QuitMenu" type="Button" parent="List"]
-margin_top = 122.0
-margin_right = 309.0
-margin_bottom = 169.0
+[node name="QuitMenu" type="Button" parent="Panel/List"]
+margin_top = 244.0
+margin_right = 216.0
+margin_bottom = 291.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit to Menu"
 
-[node name="Save" type="Button" parent="List"]
-margin_top = 173.0
-margin_right = 309.0
-margin_bottom = 220.0
+[node name="Save" type="Button" parent="Panel/List"]
+margin_top = 295.0
+margin_right = 216.0
+margin_bottom = 342.0
 custom_fonts/font = ExtResource( 1 )
 text = "Save Game"
 
-[node name="SaveQuit" type="Button" parent="List"]
-margin_top = 173.0
-margin_right = 309.0
-margin_bottom = 220.0
+[node name="SaveQuit" type="Button" parent="Panel/List"]
+margin_top = 346.0
+margin_right = 216.0
+margin_bottom = 393.0
 custom_fonts/font = ExtResource( 1 )
 text = "Save and Exit"
 
@@ -93,10 +127,12 @@ __meta__ = {
 }
 [connection signal="about_to_show" from="." to="." method="_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_popup_hide"]
-[connection signal="pressed" from="List/Settings" to="Settings" method="popup"]
-[connection signal="pressed" from="List/QuickStart" to="QuickStart" method="popup"]
-[connection signal="pressed" from="List/QuitLevel" to="." method="quit_level"]
-[connection signal="pressed" from="List/QuitMenu" to="." method="quit_menu"]
-[connection signal="pressed" from="List/Save" to="." method="save"]
-[connection signal="pressed" from="List/SaveQuit" to="ConfirmQuit" method="popup"]
+[connection signal="pressed" from="Panel/List/Unpause" to="." method="hide"]
+[connection signal="pressed" from="Panel/List/Settings" to="Settings" method="popup"]
+[connection signal="pressed" from="Panel/List/QuickStart" to="QuickStart" method="popup"]
+[connection signal="pressed" from="Panel/List/QuitLevel" to="." method="hide"]
+[connection signal="pressed" from="Panel/List/QuitLevel" to="." method="quit_level"]
+[connection signal="pressed" from="Panel/List/QuitMenu" to="." method="quit_menu"]
+[connection signal="pressed" from="Panel/List/Save" to="." method="save"]
+[connection signal="pressed" from="Panel/List/SaveQuit" to="ConfirmQuit" method="popup"]
 [connection signal="confirmed" from="ConfirmQuit" to="." method="save_and_quit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/texture/normal/red_brick_wall/red_brick_wall_12_reflection.jpg" type="Texture" id=1]
 [ext_resource path="res://src/Door/SectionDoor.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/material/8bit/door/white.tres" type="Material" id=15]
 [ext_resource path="res://src/Door/SceneChange/LevelDoor.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Door/SceneChange/SceneChangeDoor.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/Interface/Pause.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/material/8bit/door/red.tres" type="Material" id=19]
 [ext_resource path="res://assets/mesh/20x40.tres" type="PlaneMesh" id=21]
 [ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=22]
@@ -58,6 +59,8 @@ size = Vector2( 20, 16 )
 [node name="Main" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 29 )]
+
+[node name="Pause" parent="." instance=ExtResource( 18 )]
 
 [node name="Lobby" type="Spatial" parent="."]
 

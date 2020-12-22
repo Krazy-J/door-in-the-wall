@@ -333,5 +333,5 @@ tick_count = 21
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Fullscreen" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Borderless" to="TabContainer/Video/Settings/Window/Borderless" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/VSync" to="TabContainer/Video/Settings/Window/VSync" method="_toggled"]
-[connection signal="toggled" from="TabContainer/Dev/Noclip" to="TabContainer/Video/Settings/Window/Borderless" method="disable"]
 [connection signal="toggled" from="TabContainer/Dev/Noclip" to="TabContainer/Dev/Noclip" method="_toggled"]
+[connection signal="toggled" from="TabContainer/Dev/Noclip" to="TabContainer/Video/Settings/Window/Borderless" method="disable"]
