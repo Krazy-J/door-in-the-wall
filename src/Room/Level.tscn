@@ -5,18 +5,11 @@
 [ext_resource path="res://src/Interface/LevelTitle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Door/SceneChange/LobbyDoor.tscn" type="PackedScene" id=7]
 
-
-
-
-
-
-
-
 [node name="Main" type="Spatial"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-
 [node name="LevelTitle" parent="." instance=ExtResource( 6 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="LobbyDoor" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0 )

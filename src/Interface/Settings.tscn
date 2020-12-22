@@ -93,22 +93,22 @@ os = PoolStringArray( "vsync_enabled" )
 [node name="Separator" type="VSeparator" parent="TabContainer/Video/Settings"]
 margin_left = 151.0
 margin_right = 155.0
-margin_bottom = 218.0
+margin_bottom = 268.0
 
 [node name="Graphics" type="VBoxContainer" parent="TabContainer/Video/Settings"]
 margin_left = 159.0
-margin_right = 491.0
-margin_bottom = 218.0
+margin_right = 451.0
+margin_bottom = 268.0
 
 [node name="Label" type="Label" parent="TabContainer/Video/Settings/Graphics"]
-margin_right = 332.0
+margin_right = 292.0
 margin_bottom = 19.0
 text = "Graphics"
 align = 1
 
 [node name="Separator" type="HSeparator" parent="TabContainer/Video/Settings/Graphics"]
 margin_top = 23.0
-margin_right = 332.0
+margin_right = 292.0
 margin_bottom = 27.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,30 +116,29 @@ __meta__ = {
 
 [node name="List" type="HBoxContainer" parent="TabContainer/Video/Settings/Graphics"]
 margin_top = 31.0
-margin_right = 332.0
-margin_bottom = 218.0
+margin_right = 292.0
+margin_bottom = 268.0
 
 [node name="General" type="VBoxContainer" parent="TabContainer/Video/Settings/Graphics/List"]
-margin_right = 190.0
-margin_bottom = 187.0
+margin_right = 150.0
+margin_bottom = 237.0
 
 [node name="Label" type="Label" parent="TabContainer/Video/Settings/Graphics/List/General"]
-margin_left = 202.0
-margin_right = 332.0
+margin_right = 150.0
 margin_bottom = 19.0
 text = "General"
 align = 1
 
 [node name="Separator" type="HSeparator" parent="TabContainer/Video/Settings/Graphics/List/General"]
-margin_left = 202.0
-margin_right = 242.0
-margin_bottom = 4.0
+margin_top = 23.0
+margin_right = 150.0
+margin_bottom = 27.0
 
 [node name="FOV" parent="TabContainer/Video/Settings/Graphics/List/General" instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 0.0
-margin_right = 190.0
-margin_bottom = 48.0
+margin_top = 31.0
+margin_right = 150.0
+margin_bottom = 79.0
 script = ExtResource( 4 )
 settings = PoolStringArray( "fov" )
 label = "FOV"
@@ -148,14 +147,14 @@ max_value = 120
 tick_count = 7
 
 [node name="Separator" type="VSeparator" parent="TabContainer/Video/Settings/Graphics/List"]
-margin_left = 194.0
-margin_right = 198.0
-margin_bottom = 187.0
+margin_left = 154.0
+margin_right = 158.0
+margin_bottom = 237.0
 
 [node name="Quality" type="VBoxContainer" parent="TabContainer/Video/Settings/Graphics/List"]
-margin_left = 202.0
-margin_right = 332.0
-margin_bottom = 187.0
+margin_left = 162.0
+margin_right = 292.0
+margin_bottom = 237.0
 
 [node name="Label" type="Label" parent="TabContainer/Video/Settings/Graphics/List/Quality"]
 margin_right = 130.0
@@ -164,60 +163,74 @@ text = "Quality"
 align = 1
 
 [node name="Separator" type="HSeparator" parent="TabContainer/Video/Settings/Graphics/List/Quality"]
-margin_right = 40.0
-margin_bottom = 4.0
+margin_top = 23.0
+margin_right = 130.0
+margin_bottom = 27.0
 
 [node name="Models" parent="TabContainer/Video/Settings/Graphics/List/Quality" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 23.0
+margin_top = 31.0
 margin_right = 130.0
-margin_bottom = 61.0
+margin_bottom = 69.0
 settings = PoolStringArray( "object_model_quality" )
+viewport = PoolStringArray(  )
+os = PoolStringArray(  )
 label = "Object Models"
 values = PoolIntArray( 0, 1, 2, 3, 4 )
 names = PoolStringArray( "Min", "Low", "Med", "High", "Max" )
+value_override = -1
 
 [node name="MSAA" parent="TabContainer/Video/Settings/Graphics/List/Quality" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 65.0
+margin_top = 73.0
 margin_right = 130.0
-margin_bottom = 103.0
+margin_bottom = 111.0
 settings = PoolStringArray( "rendering/quality/filters/msaa" )
 viewport = PoolStringArray( "msaa" )
+os = PoolStringArray(  )
 label = "MSAA"
 values = PoolIntArray( 0, 1, 2, 3, 4 )
 names = PoolStringArray( "Off", "2x", "4x", "8x", "16x" )
+value_override = -1
 
 [node name="Shadows2" parent="TabContainer/Video/Settings/Graphics/List/Quality" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 65.0
+margin_top = 115.0
 margin_right = 130.0
-margin_bottom = 103.0
+margin_bottom = 153.0
 settings = PoolStringArray( "rendering/quality/shadow_atlas/size", "door_shadow_atlas_size" )
 viewport = PoolStringArray( "shadow_atlas_size" )
+os = PoolStringArray(  )
 label = "Shadows"
 values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
 names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+value_override = -1
 
 [node name="DoorShadows" parent="TabContainer/Video/Settings/Graphics/List/Quality" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 107.0
+margin_top = 157.0
 margin_right = 130.0
-margin_bottom = 145.0
+margin_bottom = 195.0
 settings = PoolStringArray( "door_shadow_atlas_size" )
+viewport = PoolStringArray(  )
+os = PoolStringArray(  )
 label = "Door Shadows"
 values = PoolIntArray( 0, 2048, 4096, 8192, 16384 )
 names = PoolStringArray( "Off", "Low", "Med", "High", "Max" )
+value_override = -1
 
 [node name="DoorResolution" parent="TabContainer/Video/Settings/Graphics/List/Quality" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 149.0
+margin_top = 199.0
 margin_right = 130.0
-margin_bottom = 187.0
+margin_bottom = 237.0
 settings = PoolStringArray( "door_mipmap_level" )
+viewport = PoolStringArray(  )
+os = PoolStringArray(  )
 label = "Door Resolution"
 values = PoolIntArray( 2, 1, 0 )
 names = PoolStringArray( "1/4", "1/2", "Full" )
+value_override = -1
 
 [node name="Controls" type="HBoxContainer" parent="TabContainer"]
 visible = false
@@ -286,7 +299,39 @@ margin_bottom = 19.0
 text = "Other Sounds"
 align = 1
 
-[connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Fullscreen" method="_toggled"]
+[node name="Dev" type="VBoxContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 37.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 4
+
+[node name="Noclip" type="CheckButton" parent="TabContainer/Dev"]
+pause_mode = 2
+margin_top = 23.0
+margin_right = 147.0
+margin_bottom = 63.0
+text = "Noclip"
+script = ExtResource( 5 )
+settings = PoolStringArray( "noclip" )
+
+[node name="NoclipSpeed" parent="TabContainer/Dev" instance=ExtResource( 2 )]
+margin_left = 159.0
+margin_top = 62.0
+margin_right = 309.0
+margin_bottom = 110.0
+script = ExtResource( 4 )
+settings = PoolStringArray( "noclip_speed" )
+label = "Noclip Speed"
+max_value = 2000
+step = 10
+tick_count = 21
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Borderless" method="disable"]
+[connection signal="toggled" from="TabContainer/Video/Settings/Window/Fullscreen" to="TabContainer/Video/Settings/Window/Fullscreen" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/Borderless" to="TabContainer/Video/Settings/Window/Borderless" method="_toggled"]
 [connection signal="toggled" from="TabContainer/Video/Settings/Window/VSync" to="TabContainer/Video/Settings/Window/VSync" method="_toggled"]
+[connection signal="toggled" from="TabContainer/Dev/Noclip" to="TabContainer/Video/Settings/Window/Borderless" method="disable"]
+[connection signal="toggled" from="TabContainer/Dev/Noclip" to="TabContainer/Dev/Noclip" method="_toggled"]

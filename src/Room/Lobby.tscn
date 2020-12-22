@@ -120,12 +120,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 script = ExtResource( 2 )
 door = ExtResource( 11 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 exit_path = NodePath("../../../Classic/Main")
-requires_door = false
 section_number = 1
 label = "Classic"
 label_color = Color( 0.8, 0.5, 0, 1 )
@@ -134,12 +130,8 @@ label_color = Color( 0.8, 0.5, 0, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 script = ExtResource( 2 )
 door = ExtResource( 14 )
-door_mesh = null
 door_material = ExtResource( 15 )
-open = false
-locked = false
 exit_path = NodePath("../../../8-Bit/Main")
-requires_door = false
 section_number = 2
 label = "8-Bit"
 label_color = Color( 1, 1, 1, 1 )
@@ -161,13 +153,6 @@ step_size = 1.0
 [node name="Escher" parent="Lobby/Sections" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 script = ExtResource( 2 )
-door = null
-door_mesh = null
-door_material = null
-open = false
-locked = false
-exit_path = NodePath("")
-requires_door = false
 section_number = 3
 label = "Escher"
 label_color = Color( 0.6, 0.6, 0.6, 1 )
@@ -192,13 +177,6 @@ step_size = 1.0
 [node name="Chaos" parent="Lobby/Sections" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 script = ExtResource( 2 )
-door = null
-door_mesh = null
-door_material = null
-open = false
-locked = false
-exit_path = NodePath("")
-requires_door = false
 section_number = 4
 label = "Chaos"
 label_color = Color( 1, 0, 0, 1 )
@@ -306,14 +284,10 @@ first_level = 1
 [node name="1" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 1
 label = "1 (1)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
@@ -332,14 +306,10 @@ step_size = 1.0
 [node name="2" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 2
 label = "2 (2)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
@@ -358,14 +328,10 @@ step_size = 1.0
 [node name="3" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 3
 label = "– (3)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
@@ -384,14 +350,10 @@ step_size = 1.0
 [node name="6" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 4
 label = "– (6)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
@@ -410,14 +372,10 @@ step_size = 1.0
 [node name="5" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 5
 label = "– (5)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
@@ -436,14 +394,10 @@ step_size = 1.0
 [node name="8" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 6
 label = "– (8)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.3 )
@@ -462,14 +416,10 @@ step_size = 1.0
 [node name="4" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 7
 label = "– (4)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
@@ -488,14 +438,10 @@ step_size = 1.0
 [node name="7" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 8
 label = "– (7)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.2, 0.299999 )
@@ -513,15 +459,10 @@ step_size = 1.0
 
 [node name="9" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
-door = null
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 9
 label = "– (–)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
@@ -542,15 +483,10 @@ step_size = 1.0
 
 [node name="10" parent="Classic/Levels" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0 )
-door = null
-door_mesh = null
 door_material = ExtResource( 13 )
-open = false
-locked = false
 section_number = 1
 level_number = 10
 label = "– (–)"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="Label2" type="Spatial" parent="Classic/Levels/10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.0999985 )
@@ -638,23 +574,13 @@ first_level = 1
 [node name="TestRoom" parent="8-Bit" instance=ExtResource( 16 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 10, 0, -14 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 15 )
-open = false
-locked = false
-section_number = 0
 level_number = 1
 label = "Test Room"
-label_color = Color( 0, 0, 0, 1 )
 
 [node name="TheFunRoom" parent="8-Bit" instance=ExtResource( 16 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 10, 0, -5 )
 door = ExtResource( 17 )
-door_mesh = null
 door_material = ExtResource( 19 )
-open = false
-locked = false
-section_number = 0
 level_number = 2
 label = "\"Fun\" Room"
-label_color = Color( 0, 0, 0, 1 )

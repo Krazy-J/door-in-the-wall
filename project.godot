@@ -91,6 +91,8 @@ object_models=1
 object_model=4
 save_slot=""
 paused=false
+noclip=false
+noclip_speed=200.0
 
 [application]
 

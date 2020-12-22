@@ -21,7 +21,7 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("fullscreen"): OS.window_fullscreen = not OS.window_fullscreen
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion or event is InputEventJoypadMotion:
+		if event is InputEventMouseMotion:
 			if Input.is_mouse_button_pressed(BUTTON_MIDDLE) and carrying:
 				var body = carrying
 				body.rotate(transform.basis.y.normalized(), -event.relative.x * ProjectSettings.mouse_sensitivity)
@@ -36,21 +36,20 @@ func _unhandled_input(event):
 			carry_distance = min(carry_distance + .1 * relative_scale, abs($PivotX/Interact.cast_to.z) * relative_scale)
 		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
 			carry_distance = max(carry_distance - .1 * relative_scale, 2 * relative_scale)
-	if is_on_floor():
-		if event.is_action("jump"): motion += transform.basis.y * jump_power
+	if event.is_action("jump") and is_on_floor(): motion += transform.basis.y * jump_power
 
 func get_movement():
 	var movement : Vector3
 	#print(Input.get_joy_axis(1, JOY_ANALOG_RX), 0, Input.get_joy_axis(1, JOY_ANALOG_RY))
-	if Input.is_class("InputEventJoypadMotion"):
-		movement = Vector3(Input.get_joy_axis(-1, JOY_ANALOG_RX), 0, Input.get_joy_axis(-1, JOY_ANALOG_RY))
-	else:
-		if Input.is_key_pressed(KEY_W): movement.z -= 1
-		if Input.is_key_pressed(KEY_S): movement.z += 1
-		if Input.is_key_pressed(KEY_A): movement.x -= 1
-		if Input.is_key_pressed(KEY_D): movement.x += 1
-		movement = movement.normalized()
-		if Input.is_key_pressed(KEY_SHIFT): movement *= 2
+	# if Input.is_class("InputEventJoypadMotion"):
+		# movement = Vector3(Input.get_joy_axis(-1, JOY_ANALOG_RX), 0, Input.get_joy_axis(-1, JOY_ANALOG_RY))
+	if Input.is_key_pressed(KEY_W): movement.z -= 1
+	if Input.is_key_pressed(KEY_S): movement.z += 1
+	if Input.is_key_pressed(KEY_A): movement.x -= 1
+	if Input.is_key_pressed(KEY_D): movement.x += 1
+	if ProjectSettings.noclip and Input.is_action_pressed("jump"): movement.y += 1
+	movement = movement.normalized()
+	if Input.is_key_pressed(KEY_SHIFT): movement *= 2
 	if !is_on_floor(): movement /= 20
 	return movement
 
@@ -65,6 +64,7 @@ func _process(_delta):
 			interact.interact_entered()
 
 func _physics_process(delta):
+	$Collision.disabled = ProjectSettings.noclip
 	if carrying:
 		if carrying.has_node("Door"):
 			carrying.global_transform.origin += (transform.origin - carrying.global_transform.origin) * 10 * delta
@@ -83,9 +83,14 @@ func _physics_process(delta):
 			carrying.linear_velocity = ($PivotX.global_transform.origin - $PivotX.global_transform.basis.z.normalized() * carry_distance - carrying.global_transform.origin) * 500 * delta
 		else:
 			carrying.global_transform = $PivotX/Carry.global_transform
-	motion += transform.basis * get_movement() * speed * delta
-	if is_on_floor():
-		motion *= (1 - surface_friction)
-	motion *= (1 - air_resistance)
-	motion -= transform.basis.y * gravity * delta
+	
+	if ProjectSettings.noclip:
+		motion = $PivotX.global_transform.basis * get_movement() * speed * ProjectSettings.noclip_speed * delta
+	else:
+		motion += transform.basis * get_movement() * speed * delta
+		if is_on_floor():
+			motion *= (1 - surface_friction)
+		motion *= (1 - air_resistance)
+		motion -= transform.basis.y * gravity * delta
+		
 	motion = move_and_slide(motion, transform.basis.y.normalized(), false, 4, .8, false)

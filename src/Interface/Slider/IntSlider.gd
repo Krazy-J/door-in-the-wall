@@ -15,17 +15,17 @@ func _ready():
 	elif settings: value = ProjectSettings.get(settings[0])
 	elif viewport: value = get_viewport().get(viewport[0])
 	elif os: value = OS.get(os[0])
-	$Split/SpinBox.set_deferred("value",value)
-	$Split/Slider.set_deferred("value",value)
-	$Split/SpinBox.set_deferred("min_value",min_value)
-	$Split/Slider.set_deferred("min_value",min_value)
-	$Split/SpinBox.set_deferred("max_value",max_value)
-	$Split/Slider.set_deferred("max_value",max_value)
 	$Split/SpinBox.step = step
 	$Split/Slider.step = step
 	$Split/SpinBox.prefix = prefix
 	$Split/SpinBox.suffix = suffix
 	$Split/Slider.tick_count = tick_count
+	$Split/SpinBox.min_value = min_value
+	$Split/Slider.min_value = min_value
+	$Split/SpinBox.max_value = max_value
+	$Split/Slider.max_value = max_value
+	$Split/SpinBox.value = value
+	$Split/Slider.value = value
 
 func _process(_delta):
 	if Engine.editor_hint: _ready()
